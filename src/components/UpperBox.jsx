@@ -21,7 +21,7 @@ const UpperBox = () => {
     
   return (
     <div>
-        <div className='upperbox'>
+        <div className='container mx-auto px-2'>
             <div>
             <AddHuskyButton onAdd= {() => setShow(!show)} showAdd={show} />
             {show && <LeftForm onAdd={AddHusky}/>}
