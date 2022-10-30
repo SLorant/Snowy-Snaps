@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "EloquiaBold";
+  src: url("./EloquiaBold.otf");
+}
+@font-face {
+  font-family: "EloquiaLight";
+  src: url("./EloquiaLight.otf");
+}

@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 const Header = ({title}) => {
   return (
     <header >
-        <div >
-        <a>{title}</a>
-            <a className="underline">Videos</a>
-            <a>Pics</a>
-            <a>Gifs</a>
+        <nav className="flex justify-start items-center h-10 bg-blue-700">
+        <a href="#">{title}</a>
+            <a className="p-6 text-white">Videos</a>
+            <a className="p-6 text-white">Pics</a>
+            <a className="p-6 text-white">Gifs</a>
             
-        </div>
+        </nav>
         
     </header>
   )

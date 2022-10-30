@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "build:css": "tailwind build src/index.css -o style.css",
     "server": "json-server --watch db.json --port 5000"
   },
   "dependencies": {

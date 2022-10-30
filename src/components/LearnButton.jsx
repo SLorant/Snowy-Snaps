@@ -2,8 +2,9 @@ import React from 'react'
 
 const LearnButton = () => {
   return (
-    <div>
-        <button className="bg-blue-500 hover:bg-blue-100 text-white font-bold py-2 px-4 rounded">Learn about Huskies</button>
+    <div className="basis-3">
+        <button className="p-10 transition ease-in-out delay-150 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded
+        hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">Learn about Huskies</button>
     </div>
   )
 }

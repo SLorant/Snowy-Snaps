@@ -22,11 +22,9 @@ function App() {
 
   return (
     <div>
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1><Header title='A husky website'   />
+    <Header title='A husky website'   />
      <IntroPage />
-     <UpperBox className="bg-blue-700"/>
+     <UpperBox />
   </div>
   )
 }
