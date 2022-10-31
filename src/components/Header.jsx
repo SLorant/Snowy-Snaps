@@ -2,11 +2,12 @@ import PropTypes from 'prop-types'
 const Header = ({title}) => {
   return (
     <header >
-        <nav className="flex justify-start items-center h-10 bg-blue-700">
-        <a href="#">{title}</a>
-            <a className="p-6 text-white">Videos</a>
-            <a className="p-6 text-white">Pics</a>
-            <a className="p-6 text-white">Gifs</a>
+        <nav className="flex relative justify-center items-center h-18 bg-cyan-900 shadow-lg">
+        <a href="#" className="absolute font-cutefont font-bold text-lg text-white sm:text-xl lg:text-3xl left-12">{title}</a>
+            <a className="p-6 font-hlight text-lg text-white sm:text-xl lg:text-2xl">Learn</a>
+            <a className="p-6 font-hlight text-lg text-white sm:text-xl lg:text-2xl">Huskies' Gallery</a>
+            <a className="p-6 font-hlight text-lg text-white sm:text-xl lg:text-2xl">Let's play!</a>
+            <a className="p-6 font-hlight text-lg text-white sm:text-xl lg:text-2xl">Sign In</a>
             
         </nav>
         

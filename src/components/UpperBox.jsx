@@ -13,8 +13,8 @@ const UpperBox = () => {
     
   return (
     <div>
-        <div className=' md:flex mt-10 justify-center items-center gap-x-20 mx-5'>
-        <div className="z-0 absolute h-32 bg-white w-11/12 mt-6 rounded"></div>
+        <div className=' md:flex mt-10 justify-center items-center md:gap-x-5 lg:gap-x-10 xl:gap-x-20 mx-5'>
+        <div className="z-0 absolute h-80 bg-white w-11/12 rounded"></div>
             <Learn/>
             
             <Watch/>
