@@ -23,6 +23,7 @@ function App() {
   return (
     <div>
     <Header title='A husky website'   />
+    
      <IntroPage />
      <UpperBox />
   </div>

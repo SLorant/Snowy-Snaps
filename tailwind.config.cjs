@@ -11,7 +11,8 @@ module.exports = {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
       hbold: ['EloquiaBold', 'sans-serif'],
-      hlight: ['EloquiaLight', 'sans-serif']
+      hlight: ['EloquiaLight', 'sans-serif'],
+      cutefont: ['WithoutRain', 'sans-serif']
     },
     flexBasis: {
       '1/8': '12.5%',

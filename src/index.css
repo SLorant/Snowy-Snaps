@@ -10,3 +10,7 @@
   font-family: "EloquiaLight";
   src: url("./EloquiaLight.otf");
 }
+@font-face {
+  font-family: "WithoutRain";
+  src: url("./AYearWithoutRain.ttf");
+}

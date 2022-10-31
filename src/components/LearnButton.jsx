@@ -2,14 +2,20 @@ import React from 'react'
 
 const LearnButton = () => {
   return (
-    <div className="basis-3">
-        <button className="p-10 transition ease-in-out delay-150 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded
-        hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">Learn about Huskies</button>
+    <div className="flex justify-center items-center mt-3">
+      <div>
+        <p className="h-18  text-xl tracking-widest 
+        font-cutefont font-bold p-10  text-white  py-2 px-4 rounded-2xl 
+        ">Learn about Huskies</p>
+        
+      
+        </div>
     </div>
   )
 }
-
+//transition ease-in-out delay-150 hover:translate-y-6 hover:scale-100  duration-500
 export default LearnButton
+
 
 /*/src/components/*.{js,jsx,ts,tsx}',
   './src/components/WatchButton.jsx',
