@@ -1,23 +1,33 @@
 import LearnButton from "./LearnButton"
 
 const Learn = () => {
+  //bg-gradient-to-b from-stone-700 r to-sky-900
   return (
-    <div className="flex flex-col w-1/3 bg-gradient-to-b from-sky-900 r to-cyan-100  h-80 rounded-2xl z-10 ">
-        <LearnButton />
-        <div className=" flex flex-col justify-center items-center">
-       
-        <p className="font-hlight text-sm  xl:text-base text-white text-center my-6 mx-6">Blue eyes are pretty rare in most dog breeds, but many huskies are born with bright, blue peepers. Heterochromia—or eyes of two different colors—is also fairly... </p>
-        <svg xmlns="http://www.w3.org/2000/svg" className="bottom-4 transition cursor-pointer ease-in-out delay-150 hover:translate-y-6 hover:scale-100  duration-500"
-         width="100" height="100" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <line x1="12" y1="5" x2="12" y2="19" />
-  <line x1="16" y1="15" x2="12" y2="19" />
-  <line x1="8" y1="15" x2="12" y2="19" />
-</svg>
+    <div className="flex flex-col w-full  bg-[#738199]    z-0">
+        
+        <div className="relative">
+        
+        <div className=" absolute top-24 left-28 flex flex-col z-50 justify-center items-center border-2 border-dashed border-slate-400  h-1/3 w-5/12 bg-slate-600 rounded-xl">  
+       <h2 className='mt-4 md:text-md lg:text-lg 2xl:text-lg tracking-wider 
+        font-cutefont font-bold  text-white uppercase '>How to train and take care of huskies</h2>      
+        <p className="font-hlight text-sm  xl:text-base text-white text-center my-6 mx-6">Siberian huskies are popular because of their friendly temperament and easy grooming.  Huskies are also notoriously stubborn and difficult to train. If you're considering bringing home a loving husky puppy, it is important to know what to expect.</p>
+</div>
+        <div className=" absolute top-96 left-28 z-50 flex flex-col items-center justify-center border-2 border-dashed border-stone-400  h-1/3 w-1/3 bg-stone-600 rounded-xl">
+          <h2 className='md:text-md lg:text-lg 2xl:text-lg tracking-widest 
+        font-cutefont font-bold  text-white uppercase'>Husky health</h2>
+        <p className="font-hlight text-sm  xl:text-base text-white text-center my-6 mx-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus mollitia minus odit aperiam obcaecati voluptatibus cumque. Illum, ad placeat at facere assumenda sunt cupiditate optio? Quaerat possimus cum id iusto?</p>
+        </div>
+
+          <img className="relative w-full object-cover opacity-80 "  src="src/assets/husky2wide4.jpg" alt="huskywide" />
         </div>
     </div>
   )
 }
 
-//common among huskies, and often results in blue, gold, brown, or orangey-colored eyes.
+/*<div  className="top-8 left-72 z-40 absolute">
+        <div  className=" shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 my-4  duration-500">
+          <h2  className='md:text-md lg:text-lg 2xl:text-xl tracking-widest 
+        font-cutefont font-bold  text-slate-800  py-2 px-4'>Learn about Huskies</h2>
+        </div>
+        </div> */
 export default Learn

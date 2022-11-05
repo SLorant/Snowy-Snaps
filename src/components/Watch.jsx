@@ -1,21 +1,45 @@
-import WatchButton from './WatchButton'
+
+import AOS from 'aos';
 
 const Watch = () => {
   return (
-    <div className="flex flex-col w-1/3 bg-gradient-to-b from-stone-700 to-cyan-100  h-80 rounded-2xl z-10  ">
-         <a href="#husky-media"><WatchButton/></a>
-        <div className="flex flex-col justify-center items-center">
-       <img src="src/assets/huskygif.gif" alt="huskygif" className=' shadow-lg max-h-28 xl:max-h-32 2xl:max-h-36 my-2 rounded-full' />
+    <div className="flex flex-col items-center w-full bg-white shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]  z-20  ">
+      <div data-aos="fade-down" className="h-20   flex justify-center items-center">
+        <div  className="shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 my-4  duration-500">
+          <h2  className='h-18  text-center  md:text-md lg:text-xl 2xl:text-2xl tracking-widest 
+        font-cutefont font-bold  text-slate-800  py-2 px-4 '>Watch videos, gifs, and photos</h2>
+        </div>
+        </div>
+        
+        <div  className="w-11/12 grid grid-cols-3 grid-rows-[250px_250px_100px] gap-12 gap-y-12  justify-center items-center">
+       <img src="src/assets/huskyp2.jpg" alt="huskypic" className='ml-4 shadow-lg max-h-28 xl:max-h-32 2xl:max-h-80 h-56  w-11/12 mt-8  rounded-2xl' />
+       <img src="src/assets/huskygif.gif" alt="huskygif" className='ml-4 mt-8  mb-0 shadow-lg max-h-28 xl:max-h-32 2xl:max-h-80 h-56 w-11/12  rounded-2xl' />
+       <video controls alt="huskyvid" className=' mt-8 ml-4 object-fill shadow-lg max-h-28 xl:max-h-32 2xl:max-h-80 h-56    w-11/12  rounded-2xl'>
+       <source src='src/assets/huskyvideo.mp4'  type="video/mp4"/>
+       </video>
+       <img src="src/assets/huskyp3.jpg" alt="huskypic" className='ml-4 shadow-lg max-h-28 xl:max-h-32 2xl:max-h-80 h-60  w-11/12 mt-8  rounded-2xl' />
+       <img src="src/assets/huskyboop.gif" alt="huskygif" className=' ml-4 mt-8  mb-0 shadow-lg max-h-28 xl:max-h-32 2xl:max-h-80 h-60 w-11/12  rounded-2xl' />
+       
+       <video controls alt="huskyvid" className='mt-8 ml-4 object-fill shadow-lg max-h-28 xl:max-h-32 2xl:max-h-80 h-60  w-11/12  rounded-2xl'>
+       <source src='src/assets/huskyvideo2.mp4'  type="video/mp4"/>
+       </video>
+       <div  className=" w-10/12  ml-8 shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
+          <h2  className='text-center  md:text-md lg:text-xl 2xl:text-2xl 
+        font-hlight font-bold  text-slate-800  py-2 px-4'>More photos...</h2>
+        </div>
+        <div  className=" w-10/12 ml-8  shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
+          <h2  className='text-center  md:text-md lg:text-xl 2xl:text-2xl 
+        font-hlight font-bold  text-slate-800  py-2 px-4 '>More gifs...</h2>
+        </div>
+        <div  className=" w-10/12 ml-8 shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
+          <h2  className='text-center  md:text-md lg:text-xl 2xl:text-2xl 
+        font-hlight font-bold  text-slate-800  py-2 px-4 '>More videos...</h2>
+        </div>
         
        
-       <a href="#husky-media"><svg xmlns="http://www.w3.org/2000/svg" className="  transition cursor-pointer ease-in-out delay-150 hover:translate-y-6 hover:scale-100  duration-500"
-         width="100" height="100" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ffffff" fill="none" strokeLinecap="round" strokeLinejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <line x1="12" y1="5" x2="12" y2="19" />
-  <line x1="16" y1="15" x2="12" y2="19" />
-  <line x1="8" y1="15" x2="12" y2="19" />
-</svg></a> 
         </div>
+        <div className='h-8'></div>
+        
         </div>
   )
 }
