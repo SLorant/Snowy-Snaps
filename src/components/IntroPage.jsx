@@ -1,42 +1,45 @@
+import { useRef } from 'react'
+import useIntersection from './useIntersection'
+import Sections from './Sections'
 
-import UpperBox from './UpperBox'
 const IntroPage = () => {
+  const ref = useRef();
+  const inViewport = useIntersection(ref, "100px"); // Trigger as soon as the element becomes visible
 
-  //const ref = useRef();
- // const inViewport = useIntersection(ref, '100px'); // Trigger as soon as the element becomes visible
-
-  /*if (inViewport) {
-    console.log('in viewport:', ref.current);
-}*/
-//${inViewport ? 'absolute top-0' : 'fixed top-0'}
   return (
     <div >
-    <div className='  fixed top-4 flex flex-col justify-center items-center w-full   z-0'>
+    <div className={`${inViewport ? "opacity-0" : "sticky top-0"}  flex flex-col justify-center items-center w-full z-0`}>
       
-    <div className="flex flex-col justify-center items-center   my-14  z-10 w-full ">
-        <div className='h-32 absolute bg-stone-700 top-36 opacity-20 w-full'></div>
-        <h1 className="font-hbold lg:my-5 mt-20 lg:mt-12 xl:mt-32   text-3xl mx-10 xl:mx-0
-        text-slate-800 text-3xl text-4xl  xl:text-5xl tracking-tight text-center ">Welcome to the one and only Husky page!</h1>
-        <h2 className="font-cutefont my-6 xl:my-5 mx-16 xl:mx-0  text-slate-800 sm:text-lg lg:text-xl xl:text-2xl text-center">You can learn about Huskies, watch cute videos, and even upload your own pet-friend!</h2>
-        
-        
-    
+    <div className="flex flex-col justify-center items-center my-14 z-10 w-full ">
+        <div className="h-32 absolute bg-indigo-600 md:bg-green-600 lg:bg-blue-600 xl:bg-red-600 2xl:bg-stone-700 top-36 opacity-20 w-full"></div>
+        <h1 className="font-hbold my-1 md:my-5 mt-[150px] md:mt-[170px] lg:mt-32   text-3xl mx-8 xl:mx-0
+        text-slate-800 text-3xl lg:text-4xl xl:text-5xl tracking-tight text-center">Welcome to the one and only Husky page!</h1>
+        <h2 className="font-cutefont my-6 xl:my-5 mx-16 xl:mx-0 text-slate-800 sm:text-lg lg:text-xl xl:text-2xl text-center">
+        You can learn about Huskies, watch cute videos, and even upload your own pet-friend!</h2>
     </div>
-    <img src="src/assets/huskieslove.gif" alt="huskylove" className='opacity-60 z-0 top-48 absolute w-full' />
 
+    <img src="src/assets/huskieslove.gif" alt="huskylove" className="opacity-60 z-0 top-48 absolute w-full object-cover
+    h-[700px] md:h-[700px] lg:h-[700px] xl:h-[700px] 2xl:h-auto" />
     </div>
-    <div   className= ' h-[1700px]  mt-[1000px] w-full z-20'>
-        <div ></div>
-        <UpperBox />
-        
+
+    <div className="mt-[470px] md:mt-[540px] lg:mt-[560px] xl:mt-[470px] h-[1000px]  w-full z-20">
+        <div></div>
+        <Sections/>
      </div>
-     
-  
+     <div ref={ref}></div>
+    
     </div>)
     
 }
 
 export default IntroPage
+
+ /*  if (inViewport) {
+    console.log('in viewport:', ref.current);
+}*/
+//${inViewport ? 'absolute top-0' : 'fixed top-0'}
+
+
 
 /* colors: {
   'lightblue' : '#cddcf2',

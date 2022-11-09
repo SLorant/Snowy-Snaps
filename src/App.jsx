@@ -21,18 +21,11 @@ function App() {
   }
 
 
- 
   return (
     <div>
     <Header id="header" title='HuskySite'   />
-   
      <IntroPage   />
-     
      <Footer/>
-    
-    
-     
-     
   </div>
   )
 }
