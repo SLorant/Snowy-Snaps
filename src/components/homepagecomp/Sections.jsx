@@ -12,7 +12,7 @@ const Sections = () => {
   return (
     <div>
         <div  className='md:flex flex-col mt-6 justify-center items-center'>
-          <div  className="z-0  absolute h-80 bg-white w-11/12 rounded"></div>
+          <div  className="z-0 absolute h-80 bg-white w-11/12 rounded"></div>
           <Watch/>
           <div ref={ref} className={`z-10 ${inViewport ? 'sticky top-0' : 'z-10'}`}>
             <Learn/>

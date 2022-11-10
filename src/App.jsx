@@ -1,9 +1,9 @@
 import { useRef, useEffect} from 'react'
-
 import WatchPage from './components/WatchPage'
-import Home from './components/Home'
+import HomePage from './components/HomePage'
 import LearnPage from './components/LearnPage';
-import ReactDOM from "react-dom";
+import PlayPage from './components/PlayPage';
+import SignInPage from './components/SignInPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
@@ -31,9 +31,11 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="learnpage" element={<LearnPage />} />
-        <Route path="watchpage" element={<WatchPage />} />
+        <Route index element={<HomePage />} />
+        <Route path="learn" element={<LearnPage />} />
+        <Route path="watch" element={<WatchPage />} />
+        <Route path="play" element={<PlayPage />} />
+        <Route path="signin" element={<SignInPage />} />
        
       </Route>
     </Routes>
