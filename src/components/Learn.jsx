@@ -17,7 +17,7 @@ const Learn = () => {
             Take me there!</a>
             </button>
 </div>
-        <div className=" absolute top-[450px] lg:top[500px] xl:top-96 left-16 lg:left-28 z-50 flex flex-col items-center justify-center border-2 border-dashed border-stone-400  h-5/12 w-1/3 bg-stone-600 rounded-xl">
+        <div className=" absolute top-[400px]  md:top-[450px] 2xl:top-96 left-16 lg:left-28 z-50 flex flex-col items-center justify-center border-2 border-dashed border-stone-400  h-5/12 w-1/3 bg-stone-600 rounded-xl">
           <h2 className='mt-4 md:mx-4 text-center md:text-[18px] 2xl:text-lg tracking-wider font-bold 
         font-cutefont font-bold  text-white uppercase'>Description and interesting facts</h2>
         <p className="font-hlight md:text-[16px] lg:text-sm  xl:text-[18px] text-white text-center my-4 mb-2 md:mx-4 xl:mx-12">Siberian Huskies are known for being clean dogs. But what’s really unique is that these dogs actually lick and groom themselves much like a cat does. </p>

@@ -1,7 +1,13 @@
 import { useRef, useEffect} from 'react'
-import Header from './components/Header'
-import IntroPage from './components/IntroPage'
-import Footer from './components/Footer'
+
+import WatchPage from './components/WatchPage'
+import Home from './components/Home'
+import LearnPage from './components/LearnPage';
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+
+
 
 function App() {
   useEffect(() => {
@@ -22,12 +28,27 @@ function App() {
 
 
   return (
-    <div>
-    <Header id="header" title='HuskySite'   />
-     <IntroPage   />
-     <Footer/>
-  </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="learnpage" element={<LearnPage />} />
+        <Route path="watchpage" element={<WatchPage />} />
+       
+      </Route>
+    </Routes>
+  </BrowserRouter>
+
+    
+ 
+  
   )
 }
 
+
 export default App
+ /*<div>
+    <Header id="header" title='HuskySite'   />
+     <IntroPage   />
+     <Footer/>
+  </div> */
