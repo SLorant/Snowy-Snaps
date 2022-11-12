@@ -1,6 +1,6 @@
 
 
-const Learn = () => {
+const LearnSection = () => {
   //bg-gradient-to-b from-stone-700 r to-sky-900
   return (
     <div className="flex flex-col w-full  bg-[#738199] z-0">
@@ -42,4 +42,4 @@ const Learn = () => {
         font-cutefont font-bold  text-slate-800  py-2 px-4'>Learn about Huskies</h2>
         </div>
         </div> */
-export default Learn
+export default LearnSection

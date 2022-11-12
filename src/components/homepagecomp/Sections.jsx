@@ -1,8 +1,8 @@
 import { useRef } from 'react'
-import useIntersection from './useIntersection'
-import AddHusky from "./AddHusky"
-import Learn from "./Learn"
-import Watch from "./Watch"
+import useIntersection from '../hooks/useIntersection'
+import AddHusky from "./AddHuskySection"
+import Learn from "./LearnSection"
+import Watch from "./WatchSection"
 
 
 const Sections = () => {

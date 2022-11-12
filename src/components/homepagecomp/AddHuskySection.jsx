@@ -2,7 +2,7 @@ import AddHuskyButton from "./AddHuskyButton"
 import { useState } from "react"
 import LeftForm from "./LeftForm"
 
-const AddHusky = () => {
+const AddHuskySection = () => {
     const[show, setShow]=useState(false);
     
 
@@ -30,4 +30,4 @@ const AddHusky = () => {
   )
 }
 
-export default AddHusky
+export default AddHuskySection

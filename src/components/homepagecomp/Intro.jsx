@@ -1,8 +1,8 @@
 import { useRef } from 'react'
-import useIntersection from './useIntersection'
+import useIntersection from '../hooks/useIntersection'
 import Sections from './Sections'
 
-const IntroPage = () => {
+const Intro = () => {
   const ref = useRef();
   const inViewport = useIntersection(ref, "100px"); // Trigger as soon as the element becomes visible
 
@@ -32,7 +32,7 @@ const IntroPage = () => {
     
 }
 
-export default IntroPage
+export default Intro
 
  /*  if (inViewport) {
     console.log('in viewport:', ref.current);

@@ -1,5 +1,5 @@
 import React from 'react'
-import IntroPage from './homepagecomp/IntroPage'
+import IntroPage from './homepagecomp/Intro'
 import Footer from './homepagecomp/Footer'
 
 const HomePage= () => {
