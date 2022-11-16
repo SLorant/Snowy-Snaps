@@ -10,7 +10,7 @@ import Layout from "./components/Layout";
 
 
 function App() {
-  useEffect(() => {
+  /*useEffect(() => {
     const getHuskies = async() => {
       const huskiesFromServer = await fetchHusky()
 
@@ -24,7 +24,7 @@ function App() {
     const data = await res.json()
 
     return data
-  }
+  }*/
 
 
   return (

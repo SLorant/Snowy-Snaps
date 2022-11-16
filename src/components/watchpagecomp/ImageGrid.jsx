@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const ImageGrid = ({ setSelectedImg }) => {
     const { docs } = useFirestore('images');
-    console.log(docs);
+    
   return (
     <div className=" h-[1000px] ">
         <div className="mx-20 flex justify-center items-center">

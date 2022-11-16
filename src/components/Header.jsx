@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 const Header = ({title}) => {
-  const [isActive, setIsActive] = useState(false);
   const { pathname } = useLocation();
 
   

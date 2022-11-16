@@ -6,17 +6,17 @@ const AddHuskySection = () => {
     const[show, setShow]=useState(false);
     
 
-    const AddHusky = async (husky) => {
+    /*const AddHusky = async (husky) => {
         const res = await fetch('http://localhost:5000/huskies', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json'},
           body: JSON.stringify(husky)
-        })}
+        })}*/
 
   return (
     <div className="flex shadow-[0px_3px_10px_10px_rgba(0,0,0,0.3)] flex-col w-full  bg-stone-400 h-[1000px]   z-10 ">
         <AddHuskyButton onAdd= {() => setShow(!show)} showAdd={show} />
-            {show && <LeftForm onAdd={AddHusky}/>}
+            {show && <LeftForm />}
             {show && <div className='h-20 w-20'>
                 <img src="./src/assets/husky.jpg" alt="husky" /></div>}
         <div className="flex flex-col justify-center items-center">
