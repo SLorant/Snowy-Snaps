@@ -1,19 +1,20 @@
 import { useState, useRef } from "react"
 import { useAuth } from "../../contexts/AuthContext"
-
-
-const Form = () => {
+import { motion } from 'framer-motion'
+import {  Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import ChooseButtons from "./ChooseButtons";
+const Login = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
-    const passwordConfirmRef =useRef()
     const { signup } =  useAuth()
     const [ error, setError] = useState('')
     const [ loading, setLoading] = useState(false)
+    const { pathname } = useLocation();
 
     async function handleSubmit(e) {
         e.preventDefault()
 
-        if(passwordRef.current.value !== passwordConfirmRef.current.value) return setError('Passwords don\'t match')
         try {
             setError('')
             setLoading(true)
@@ -28,6 +29,7 @@ const Form = () => {
 
   return (
     <div >
+        <ChooseButtons/>
        
     <div className="flex justify-center items-center  h-[850px]  w-full  ">
     {error && alert(error)}
@@ -41,13 +43,9 @@ const Form = () => {
             <label className="font-hlight">Password</label>
             <input type="password" ref={passwordRef} required className="border-2 border-gray-400 rounded-md" />
         </div>
-        <div className=" form-group flex flex-col mb-4">
-            <label className="font-hlight">Confirm password</label>
-            <input type="password" ref={passwordConfirmRef} required className="border-2 border-gray-400 rounded-md" />
-        </div>
 
         <button><input disabled={loading} className=" btn rounded-md bg-blue-100 border-2 border-gray-400 mt-4 cursor-pointer" type="submit"
-         value="Sign up"/></button>
+         value="Login"/></button>
     </form>
     
     <div className="w-40 ml-20 ">
@@ -57,4 +55,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Login

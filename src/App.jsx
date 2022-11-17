@@ -6,6 +6,8 @@ import PlayPage from './components/PlayPage';
 import SignInPage from './components/SignInPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import { AuthProvider } from './contexts/AuthContext'
+import Login from './components/signincomponents/Login';
 
 
 
@@ -29,16 +31,18 @@ function App() {
 
   return (
     <BrowserRouter>
+    <AuthProvider>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="learn" element={<LearnPage />} />
         <Route path="watch" element={<WatchPage />} />
         <Route path="play" element={<PlayPage />} />
-        <Route path="signin" element={<SignInPage />} />
-       
+        <Route path="login" element={<Login/>} />
+        <Route path="signup" element={<SignInPage />} />
       </Route>
     </Routes>
+    </AuthProvider>
   </BrowserRouter>
 
     

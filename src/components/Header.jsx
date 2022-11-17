@@ -18,7 +18,7 @@ const Header = ({title}) => {
              hover:border-slate-700 text-lg text-slate-700  sm:text-xl lg:text-xl xl:text-2xl`}>Huskies' Gallery</Link>
             <Link to="/play" className={`${pathname === '/play' ? 'border-slate-700' : ''} p-2 xl:p-4 md:px-2 lg:px-4 2xl:px-6 font-hlight  border-b-2 transition duration-500 hover:bg-white
              hover:border-slate-700 text-lg text-slate-700  border-white  sm:text-xl lg:text-xl xl:text-2xl`}>Let's play</Link>
-            <Link to="/signin" className={`${pathname === '/signin' ? 'border-slate-700' : ''} p-2 xl:p-4 absolute md:right-2 lg:right-4 xl:right-20 border-white font-hlight border-b-2 transition duration-500 hover:bg-white
+            <Link to="/login" className={`${pathname === '/signup' || pathname === '/login' ? 'border-slate-700' : ''} p-2 xl:p-4 absolute md:right-2 lg:right-4 xl:right-20 border-white font-hlight border-b-2 transition duration-500 hover:bg-white
              hover:border-slate-700 text-lg text-slate-700 sm:text-xl lg:text-xl xl:text-2xl`}>Sign In</Link>
             
         </nav>

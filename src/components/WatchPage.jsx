@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { AuthProvider } from '../contexts/AuthContext'
 import ImageGrid from './watchpagecomp/ImageGrid'
 import Modal from './watchpagecomp/Modal'
 import Top from './watchpagecomp/Top'
@@ -17,8 +18,7 @@ const WatchPage = () => {
         <ImageGrid setSelectedImg = {setSelectedImg}/>
         { selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }
 
-        
-    </div>
+        </div>
   )
 }
 
