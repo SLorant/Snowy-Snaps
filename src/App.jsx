@@ -3,13 +3,14 @@ import WatchPage from './components/WatchPage'
 import HomePage from './components/HomePage'
 import LearnPage from './components/LearnPage';
 import PlayPage from './components/PlayPage';
-import SignInPage from './components/SignInPage';
+import SignInPage from './components/SignUpPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import { AuthProvider } from './contexts/AuthContext'
-import Login from './components/signincomponents/Login';
+import LoginPage from './components/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/signincomponents/ForgotPassword';
+import Profile from './components/profilecomp/Profile';
 
 
 
@@ -41,8 +42,9 @@ function App() {
         <Route path="learn" element={<LearnPage />} />
         <Route path="watch" element={<WatchPage />} />
         <Route path="play" element={<PlayPage />} />
-        <Route path="login" element={<Login/>} />
+        <Route path="login" element={<LoginPage/>} />
         <Route path="signup" element={<SignInPage />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
       </Route>
     </Routes>

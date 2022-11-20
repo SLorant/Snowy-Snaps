@@ -24,7 +24,7 @@ const SignUp = () => {
             navigate('/')
         } catch {
             if (passwordRef.current.value.length < 6)
-            {  setError("Password have to be at least 6 characters")}
+            {  setError("Password have to be at least 6 characters long")}
             else setError('Failed to create an account')
             
         }
@@ -37,8 +37,11 @@ const SignUp = () => {
             
             
        
-    <div className="flex justify-center items-center  w-full  ">
-    {error && alert(error)}
+    <div className="flex flex-col justify-center items-center  w-full  ">
+    {error && <div className="w-80 h-16 font-hlight flex justify-center text-red-700 bg-red-100 font-bold
+     items-center rounded-md text-lg text-center">
+        {error}
+        </div>}
     
     <form onSubmit={handleSubmit} className="flex flex-col w-68" >
    
@@ -46,10 +49,11 @@ const SignUp = () => {
             
             <div className="flex items-center justify-between">
             <label className="font-hbold text-slate-700  ">Email</label>
-            <div className=" w-4 h-4 group">
+            <div className=" w-4 h-4 group relative">
             <img className=" w-4 h-4 cursor-pointer" src="./src/assets/question.png" alt="questionmark" />
-                <div className="invisible rounded-md bg-slate-700  group-hover:visible absolute top-[310px] right-[470px] w-40 h-12 mr-20 mb-4">
-                    <p className="ml-2 text-sm text-white font-hlight">Email format required.</p>
+                <div className="invisible rounded-md bg-slate-400  group-hover:visible group-hover:bg-slate-700 
+                absolute shadow-md w-48 h-14 left-7 -top-9 transition ease-in duration-300 group-hover:translate-y-4  ">
+                    <p className="mt-2 ml-2 text-sm text-white font-hlight">Email format required. <br /> user.name@example.com</p>
                 </div>
                 
                 </div>
@@ -63,10 +67,20 @@ const SignUp = () => {
         <div className='form-group flex flex-col my-6 w-60'>
             <div className="flex items-center justify-between">
             <label className="font-hbold text-slate-700 ">Password</label>
-            <img className="w-4 h-4" src="./src/assets/question.png" alt="questionmark" />
+            <div className=" w-4 h-4 group relative">
+            <img className=" w-4 h-4 cursor-pointer" src="./src/assets/question.png" alt="questionmark" />
+                <div className="invisible rounded-md bg-slate-400  group-hover:visible group-hover:bg-slate-700 
+                absolute left-7 -top-6 ease-in shadow-md w-40 h-9  transition duration-300 group-hover:translate-y-4  ">
+                    <p className="mt-2 ml-2 text-sm text-white font-hlight">At least 6 characters.</p>
+                </div>
+                
+                </div>
+
             </div>
             <input type="password" ref={passwordRef} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
         </div>
+
+
         <div className=" form-group flex flex-col mb-4 w-60">
             <label className="font-hbold  text-slate-700 ">Confirm password</label>
             <input type="password" ref={passwordConfirmRef} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
