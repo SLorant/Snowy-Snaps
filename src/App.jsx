@@ -8,6 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import { AuthProvider } from './contexts/AuthContext'
 import Login from './components/signincomponents/Login';
+import PrivateRoute from './components/PrivateRoute';
+import ForgotPassword from './components/signincomponents/ForgotPassword';
 
 
 
@@ -34,12 +36,14 @@ function App() {
     <AuthProvider>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
+        <Route index element={
+          <HomePage />} />
         <Route path="learn" element={<LearnPage />} />
         <Route path="watch" element={<WatchPage />} />
         <Route path="play" element={<PlayPage />} />
         <Route path="login" element={<Login/>} />
         <Route path="signup" element={<SignInPage />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
       </Route>
     </Routes>
     </AuthProvider>

@@ -1,16 +1,15 @@
 import { useState, useRef } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { motion } from 'framer-motion'
-import {  Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ChooseButtons from "./ChooseButtons";
 const Login = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { signup } =  useAuth()
+    const { login } =  useAuth()
     const [ error, setError] = useState('')
     const [ loading, setLoading] = useState(false)
-    const { pathname } = useLocation();
+    const navigate =  useNavigate()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -18,9 +17,10 @@ const Login = () => {
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await login(emailRef.current.value, passwordRef.current.value)
+            navigate('/')
         } catch {
-            setError('Failed to create an account')
+            setError('Failed to sign in')
             
         }
         setLoading(false)
@@ -44,8 +44,8 @@ const Login = () => {
             <input type="password" ref={passwordRef} required className="border-2 border-gray-400 rounded-md" />
         </div>
 
-        <button><input disabled={loading} className=" btn rounded-md bg-blue-100 border-2 border-gray-400 mt-4 cursor-pointer" type="submit"
-         value="Login"/></button>
+        <button className=" btn w-20 rounded-md bg-blue-100 border-2 border-gray-400 mt-4 cursor-pointer">
+            <input disabled={loading}  type="submit" className="cursor-pointer" value="Log in"/></button>
     </form>
     
     <div className="w-40 ml-20 ">
