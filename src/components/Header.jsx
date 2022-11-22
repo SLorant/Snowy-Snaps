@@ -2,12 +2,20 @@ import PropTypes from 'prop-types'
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext'
+import { motion } from "framer-motion"
+import useComponentVisible from './hooks/useComponentVisible';
 const Header = ({title}) => {
   const { pathname } = useLocation();
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
+  const [isActive, setIsActive] = useState(false);
     
-  
+  const {
+    ref,
+    isComponentVisible,
+    setIsComponentVisible,
+  } = useComponentVisible(false);
+
   const navigate = useNavigate()
 
   async function handleLogout() {
@@ -18,14 +26,18 @@ const Header = ({title}) => {
       navigate('/login')
     } catch {
       setError('Failed to log out')
-    }
+    }}
 
-  }
+    
+  //onClick={() => setIsActive(!isActive)}
+  //  onClick={() => setIsComponentVisible(!isComponentVisible)}
+  // ${isActive ? "block" : "hidden"}
+  //{!isComponentVisible && ()}
   
   return (
     <header className="fixed top-0 w-full z-50">
         <nav className="flex sticky justify-between items-center h-12 xl:h-[78px] bg-white border-white border-2  shadow-md">
-        <a href="#" className="absolute font-cutefont  font-bold text-lg text-slate-700 sm:text-xl lg:text-2xl xl:text-4xl md:left-4 lg:left-8 xl:left-12">{title}</a>
+        <a href="#"  className="absolute font-cutefont  font-bold text-lg text-slate-700 sm:text-xl lg:text-2xl xl:text-4xl md:left-4 lg:left-8 xl:left-12">{title}</a>
 
           <div className="ml-[550px]">
         <Link to="/"  className={`${pathname === '/' ? 'border-slate-700' : ''} p-2 xl:p-4 md:px-2 lg:px-4 2xl:px-6 font-hlight border-b-2 border-white transition duration-500 hover:bg-white
@@ -39,28 +51,46 @@ const Header = ({title}) => {
             </div>
             
            {useAuth().currentUser && useAuth().currentUser.email ?
-           <div className="group relative w-80 mb-6 h-2">
-           <Link to='/profile'
-          className={`${pathname === '/profile' ? 'border-slate-700' : ''} z-40 p-2 xl:p-4
-             border-white font-hlight border-b-2 transition duration-500 
-              text-lg text-slate-700 sm:text-xl lg:text-xl xl:text-2xl`}
-          >{ currentUser.email}</Link>
-         
-
-          <div className="hidden mt-[18px] w-2/3 ml-8 rounded-b-md shadow-md  bg-white z-50 group-hover:block">
-         
-
-          <Link to="/profile"  className="block p-2 xl:p-4 
-           border-white font-hlight border-b-2 transition duration-500 hover:bg-white
-          border-slate-700 border-dashed text-md text-slate-700 sm:text-xl lg:text-xl xl:text-md">Profile</Link>
-
-          <Link to="/my-images"  className="block p-2 xl:p-4 
-           border-white font-hlight border-b-2 transition duration-500 hover:bg-white
-          border-slate-700 border-dashed text-md text-slate-700 sm:text-xl lg:text-xl xl:text-md">My images</Link>
-           <Link to="/login" onClick={handleLogout} className="block p-2 xl:p-4 
-           border-white font-hlight  transition duration-500 
-            text-md text-slate-700 sm:text-xl lg:text-xl xl:text-md">Logout</Link>
+           <div className="flex">
+           <div className="w-80 mr-20 mb-12 h-2">
+           <p
+          className={`${pathname === '/profile' ? 'border-slate-700' : ''} z-40 border-b-2 p-2 xl:p-4
+              font-hlight mr-2 mt-0  float-right transition duration-500 cursor-default
+              text-lg text-slate-700 sm:text-xl lg:text-xl xl:text-xl`}
+          >{ currentUser.email}</p>
           </div>
+          <div  className="group relative w-8 h-4  float-right right-20 top-4">
+          
+          <motion.img  className="w-8 h-8 rounded-full cursor-pointer " src='src\assets\downarrow.png' alt="userpic"
+          onClick={() => { setIsComponentVisible(!isComponentVisible); setIsActive(!isActive);}}
+        animate={{ rotate: isActive && isComponentVisible ? 180 : 0}} />
+            
+
+          <div  ref={ref} className={`block flex flex-col justify-center items-center mt-2 w-40 -ml-16
+           rounded-md   bg-[rgba(255,255,255,0)]  z-0
+           `}>
+
+          {isComponentVisible && isActive && (<div>
+          <Link   to="/profile"  className="block p-2 xl:p-2 
+          border-white font-hlight  transition w-32 mt-2 duration-500 hover:bg-white
+         border-slate-700  border-dashed rounded-md text-md text-white w-full text-center sm:text-xl lg:text-xl xl:text-md
+         bg-slate-700 shadow-[0px_3px_1px_2px_rgba(0,0,0,0.4)] hover:text-white">Profile</Link>
+
+         <Link to="/my-images"  className="block p-2 xl:p-2 
+          border-white font-hlight transition w-32 duration-500 hover:bg-white
+         border-slate-700  border-dashed rounded-md text-md text-white w-full text-center sm:text-xl lg:text-xl xl:text-md
+         bg-slate-700 shadow-[0px_3px_1px_2px_rgba(0,0,0,0.4)] hover:text-slate-800  my-2">My images</Link>
+
+          <Link to="/login" onClick={handleLogout} className="block p-2 xl:p-2
+          border-white font-hlight  transition  duration-500 hover:bg-white
+         border-slate-700 mb-3 border-dashed rounded-md text-md text-white w-full text-center sm:text-xl lg:text-xl xl:text-md
+         bg-slate-700 shadow-[0px_3px_1px_2px_rgba(0,0,0,0.4)] hover:text-white">Log out</Link></div>)}
+
+          
+
+          </div>
+          </div>
+          <img  className="w-12 h-12 rounded-full absolute right-4 top-1 shadow-md" src='src\assets\huskyprof.png' alt="userpic" />
           </div>
           :
           <Link to='/login'
@@ -94,3 +124,9 @@ export default Header
   };
  
   let toggleClass = isActive ? 'border-slate-700' : ''; */
+
+  /*{isComponentVisible ? 
+          (<motion.img  className="w-8 h-8 rounded-full cursor-pointer " src='src\assets\downarrow.png' alt="userpic"
+          onClick={() => setIsActive(!isActive)}
+        animate={{ rotate: isActive ? 180 : 0}} />)
+          :  */

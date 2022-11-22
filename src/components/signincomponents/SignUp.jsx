@@ -2,25 +2,36 @@ import { useState, useRef } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion"
+import { createUserDocument } from "../../../firebase/config"
 
 const SignUp = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef =useRef()
+    const userNameRef =useRef()
     const { signup } =  useAuth()
     const [ error, setError] = useState('')
     const [ loading, setLoading] = useState(false)
     const navigate =  useNavigate()
 
+  
+
     async function handleSubmit(e) {
         e.preventDefault()
 
         if(passwordRef.current.value !== passwordConfirmRef.current.value) return setError('Passwords don\'t match')
-        
+        const username = userNameRef.current.value
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            const { user } = await signup(
+                emailRef.current.value,
+                passwordRef.current.value
+              );
+              console.log(user)
+            //await signup(emailRef.current.value, passwordRef.current.value, )
+            await createUserDocument(user, { username });
+
             navigate('/')
         } catch {
             if (passwordRef.current.value.length < 6)
@@ -84,6 +95,10 @@ const SignUp = () => {
         <div className=" form-group flex flex-col mb-4 w-60">
             <label className="font-hbold  text-slate-700 ">Confirm password</label>
             <input type="password" ref={passwordConfirmRef} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
+        </div>
+        <div className=" form-group flex flex-col mb-4 w-60">
+            <label className="font-hbold  text-slate-700 ">Username</label>
+            <input type="text" ref={userNameRef} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
         </div>
 
         <motion.button className="text-white text-lg rounded-md bg-stone-400 font-hlight font-bold py-2
