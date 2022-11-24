@@ -2,7 +2,7 @@ import { useState, useRef } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion"
-import { createUserDocument } from "../../../firebase/config"
+import { createUserDocument, auth } from "../../../firebase/config"
 
 const SignUp = () => {
     const emailRef = useRef()
@@ -13,7 +13,7 @@ const SignUp = () => {
     const [ error, setError] = useState('')
     const [ loading, setLoading] = useState(false)
     const navigate =  useNavigate()
-
+    const [email, setEmail] = useState('')
   
 
     async function handleSubmit(e) {
@@ -21,18 +21,21 @@ const SignUp = () => {
 
         if(passwordRef.current.value !== passwordConfirmRef.current.value) return setError('Passwords don\'t match')
         const username = userNameRef.current.value
+     
         try {
             setError('')
             setLoading(true)
-            const { user } = await signup(
+            console.log(emailRef.current.value)
+            const { user }  = await signup(
                 emailRef.current.value,
                 passwordRef.current.value
               );
               console.log(user)
+             
             //await signup(emailRef.current.value, passwordRef.current.value, )
             await createUserDocument(user, { username });
 
-            navigate('/')
+            navigate('/upload-profile')
         } catch {
             if (passwordRef.current.value.length < 6)
             {  setError("Password have to be at least 6 characters long")}

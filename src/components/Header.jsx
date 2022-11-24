@@ -4,17 +4,33 @@ import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext'
 import { motion } from "framer-motion"
 import useComponentVisible from './hooks/useComponentVisible';
+import { doc, getDoc } from "firebase/firestore";
+import useFirestore from './hooks/useFirestore'
+import { projectFirestore } from "../../firebase/config";
+
 const Header = ({title}) => {
   const { pathname } = useLocation();
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
   const [isActive, setIsActive] = useState(false);
     
-  const {
-    ref,
-    isComponentVisible,
-    setIsComponentVisible,
-  } = useComponentVisible(false);
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+  const { docs } = useFirestore('users');
+
+  const [ username, setUserName ] = useState("")
+  if(useAuth().currentUser){
+    const docRef = doc(projectFirestore, "users", currentUser.uid);
+    const docSnap = getDoc(docRef).then(docSnap => {
+    if (docSnap.exists()) {
+        //console.log("Document data:", docSnap.data());
+        const data = docSnap.data();
+        setUserName(data.username);
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+}
+})
+  }
 
   const navigate = useNavigate()
 
@@ -50,14 +66,14 @@ const Header = ({title}) => {
              hover:border-slate-700 text-lg text-slate-700  border-white  sm:text-xl lg:text-xl xl:text-2xl`}>Let's play</Link>
             </div>
             
-           {useAuth().currentUser && useAuth().currentUser.email ?
+           {useAuth().currentUser  ?
            <div className="flex">
            <div className="w-80 mr-20 mb-12 h-2">
            <p
           className={`${pathname === '/profile' ? 'border-slate-700' : ''} z-40 border-b-2 p-2 xl:p-4
-              font-hlight mr-2 mt-0  float-right transition duration-500 cursor-default
-              text-lg text-slate-700 sm:text-xl lg:text-xl xl:text-xl`}
-          >{ currentUser.email}</p>
+              font-hbold tracking-wide mr-2 mt-0  float-right transition duration-500 cursor-default
+              text-lg text-slate-800 sm:text-xl lg:text-xl xl:text-xl`}
+          >{ username}</p>
           </div>
           <div  className="group relative w-8 h-4  float-right right-20 top-4">
           
@@ -90,7 +106,7 @@ const Header = ({title}) => {
 
           </div>
           </div>
-          <img  className="w-12 h-12 rounded-full absolute right-4 top-1 shadow-md" src='src\assets\huskyprof.png' alt="userpic" />
+          <img  className="w-12 h-12 rounded-full absolute right-4 top-1 shadow-md" src={docs.profilePic} alt="userpic" />
           </div>
           :
           <Link to='/login'
