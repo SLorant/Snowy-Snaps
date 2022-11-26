@@ -11,13 +11,20 @@ const useStorage = (file) => {
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
     const { currentUser } = useAuth()
-    
+    const filename = file.name
 
     useEffect(() => {
         //references
-        const storageRef = projectStorage.ref(file.name);
+        const storageRef = projectStorage.ref(`${currentUser.uid}/profilepics/image`);
+        
         const collectionRef = projectFirestore.collection('users');
         const db = getFirestore()
+        // Create a storage reference
+        //const reviewRef = projectStorage.ref(`profilepics/${file.name}`);
+
+        // Upload the object to that ref
+        //reviewRef.put(file);
+
         storageRef.put(file).on('state_changed', (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
             setProgress(percentage);
@@ -36,7 +43,7 @@ const useStorage = (file) => {
         })
     }, [file])
 
-    return { progress, url, error }
+    return { progress, url, error, filename }
 }
 
 export default useStorage;

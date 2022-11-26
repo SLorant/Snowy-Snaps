@@ -6,7 +6,8 @@ import { motion } from "framer-motion"
 import useComponentVisible from './hooks/useComponentVisible';
 import { doc, getDoc } from "firebase/firestore";
 import useFirestore from './hooks/useFirestore'
-import { projectFirestore } from "../../firebase/config";
+import { projectFirestore, projectStorage } from "../../firebase/config";
+import {  ref, getDownloadURL } from "firebase/storage";
 
 const Header = ({title}) => {
   const { pathname } = useLocation();
@@ -14,7 +15,7 @@ const Header = ({title}) => {
   const { currentUser, logout } = useAuth()
   const [isActive, setIsActive] = useState(false);
     
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+  const { reft, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const { docs } = useFirestore('users');
 
   const [ username, setUserName ] = useState("")
@@ -44,6 +45,36 @@ const Header = ({title}) => {
       setError('Failed to log out')
     }}
 
+    //const ref = ref(storage, 'images/husky.jpg')
+
+    //const storage = getStorage();
+    
+    /*async function showProfile(){
+      if(useAuth().currentUser){
+      setError('')
+
+    try {
+     await getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`))
+     
+      // Or inserted into an <img> element
+      const img = document.getElementById('myimg');
+      img.setAttribute('src', url);
+    
+    }
+    catch {
+      setError('Failed to log out')
+    }*/
+    if(useAuth().currentUser){
+    getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`))
+  .then((url) => {
+     // Or inserted into an <img> element
+     const img = document.getElementById('myimg');
+     img.setAttribute('src', url);
+   })
+   .catch((error) => {
+     // Handle any errors
+   });
+  }
     
   //onClick={() => setIsActive(!isActive)}
   //  onClick={() => setIsComponentVisible(!isComponentVisible)}
@@ -82,7 +113,7 @@ const Header = ({title}) => {
         animate={{ rotate: isActive && isComponentVisible ? 180 : 0}} />
             
 
-          <div  ref={ref} className={`block flex flex-col justify-center items-center mt-2 w-40 -ml-16
+          <div  ref={reft} className={`block flex flex-col justify-center items-center mt-2 w-40 -ml-16
            rounded-md   bg-[rgba(255,255,255,0)]  z-0
            `}>
 
@@ -106,7 +137,7 @@ const Header = ({title}) => {
 
           </div>
           </div>
-          <img  className="w-12 h-12 rounded-full absolute right-4 top-1 shadow-md" src={docs.profilePic} alt="userpic" />
+          <img id="myimg" className="w-12 h-12 rounded-full absolute right-4 top-1 shadow-md" src="src\assets\profile.png" alt="userpic" />
           </div>
           :
           <Link to='/login'
