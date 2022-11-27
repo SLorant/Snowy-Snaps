@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion"
 import { createUserDocument, auth } from "../../../firebase/config"
+import useStorage from "../hooks/useStorage";
 
 const SignUp = () => {
     const emailRef = useRef()

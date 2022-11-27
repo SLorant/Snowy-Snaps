@@ -11,7 +11,7 @@ const useStorage = (file) => {
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
     const { currentUser } = useAuth()
-    const filename = file.name
+    //const filename = file.name
 
     useEffect(() => {
         //references
@@ -43,7 +43,7 @@ const useStorage = (file) => {
         })
     }, [file])
 
-    return { progress, url, error, filename }
+    return { progress, url, error }
 }
 
 export default useStorage;

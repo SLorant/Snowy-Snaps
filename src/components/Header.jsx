@@ -64,17 +64,21 @@ const Header = ({title}) => {
     catch {
       setError('Failed to log out')
     }*/
-    if(useAuth().currentUser){
-    getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`))
+    
+
+
+    if( useAuth().currentUser){
+   getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`))
   .then((url) => {
      // Or inserted into an <img> element
      const img = document.getElementById('myimg');
      img.setAttribute('src', url);
    })
    .catch((error) => {
-     // Handle any errors
+    console.log("user has no profile pic")
    });
-  }
+  } 
+  
     
   //onClick={() => setIsActive(!isActive)}
   //  onClick={() => setIsComponentVisible(!isComponentVisible)}

@@ -13,6 +13,7 @@ import ForgotPassword from './components/signincomponents/ForgotPassword';
 import Profile from './components/profilecomp/Profile';
 import MyImages from './components/profilecomp/MyImages';
 import UploadProfilePic from './components/profilecomp/UploadProfilePic';
+import ImgCrop from './components/profilecomp/ImgCrop';
 
 
 
@@ -45,12 +46,15 @@ function App() {
         <Route path="watch" element={<WatchPage />} />
         <Route path="play" element={<PlayPage />} />
         <Route path="login" element={<LoginPage/>} />
-        <Route path="signup" element={<SignInPage />} />
+        
         <Route path="profile" element={<Profile />} />
         <Route path="my-images" element={<MyImages />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
-        <Route path="upload-profile" element={<UploadProfilePic />} />
+        
       </Route>
+      <Route path="signup" element={<SignInPage />} />
+      <Route path="upload-profile" element={<UploadProfilePic />} />
+      <Route path="imgcrop" element={<ImgCrop/>} />
     </Routes>
     </AuthProvider>
   </BrowserRouter>
