@@ -96,8 +96,10 @@ const handlePositionChange = (position) => {
     <div >
         <div className="w-full h-screen bg-stone-100 flex justify-center items-center">
             <div className="w-1/2 h-3/4 mt-12  rounded-xl bg-white border-2 border-slate-600">
-                <div className='flex flex-col justify-center items-center'>
-                    <p className="font-hbold mt-4 text-slate-800 text-3xl">Upload your profile picture</p>
+                <div className='flex flex-col justify-center items-center '>
+                  <div className="w-full mt-6 h-14 bg-stone-200 flex justify-center items-center">
+                    <p className="font-hbold  text-slate-800 text-3xl ">Upload your profile picture</p>
+                    </div>
                     <ImgCrop />
                 </div>
 
