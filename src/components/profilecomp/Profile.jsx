@@ -82,7 +82,7 @@ const Profile = () => {
 
     try{
       
-      navigate('/my-images')
+      navigate('/my-gallery')
     } catch {
       setError('Failed to go to my gallery')
     }}
@@ -110,7 +110,9 @@ const Profile = () => {
 
         <motion.div className="cursor-pointer mt-4 shadow-lg rounded-lg flex flex-col justify-center   h-1/2"
         onClick={handleNavigate}
-        whileHover={{ translateX: 30, transition: { duration: 0.2 }}}>
+        whileHover={{ translateX: 30, transition: { duration: 0.2 }}}
+          initial = {{ opacity: 0}}
+          animate = {{ opacity: 1, transition: {duration: 0.5, delay: 0.2}}}>
           <p className="my-2 ml-4  font-hbold text-2xl text-stone-800">Go to my gallery</p>
           <div className='flex mr-8  gap-12 items-center justify-center w-full  '>
             <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg1" />
@@ -123,7 +125,10 @@ const Profile = () => {
           </motion.div>
 
           <motion.div className="cursor-pointer mt-4 shadow-lg rounded-lg flex flex-col justify-center   h-1/2"
-          whileHover={{ translateX: 30, transition: { duration: 0.2 }}}>
+          whileHover={{ translateX: 30, transition: { duration: 0.2 }}}
+          initial = {{ opacity: 0}}
+          animate = {{ opacity: 1, transition: {duration: 0.5, delay:0.2}}}
+          >
           <p className="my-2 ml-4 font-hbold text-2xl text-stone-800">Go to liked pics</p>
           <div className='flex mr-8 gap-12 w-full items-center justify-center'>
             <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg6" />
@@ -136,12 +141,12 @@ const Profile = () => {
           </motion.div>
 
           <div className="mt-8 flex justify-between  w-full">
-          <a href="upload-profile"><motion.button  className="text-stone-800 text-lg rounded-lg  font-hbold font-bold mt-4"
+          <a className="h-6 my-4" href="upload-profile"><motion.button  className="text-stone-800 text-xl rounded-lg  font-hbold font-bold "
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Change my profile</motion.button></a>
 
-         <motion.button className="text-stone-800 text-lg rounded-lg  font-hbold font-bold mt-4"
+         <motion.button className="text-stone-800 text-xl rounded-lg  font-hbold font-bold my-4"
          onClick={handleLogout}
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Logout</motion.button>
+         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Log out</motion.button>
           </div>
          
      

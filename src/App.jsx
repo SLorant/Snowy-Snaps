@@ -11,7 +11,7 @@ import LoginPage from './components/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/signincomponents/ForgotPassword';
 import Profile from './components/profilecomp/Profile';
-import MyImages from './components/profilecomp/MyImages';
+import MyGallery from './components/profilecomp/MyGallery';
 import UploadProfilePic from './components/profilecomp/UploadProfilePic';
 import ImgCrop from './components/profilecomp/ImgCrop';
 
@@ -48,7 +48,7 @@ function App() {
         <Route path="login" element={<LoginPage/>} />
         
         <Route path="profile" element={<Profile />} />
-        <Route path="my-images" element={<MyImages />} />
+        <Route path="my-gallery" element={<MyGallery />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         
       </Route>
