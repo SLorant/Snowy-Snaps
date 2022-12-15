@@ -63,10 +63,7 @@ if( useAuth().currentUser){
     console.log("first url:" + picture.img)
     
      let url = URL.createObjectURL(e.target.files[0]);
-     if ( picture.img == url){
-      console.log("already loaded")
-     }
-    console.log(url);
+     
     setPicture({
       ...picture,
       img: url,
@@ -105,7 +102,7 @@ if( useAuth().currentUser){
                   console.log(blob)
                     setMyblob(blob)}) */
         let blob = await fetch(objecturl).then(r => r.blob());
-          console.log(blob)
+        
           var file = new File([blob], "my_image.png",{type:"image/png", lastModified:new Date().getTime()})
           let selected = file
           setFile(selected);

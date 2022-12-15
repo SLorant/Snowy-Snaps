@@ -1,15 +1,12 @@
 import React from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
-import useFirestore from '../hooks/useFirestore'
-//import { doc, getDoc } from "firebase/firestore";
-import { projectFirestore } from "../../../firebase/config";
+import {doc, getDoc} from "firebase/firestore"
 import { useState } from 'react';
-
-import {
-  getFirestore, collection, onSnapshot, getDoc,
-  addDoc, deleteDoc, doc, updateDoc
-} from 'firebase/firestore'
+import useFirestore from '../hooks/useFirestore'
+import { projectFirestore, projectStorage } from "../../../firebase/config";
+import {  ref, getDownloadURL } from "firebase/storage";
+import { useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {
@@ -25,87 +22,127 @@ const Profile = () => {
     const docRef = doc(projectFirestore, "users", currentUser.uid);
     const docSnap = getDoc(docRef).then(docSnap => {
     if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        //console.log("Document data:", docSnap.data());
         const data = docSnap.data();
         setUserName(data.username);
-        console.log(data.username)
+        //console.log(data.username)
     } else {
         // doc.data() will be undefined in this case
-        console.log("No such document!");
+        //console.log("No such document!");
 }
 })
+
   }
-  /*const docRef = doc(users, "Mpf3SzpaOsMvkhWeUagv", "username");
-const docSnap = getDoc(docRef);
-
-if (docSnap.exists()) {
-  console.log("Document data:", docSnap.data());
-} else {
-  // doc.data() will be undefined in this case
-  console.log("No such document!");
-}*/
-console.log(username)
-const db = getFirestore()
-
-const docRef = doc(db, "users", "LUdJmSsMLQSVErWaJwPyKUlQaIv2");
-
-// Set the "capital" field of the city 'DC'
-onSnapshot(docRef, (doc) => {
-  console.log(doc.data(), doc.id)
-})
-async function handleSubmit(e) {
-  e.preventDefault()
-
-  try {
-    setError('')
-    setLoading(true)
-    let docRef = doc(db, 'users', currentUser.uid)
-
-    await updateDoc(docRef, {
-       profilePic: "profilephoto"
-    });
-  
-
-} catch {
-   
-    setError('Failed to update')
+  var storageRef = projectStorage.ref(currentUser.uid + "/uploadedpics");
+  let i=1;
+  let img = "";
+  //console.log(storageRef.listAll())
+  // Now we get the references of these images
+  storageRef.listAll().then(function(result) {
     
-}
-setLoading(false)
+    result.items.forEach(function(imageRef) {
+      img = document.getElementById('myimg' + i);
+      displayImage(imageRef, img);
+      i++;
+      //console.log(img)
+      // And finally display them
+      
+    });
+  }).catch(function(error) {
+    // Handle any errors
+  });
 
-  
+  function displayImage(imageRef, img) {
+    imageRef.getDownloadURL().then(function(url) {
+      img.setAttribute('src', url);
+    }).catch(function(error) {
+      // Handle any errors
+    });
+  }
 
-}
 
-if (currentUser !== null) 
-        console.log("user id: " + currentUser.uid);
+
+  /* if( useAuth().currentUser){
+    getDownloadURL(ref(projectStorage, `${currentUser.uid}/uploadedpics/image`))
+   .then((url) => {
+      // Or inserted into an <img> element
+      const img = document.getElementById('myimg2');
+      img.setAttribute('src', url);
+      //console.log(url)
+    })
+    .catch((error) => {
+     console.log("user has no profile pic")
+    });
+   }  */
+
+   const navigate = useNavigate()
+
+   async function handleNavigate() {
+    setError('')
+
+    try{
+      
+      navigate('/my-images')
+    } catch {
+      setError('Failed to go to my gallery')
+    }}
+
+   async function handleLogout() {
+     setError('')
+ 
+     try{
+       await logout()
+       navigate('/login')
+     } catch {
+       setError('Failed to log out')
+     }}
+
 
  // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="h-screen flex justify-center bg-zinc-200 items-center w-full">
-     <div className="flex w-5/6  shadow-lg rounded-lg bg-white h-5/6 mt-12  border-slate-700">
+    <div className="h-screen flex justify-center  items-center w-full">
+     <div className="flex w-5/6   rounded-lg  h-5/6 mt-8  border-slate-700">
 
-      <div className="flex flex-col w-full h-full items-center">
-      <div className="mt-8 w-full h-14 flex justify-center items-center ">
-        <p className="text-3xl text-slate-800 font-hbold">Hi, {username}</p>
+      <div className="flex flex-col  w-full h-full items-center">
+      <div className="mt-6 w-full h-14 flex justify-center items-center ">
+        <p className="text-4xl text-slate-800 font-hbold">Hi, {username}</p>
         </div>
 
-        <div className="my-12 flex flex-col justify-center items-center  bg-sky-100 w-full h-1/4">
-          <p className="font-hbold text-xl text-stone-800">My Gallery</p>
-          <div>
-            <img className="w-40 h-40" src="src\assets\husky.jpg" alt="" />
+        <motion.div className="cursor-pointer mt-4 shadow-lg rounded-lg flex flex-col justify-center   h-1/2"
+        onClick={handleNavigate}
+        whileHover={{ translateX: 30, transition: { duration: 0.2 }}}>
+          <p className="my-2 ml-4  font-hbold text-2xl text-stone-800">Go to my gallery</p>
+          <div className='flex mr-8  gap-12 items-center justify-center w-full  '>
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg1" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg2" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg3" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg4" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg5" />
           </div>
       
+          </motion.div>
+
+          <motion.div className="cursor-pointer mt-4 shadow-lg rounded-lg flex flex-col justify-center   h-1/2"
+          whileHover={{ translateX: 30, transition: { duration: 0.2 }}}>
+          <p className="my-2 ml-4 font-hbold text-2xl text-stone-800">Go to liked pics</p>
+          <div className='flex mr-8 gap-12 w-full items-center justify-center'>
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg6" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg7" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg8" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg9" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg10" />
           </div>
+      
+          </motion.div>
 
+          <div className="mt-8 flex justify-between  w-full">
+          <a href="upload-profile"><motion.button  className="text-stone-800 text-lg rounded-lg  font-hbold font-bold mt-4"
+         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Change my profile</motion.button></a>
 
-          <motion.button className="text-stone-700 text-lg rounded-lg  font-hbold font-bold p-4
-           w-48 h-16  border-stone-600 mt-4  shadow-[0px_3px_1px_1px_rgba(0,0,0,0.3)]"
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>My liked pics</motion.button>
-          <motion.button className="text-stone-700 text-lg rounded-md  font-hbold font-bold p-4
-           w-48 h-16  border-stone-600 mt-4  shadow-[0px_3px_1px_1px_rgba(0,0,0,0.3)]"
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Change my profile</motion.button>
-          
+         <motion.button className="text-stone-800 text-lg rounded-lg  font-hbold font-bold mt-4"
+         onClick={handleLogout}
+         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Logout</motion.button>
+          </div>
          
      
         

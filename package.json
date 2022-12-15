@@ -33,7 +33,9 @@
     "react-image-crop": "^10.0.8",
     "react-router-dom": "^6.4.3",
     "react-scripts": "^5.0.1",
-    "react-slider": "^2.0.4"
+    "react-slider": "^2.0.4",
+    "react-uuid": "^2.0.0",
+    "tailwind-gradient-mask-image": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",

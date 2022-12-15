@@ -130,7 +130,7 @@ const Header = ({title}) => {
          <Link to="/my-images"  className="block p-2 xl:p-2 
           border-white font-hlight transition w-32 duration-500 hover:bg-white
          border-slate-700  border-dashed rounded-md text-md text-white w-full text-center sm:text-xl lg:text-xl xl:text-md
-         bg-slate-700 shadow-[0px_3px_1px_2px_rgba(0,0,0,0.4)] hover:text-slate-800  my-2">My images</Link>
+         bg-slate-700 shadow-[0px_3px_1px_2px_rgba(0,0,0,0.4)] hover:text-slate-800  my-2">My gallery</Link>
 
           <Link to="/login" onClick={handleLogout} className="block p-2 xl:p-2
           border-white font-hlight  transition  duration-500 hover:bg-white

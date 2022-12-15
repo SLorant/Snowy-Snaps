@@ -23,7 +23,7 @@ const UploadProfilePic = () => {
    
 
 const db = getFirestore()
-const docRef = doc(db, "users", "LUdJmSsMLQSVErWaJwPyKUlQaIv2");
+//const docRef = doc(db, "users", "LUdJmSsMLQSVErWaJwPyKUlQaIv2");
 
 // Set the "capital" field of the city 'DC'
 /* onSnapshot(docRef, (doc) => {
