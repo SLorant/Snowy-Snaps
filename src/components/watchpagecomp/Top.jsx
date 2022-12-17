@@ -2,19 +2,47 @@
 const Top = () => {
   return (
     <div>
-        <div className="flex mt-12 bg-purple-100 h-52 w-full justify-center items-center">
-            <h1 className="font-hbold tracking-wider text-3xl text-slate-700">See the husky, like the husky, pet the husky!</h1>
+        <div className="flex mt-20 bg-stone-200 h-20  w-full justify-center items-center">
+            <h1 className="font-hbold  text-4xl text-slate-700">Huskies' Gallery</h1>
             </div>
 
-            <div>
+            <div className="h-40 flex flex-col w-full">
+              <div className="flex  mt-4 justify-between h-20">
+            <div className="flex  flex-col ml-20 w-1/2">
+             <p className="text-2xl border-b-2 border-slate-800 border-dashed text-slate-800 font-hbold  ">Filter</p>
+             <div className="flex items-center   mt-1">
+              <p className="text-xl font-hbold  text-slate-800 ">Upload date</p>
+               <button className="font-hlight text-slate-800 text-lg rounded-md border-2 w-1/4 h-8 ml-4 ">
+              Newest
+             </button>
+             <label htmlFor="default-search">Search</label>
+             <input type="search" id="default-search" placeholder="Search Mockups, Logos..." />
+             <button type="submit">asd</button>
+
+           
+
+
             
+            
+           
             </div>
+            </div>
+            </div>
+            <div>
+              UPLOAD
+            </div>
+            
+          
         
+    </div>
     </div>
   )
 }
 
 export default Top
+
+// NYÍL <svg aria-hidden="true" className="ml-3 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+ 
 
 /*<div className="  h-[1000px] ">
            

@@ -1,14 +1,16 @@
 import React from 'react'
 import useFirestore from '../hooks/useFirestore'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const ImageGrid = ({ setSelectedImg }) => {
-    const { docs } = useFirestore('images');
+    const [timeSort, setTimeSort] = useState('desc')
+    const { docs } = useFirestore('images', timeSort)
     
   return (
     <div className=" h-[1000px] ">
-        <div className="mx-20 flex justify-center items-center">
-            <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-3 mx-auto space-y-3 pb-28 mt-4 mx-4">
+        <div className="mx-2 md:mx-10 lg:mx-20 flex justify-center items-center">
+            <div className="columns-2 md:columns-2 lg:columns-3 xl:columns-4 gap-3 mx-auto space-y-3 pb-28 mt-4 mx-4">
 
                 { docs && docs.map(doc => (
                  <motion.div className="break-inside-avoid" key={doc.id}

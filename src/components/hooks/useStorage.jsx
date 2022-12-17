@@ -12,15 +12,23 @@ const useStorage = (file) => {
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
     const { currentUser } = useAuth()
-    const filename = file.name
+   // const [user, setUser] = useState("");
+    //console.log(username)
+    //const filename = file.name
+
+    
+  
 
     useEffect(() => {
         //references
         //const storageRef = projectStorage.ref(`${currentUser.uid}/profilepics/image`);
         const storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`);
+        //const user = username;
         
+        const docRef = doc(projectFirestore, "users", currentUser.uid);
         const collectionRef = projectFirestore.collection('images');
         const db = getFirestore()
+        //console.log('i fire once');
         // Create a storage reference
         //const reviewRef = projectStorage.ref(`profilepics/${file.name}`);
 
@@ -35,7 +43,22 @@ const useStorage = (file) => {
         }, async () => {
             const url = await storageRef.getDownloadURL();
             const createdAt = timestamp();
-            collectionRef.add({url, createdAt});
+            const emotion = "happy"
+            
+            let user = "";
+            const docSnap = await getDoc(docRef).then(docSnap => {
+            if (docSnap.exists()) {
+                //console.log("Document data:", docSnap.data());
+                const data = docSnap.data();
+                user = data.username
+                //console.log(data.username)
+            } else {
+                // doc.data() will be undefined in this case
+                //console.log("No such document!");
+        }
+        })
+            //console.log(user)
+            collectionRef.add({url, createdAt, emotion, user});
             setUrl(url);
             /*let docRef = doc(db, 'images', url)
             
