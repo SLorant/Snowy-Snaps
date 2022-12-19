@@ -1,5 +1,34 @@
+import { useState } from "react"
 
-const Top = () => {
+const Top = ({setOrder, setEmotion, setLimit}) => {
+  
+  const handleOnClickNew = () => {
+    setOrder('desc') 
+  }
+  const handleOnClickOld = () => {
+    setOrder('asc') 
+} 
+const handleOnClickHappy = () => {
+  setEmotion('happy') 
+} 
+const handleOnClickFunny = () => {
+  setEmotion('funny') 
+} 
+const handleOnClickSad = () => {
+  setEmotion('sad') 
+} 
+const handleOnClickReset = () => {
+  setEmotion('') 
+} 
+const handleOnClickLimit25 = () => {
+  setLimit(5) 
+} 
+const handleOnClickLimit50 = () => {
+  setLimit(50) 
+} 
+const handleOnClickLimit100 = () => {
+  setLimit(100) 
+} 
   return (
     <div>
         <div className="flex mt-20 bg-stone-200 h-20  w-full justify-center items-center">
@@ -8,17 +37,29 @@ const Top = () => {
 
             <div className="h-40 flex flex-col w-full">
               <div className="flex  mt-4 justify-between h-20">
-            <div className="flex  flex-col ml-20 w-1/2">
-             <p className="text-2xl border-b-2 border-slate-800 border-dashed text-slate-800 font-hbold  ">Filter</p>
+            <div className="flex  flex-col ml-20 w-3/4">
+              <div className="flex border-b-2 border-slate-800 border-dashed">
+             <p className="text-2xl mr-12  text-slate-800 font-hbold  ">Filter</p>
+             <button onClick={handleOnClickHappy} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Happy</button>
+             <button onClick={handleOnClickFunny} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Funny</button>
+             <button onClick={handleOnClickSad} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Sad</button>
+             <button onClick={handleOnClickReset} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Reset</button>
+             </div>
              <div className="flex items-center   mt-1">
               <p className="text-xl font-hbold  text-slate-800 ">Upload date</p>
-               <button className="font-hlight text-slate-800 text-lg rounded-md border-2 w-1/4 h-8 ml-4 ">
+               <button onClick={handleOnClickNew} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">
               Newest
              </button>
-             <label htmlFor="default-search">Search</label>
-             <input type="search" id="default-search" placeholder="Search Mockups, Logos..." />
+             <button onClick={handleOnClickOld} className="font-hlight text-slate-800 text-lg rounded-md   mx-4 ">
+              Oldest
+             </button> 
+             <p className="text-xl font-hbold  text-slate-800  ml-4 ">Max images per page</p>
+              <button onClick={handleOnClickLimit25} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">25</button>
+              <button onClick={handleOnClickLimit50} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">50</button>
+              <button onClick={handleOnClickLimit100} className="font-hlight text-slate-800 text-lg rounded-md  mx-4 ">100</button>
+              <label htmlFor="default-search">Search</label>
+             <input className="border-2" type="search" id="default-search" placeholder="Search for user..." />
              <button type="submit">asd</button>
-
            
 
 
