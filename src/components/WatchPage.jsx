@@ -17,10 +17,14 @@ const WatchPage = () => {
   
   return (
     <div>
-        
+      <div className="flex mt-20 bg-stone-200 h-20  w-full justify-center items-center">
+            <h1 className="font-hbold  text-4xl text-slate-700">Huskies' Gallery</h1>
+            </div>
+        <div className="flex justify-between items-center">
         <Top  setOrder = {setOrder} setEmotion = {setEmotion} setLimit={setLimit}/>
         
         <UploadForm />
+        </div>
         
         <ImageGrid setSelectedImg = {setSelectedImg} order={order} emotion = {emotion} limit = {limit}  />
         { selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }

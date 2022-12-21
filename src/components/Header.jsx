@@ -86,7 +86,7 @@ const Header = ({title}) => {
   //{!isComponentVisible && ()}
   
   return (
-    <header className="fixed top-0 w-full z-50">
+    <header className="fixed top-0 w-full z-40">
         <nav className="flex sticky justify-between items-center h-12 xl:h-[78px] bg-white border-white border-2  shadow-md">
         <a href="#"  className="absolute font-cutefont  font-bold text-lg text-slate-700 sm:text-xl lg:text-2xl xl:text-4xl md:left-4 lg:left-8 xl:left-12">{title}</a>
 

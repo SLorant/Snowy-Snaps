@@ -7,7 +7,7 @@ import {
   } from 'firebase/firestore'
   import uuid from "react-uuid";
 
-const useStorage = (file) => {
+const useStorage = (file, uploadType) => {
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
@@ -15,14 +15,16 @@ const useStorage = (file) => {
    // const [user, setUser] = useState("");
     //console.log(username)
     //const filename = file.name
-
+    let storageRef;
     
   
 
     useEffect(() => {
         //references
-        //const storageRef = projectStorage.ref(`${currentUser.uid}/profilepics/image`);
-        const storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`);
+        uploadType === "profile" ? storageRef = projectStorage.ref(`${currentUser.uid}/profilepics/image`)
+        : storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`)
+        
+        //const storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`);
         //const user = username;
         
         const docRef = doc(projectFirestore, "users", currentUser.uid);
@@ -56,10 +58,15 @@ const useStorage = (file) => {
                 // doc.data() will be undefined in this case
                 //console.log("No such document!");
         }
+
+        if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, user})
+        
         })
-            //console.log(user)
-            collectionRef.add({url, createdAt, emotion, user});
+            console.log(uploadType)
             setUrl(url);
+            
+            
+            
             /*let docRef = doc(db, 'images', url)
             
             await updateDoc(docRef, {

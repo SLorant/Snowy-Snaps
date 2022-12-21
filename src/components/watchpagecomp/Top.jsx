@@ -30,14 +30,9 @@ const handleOnClickLimit100 = () => {
   setLimit(100) 
 } 
   return (
-    <div>
-        <div className="flex mt-20 bg-stone-200 h-20  w-full justify-center items-center">
-            <h1 className="font-hbold  text-4xl text-slate-700">Huskies' Gallery</h1>
-            </div>
-
-            <div className="h-40 flex flex-col w-full">
-              <div className="flex  mt-4 justify-between h-20">
-            <div className="flex  flex-col ml-20 w-3/4">
+    <div className="flex w-1/2">
+            <div className=" flex flex-col w-full my-8 justify-between h-16 ml-24">
+              
               <div className="flex border-b-2 border-slate-800 border-dashed">
              <p className="text-2xl mr-12  text-slate-800 font-hbold  ">Filter</p>
              <button onClick={handleOnClickHappy} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Happy</button>
@@ -45,6 +40,7 @@ const handleOnClickLimit100 = () => {
              <button onClick={handleOnClickSad} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Sad</button>
              <button onClick={handleOnClickReset} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Reset</button>
              </div>
+
              <div className="flex items-center   mt-1">
               <p className="text-xl font-hbold  text-slate-800 ">Upload date</p>
                <button onClick={handleOnClickNew} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">
@@ -57,9 +53,7 @@ const handleOnClickLimit100 = () => {
               <button onClick={handleOnClickLimit25} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">25</button>
               <button onClick={handleOnClickLimit50} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">50</button>
               <button onClick={handleOnClickLimit100} className="font-hlight text-slate-800 text-lg rounded-md  mx-4 ">100</button>
-              <label htmlFor="default-search">Search</label>
-             <input className="border-2" type="search" id="default-search" placeholder="Search for user..." />
-             <button type="submit">asd</button>
+            
            
 
 
@@ -67,11 +61,11 @@ const handleOnClickLimit100 = () => {
             
            
             </div>
-            </div>
-            </div>
-            <div>
-              UPLOAD
-            </div>
+            
+            
+
+           
+           
             
           
         

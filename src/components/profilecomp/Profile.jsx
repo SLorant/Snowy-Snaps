@@ -115,11 +115,11 @@ const Profile = () => {
           animate = {{ opacity: 1, transition: {duration: 0.5, delay: 0.2}}}>
           <p className="my-2 ml-4  font-hbold text-2xl text-stone-800">Go to my gallery</p>
           <div className='flex mr-8  gap-12 items-center justify-center w-full  '>
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg1" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg2" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg3" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg4" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60" src="src\assets\profile.png" alt="pic" id="myimg5" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg1" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg2" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg3" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg4" />
+            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg5" />
           </div>
       
           </motion.div>
