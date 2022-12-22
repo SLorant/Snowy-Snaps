@@ -7,7 +7,7 @@ import {
   } from 'firebase/firestore'
   import uuid from "react-uuid";
 
-const useStorage = (file, uploadType) => {
+const useStorage = (file, uploadType, emotion) => {
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
@@ -45,7 +45,7 @@ const useStorage = (file, uploadType) => {
         }, async () => {
             const url = await storageRef.getDownloadURL();
             const createdAt = timestamp();
-            const emotion = "happy"
+            //const emotion = "happy"
             
             let user = "";
             const docSnap = await getDoc(docRef).then(docSnap => {
@@ -64,6 +64,7 @@ const useStorage = (file, uploadType) => {
         })
             console.log(uploadType)
             setUrl(url);
+           
             
             
             

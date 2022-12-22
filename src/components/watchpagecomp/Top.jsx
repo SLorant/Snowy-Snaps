@@ -1,74 +1,32 @@
 import { useState } from "react"
 
 const Top = ({setOrder, setEmotion, setLimit}) => {
-  
-  const handleOnClickNew = () => {
-    setOrder('desc') 
-  }
-  const handleOnClickOld = () => {
-    setOrder('asc') 
-} 
-const handleOnClickHappy = () => {
-  setEmotion('happy') 
-} 
-const handleOnClickFunny = () => {
-  setEmotion('funny') 
-} 
-const handleOnClickSad = () => {
-  setEmotion('sad') 
-} 
-const handleOnClickReset = () => {
-  setEmotion('') 
-} 
-const handleOnClickLimit25 = () => {
-  setLimit(5) 
-} 
-const handleOnClickLimit50 = () => {
-  setLimit(50) 
-} 
-const handleOnClickLimit100 = () => {
-  setLimit(100) 
-} 
   return (
     <div className="flex w-1/2">
             <div className=" flex flex-col w-full my-8 justify-between h-16 ml-24">
               
               <div className="flex border-b-2 border-slate-800 border-dashed">
              <p className="text-2xl mr-12  text-slate-800 font-hbold  ">Filter</p>
-             <button onClick={handleOnClickHappy} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Happy</button>
-             <button onClick={handleOnClickFunny} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Funny</button>
-             <button onClick={handleOnClickSad} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Sad</button>
-             <button onClick={handleOnClickReset} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Reset</button>
+             <button  onClick={() => {setEmotion("happy")} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Happy</button>
+             <button  onClick={() => {setEmotion("funny")} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Funny</button>
+             <button  onClick={() => {setEmotion("sad")} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Sad</button>
+             <button  onClick={() => {setEmotion("")} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">Reset</button>
              </div>
 
              <div className="flex items-center   mt-1">
               <p className="text-xl font-hbold  text-slate-800 ">Upload date</p>
-               <button onClick={handleOnClickNew} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">
+               <button  onClick={() => {setOrder("desc")} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">
               Newest
              </button>
-             <button onClick={handleOnClickOld} className="font-hlight text-slate-800 text-lg rounded-md   mx-4 ">
+             <button  onClick={() => {setEmotion("asc")} } className="font-hlight text-slate-800 text-lg rounded-md   mx-4 ">
               Oldest
              </button> 
              <p className="text-xl font-hbold  text-slate-800  ml-4 ">Max images per page</p>
-              <button onClick={handleOnClickLimit25} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">25</button>
-              <button onClick={handleOnClickLimit50} className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">50</button>
-              <button onClick={handleOnClickLimit100} className="font-hlight text-slate-800 text-lg rounded-md  mx-4 ">100</button>
-            
-           
-
-
-            
-            
-           
+              <button onClick={() => {setLimit(25)} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">25</button>
+              <button onClick={() => {setLimit(50)} } className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">50</button>
+              <button onClick={() => {setLimit(100)} } className="font-hlight text-slate-800 text-lg rounded-md  mx-4 ">100</button>
             </div>
-            
-            
-
-           
-           
-            
-          
-        
+   
     </div>
     </div>
   )

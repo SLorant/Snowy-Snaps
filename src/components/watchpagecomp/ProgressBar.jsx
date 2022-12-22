@@ -4,11 +4,12 @@ import useStorage from '../hooks/useStorage'
 import { motion } from 'framer-motion'
 
 
-const ProgressBar = ({ file, setFile, uploadType }) => {
-    const { url, progress } = useStorage(file, uploadType);  
+const ProgressBar = ({ file, setFile, uploadType, emotion }) => {
+    const { url, progress } = useStorage(file, uploadType, emotion);  
     useEffect(() => {
         if (url) {
             setFile(null);
+            
         }
     }, [url, setFile])
 

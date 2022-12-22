@@ -5,6 +5,8 @@ import {  projectStorage } from "../../../firebase/config";
 import { useAuth } from '../../contexts/AuthContext';
 import { motion } from 'framer-motion'
 import ImageEditor from '../profilecomp/ImageEditor';
+import { FileUploader } from "react-drag-drop-files";
+
 
 const UploadForm = () => {
     const [file, setFile] = useState(null);
@@ -13,6 +15,7 @@ const UploadForm = () => {
     const isGallery = true;
     const uploadType = "gallery";
     var editor = "";
+    const [emotion, setEmotion] = useState('')
     const [picture, setPicture] = useState({
       cropperOpen: false,
       img: null,
@@ -25,7 +28,6 @@ const UploadForm = () => {
     console.log("first url:" + picture.img)
     let selected = e.target.files[0];
     let url = URL.createObjectURL(e.target.files[0]);
-
     if(selected && types.includes(selected.type)) {
         setPicture({
             ...picture,
@@ -41,21 +43,25 @@ const UploadForm = () => {
     
 };
   return (
-    <div>
-    <div>
-    <motion.button  className="flex justify-center mr-20 items-center text-white text-lg rounded-md bg-slate-700 font-hlight font-bold
-         border-2  w-40 h-12 ml-4  border-slate-400  cursor-pointer shadow-[0px_3px_1px_1px_rgba(0,0,0,0.6)]"
+    <div className=" w-5/12 ">
+    <div className="w-full flex flex-col justify-around items-center">
+   <p className="text-xl font-hlight text-slate-800">You can post your own Husky here</p>
+    <motion.button  className="w-32 h-14 bg-slate-700 text-white font-hbold text-center flex justify-center items-center rounded-lg mt-4"
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>
-          <label htmlFor="files" className=" w-40 flex justify-center items-center cursor-pointer w-40 h-16">Select image</label>
+          <label htmlFor="files" className=" w-32 flex text-center justify-center items-center cursor-pointer h-20">Upload image</label>
           <input className="hidden" id="files" type="file"  onChange={handleFileChange} />
          </motion.button>
+         
+         </div>
+        
         <div>
             {error && <div className=""> {error}</div>}
             {file && <div className=""> {file.name}</div>}
-            {file && <ProgressBar file={file} setFile={setFile} uploadType={uploadType}/>}
-            {picture.cropperOpen && <ImageEditor picture={picture} setPicture={setPicture} editor={editor} setFile={setFile} isGallery={isGallery}  />}
+            {file && <ProgressBar file={file} emotion={emotion} setFile={setFile} uploadType={uploadType}/>}
+            {picture.cropperOpen && <ImageEditor picture={picture} setPicture={setPicture} editor={editor} setFile={setFile}
+             isGallery={isGallery} setEmotion={setEmotion}  />}
         </div>
-    </div>
+   
 
     <button className=" right-10 bottom-10 w-24 h-24 rounded-full bg-slate-700 fixed shadow-[2px_5px_1px_1px_rgba(0,0,0,0.7)]">
         <div className="flex justify-center items-center">
