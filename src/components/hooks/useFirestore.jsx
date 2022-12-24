@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { projectFirestore } from "../../../firebase/config";
 import {  collection, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 
-const useFirestore = (collectionn, sort, emotion, paramlimit) => {
+const useFirestore = (collectionn, sort, emotion,  imgType) => {
     const [docs, setDocs] = useState([]);
-    console.log(emotion)
+    //console.log(emotion)
+    
     //emotion = 'happy'
     //const q = query(collection(projectFirestore, 'images'), where("emotion", "==", "happy"));
     let q;
@@ -12,17 +13,22 @@ const useFirestore = (collectionn, sort, emotion, paramlimit) => {
     
     //console.log(q)
     useEffect(() => {
-        if (emotion === undefined || emotion === '') {
-            if( paramlimit === undefined || paramlimit === 50) {
-            q = query(collection(projectFirestore, 'images'), orderBy('createdAt', sort), limit(50));
-            }
-            else {
-                 q = query(collection(projectFirestore, 'images'), orderBy('createdAt', sort), limit(paramlimit));
-                 }   
-            
+        if (emotion === undefined || emotion === '' && imgType==='') {
+            q = query(collection(projectFirestore, 'images'), orderBy('createdAt', sort), limit(50));    
+        }
+        /* else if ((emotion === undefined || emotion === '') && ){
+
+        } */
+        else if ((emotion === undefined || emotion === '') && imgType==="gif"){
+            console.log(imgType)
+            q = query(collection(projectFirestore, 'images'), where("gif", "==", true), orderBy('createdAt', sort),limit(50))
+        }
+        else if ((emotion === undefined || emotion === '') && imgType==="picture"){
+            console.log(imgType)
+            q = query(collection(projectFirestore, 'images'), where("gif", "==", false), orderBy('createdAt', sort),limit(50))
         }
         else {
-            q = query(collection(projectFirestore, 'images'), where("emotion", "==", emotion), orderBy('createdAt', sort), limit(paramlimit));
+            q = query(collection(projectFirestore, 'images'), where("emotion", "==", emotion), orderBy('createdAt', sort), limit(50));
         }
         //setDocs([])
         
@@ -53,7 +59,7 @@ const useFirestore = (collectionn, sort, emotion, paramlimit) => {
         }
         GalleryQuery()
         
-    }, [collectionn, sort, emotion, paramlimit])
+    }, [collectionn, sort, emotion,  imgType])
     //GalleryQuery()
     return {docs};
 }

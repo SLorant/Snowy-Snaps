@@ -63,9 +63,7 @@ const ImageEditor = ({picture, setPicture, setFile, editor, isGallery, setEmotio
         if(ratio ==="4:3") {setWidth(400); setHeight(300)}
       }; */
 
-      function CropRatioChange(ratio){
-        console.log(ratio)
-      };
+    
 
 
 

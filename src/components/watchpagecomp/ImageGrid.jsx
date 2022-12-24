@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 //import { useForceUpdate } from './useForceUpdate'
 
-const ImageGrid = ({ setSelectedImg, order, emotion, limit }) => {
+const ImageGrid = ({ setSelectedImg, order, emotion,  imgType }) => {
     const [time, setTime] = useState('desc')
     const [f, setF] = useState('desc');
    
@@ -24,7 +24,7 @@ const ImageGrid = ({ setSelectedImg, order, emotion, limit }) => {
     
 
     //emotion='happy'
-    const {docs}  = useFirestore('images', order, emotion, limit)
+    const {docs}  = useFirestore('images', order, emotion, imgType)
 
     
     

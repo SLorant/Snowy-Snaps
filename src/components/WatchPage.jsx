@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import { AuthProvider } from '../contexts/AuthContext'
 import ImageGrid from './watchpagecomp/ImageGrid'
 import useFirestore from './hooks/useFirestore'
 import Modal from './watchpagecomp/Modal'
@@ -12,7 +11,10 @@ const WatchPage = () => {
   const [order, setOrder] = useState('desc')
   const [emotion, setEmotion] = useState('')
   const [limit, setLimit] = useState(50)
+  const [imgType, setImgType] = useState("")
   let changed = false;
+
+
  
   
   return (
@@ -20,13 +22,13 @@ const WatchPage = () => {
       <div className="flex mt-20 bg-stone-200 h-20  w-full justify-center items-center">
             <h1 className="font-hbold  text-4xl text-slate-700">Huskies' Gallery</h1>
             </div>
-        <div className="flex gap-12 items-center">
-        <Top  setOrder = {setOrder} setEmotion = {setEmotion} setLimit={setLimit}/>
+        <div className="mx-24 mb-6  mt-4 flex  border-b-2 border-slate-800 border-dashed">
+        <Top   setOrder = {setOrder} setEmotion = {setEmotion}  setImgType={setImgType}/>
         
         <UploadForm />
         </div>
         
-        <ImageGrid  setSelectedImg = {setSelectedImg} order={order} emotion = {emotion} limit = {limit}  />
+        <ImageGrid  setSelectedImg = {setSelectedImg} order={order} emotion = {emotion}  imgType={imgType}/>
         { selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }
 
         </div>

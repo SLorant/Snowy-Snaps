@@ -7,7 +7,7 @@ import {
   } from 'firebase/firestore'
   import uuid from "react-uuid";
 
-const useStorage = (file, uploadType, emotion) => {
+const useStorage = (file, uploadType, emotion, gif) => {
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
     const [url, setUrl] = useState(null);
@@ -59,7 +59,7 @@ const useStorage = (file, uploadType, emotion) => {
                 //console.log("No such document!");
         }
 
-        if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, user})
+        if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, user, gif})
         
         })
             console.log(uploadType)

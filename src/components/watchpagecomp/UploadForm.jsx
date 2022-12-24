@@ -15,7 +15,9 @@ const UploadForm = () => {
     const isGallery = true;
     const uploadType = "gallery";
     var editor = "";
+   
     const [emotion, setEmotion] = useState('')
+    const [gif, setGif] = useState(false)
     const [picture, setPicture] = useState({
       cropperOpen: false,
       img: null,
@@ -25,39 +27,48 @@ const UploadForm = () => {
 
     
   const handleFileChange = (e) => {
+    
     console.log("first url:" + picture.img)
     let selected = e.target.files[0];
+    if(selected && selected.type==="image/gif") {
+      setFile(selected)
+      setGif(true)}
     let url = URL.createObjectURL(e.target.files[0]);
     if(selected && types.includes(selected.type)) {
+      setGif(false)
         setPicture({
             ...picture,
             img: url,
             cropperOpen: true
           });
         setError("");
-    } else {
-        setError('Please select an image file (png or jpeg)')
+    } else if(selected.type==="image/gif") {
+        setError('Uploaded gif successfully')
+    }
+    else {
+      setError("Please select an image file (png, jpg, gif)")
     }
 
      
     
 };
   return (
-    <div className=" w-5/12 ">
-    <div className="w-full flex flex-col justify-around items-center">
-   <p className="text-xl font-hlight text-slate-800">You can post your own Husky here</p>
-    <motion.button  className="w-32 h-14 bg-slate-700 text-white font-hbold text-center flex justify-center items-center rounded-lg mt-4"
+    <div className=" w-1/3 flex justify-center items-center border-dashed border-slate-800">
+    <div className="w-full ml-0 2xl:ml-8 flex flex-col justify-center items-center">
+   <p className="text-xl font-hlight text-slate-800">Post your own husky!</p>
+    <motion.button  className="flex justify-center items-center mt-2 w-40 h-10 bg-slate-300 text-slate-700 hover:bg-slate-700 hover:text-white font-hbold  rounded-lg "
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>
-          <label htmlFor="files" className=" w-32 flex text-center justify-center items-center cursor-pointer h-20">Upload image</label>
+          <label htmlFor="files" className=" w-40 flex font-hbold text-base text-center justify-center items-center cursor-pointer h-10">Upload image</label>
           <input className="hidden" id="files" type="file"  onChange={handleFileChange} />
          </motion.button>
+         {error && <div className="text-md font-hlight"> {error}</div>}
          
          </div>
         
         <div>
-            {error && <div className=""> {error}</div>}
+            
             {file && <div className=""> {file.name}</div>}
-            {file && <ProgressBar file={file} emotion={emotion} setFile={setFile} uploadType={uploadType}/>}
+            {file && <ProgressBar file={file} emotion={emotion} setFile={setFile} uploadType={uploadType} gif={gif}/>}
             {picture.cropperOpen && <ImageEditor picture={picture} setPicture={setPicture} editor={editor} setFile={setFile}
              isGallery={isGallery} setEmotion={setEmotion}  />}
         </div>
