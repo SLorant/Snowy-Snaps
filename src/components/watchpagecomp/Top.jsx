@@ -1,10 +1,11 @@
+
 import { useState } from "react"
 
-const Top = ({setOrder, setEmotion,  setImgType}) => {
+const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
 
   const [selected, setSelected] = useState("")
 
- 
+
 
   const handleOnClickEmotion = (emotion) => {
     setImgType("");
@@ -21,60 +22,66 @@ const Top = ({setOrder, setEmotion,  setImgType}) => {
     setImgType(type);
   }
 
- 
+
+
 
 
   return (
-    
+
     <div className="flex w-2/3 ">
-            
-              
-             <div className="grid grid-cols-6 w-full justify-center items-center">
-              
 
-              
-             <p className="text-xl text-center mr-28 xl:text-2xl text-slate-800 font-hbold col-span-3 ">Filter</p>
-             <p className="text-2xl font-hbold mr-28 text-slate-800 col-span-3 text-center">Sort</p>
-            
-             <img onClick={() =>handleOnClickEmotion("happy")}
-              className={`${selected==="happy" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" /> 
-            <img onClick={() =>handleOnClickEmotion("funny")}
-              className={`${selected==="funny" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" /> 
-             <p className="text-lg font-hbold text-center text-slate-800 col-span-2">Upload date</p>
-             <p className="text-lg font-hbold  text-center text-slate-800 col-span-2">Image type</p>
-             <button   onClick={() =>handleOnClickEmotion("sad")}  className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md   ">Sad</button>
-             <button   onClick={() =>handleOnClickEmotion("")}  className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md mr-6 ">Reset</button>
-             
 
-            
-             
-             
-              
-              
-               <button  onClick={() => handleOnClickOrder("desc")} className="text-center font-hlight text-slate-800 text-lg rounded-md   ">
-              Newest
-             </button>
-             <button  onClick={() => handleOnClickOrder("asc")} className="text-center font-hlight text-slate-800 text-lg rounded-md    ">
-              Oldest
-             </button> 
-            
-             
-                          
-             
-             
-               <button  onClick={() => handleOnClickImageType("picture")} className="text-center font-hlight text-slate-800 text-lg rounded-md ">
-              Picture
-             </button>
-             <button  onClick={() => handleOnClickImageType("gif")} className="text-center font-hlight text-slate-800 text-lg rounded-md  ">
-              Gif
-             </button>
-             
- 
-             
-             </div>
+      <div className="flex w-full  items-center gap-16">
+        {/* {uploaded && (<div className='absolute top-64 right-20 z-50'>
+          <button onClick={handleOnClick}>
+            Uploaded image, click here to refresh
+          </button>
+        </div>)} */}
+
+        <div className="flex flex-col gap-2 bg-slate-400 rounded-lg">
+          <p className="text-xl text-center xl:text-2xl text-slate-800 font-hbold ">Filter</p>
+          <div className="flex gap-4 mb-1 ml-2">
+            <img onClick={() => handleOnClickEmotion("happy")}
+              className={`${selected === "happy" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
+            <img onClick={() => handleOnClickEmotion("funny")}
+              className={`${selected === "funny" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
+            <button onClick={() => handleOnClickEmotion("sad")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md   ">Sad</button>
+            <button onClick={() => handleOnClickEmotion("")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md mr-6 ">Reset</button>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2 bg-gray-200 text-white rounded-lg">
+          <p className="text-2xl font-hbold  text-slate-800  text-center">Sort</p>
+          <div className="flex gap-8 mb-1 mx-2">
+            <div className="flex gap-4">
+              <p className="text-lg font-hbold text-center text-slate-800 ">Upload date</p>
+              <button onClick={() => handleOnClickOrder("desc")} className="text-center font-hlight text-slate-800 text-lg rounded-md   ">
+                Newest
+              </button>
+              <button onClick={() => handleOnClickOrder("asc")} className="text-center font-hlight text-slate-800 text-lg rounded-md    ">
+                Oldest
+              </button>
             </div>
-   
-    
+
+            <div className="flex gap-4">
+              <p className="text-lg font-hbold  text-center text-slate-800 ">Image type</p>
+              <button onClick={() => handleOnClickImageType("picture")} className="text-center font-hlight text-slate-800 text-lg rounded-md ">
+                Picture
+              </button>
+              <button onClick={() => handleOnClickImageType("gif")} className="text-center font-hlight text-slate-800 text-lg rounded-md  ">
+                Gif
+              </button>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+
   )
 }
 
@@ -87,34 +94,34 @@ export default Top
               <button  onClick={() =>handleOnClickLimit(50) }  className="font-hlight text-slate-800 text-lg rounded-md  ml-4 ">50</button>
               <button  onClick={() =>handleOnClickLimit(100) } className="font-hlight text-slate-800 text-lg rounded-md  mx-4 ">100</button> */
 
-              /*  function handleOnClickHappy(){
-      setEmotion("happy")
-  }
-  function handleOnClickSad(){
-    setEmotion("sad")
+/*  function handleOnClickHappy(){
+setEmotion("happy")
+}
+function handleOnClickSad(){
+setEmotion("sad")
 }
 function handleOnClickFunny(){
-  setEmotion("funny")
+setEmotion("funny")
 }
 function handleOnClickReset(){
-  setEmotion("")
+setEmotion("")
 }
 
 function handleOnClickNewest(){
-  setOrder("desc")
+setOrder("desc")
 }
 
 function handleOnClickOldest(){
-  setOrder("asc")
+setOrder("asc")
 }
 function handleOnClickLimitLow(){
-  setLimit(25)
+setLimit(25)
 }
 function handleOnClickLimitMedium(){
-  setLimit(50)
+setLimit(50)
 }
 function handleOnClickLimitHigh(){
-  setLimit(100)
+setLimit(100)
 } */
 
 

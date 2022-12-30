@@ -50,13 +50,13 @@ const  MyImages = ({ setSelectedImg }) => {
             <motion.p onClick={handleNavigate} className="text-slate-800 text-lg font-hbold  mt-7 h-6 cursor-pointer"
              whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Back to profile</motion.p>
           </div>
-            <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-3 mx-auto space-y-3 pb-28 mt-8 mx-7 ">
+            <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto space-y-3 pb-28 mt-4 mx-4">
 
                 { files && files.map(file => (
                  <motion.div className="break-inside-avoid" key={file}
                  layout
                  onClick={() => {setSelectedImg(file)}}>
-                <motion.img  src={file} className=" rounded-lg" loading="lazy" alt="huskypic"
+                <motion.img  src={file} className="object-cover w-full h-full hover:opacity-100 opacity-80 rounded-lg" loading="lazy" alt="huskypic"
                     initial = {{ opacity: 0}}
                     animate = {{ opacity: 1}}
                     transition = {{ delay: 1}} />

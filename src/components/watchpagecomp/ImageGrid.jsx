@@ -4,49 +4,38 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 //import { useForceUpdate } from './useForceUpdate'
 
-const ImageGrid = ({ setSelectedImg, order, emotion,  imgType }) => {
-    const [time, setTime] = useState('desc')
-    const [f, setF] = useState('desc');
-   
-      let count = 0;
-    
-    // let {docs} = ""
+const ImageGrid = ({ setSelectedImg, order, emotion,  imgType, uploaded,  onImageUpload, setImgData, imgData }) => {
 
-   /*  function updateDocs(f){
-        ({docs} = useFirestore('images', f))
-    } */ 
-    //const time = timeSort
-    
-    function OnClickFunc() {
-        setF('asc')
-    }
-   
-    
-
-    //emotion='happy'
-    const {docs}  = useFirestore('images', order, emotion, imgType)
-
+    let {docs} = ""
     
     
-    //changed ? ({docs}  = useFirestore('images', order, emotion, limit)) : ""  
     
-   
-     
+        if (uploaded) {
+            ({docs}  = useFirestore('images', order, "", "picture"))
+            onImageUpload(false)
+        }
+        else {
+            ({docs}  = useFirestore('images', order, emotion, imgType))
+        }
     
-
-//useFirestore('images', timeSort)
+  
   return (
-    <div className=" h-[1000px] ">
-      
+    <div className="  ">
+     
         <div className="mx-2 md:mx-10 lg:mx-20 flex justify-center items-center">
         
-            
-            <div className=" columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto space-y-3 pb-28 mt-4 mx-4">
+       {/*  flex flex-wrap */}
+      {/*  grid grid-cols-5  */}
+            <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto space-y-3 mt-4 mx-4">
 
-                {  docs && docs.map(doc => (
+                { docs && docs.map(doc => (
                  <motion.div className="break-inside-avoid" key={doc.id}
                  layout
-                 onClick={() => {setSelectedImg(doc.url)}}>
+                 onClick={() => {setSelectedImg(doc.url); setImgData({
+                    user: doc.user,
+                    emotion: doc.emotion,
+                    createdAt: doc.createdAt
+                 })}}>
                 <motion.img  src={doc.url} className="object-cover w-full h-full hover:opacity-100 opacity-80 rounded-lg" loading="lazy" alt="huskypic"
                     initial = {{ opacity: 0}}
                     animate = {{ opacity: 1}}

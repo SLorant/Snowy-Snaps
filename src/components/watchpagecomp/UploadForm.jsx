@@ -8,8 +8,8 @@ import ImageEditor from '../profilecomp/ImageEditor';
 import { FileUploader } from "react-drag-drop-files";
 
 
-const UploadForm = () => {
-    const [file, setFile] = useState(null);
+const UploadForm = ({setUploaded, file, setFile, onImageUpload}) => {
+    
     const [error, setError] = useState(null);
     const types = ['image/png', 'image/jpeg'];
     const isGallery = true;
@@ -53,7 +53,7 @@ const UploadForm = () => {
     
 };
   return (
-    <div className=" w-1/3 flex justify-center items-center border-dashed border-slate-800">
+    <div className=" w-1/3 mb-4 flex justify-center items-center border-dashed border-slate-800">
     <div className="w-full ml-0 2xl:ml-8 flex flex-col justify-center items-center">
    <p className="text-xl font-hlight text-slate-800">Post your own husky!</p>
     <motion.button  className="flex justify-center items-center mt-2 w-40 h-10 bg-slate-300 text-slate-700 hover:bg-slate-700 hover:text-white font-hbold  rounded-lg "
@@ -61,14 +61,14 @@ const UploadForm = () => {
           <label htmlFor="files" className=" w-40 flex font-hbold text-base text-center justify-center items-center cursor-pointer h-10">Upload image</label>
           <input className="hidden" id="files" type="file"  onChange={handleFileChange} />
          </motion.button>
-         {error && <div className="text-md font-hlight"> {error}</div>}
+         {error && <div className="text-md text-red-400 font-hlight"> {error}</div>}
          
          </div>
         
         <div>
             
             {file && <div className=""> {file.name}</div>}
-            {file && <ProgressBar file={file} emotion={emotion} setFile={setFile} uploadType={uploadType} gif={gif}/>}
+            {file && <ProgressBar  onImageUpload={onImageUpload} file={file} emotion={emotion} setFile={setFile} uploadType={uploadType} gif={gif}/>}
             {picture.cropperOpen && <ImageEditor picture={picture} setPicture={setPicture} editor={editor} setFile={setFile}
              isGallery={isGallery} setEmotion={setEmotion}  />}
         </div>

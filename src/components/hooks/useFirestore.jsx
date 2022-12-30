@@ -14,21 +14,21 @@ const useFirestore = (collectionn, sort, emotion,  imgType) => {
     //console.log(q)
     useEffect(() => {
         if (emotion === undefined || emotion === '' && imgType==='') {
-            q = query(collection(projectFirestore, 'images'), orderBy('createdAt', sort), limit(50));    
+            q = query(collection(projectFirestore, 'images'), orderBy('createdAt', sort));    
         }
         /* else if ((emotion === undefined || emotion === '') && ){
 
         } */
         else if ((emotion === undefined || emotion === '') && imgType==="gif"){
             console.log(imgType)
-            q = query(collection(projectFirestore, 'images'), where("gif", "==", true), orderBy('createdAt', sort),limit(50))
+            q = query(collection(projectFirestore, 'images'), where("gif", "==", true), orderBy('createdAt', sort))
         }
         else if ((emotion === undefined || emotion === '') && imgType==="picture"){
             console.log(imgType)
-            q = query(collection(projectFirestore, 'images'), where("gif", "==", false), orderBy('createdAt', sort),limit(50))
+            q = query(collection(projectFirestore, 'images'), where("gif", "==", false), orderBy('createdAt', sort))
         }
         else {
-            q = query(collection(projectFirestore, 'images'), where("emotion", "==", emotion), orderBy('createdAt', sort), limit(50));
+            q = query(collection(projectFirestore, 'images'), where("emotion", "==", emotion), orderBy('createdAt', sort));
         }
         //setDocs([])
         

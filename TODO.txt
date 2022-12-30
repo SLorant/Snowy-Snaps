@@ -1,10 +1,11 @@
-Image upload crop ratios + emotion choice
-Uploaded img to show instantly
 Modal show info + modal placement
 Change profile pic page
 Header logo + header arrow
 
 BIG:
+DESIGN REWORK:
+    logo, avatar choice, landing page, emotions
+responsiveness, mobile page
 code cleaning, optimizing
 Learn page
 Let's play
