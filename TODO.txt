@@ -1,4 +1,4 @@
-Modal show info + modal placement
+Image upload warning
 Change profile pic page
 Header logo + header arrow
 

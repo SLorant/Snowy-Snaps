@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "EloquiaBold";
-  src: url("./EloquiaBold.otf");
+  font-family: "SimsBoldSC";
+  src: url("./TheSimsSansBoldSC.otf");
 }
 @font-face {
-  font-family: "EloquiaLight";
-  src: url("./EloquiaLight.otf");
+  font-family: "SimsBold";
+  src: url("./TheSimsSansBold.otf");
 }
 @font-face {
   font-family: "WithoutRain";

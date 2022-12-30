@@ -9,7 +9,7 @@ const ProgressBar = ({ file, setFile, uploadType, emotion, gif, onImageUpload })
     useEffect(() => {
         if (url) {
             setFile(null);
-            onImageUpload(true)
+            uploadType === "gallery" ? onImageUpload(true) : ""
         }
     }, [url, setFile])
 

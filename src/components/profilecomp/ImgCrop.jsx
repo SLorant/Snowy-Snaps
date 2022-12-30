@@ -11,6 +11,7 @@ const ImgCrop = () => {
     const { currentUser } = useAuth()
     const [file, setFile] = useState(null);
     const navigate =  useNavigate()
+    
     const uploadType = "profile";
     var editor = "";
     const [picture, setPicture] = useState({
@@ -71,7 +72,7 @@ if( useAuth().currentUser){
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>I'm done</motion.button>
           </div>
       
-    {file && <ProgressBar file={file} setFile={setFile} uploadType={uploadType}/>}
+    {file && <ProgressBar file={file} setFile={setFile} uploadType={uploadType} />}
         </div>
         {picture.cropperOpen && <ImageEditor picture={picture} setPicture={setPicture} editor={editor} setFile={setFile}  />}
       </div>

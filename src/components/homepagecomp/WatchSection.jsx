@@ -1,11 +1,11 @@
 
 const WatchSection = () => {
   return (
-    <div className="flex flex-col items-center w-full bg-white shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]  z-20  ">
+    <div className="flex flex-col items-center w-full bg-cream shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]  z-20  ">
       <div data-aos="fade-down" data-aos-offset="10" data-aos-once= "true" className="h-20   flex justify-center items-center">
-        <div  className="shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 my-4  duration-500">
-          <h2  className='h-18  text-center  md:text-md lg:text-xl 2xl:text-2xl tracking-widest 
-        font-cutefont font-bold  text-slate-800  py-2 px-4 '>Watch videos, gifs, and photos</h2>
+        <div  className="shadow-lg bg-sand rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 my-4  duration-500">
+          <h2  className='h-18  text-center  md:text-md lg:text-xl 2xl:text-2xl 
+        font-header   text-slate-800  py-2 px-4 '>Watch videos, gifs, and photos</h2>
         </div>
         </div>
         
@@ -23,15 +23,15 @@ const WatchSection = () => {
        <source src='src/assets/huskyvideo2.mp4'  type="video/mp4"/>
        </video>
        
-       <div  className=" w-10/12  ml-8 shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
+       <div  className=" w-10/12  ml-8 shadow-lg bg-sand rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
           <h2  className='text-center  md:text-md lg:text-xl 2xl:text-2xl 
         font-hlight font-bold  text-slate-800  py-2 px-4'>More photos...</h2>
         </div>
-        <div  className=" w-10/12 ml-8  shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
+        <div  className=" w-10/12 ml-8  shadow-lg bg-blue rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
           <h2  className='text-center  md:text-md lg:text-xl 2xl:text-2xl 
         font-hlight font-bold  text-slate-800  py-2 px-4 '>More gifs...</h2>
         </div>
-        <div  className=" w-10/12 ml-8 shadow-lg bg-white rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
+        <div  className=" w-10/12 ml-8 shadow-lg bg-darkblue rounded-md transition cursor-pointer ease-in-out hover:border-2 border-slate-800 border-dashed hover:scale-105 duration-500">
           <h2  className='text-center  md:text-md lg:text-xl 2xl:text-2xl 
         font-hlight font-bold  text-slate-800  py-2 px-4 '>More videos...</h2>
         </div>

@@ -18,7 +18,7 @@ const Intro = () => {
         You can learn about Huskies, watch cute videos, and even upload your own pet-friend!</h2>
     </div> */}
 
-    <img src="src/assets/landinghusky.png" alt="huskylove" className="opacity-100 z-30 object-cover top-0 absolute w-full h-[1000px]" />
+    <img src="src/assets/landinghusky.png" alt="huskylove" className="opacity-100 z-30 object-cover -top-6 absolute w-full h-[1000px]" />
     </div>
 
     <div className="mt-[770px] md:mt-[540px] lg:mt-[560px] xl:mt-[970px] h-[1000px]  w-full z-20">
