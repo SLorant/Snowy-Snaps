@@ -53,7 +53,7 @@ const UploadForm = ({setUploaded, file, setFile, onImageUpload}) => {
     
 };
   return (
-    <div className=" w-1/3 mb-4 flex justify-center items-center border-dashed border-slate-800">
+    <div className=" w-1/4 mb-4 flex justify-center items-center border-dashed border-slate-800">
     <div className="w-full ml-0 2xl:ml-8 flex flex-col justify-center items-center">
    <p className="text-xl font-hlight text-slate-800">Post your own husky!</p>
     <motion.button  className="flex justify-center items-center mt-2 w-40 h-10 bg-slate-300 text-slate-700 hover:bg-slate-700 hover:text-white font-hbold  rounded-lg "

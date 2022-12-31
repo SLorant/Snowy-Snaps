@@ -160,3 +160,28 @@ md:grid-rows-[200px_250px_80px] xl:grid-rows-[250px_250px_90px]
 /* <img src="src/assets/arrow6.png" alt="arrow"  className="
         transition cursor-pointer ease-in-out delay-150 hover:translate-y-10 hover:scale-100  duration-500 max-h-32"/>
 */
+
+----------------------------------------------------------------------------
+HUSKIES GALLERY FILTER, Sort
+
+ {/* {uploaded && (<div className='absolute top-64 right-20 z-50'>
+          <button onClick={handleOnClick}>
+            Uploaded image, click here to refresh
+          </button>
+        </div>)} */}
+
+        {/* <img onClick={() => handleOnClickEmotion("happy")}
+              className={`${selected === "happy" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
+            <img onClick={() => handleOnClickEmotion("funny")}
+              className={`${selected === "funny" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
+            <button onClick={() => handleOnClickEmotion("sad")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md   ">Sad</button>
+             */}
+
+{/*  <div onClick={() => handleOnClickEmotion("happy")}><Emoji selected={selected} source="happy"/></div>
+            <div onClick={() => handleOnClickEmotion("silly")}><Emoji selected={selected} source="silly"/></div>
+            <div onClick={() => handleOnClickEmotion("relaxed")}><Emoji selected={selected} source="relaxed"/></div>
+            <div onClick={() => handleOnClickEmotion("excited")}><Emoji selected={selected} source="excited"/></div>
+            <div onClick={() => handleOnClickEmotion("confused")}><Emoji selected={selected} source="confused"/></div>
+            <div onClick={() => handleOnClickEmotion("mischievous")}><Emoji selected={selected} source="mischievous"/></div>
+            <div onClick={() => handleOnClickEmotion("stubborn")}><Emoji selected={selected} source="stubborn"/></div>
+            <div onClick={() => handleOnClickEmotion("sad")}><Emoji selected={selected} source="sad"/></div> */}

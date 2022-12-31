@@ -1,21 +1,35 @@
 
 import { useState } from "react"
 import Emoji from "./Emoji"
+import {motion} from "framer-motion"
 
-const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
+const Top = ({ setOrder, setEmotion, setImgType}) => {
 
-  const [selected, setSelected] = useState("")
+  const emotions = [
+    { label: "happy", source: "happy" },
+    { label: "silly", source: "silly" },
+    { label: "relaxed", source: "relaxed" },
+    { label: "excited", source: "excited" },
+    { label: "confused", source: "confused" },
+    { label: "mischievous", source: "mischievous" },
+    { label: "stubborn", source: "stubborn" },
+    { label: "sad", source: "sad" }
+  ];
+
+  const [selected, setSelected] = useState(null)
+  const [sortbySelected, setSortbySelected] = useState(null)
 
 
 
-  const handleOnClickEmotion = (emotion) => {
+  const handleOnClickEmotion = (label) => {
     setImgType("");
-    setEmotion(emotion);
-    setSelected(emotion)
+    setEmotion(label);
+    setSelected(label)
   }
 
   const handleOnClickOrder = (order) => {
     setOrder(order)
+    setSortbySelected(order)
   }
 
   const handleOnClickImageType = (type) => {
@@ -23,49 +37,26 @@ const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
     setImgType(type);
   }
 
-
-
-
-
   return (
 
-    <div className="flex w-2/3 ">
+    <div className="flex  w-full">
 
+      <div className="flex w-full items-center gap-4">
 
-      <div className="flex w-full  items-center gap-16">
-        {/* {uploaded && (<div className='absolute top-64 right-20 z-50'>
-          <button onClick={handleOnClick}>
-            Uploaded image, click here to refresh
-          </button>
-        </div>)} */}
+        <div className="flex flex-col w-1/3 xl:w-2/3 gap-2 bg-cream rounded-md items-center">
+          <h2 className="text-xl text-center xl:text-3xl text-peach font-header mt-2 ">Filter</h2>
+          <div className="">
+          <div className=" gap-4 xl:gap-5  grid grid-cols-4 mb-3 xl:flex">
 
-        <div className="flex flex-col gap-2 bg-peach rounded-lg">
-          <p className="text-xl text-center xl:text-2xl text-slate-800 font-hbold ">Filter</p>
-          <div className="flex gap-4 mb-1 ml-2">
-            <img onClick={() => handleOnClickEmotion("happy")}
-              className={`${selected === "happy" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
-            <img onClick={() => handleOnClickEmotion("funny")}
-              className={`${selected === "funny" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
-            <button onClick={() => handleOnClickEmotion("sad")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md   ">Sad</button>
-            <div onClick={() => handleOnClickEmotion("sad")}><Emoji  source="confused"/></div>
-            <button onClick={() => handleOnClickEmotion("")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md mr-6 ">Reset</button>
+            {emotions.map(emotion => (
+        <div className="flex justify-center items-center w-10" key={emotion.label} onClick={() => handleOnClickEmotion(emotion.label)}>
+          <Emoji selected={selected} source={emotion.source} />
           </div>
-        </div>
+      ))}
 
-        <div className="flex flex-col gap-2 bg-peach text-white rounded-lg">
-          <p className="text-2xl font-hbold  text-slate-800  text-center">Sort</p>
-          <div className="flex gap-8 mb-1 mx-2">
-            <div className="flex gap-4">
-              <p className="text-lg font-hbold text-center text-slate-800 ">Upload date</p>
-              <button onClick={() => handleOnClickOrder("desc")} className="text-center font-hlight text-slate-800 text-lg rounded-md   ">
-                Newest
-              </button>
-              <button onClick={() => handleOnClickOrder("asc")} className="text-center font-hlight text-slate-800 text-lg rounded-md    ">
-                Oldest
-              </button>
-            </div>
-
-            <div className="flex gap-4">
+           
+          </div>
+          <div className="flex gap-4">
               <p className="text-lg font-hbold  text-center text-slate-800 ">Image type</p>
               <button onClick={() => handleOnClickImageType("picture")} className="text-center font-hlight text-slate-800 text-lg rounded-md ">
                 Picture
@@ -74,11 +65,29 @@ const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
                 Gif
               </button>
             </div>
+            </div>
+        </div>
+              
+        <div className="flex flex-col gap-3 bg-cream rounded-md">
+          <p className="text-3xl mt-2 font-header mx-4  text-peach  text-center">Sort by</p>
+          <div className="flex flex-col gap-2 mb-4">
+
+              <button onClick={() => handleOnClickOrder("desc")}
+              className={`${sortbySelected === "asc" ? "opacity-60" : "opacity-100"} text-center font-header text-blue text-xl rounded-md`}>
+              Newest</button>
+              <button onClick={() => handleOnClickOrder("asc")}
+              className={`${sortbySelected === "asc" ? "opacity-100" : "opacity-60"} text-center font-header text-blue text-xl rounded-md`}>
+              Oldest</button>
+              
+
+            
           </div>
 
 
 
         </div>
+        <button onClick={() => handleOnClickEmotion("")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md mr-6 ">Reset</button>
+
 
       </div>
     </div>
