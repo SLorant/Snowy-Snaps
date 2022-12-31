@@ -1,5 +1,6 @@
 Image upload warning
 Change profile pic page
+Not signed in user can access profile?
 Header logo + header arrow
 
 BIG:

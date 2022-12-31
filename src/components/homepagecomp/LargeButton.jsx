@@ -12,4 +12,8 @@ const LargeButton = ({title}) => {
   )
 }
 
+LargeButton.defaultProps = {
+    title: "Husky"
+}
+
 export default LargeButton

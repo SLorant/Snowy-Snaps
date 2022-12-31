@@ -1,5 +1,6 @@
 
 import { useState } from "react"
+import Emoji from "./Emoji"
 
 const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
 
@@ -38,7 +39,7 @@ const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
           </button>
         </div>)} */}
 
-        <div className="flex flex-col gap-2 bg-slate-400 rounded-lg">
+        <div className="flex flex-col gap-2 bg-peach rounded-lg">
           <p className="text-xl text-center xl:text-2xl text-slate-800 font-hbold ">Filter</p>
           <div className="flex gap-4 mb-1 ml-2">
             <img onClick={() => handleOnClickEmotion("happy")}
@@ -46,11 +47,12 @@ const Top = ({ setOrder, setEmotion, setImgType, uploaded }) => {
             <img onClick={() => handleOnClickEmotion("funny")}
               className={`${selected === "funny" ? "opacity-100" : "opacity-60"} h-8 w-8 place-self-center cursor-pointer `} src="src\assets\grinning.png" alt="emoji" />
             <button onClick={() => handleOnClickEmotion("sad")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md   ">Sad</button>
+            <div onClick={() => handleOnClickEmotion("sad")}><Emoji  source="confused"/></div>
             <button onClick={() => handleOnClickEmotion("")} className="text-center font-hlight text-slate-800 text-md xl:text-lg rounded-md mr-6 ">Reset</button>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 bg-gray-200 text-white rounded-lg">
+        <div className="flex flex-col gap-2 bg-peach text-white rounded-lg">
           <p className="text-2xl font-hbold  text-slate-800  text-center">Sort</p>
           <div className="flex gap-8 mb-1 mx-2">
             <div className="flex gap-4">

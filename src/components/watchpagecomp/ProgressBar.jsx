@@ -14,7 +14,7 @@ const ProgressBar = ({ file, setFile, uploadType, emotion, gif, onImageUpload })
     }, [url, setFile])
 
   return (
-    <motion.div className=" h-2 bg-slate-700 mt-8 mx-20"
+    <motion.div className=" h-2 bg-darkblue mt-8 mx-20"
     initial={{ width: 0}}
     animate={{ width: progress/1.5 + '%'}} ></motion.div>
   )
