@@ -30,7 +30,7 @@ DROPDOWN MENU:
 
           </div>
           </div> */}
-
+--------------------------------------------------------------------
 RANDOM HEADER STUFF:
     //const ref = ref(storage, 'images/husky.jpg')
 
@@ -110,3 +110,53 @@ async function handleLogout() {
     } catch {
       setError('Failed to log out')
     }}
+
+
+     /*  if(useAuth().currentUser){
+    const docRef = doc(projectFirestore, "users", currentUser.uid);
+    const docSnap = getDoc(docRef).then(docSnap => {
+    if (docSnap.exists()) {
+        //console.log("Document data:", docSnap.data());
+        const data = docSnap.data();
+        setUserName(data.username);
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+}
+})
+  } */
+  
+  /*async function loadUserData() {
+  if(useAuth().currentUser){
+    try {
+      const docRef = doc(projectFirestore, "users", currentUser.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setUserName(data.username);
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.log("Error getting user data:", error);
+    }
+  }
+}
+
+loadUserData();
+ */
+
+ -----------------------------------------------------------------------
+LANDING PAGE WATCH SECTION:
+md:grid-rows-[200px_250px_80px] xl:grid-rows-[250px_250px_90px]
+
+ {/*  <video loading="lazy" controls alt="huskyvid" className='mt-8 ml-4 object-cover shadow-lg h-52 2xl:max-h-80 h-60 md:h-40 2xl:h-56 lg:h-48 w-11/12  rounded-2xl'>
+       <source src='src/assets/huskyvideo2.mp4'  type="video/mp4"/>
+       </video> */}
+
+{/*  <video loading="lazy" controls alt="huskyvid" className=' mt-8 ml-4 object-cover shadow-lg h-52  2xl:max-h-80 h-56 md:h-40  lg:h-48 2xl:h-56  w-11/12  rounded-2xl'>
+       <source src='src/assets/huskyvideo.mp4'  type="video/mp4"/>
+       </video> */}
+/* <img src="src/assets/arrow6.png" alt="arrow"  className="
+        transition cursor-pointer ease-in-out delay-150 hover:translate-y-10 hover:scale-100  duration-500 max-h-32"/>
+*/

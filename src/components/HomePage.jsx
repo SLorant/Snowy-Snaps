@@ -1,12 +1,12 @@
 import React from 'react'
-import IntroPage from './homepagecomp/Intro'
+import LandingPage from './homepagecomp/LandingPage'
 import Footer from './homepagecomp/Footer'
 
 const HomePage= () => {
   return (
     <div>
     
-     <IntroPage   />
+     <LandingPage   />
      <Footer/>
   </div> 
   )

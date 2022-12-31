@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion"
@@ -15,7 +15,13 @@ const SignUp = () => {
     const [ loading, setLoading] = useState(false)
     const navigate =  useNavigate()
     const [email, setEmail] = useState('')
-  
+    const [charactersRemaining, setCharactersRemaining] = useState(20);
+
+    useEffect(() => {
+        userNameRef.current.addEventListener('input', () => {
+          setCharactersRemaining(20 - userNameRef.current.value.length);
+        });
+      }, []);
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -102,7 +108,8 @@ const SignUp = () => {
         </div>
         <div className=" form-group flex flex-col mb-4 w-60">
             <label className="font-hbold  text-slate-700 ">Username</label>
-            <input type="text" ref={userNameRef} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
+            <input type="text" ref={userNameRef} maxLength={20} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
+            <span className="text-black text-xs">Maximum {charactersRemaining} characters remaining</span>
         </div>
 
         <motion.button className="text-white text-lg rounded-md bg-stone-400 font-hlight font-bold py-2

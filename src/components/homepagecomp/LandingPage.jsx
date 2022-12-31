@@ -2,9 +2,9 @@ import { useRef } from 'react'
 import useIntersection from '../hooks/useIntersection'
 import Sections from './Sections'
 
-const Intro = () => {
+const LandingPage = () => {
    const ref = useRef(); 
-  const inViewport = useIntersection(ref, "100px"); // Trigger as soon as the element becomes visible
+   const inViewport = useIntersection(ref, "100px"); // Trigger as soon as the element becomes visible
 
   return (
     <div >
@@ -17,6 +17,18 @@ const Intro = () => {
         <h2 className="font-cutefont my-6 xl:my-5 mx-16 xl:mx-0 text-slate-800 sm:text-lg lg:text-xl xl:text-2xl text-center">
         You can learn about Huskies, watch cute videos, and even upload your own pet-friend!</h2>
     </div> */}
+    <div className="flex flex-col justify-end items-end absolute top-16 z-50 w-full ">
+    <div className="mt-12 w-1/2 flex justify-start items-center">
+      <h1 className='text-blue mr-4   font-header text-3xl'>Welcome To Snowy Snaps!</h1>
+    </div>
+    <div className='w-1/2 mt-4'>
+      <div className='w-1/2 ml-2'>
+        <p className='text-blue font-body text-base'>
+         A community for husky lovers to share and discover pictures of these beautiful dogs. But it's not just about the images – Snowy Snaps also provides resources and information on how to care for and train your husky. Whether you're a seasoned husky owner or just looking to learn more about these majestic animals, Snowy Snaps is the perfect place to start. So join the pack and share your love of huskies with us!
+        </p>
+        </div>
+      </div>
+    </div>
 
     <img src="src/assets/landinghusky.png" alt="huskylove" className="opacity-100 z-30 object-cover -top-6 absolute w-full h-[1000px]" />
     </div>
@@ -31,7 +43,7 @@ const Intro = () => {
     
 }
 
-export default Intro
+export default LandingPage
 
  /*  if (inViewport) {
     console.log('in viewport:', ref.current);
