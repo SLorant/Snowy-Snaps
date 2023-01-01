@@ -12,6 +12,7 @@ const WatchPage = () => {
   const [emotion, setEmotion] = useState('')
   const [uploaded, setUploaded] = useState(false)
   const [imgType, setImgType] = useState("")
+  const [emotionArray, setEmotionArray] = useState([]);
 
   const [file, setFile] = useState(null);
   let changed = false;
@@ -37,12 +38,12 @@ const WatchPage = () => {
       <h1 className=" text-xl text-blue lg:text-2xl xl:text-4xl font-header">Huskies' Gallery</h1>
             </div>
         <div className="mx-24 mb-6  mt-4 flex ">
-        <Top setOrder = {setOrder} setEmotion = {setEmotion}  setImgType={setImgType} file={file}/>
+        <Top setOrder = {setOrder} emotionArray={emotionArray} setEmotionArray = {setEmotionArray}  setImgType={setImgType} file={file}/>
         
         <UploadForm onImageUpload={handleImageUpload} file={file} setFile={setFile} />
         </div>
         
-        <ImageGrid imgData={imgData} onImageUpload={handleImageUpload} uploaded={uploaded} setImgData={setImgData} setSelectedImg = {setSelectedImg} order={order} emotion = {emotion}  imgType={imgType}/>
+        <ImageGrid imgData={imgData} onImageUpload={handleImageUpload} uploaded={uploaded} setImgData={setImgData} setSelectedImg = {setSelectedImg} order={order} emotionArray = {emotionArray}  imgType={imgType}/>
         { selectedImg && <Modal imgData={imgData} setImgData={setImgData} selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }
 
         </div>
