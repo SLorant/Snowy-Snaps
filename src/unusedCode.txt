@@ -162,7 +162,7 @@ md:grid-rows-[200px_250px_80px] xl:grid-rows-[250px_250px_90px]
 */
 
 ----------------------------------------------------------------------------
-HUSKIES GALLERY FILTER, Sort
+HUSKIES GALLERY FILTER, Sort, 
 
  {/* {uploaded && (<div className='absolute top-64 right-20 z-50'>
           <button onClick={handleOnClick}>
@@ -185,3 +185,41 @@ HUSKIES GALLERY FILTER, Sort
             <div onClick={() => handleOnClickEmotion("mischievous")}><Emoji selected={selected} source="mischievous"/></div>
             <div onClick={() => handleOnClickEmotion("stubborn")}><Emoji selected={selected} source="stubborn"/></div>
             <div onClick={() => handleOnClickEmotion("sad")}><Emoji selected={selected} source="sad"/></div> */}
+
+
+// NYÍL <svg aria-hidden="true" className="ml-3 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+
+/* <p className="text-xl font-hbold  text-slate-800  ml-4 ">Max images per page</p>
+              <button  onClick={() =>handleOnClickLimit(25) }  className="font-hlight text-slate-800 text-lg   ml-4 ">25</button>
+              <button  onClick={() =>handleOnClickLimit(50) }  className="font-hlight text-slate-800 text-lg   ml-4 ">50</button>
+              <button  onClick={() =>handleOnClickLimit(100) } className="font-hlight text-slate-800 text-lg   mx-4 ">100</button> */
+
+-------------------------------------------------------------------------
+USEFIRESTORE CODE
+
+//const q = query(collection(projectFirestore, 'images'), where("emotion", "==", "happy"));
+
+ /* else if ((emotion === undefined || emotion === '') && ){
+
+        } */
+        /* else if (( !emotionArray.length) && imgType==="gif"){
+            //console.log(imgType)
+            q = query(collection(projectFirestore, 'images'), where("gif", "==", true), orderBy('createdAt', sort))
+        }
+        else if (( !emotionArray.length) && imgType==="picture"){
+            //console.log(imgType)
+            q = query(collection(projectFirestore, 'images'), where("gif", "==", false), orderBy('createdAt', sort))
+        } */
+  //const unsub = query(collection(projectFirestore, collectionn), where("emotion", "==", "happy"))
+  //const unsub = query(projectFirestore.collection(projectFirestore, collectionn)
+  //setDocs([])
+
+  /* .orderBy('createdAt', sort)
+            .onSnapshot((snap) => {
+                let documents = [];
+                snap.forEach(doc => {
+                    documents.push({...doc.data(), id: doc.id})
+                });
+                setDocs(documents);
+            }); */
+
