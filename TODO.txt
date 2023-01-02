@@ -1,5 +1,4 @@
 Image upload warning
-Gallery image type - usefirestore things
 Choose up to 3 emotions when uploading image
 Gif upload emotion
 Not signed in user can access profile?

@@ -3,9 +3,38 @@ import { useState, useRef, React } from "react";
 import AvatarEditor from "react-avatar-editor";
 import ReactSlider from "react-slider";
 import { motion } from 'framer-motion'
+import Emoji from '../watchpagecomp/Emoji';
 
-const ImageEditor = ({picture, setPicture, setFile, editor, isGallery, setEmotion}) => {
+const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3, editor, isGallery, setEmotion, setEmotion2, setEmotion3}) => {
    
+  const emotions = [
+    { label: "happy" },
+    { label: "silly" },
+    { label: "relaxed" },
+    { label: "excited" },
+    { label: "confused" },
+    { label: "mischievous" },
+    { label: "stubborn" },
+    { label: "sad" }
+  ];
+
+  const [chooseEmotionArray, setChooseEmotionArray] = useState([]);
+
+  const handleOnClickEmoji = (label) => {
+    if (chooseEmotionArray.includes(label)) {
+      setChooseEmotionArray(arr => arr.filter(item => item !== label))
+      emotion === label ? setEmotion("") : emotion2 === label ? setEmotion2("") : setEmotion3("")
+    } else if (chooseEmotionArray.length === 3){
+      setChooseEmotionArray( arr => [...arr])
+
+    } else {
+      setChooseEmotionArray( arr => [...arr, label]);
+      emotion === "" ? setEmotion(label) : emotion2 === "" ? setEmotion2(label) : emotion3 === "" ? setEmotion3(label) : ""
+    }
+    
+  }
+
+  console.log(emotion, emotion2, emotion3)
 
     const handleSlider = (event, value) => {
         setPicture({
@@ -87,17 +116,26 @@ const ImageEditor = ({picture, setPicture, setFile, editor, isGallery, setEmotio
             
               </div>
               <div className="flex flex-col items-center justify-center">
-              <div className="flex flex-col items-center justify-center">
-              {isGallery && <button className="w-2" onClick={() => {setWidth(400); setHeight(225)} }>16:9</button>}
-              {isGallery && <button className="w-2" onClick={() => {setWidth(225); setHeight(400)} }>9:16</button>}
-              {isGallery && <button className="w-2" onClick={() => {setWidth(400); setHeight(300)} }>4:3</button>}
-              {isGallery && <button className="w-2" onClick={() => {setWidth(300); setHeight(400)} }>3:4</button>}
-              {isGallery && <button className="w-2" onClick={() => {setWidth(400); setHeight(400)} }>1:1</button>}
+              <div className="grid grid-cols-3 gap-4 w-40 mb-8">
+              {isGallery && <button className="w-2 text-blue font-headersc col-span-2" onClick={() => {setWidth(400); setHeight(225)} }>16:9</button>}
+              {isGallery && <button className="w-2 text-blue font-headersc " onClick={() => {setWidth(225); setHeight(400)} }>9:16</button>}
+              {isGallery && <button className="w-2 text-blue font-headersc " onClick={() => {setWidth(400); setHeight(300)} }>4:3</button>}
+              {isGallery && <button className="w-2 text-blue font-headersc " onClick={() => {setWidth(300); setHeight(400)} }>3:4</button>}
+              {isGallery && <button className="w-2 text-blue font-headersc" onClick={() => {setWidth(400); setHeight(400)} }>1:1</button>}
               </div>
               <div className="flex flex-col items-center justify-center">
-              {isGallery && <button className="w-2" onClick={() => {setEmotion("happy")} }>Happy</button>}
+            {/*   {isGallery && <button className="w-2" onClick={handleOnClickEmotion("happy") }>Happy</button>}
               {isGallery && <button className="w-2" onClick={() => {setEmotion("funny")} }>Funny</button>}
-              {isGallery && <button className="w-2" onClick={() => {setEmotion("sad")} }>Sad</button>}
+              {isGallery && <button className="w-2" onClick={() => {setEmotion("sad")} }>Sad</button>} */}
+              
+
+              <div className=" gap-4 xl:gap-6 mb-3 grid grid-cols-4 my-2 ">
+            {emotions.map(emotion => (
+        <div className="flex justify-center items-center w-10" key={emotion.label} onClick={() => handleOnClickEmoji(emotion.label)} >
+          <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
+          </div>    
+      ))} 
+          </div>
               </div>
 
               <Slider 

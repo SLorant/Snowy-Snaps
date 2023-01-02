@@ -8,7 +8,7 @@ import ImageEditor from '../profilecomp/ImageEditor';
 import { FileUploader } from "react-drag-drop-files";
 
 
-const UploadForm = ({setUploaded, file, setFile, onImageUpload}) => {
+const UploadForm = ({ file, setFile, onImageUpload}) => {
     
     const [error, setError] = useState(null);
     const types = ['image/png', 'image/jpeg'];
@@ -17,6 +17,8 @@ const UploadForm = ({setUploaded, file, setFile, onImageUpload}) => {
     var editor = "";
    
     const [emotion, setEmotion] = useState('')
+    const [emotion2, setEmotion2] = useState('')
+    const [emotion3, setEmotion3] = useState('')
     const [gif, setGif] = useState(false)
     const [picture, setPicture] = useState({
       cropperOpen: false,
@@ -53,24 +55,42 @@ const UploadForm = ({setUploaded, file, setFile, onImageUpload}) => {
     
 };
   return (
-    <div className=" w-1/4 mb-4 flex justify-center items-center border-dashed border-slate-800">
-    <div className="w-full ml-0 2xl:ml-8 flex flex-col justify-center items-center">
-   <p className="text-xl font-hlight text-slate-800">Post your own husky!</p>
-    <motion.button  className="flex justify-center items-center mt-2 w-40 h-10 bg-slate-300 text-slate-700 hover:bg-slate-700 hover:text-white font-hbold  rounded-lg "
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>
-          <label htmlFor="files" className=" w-40 flex font-hbold text-base text-center justify-center items-center cursor-pointer h-10">Upload image</label>
+    <div className=" w-1/4  rounded-r-md  mb-4 flex  justify-start  items-start">
+
+    <div className="w-full w-3/4 ml-8 mt-3 flex flex-col justify-start items-center">
+
+   <h2 className="text-xl text-center  xl:text-2xl text-blue font-header ">Post your own husky!</h2>
+   <div className="flex justify-center items-center">
+    <motion.button  className="uploadbutton flex justify-center items-center bg-cream  w-52  h-12  text-blue
+    hover:bg-blue hover:text-peach font-headersc  rounded-md "
+         whileHover={{ translateY: 10, transition: { duration: 0.2 },  scale: 1.1}}>
+          <label htmlFor="files" className=" w-52 flex text-lg text-center justify-center items-center cursor-pointer">Upload image</label>
+          <svg xmlns="http://www.w3.org/2000/svg" className="icon mr-4 icon-tabler icon-tabler-file-upload" width="64" height="64" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2D4550" fill="none" strokeLinecap="round" strokeLinejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+  <line x1="12" y1="11" x2="12" y2="17" />
+  <polyline points="9 14 12 11 15 14" />
+</svg>
           <input className="hidden" id="files" type="file"  onChange={handleFileChange} />
          </motion.button>
+       
+
+         </div>
+         
          {error && <div className="text-md text-red-400 font-hlight"> {error}</div>}
          
          </div>
+         
         
         <div>
             
             {file && <div className=""> {file.name}</div>}
-            {file && <ProgressBar  onImageUpload={onImageUpload} file={file} emotion={emotion} setFile={setFile} uploadType={uploadType} gif={gif}/>}
+            {file && <ProgressBar  onImageUpload={onImageUpload}
+             file={file} emotion={emotion} emotion2={emotion2} emotion3={emotion3} setFile={setFile} uploadType={uploadType} gif={gif}/>}
             {picture.cropperOpen && <ImageEditor picture={picture} setPicture={setPicture} editor={editor} setFile={setFile}
-             isGallery={isGallery} setEmotion={setEmotion}  />}
+             isGallery={isGallery} setEmotion={setEmotion} setEmotion2={setEmotion2} setEmotion3={setEmotion3}
+               emotion={emotion} emotion2={emotion2} emotion3={emotion3} />}
         </div>
    
 

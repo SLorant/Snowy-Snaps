@@ -28,3 +28,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+.uploadbutton:hover .icon-tabler-file-upload {
+  stroke: #de9873;
+}

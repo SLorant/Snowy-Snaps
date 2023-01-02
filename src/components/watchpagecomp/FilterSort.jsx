@@ -2,7 +2,7 @@ import { useState } from "react"
 import Emoji from "./Emoji"
 import {motion} from "framer-motion"
 
-const Top = ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
+const FilterSort= ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
 
   const [sortbySelected, setSortbySelected] = useState(null)
   const [imgTypeSelected, setImgTypeSelected] = useState("")
@@ -18,7 +18,6 @@ const Top = ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
   ];
 
   const handleOnClickEmotion = (label) => {
-    
     if (emotionArray.includes(label)) {
       setEmotionArray(arr => arr.filter(item => item !== label))
     } else {
@@ -47,7 +46,7 @@ const Top = ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
       <div className="flex w-full items-center bg-cream rounded-md">
       
         <div className="flex flex-col w-1/6">
-          <p className="text-3xl font-header  my-2  text-peach  text-center">Sort by</p>
+          <h2 className="text-3xl font-header  my-2  text-peach  text-center">Sort by</h2>
           <div className="flex flex-col justify-center items-center gap-2 mb-3">
               <motion.p onClick={() => handleOnClickOrder("desc")}
               className={`${sortbySelected === "asc" ? "opacity-60" : "opacity-100"} cursor-pointer  font-header text-blue text-xl `}
@@ -71,8 +70,8 @@ const Top = ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
         </div>
 
         <div className="flex flex-col">
-          <p className="text-3xl mt-2 font-header my-2 text-peach  text-center">Image type</p>
-          <div className="flex flex-col gap-2 mb-3">
+          <h2 className="text-3xl mt-2 font-header my-2 text-peach  text-center">Image type</h2>
+          <div className="flex flex-col justify-center items-center gap-2 mb-3">
               <motion.p onClick={() => handleOnClickImageType("picture")} className={`${imgTypeSelected === "picture" ? "opacity-100" : "opacity-60"}
               text-center font-header text-blue text-xl cursor-pointer`} whileHover={{ scale: 1.15 }}>Picture</motion.p>
               <motion.p onClick={() => handleOnClickImageType("gif")} className={`${imgTypeSelected === "gif" ? "opacity-100" : "opacity-60"}
@@ -83,10 +82,10 @@ const Top = ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
 
       <motion.p onClick={() => handleOnClickShowAll()}
       className={`${(imgTypeSelected  === "") && (!emotionArray.length) ? "opacity-100" : "opacity-60"}
-      font-header text-blue text-xl mt-1 cursor-pointer`} whileHover={{ scale: 1.1 }}>Show everything</motion.p>
+      font-header text-blue text-xl mt-1 cursor-pointer mr-1`} whileHover={{ scale: 1.1 }}>Show everything</motion.p>
     </div>
 
   )
 }
 
-export default Top
+export default FilterSort
