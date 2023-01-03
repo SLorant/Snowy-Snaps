@@ -5,12 +5,14 @@ import ReactSlider from "react-slider";
 import { motion } from 'framer-motion'
 import Emoji from '../watchpagecomp/Emoji';
 import ChooseButton from './ChooseButton';
+import  useWindowSize  from "../hooks/useWindowSize"
 
 const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3, editor, isGallery, setEmotion, setEmotion2, setEmotion3}) => {
    
   const [chooseEmotionArray, setChooseEmotionArray] = useState([])
-  let [width, setWidth] = useState(400)
-  let [height, setHeight] = useState(225) 
+  const windowSize = useWindowSize();
+  let [width, setWidth] = useState(400*(windowSize.width/1500))
+  let [height, setHeight] = useState(225*(windowSize.width/1500)) 
   const [selected, setSelected] = useState("16:9")
   const emotions = [
     { label: "happy" }, { label: "silly" }, { label: "relaxed" }, { label: "excited" },
@@ -42,6 +44,7 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
         });
       };
       const handleCancel = () => {
+        document.body.style.overflow = "auto"
         setPicture({
           ...picture,
           cropperOpen: false
@@ -51,6 +54,7 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
         editor = ed;
       };
       async function handleSave(e) {
+        document.body.style.overflow = "auto"
         if (setEditorRef) {
           const canvasScaled = editor.getImageScaledToCanvas();
           const croppedImg = canvasScaled.toDataURL();
@@ -80,11 +84,13 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
 
      
   return (
-    <div className="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-black/70 z-50">
-            <div className='2xl:w-2/3 xl:w-3/4 lg:w-5/6 w-4/5 lg:h-4/5 h-[90%] rounded-xl bg-white flex  lg:flex-row justify-around items-start lg:items-center'>
-              <div className="lg:ml-10 lg:mt-0 lg:mr-0 mt-6  lg:my-8  w-80 flex flex-col justify-center items-center">
+    <div className="fixed overflow-auto flex justify-center items-center top-0 left-0 w-full h-full bg-white z-50">
+            <div className='w-full  h-full 
+             bg-white flex flex-col lg:flex-row   lg:justify-center lg:gap-40 justify-around items-center  lg:items-center'>
+              <div className="lg:ml-10  lg:mt-0 lg:mr-0  mt-10 md:mt-20 lg:mt-24 lg:my-8  w-80 flex  justify-center items-center">
+              {/* 2xl:w-2/3 xl:w-3/4 lg:w-5/6 md:w-4/5 w-[90%] lg:h-4/5 md:h-5/6 h-[92%] */}
             <AvatarEditor
-              className="ml-20 lg:ml-0 z-50 rounded-xl"
+              className=" lg:ml-8  z-50 rounded-lg"
               ref={setEditorRef}
               image={picture.img}
               borderRadius= {isGallery ? 0 : 100}
@@ -98,34 +104,13 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
             />
             
               </div>
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col mr-8   items-center justify-center">
                {isGallery &&
-               <div className=''> <div className="flex flex-col col-span-2 gap-4 lg:w-80 w-32  ml-16 lg:ml-0 mt-4 lg:mt-0 mb-6">
-                <p className='text-xl text-center  xl:text-2xl text-blue font-header'>Pick an aspect ratio</p>
-                <div className='lg:flex lg:flex-row  grid grid-cols-2 place-items-center justify-center items-center gap-4'>
-
-                {ratioButtons.map(({ width, height, ratio, buttonheight, buttonwidth }) => (
-                  <ChooseButton key={ratio} width={width} height={height} ratio={ratio} setWidth={setWidth} setHeight={setHeight}
-                  selected={selected} setSelected={setSelected} buttonwidth={buttonwidth} buttonheight={buttonheight}/>
-        ))}
-      
-                </div>
-              </div>
-              <div className="flex lg:relative bottom-40 left-28 lg:bottom-auto lg:left-auto absolute lg:mt-0 flex-col items-center justify-center">
-              <p className='text-xl text-center  xl:text-2xl text-blue font-header mb-2'>Choose up to 3 emotions</p>
-              <div className=" gap-4 xl:gap-6 mb-3 grid grid-cols-4 my-2 ">
-            {emotions.map(emotion => (
-        <div className="flex justify-center items-center w-10" key={emotion.label} onClick={() => handleOnClickEmoji(emotion.label)} >
-          <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
-          </div>    
-      ))} 
-          </div>
-              </div>
-              </div>}
-              <div className='flex flex-col w-60 xl:w-80'>
-              <p className='text-xl text-center  xl:text-2xl text-blue font-header mt-6 '>Zoom in or out</p>
+               <div className='flex flex-col h-full  justify-center items-center'>
+                <div className='flex flex-col lg:mb-4 justify-center items-center mt-2  lg:mt-2  w-56 xl:w-80 '>
+              <p className='text-xl text-center  lg:text-2xl text-blue font-header mt-2  '>Zoom in or out</p>
               <Slider 
-              className="w-32 xl:w-40 mt-2"
+              className=" mt-1 md:mt-2"
               aria-label="raceSlider"
               value={picture.zoom}
               min={1}
@@ -135,16 +120,41 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
               style={{ color: '#2D4550' }}
             />
             </div>
+             <div className="flex  flex-col gap-1 ">
+                <p className='text-xl  text-center  lg:text-2xl text-blue font-header'>Pick an aspect ratio</p>
+                <div className='lg:flex lg:flex-row   md:mt-4 lg:mt-4 flex 
+                 place-items-center justify-center items-center gap-2 md:gap-4'>
 
-              <div className="flex gap-8 mt-10 mb-4">
-              <motion.button  className="text-lg flex justify-center items-center bg-sand md:w-24 lg:w-32 xl:w-40  h-12  text-blue
-    hover:bg-blue hover:text-peach font-headersc  rounded-md "
-    whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}
-    onClick={() => handleCancel()}>Cancel</motion.button>
-              <motion.button  className="text-lg flex justify-center items-center bg-sand md:w-24 lg:w-32 xl:w-40  h-12  text-blue
-    hover:bg-blue hover:text-peach font-headersc  rounded-md "
-    whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}
-    onClick={() => handleSave()}>Upload</motion.button>
+                {ratioButtons.map(({ width, height, ratio, buttonheight, buttonwidth }) => (
+                  <ChooseButton key={ratio} width={width} height={height} ratio={ratio} setWidth={setWidth} setHeight={setHeight}
+                  selected={selected} setSelected={setSelected} buttonwidth={buttonwidth} buttonheight={buttonheight}/>
+        ))}
+      
+                </div>
+              </div>
+              <div className="flex lg:relative  lg:bottom-auto lg:left-auto
+                lg:mt-0 flex-col items-center justify-center">
+              <p className='text-xl text-center  lg:text-2xl text-blue font-header mb-2'>Choose up to 3 emotions</p>
+              <div className=" gap-4 xl:gap-6 mb-3 grid grid-cols-4 my-1 md:my-2 ">
+            {emotions.map(emotion => (
+        <div className="flex justify-center items-center w-10" key={emotion.label} onClick={() => handleOnClickEmoji(emotion.label)} >
+          <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
+          </div>    
+      ))} 
+          </div>
+              </div>
+              </div>}
+              
+
+              <div className="flex lg:flex-row  gap-8  my-2   lg:mr-0 lg:mt-10 mb-4">
+              <motion.button  className="text-lg flex justify-center items-center bg-sand w-24 md:w-28 lg:w-32 xl:w-40 h-10 md:h-12  text-blue
+                hover:bg-blue hover:text-peach font-headersc  rounded-md "
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}
+                onClick={() => handleCancel()}>Cancel</motion.button>
+              <motion.button  className="text-lg flex justify-center items-center bg-sand w-24 md:w-28 lg:w-32 xl:w-40 h-10 md:h-12  text-blue
+                hover:bg-blue hover:text-peach font-headersc  rounded-md "
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}
+                onClick={() => handleSave()}>Upload</motion.button>
          </div>
               </div>
             </div>

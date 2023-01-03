@@ -1,6 +1,7 @@
 Image upload warning
 Choose up to 3 emotions when uploading image
 Gif upload emotion
+upload image md size bad, others good
 Not signed in user can access profile?
 Header logo + header arrow
 

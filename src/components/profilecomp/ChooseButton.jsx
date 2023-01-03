@@ -17,8 +17,8 @@ const ChooseButton = ({width, height, ratio, setHeight, setWidth, selected, setS
     const windowSize = useWindowSize();
 
     const handleOnClickRatio = (width, height, ratio) => {
-            setWidth(width*(windowSize.width/2000))
-            setHeight(height*(windowSize.width/2000))
+            setWidth(width*(windowSize.width/1500))
+            setHeight(height*(windowSize.width/1500))
             setSelected(ratio)
           }
 

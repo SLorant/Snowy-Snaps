@@ -29,7 +29,7 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
 
     
   const handleFileChange = (e) => {
-    
+    document.body.style.overflow = "hidden"
     console.log("first url:" + picture.img)
     let selected = e.target.files[0];
     if(selected && selected.type==="image/gif") {
@@ -55,11 +55,11 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
     
 };
   return (
-    <div className=" w-1/4  rounded-r-md  mb-4 flex  justify-start  items-start">
+    <div className=" w-1/4  lg:ml-4 xl:ml-0 mb-4 flex  justify-start  items-start">
 
-    <div className="w-full w-3/4 ml-8 mt-3 flex flex-col justify-start items-center">
+    <div className="w-full ml-8 mt-3 flex flex-col justify-start items-center">
 
-   <h2 className="text-xl text-center  xl:text-2xl text-blue font-header ">Post your own husky!</h2>
+   <h2 className="text-xl text-center w-80 xl:text-2xl text-blue font-header ">Post your own husky!</h2>
    <div className="flex justify-center items-center">
     <motion.button  className="uploadbutton flex justify-center items-center bg-cream  w-52  h-12  text-blue
     hover:bg-blue hover:text-peach font-headersc  rounded-md "
@@ -78,7 +78,7 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
 
          </div>
          
-         {error && <div className="text-md text-red-400 font-hlight"> {error}</div>}
+         {error && <div className="mt-2 text-md text-darkblue font-body"> {error}</div>}
          
          </div>
          
