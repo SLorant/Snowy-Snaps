@@ -14,10 +14,13 @@ import Profile from './components/profilecomp/Profile';
 import MyGallery from './components/profilecomp/MyGallery';
 import UploadProfilePic from './components/profilecomp/UploadProfilePic';
 import ImgCrop from './components/profilecomp/ImgCrop';
+import { useAuth } from './contexts/AuthContext'
 
 
 
 function App() {
+ 
+  const isAuth = true;
   /*useEffect(() => {
     const getHuskies = async() => {
       const huskiesFromServer = await fetchHusky()
@@ -36,6 +39,7 @@ function App() {
 
 
   return (
+    <div>
     <BrowserRouter>
     <AuthProvider>
     <Routes>
@@ -46,7 +50,12 @@ function App() {
         <Route path="watch" element={<WatchPage />} />
         <Route path="play" element={<PlayPage />} />
         <Route path="login" element={<LoginPage/>} />
-        
+       
+        <Route
+        path="/protected"
+        render={() => (useAuth().currentUser ? <LearnPage /> : <LoginPage />)}
+      />
+      
         <Route path="profile" element={<Profile />} />
         <Route path="my-gallery" element={<MyGallery />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
@@ -59,7 +68,7 @@ function App() {
     </AuthProvider>
   </BrowserRouter>
 
-    
+  </div>
  
   
   )

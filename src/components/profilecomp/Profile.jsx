@@ -8,6 +8,7 @@ import { projectFirestore, projectStorage } from "../../../firebase/config";
 import {  ref, getDownloadURL } from "firebase/storage";
 import { useNavigate } from 'react-router-dom';
 import ShowcaseImg from './ShowcaseImg';
+import LargeButton from '../homepagecomp/LargeButton';
 
 
 const Profile = () => {
@@ -119,7 +120,7 @@ const Profile = () => {
 
         <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
         onClick={handleNavigate}
-        whileHover={{ scale: 1.03, transition: { duration: 0.2 }}}
+        whileHover={{ scale: 1.03, transition: { duration: 0.3 }}}
         initial = {{ opacity: 0}}
         animate = {{ opacity: 1, transition: {duration: 0.5, delay: 0.2}}}>
           <p className="my-2 ml-4  font-headersc text-darkblue text-2xl ">Go to my gallery</p>
@@ -130,7 +131,7 @@ const Profile = () => {
           </motion.div>
 
           <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
-          whileHover={{ scale: 1.03, transition: { duration: 0.2 }}}
+          whileHover={{ scale: 1.03, transition: { duration: 0.3 }}}
           initial = {{ opacity: 0}}
           animate = {{ opacity: 1, transition: {duration: 0.5, delay:0.2}}}
           >
@@ -141,14 +142,14 @@ const Profile = () => {
       
           </motion.div>
 
-          <div className="mt-6  flex justify-between  w-full">
-          <a className="h-6 my-4" href="upload-profile">
-          <motion.button  className="text-blue text-xl  font-header "
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Change my profile</motion.button></a>
-
-         <motion.button className="text-blue text-xl  font-header"
-         onClick={handleLogout}
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Log out</motion.button>
+          <div className="mt-4  flex justify-between   w-5/6">
+          
+          <div className='ml-2 mt-2'>
+          <LargeButton title={"Change my profile"} link="/upload-profile"/>
+          </div> 
+          <div onClick={handleLogout} className='mr-2 mt-2'>
+          <LargeButton  title={"Log out"}/>
+          </div>
           </div>
          
      

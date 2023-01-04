@@ -16,8 +16,8 @@ const WatchSection = () => {
        <img loading="lazy" src="src/assets/huskygif.gif" alt="huskygif" className='ml-5 object-cover xl:max-h-56 2xl:max-h-80 md:h-40 lg:h-48 xl:h-52 2xl:h-56 w-80  mt-8  rounded-2xl' />
        <img loading="lazy" src="src/assets/huskywater.gif" alt="huskygif" className='ml-5 object-cover xl:max-h-56 2xl:max-h-80 md:h-40 lg:h-48 xl:h-52 2xl:h-56 w-80  mt-8  rounded-2xl' />
      
-        <div className="col-span-2 mb-8 flex justify-center items-center">
-        <LargeButton title="Show me more"/>
+        <div className="col-span-2 mb-8 mt-7 flex justify-center items-center">
+        <LargeButton title="Show me more" link="/watch"/>
         </div>
 
         </div>
