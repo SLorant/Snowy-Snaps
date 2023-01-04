@@ -32,3 +32,7 @@ html {
 .uploadbutton:hover .icon-tabler-file-upload {
   stroke: #de9873;
 }
+
+.uploadbutton2:hover .file-upload-mobile {
+  stroke: #ffffff;
+}

@@ -7,8 +7,8 @@ const HeaderLink = ({title, location}) => {
   return (
     <Link to={location} className={`${pathname ===  location  ? ' border-darkblue hover:border-darkblue' : 'border-sand'}
     ${location === "/profile" ? "font-header" : "font-headersc"}
-     p-3 px-6  border-b-2  transition duration-500 hover:bg-cream
-             hover:border-peach text-lg text-blue  sm:text-xl  lg:text-xl xl:text-2xl`}>{title}</Link>
+     p-2 xl:p-3 px-2 lg:px-4 xl:px-6  border-b-2 block h-full  transition duration-500 hover:bg-cream
+             hover:border-peach text-lg text-blue    lg:text-xl xl:text-2xl`}>{title}</Link>
   )
 }
 

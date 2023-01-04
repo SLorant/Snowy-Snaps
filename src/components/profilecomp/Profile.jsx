@@ -7,6 +7,7 @@ import useFirestore from '../hooks/useFirestore'
 import { projectFirestore, projectStorage } from "../../../firebase/config";
 import {  ref, getDownloadURL } from "firebase/storage";
 import { useNavigate } from 'react-router-dom';
+import ShowcaseImg from './ShowcaseImg';
 
 
 const Profile = () => {
@@ -17,6 +18,12 @@ const Profile = () => {
   const [ error, setError] = useState('')
     const [ loading, setLoading] = useState(false)
 
+  const myImages = [
+    {id: "myimg1"}, {id: "myimg2"}, {id: "myimg3"}, {id: "myimg4"}, {id: "myimg5"}
+    ]
+  const likedImages = [
+    {id: "myimg6"}, {id: "myimg7"}, {id: "myimg8"}, {id: "myimg9"}, {id: "myimg10"}
+  ]
 
   if(useAuth().currentUser){
     const docRef = doc(projectFirestore, "users", currentUser.uid);
@@ -34,13 +41,15 @@ const Profile = () => {
 
   }
   var storageRef = projectStorage.ref(currentUser.uid + "/uploadedpics");
-  let i=1;
-  let img = "";
+  
+  
   //console.log(storageRef.listAll())
   // Now we get the references of these images
   storageRef.listAll().then(function(result) {
-    
+    let i=1;
+    let img = "";
     result.items.forEach(function(imageRef) {
+      
       img = document.getElementById('myimg' + i);
       displayImage(imageRef, img);
       i++;
@@ -100,51 +109,44 @@ const Profile = () => {
 
  // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="h-screen flex justify-center  items-center w-full">
-     <div className="flex w-5/6   rounded-lg  h-5/6 mt-8  border-slate-700">
+    <div className="h-screen flex justify-center bg-cream  items-center w-full">
+     <div className="flex w-5/6 flex-col items-center   rounded-lg  h-5/6 mt-8">
 
-      <div className="flex flex-col  w-full h-full items-center">
-      <div className="mt-6 w-full h-14 flex justify-center items-center ">
-        <p className="text-4xl text-slate-800 font-hbold">Hi, {username}</p>
+      
+      <div className="mt-4 w-full h-14 flex justify-center items-center ">
+        <p className="text-4xl mb-4 text-blue font-header">Hi, {username}</p>
         </div>
 
-        <motion.div className="cursor-pointer mt-4 shadow-lg rounded-lg flex flex-col justify-center   h-1/2"
+        <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
         onClick={handleNavigate}
-        whileHover={{ translateX: 30, transition: { duration: 0.2 }}}
-          initial = {{ opacity: 0}}
-          animate = {{ opacity: 1, transition: {duration: 0.5, delay: 0.2}}}>
-          <p className="my-2 ml-4  font-hbold text-2xl text-stone-800">Go to my gallery</p>
-          <div className='flex mr-8  gap-12 items-center justify-center w-full  '>
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg1" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg2" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg3" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg4" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg5" />
+        whileHover={{ scale: 1.03, transition: { duration: 0.2 }}}
+        initial = {{ opacity: 0}}
+        animate = {{ opacity: 1, transition: {duration: 0.5, delay: 0.2}}}>
+          <p className="my-2 ml-4  font-headersc text-darkblue text-2xl ">Go to my gallery</p>
+          <div className='flex mr-8 mb-4 gap-12 items-center justify-center w-full  '>
+            {myImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))}
           </div>
       
           </motion.div>
 
-          <motion.div className="cursor-pointer mt-4 shadow-lg rounded-lg flex flex-col justify-center   h-1/2"
-          whileHover={{ translateX: 30, transition: { duration: 0.2 }}}
+          <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
+          whileHover={{ scale: 1.03, transition: { duration: 0.2 }}}
           initial = {{ opacity: 0}}
           animate = {{ opacity: 1, transition: {duration: 0.5, delay:0.2}}}
           >
-          <p className="my-2 ml-4 font-hbold text-2xl text-stone-800">Go to liked pics</p>
-          <div className='flex mr-8 gap-12 w-full items-center justify-center'>
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg6" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg7" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg8" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg9" />
-            <img className="w-40 h-40 rounded-md gradient-mask-b-60 object-center object-cover" src="src\assets\profile.png" alt="pic" id="myimg10" />
+          <p className="my-2 ml-4  font-headersc text-darkblue text-2xl ">Go to liked pics</p>
+          <div className='flex mr-8 mb-4 gap-12 items-center justify-center w-full  '>
+            {likedImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))}
           </div>
       
           </motion.div>
 
-          <div className="mt-8 flex justify-between  w-full">
-          <a className="h-6 my-4" href="upload-profile"><motion.button  className="text-stone-800 text-xl rounded-lg  font-hbold font-bold "
+          <div className="mt-6  flex justify-between  w-full">
+          <a className="h-6 my-4" href="upload-profile">
+          <motion.button  className="text-blue text-xl  font-header "
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Change my profile</motion.button></a>
 
-         <motion.button className="text-stone-800 text-xl rounded-lg  font-hbold font-bold my-4"
+         <motion.button className="text-blue text-xl  font-header"
          onClick={handleLogout}
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Log out</motion.button>
           </div>
@@ -159,7 +161,7 @@ const Profile = () => {
        
        
       
-     </div>
+  
      
     </div>
   )

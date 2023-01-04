@@ -29,7 +29,7 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
 
     
   const handleFileChange = (e) => {
-    document.body.style.overflow = "hidden"
+  
     console.log("first url:" + picture.img)
     let selected = e.target.files[0];
     if(selected && selected.type==="image/gif") {
@@ -37,6 +37,7 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
       setGif(true)}
     let url = URL.createObjectURL(e.target.files[0]);
     if(selected && types.includes(selected.type)) {
+      document.body.style.overflow = "hidden"
       setGif(false)
         setPicture({
             ...picture,
@@ -65,7 +66,7 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
     hover:bg-blue hover:text-peach font-headersc  rounded-md "
          whileHover={{ translateY: 10, transition: { duration: 0.2 },  scale: 1.1}}>
           <label htmlFor="files" className=" w-52 flex text-lg text-center justify-center items-center cursor-pointer">Upload image</label>
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-24  lg:w-auto icon mr-4 icon-tabler icon-tabler-file-upload" width="64" height="64" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2D4550" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-24 z-50  lg:w-auto icon mr-4 icon-tabler icon-tabler-file-upload" width="64" height="64" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2D4550" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
@@ -96,8 +97,8 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
 
     <button className="md:hidden right-3 bottom-3 w-16 h-16 rounded-full bg-sand fixed">
         <div className="flex justify-center items-center">
-<label htmlFor="files" className=" w-16 h-16 flex text-lg text-center justify-center items-center cursor-pointer">
-<svg xmlns="http://www.w3.org/2000/svg" className="w-11 lg:w-auto icon  icon-tabler icon-tabler-file-upload" width="64" height="64" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2D4550" fill="none" strokeLinecap="round" strokeLinejoin="round">
+<label htmlFor="files" className="uploadbutton hover:bg-blue duration-200 rounded-full w-16 h-16 flex text-lg text-center justify-center items-center cursor-pointer">
+<svg xmlns="http://www.w3.org/2000/svg" className="w-11  lg:w-auto icon  icon-tabler icon-tabler-file-upload" width="64" height="64" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2D4550" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />

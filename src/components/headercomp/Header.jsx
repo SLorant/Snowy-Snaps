@@ -34,21 +34,21 @@ const Header = () => {
   return (
     <header className="fixed flex top-0 w-full z-40 ">
         <nav className="flex sticky w-full justify-between items-center h-12 xl:h-[72px] bg-sand  ">  
-        <a href="#"  className="absolute font-headersc font-bold text-lg text-blue sm:text-xl lg:text-2xl xl:text-4xl
-         md:left-4 lg:left-8 xl:left-8">Snowy Snaps</a>
+        <a href="#"  className="absolute font-headersc font-bold text-lg text-blue  lg:text-2xl xl:text-4xl
+         left-2 lg:left-8 xl:left-8 mb-1">Snowy Snaps</a>
 
-          <div className="ml-60 flex justify-center items-center w-2/3">
+          <div className="ml-28 lg:ml-60 flex justify-center items-center w-2/3 h-full">
            <HeaderLink title="Home" location="/" />
            <HeaderLink title="Learn" location="/learn" />
            <HeaderLink title="Huskies' Gallery" location="/watch" />
             </div>
 
            {useAuth().currentUser  ?
-           <div className="flex">
-           <div className="mr-20 ">
+           <div className="flex items-start justify-center  h-full">
+           <div className="mr-16 xl:mr-20 w-full h-full">
           <HeaderLink title={username} location="/profile"/>
           </div>
-          <img id="myimg" className="w-10 h-10 xl:w-12 xl:h-12 rounded-full absolute right-5 xl:top-1 shadow-md"
+          <img id="myimg" className="w-11 h-11 xl:w-12 xl:h-12 rounded-full absolute right-2 lg:right-3 xl:right-5 top-[2px] xl:top-1 shadow-md"
            src="src\assets\profile.png" alt="userpic" />
           </div>
           :
