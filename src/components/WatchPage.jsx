@@ -34,10 +34,10 @@ const WatchPage = () => {
   
   return (
     <div className=" ">
-      <div className="flex mt-20  h-20  w-full justify-center items-center">
-      <h1 className=" text-2xl text-blue lg:text-3xl xl:text-4xl font-header">Huskies' Gallery</h1>
+      <div className="flex mt-16 md:mt-20 h-10 md:h-20  w-full justify-center items-center">
+      <h1 className=" text-3xl  text-blue  xl:text-4xl font-header">Huskies' Gallery</h1>
             </div>
-        <div className="mx-24 mb-2  mt-4 flex ">
+        <div className="mx-7 md:mx-16 lg:mx-24 mb-2  mt-4 flex ">
         <FilterSort setOrder = {setOrder} emotionArray={emotionArray} setEmotionArray = {setEmotionArray}  setImgType={setImgType} file={file}/>
         
         <UploadForm onImageUpload={handleImageUpload} file={file} setFile={setFile} />

@@ -87,7 +87,7 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
     <div className="fixed overflow-auto flex justify-center items-center top-0 left-0 w-full h-full bg-white z-50">
             <div className='w-full  h-full 
              bg-white flex flex-col lg:flex-row   lg:justify-center lg:gap-40 justify-around items-center  lg:items-center'>
-              <div className="lg:ml-10  lg:mt-0 lg:mr-0  mt-10 md:mt-20 lg:mt-24 lg:my-8  w-80 flex  justify-center items-center">
+              <div className="lg:ml-10  lg:mt-0 lg:mr-0  mt-40 md:mt-20 lg:mt-24 lg:my-8  w-80 flex  justify-center items-center">
               {/* 2xl:w-2/3 xl:w-3/4 lg:w-5/6 md:w-4/5 w-[90%] lg:h-4/5 md:h-5/6 h-[92%] */}
             <AvatarEditor
               className=" lg:ml-8  z-50 rounded-lg"
