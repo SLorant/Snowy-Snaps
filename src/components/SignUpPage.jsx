@@ -8,13 +8,12 @@ import ChooseButtons from './signincomponents/ChooseButtons';
 const SignInPage = () => {
   
   return (
-    <div className="flex flex-col justify-center items-center bg-zinc-100 h-screen ">
-      <div className="flex flex-col justify-center bg-white z-30 mt-8  items-center  border-2 rounded-xl border-stone-500  w-1/3">
-         <div className="z-0"><motion.button  className="mt-8 mb-6 rounded-md tracking-wider
-          border-2 border-slate-700 border-dashed  shadow-lg bg-white cursor-default
-    px-4 py-2 px-32 text-slate-800 font-hlight font-bold text-4xl"
+    <div className="flex flex-col justify-center items-center bg-cream h-screen ">
+      <div className="flex flex-col justify-center bg-white  mt-8  items-center  rounded-xl w-1/3">
+      <div className="z-0"><motion.div className="mt-8 mb-6 rounded-md text-peach font-header 
+     py-2   text-4xl"
     initial={{ translateY: -25, opacity:0}}
-    animate={{ translateY: 0, opacity:1, transition: { duration: 1 }}}>Sign up</motion.button></div>
+    animate={{ translateY: 0, opacity:1, transition: { duration: 1 }}}>Signup</motion.div></div>
 
         <SignUp/>
 

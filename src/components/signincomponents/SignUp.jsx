@@ -63,9 +63,9 @@ const SignUp = () => {
             
             
        
-    <div className="flex flex-col justify-center items-center  w-full  ">
-    {error && <div className="w-80 h-16 font-hlight flex justify-center text-red-700 bg-red-100 font-bold
-     items-center rounded-md text-lg text-center">
+            <div className="flex flex-col justify-center items-center  w-full  ">
+    {error && <div className="w-80 h-16 font-header flex justify-center text-blue
+     items-center  text-lg text-center mb-6">
         {error}
         </div>}
     
@@ -74,7 +74,7 @@ const SignUp = () => {
         <div className='form-group flex flex-col mt-8 w-60  '>
             
             <div className="flex items-center justify-between">
-            <label className="font-hbold text-slate-700  ">Email</label>
+            <label className="font-header text-blue  ">Email</label>
             <div className=" w-4 h-4 group relative">
             <img className=" w-4 h-4 cursor-pointer" src="./src/assets/question.png" alt="questionmark" />
                 <div className="invisible rounded-md bg-slate-400  group-hover:visible group-hover:bg-slate-700 
@@ -109,11 +109,11 @@ const SignUp = () => {
 
         <div className=" form-group flex flex-col mb-4 w-60">
             <label className="font-hbold  text-slate-700 ">Confirm password</label>
-            <input type="password" ref={passwordConfirmRef} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
+            <input type="password" ref={passwordConfirmRef} required className="h-8 bg-cream focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
         </div>
         <div className=" form-group flex flex-col mb-4 w-60">
             <label className="font-hbold  text-slate-700 ">Username</label>
-            <input type="text" ref={userNameRef} maxLength={20} required className="h-8 focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
+            <input type="text" ref={userNameRef} maxLength={20} required className="h-8 bg-cream focus:shadow-lg border-[1px] border-slate-500 rounded-sm" />
             <span className="text-black text-xs">Maximum {charactersRemaining} characters remaining</span>
         </div>
 

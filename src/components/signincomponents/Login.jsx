@@ -31,24 +31,26 @@ const Login = () => {
     <div className="">
        
         <div className="flex flex-col justify-center items-center  w-full  ">
-    {error && <div className="w-80 h-16 font-hlight flex justify-center text-red-700 bg-red-100 font-bold
-     items-center rounded-md text-lg text-center mb-6">
+    {error && <div className="w-80 h-16 font-header flex justify-center text-blue
+     items-center  text-lg text-center mb-6">
         {error}
         </div>}
     
-    <form onSubmit={handleSubmit} className="flex flex-col w-68  " >
+    <form onSubmit={handleSubmit} className="flex flex-col justify-center  items-center w-68  " >
         <div className=" form-group flex flex-col mb-6 w-60">
-            <label className="font-hbold  text-slate-700 ">Email</label>
-            <input type="email" ref={emailRef} required className="h-8 focus:shadow-lg  border-slate-500 rounded-sm" />
+            <label className="font-header  text-blue ">Email</label>
+            <input type="email" ref={emailRef} required className="input h-8  
+              text-darkblue font-body bg-cream  focus:border-cream  rounded-sm" />
         </div>
         <div className=" form-group flex flex-col mb-6 w-60">
-            <label className="font-hbold  text-slate-700 ">Password</label>
-            <input type="password" ref={passwordRef} required className="h-8 focus:shadow-lg border-slate-500 rounded-sm" />
+            <label className="font-header  text-blue">Password</label>
+            <input type="password" ref={passwordRef} required className="input h-8 font-body bg-cream   rounded-sm" />
         </div>
 
-        <motion.button className="text-blue bg-cream text-lg rounded-md font-headersc py-2 w-32 ml-28  mt-4 "
+        <motion.button className="text-lg flex justify-center items-center mt-4  bg-sand w-24 md:w-28 lg:w-32 xl:w-32  h-10 md:h-12  text-blue
+                hover:bg-blue hover:text-peach font-headersc  rounded-md  "
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>
-            <input className="cursor-pointer " disabled={loading}  type="submit" value="Sign in"/></motion.button>
+            <input className="cursor-pointer  " disabled={loading}  type="submit" value="Sign in"/></motion.button>
             </form>
    
     </div>
