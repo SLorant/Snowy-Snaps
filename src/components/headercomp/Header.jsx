@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { useAuth } from '../../contexts/AuthContext'
 import { doc, getDoc } from "firebase/firestore";
 import { projectFirestore, projectStorage } from "../../../firebase/config";
@@ -9,8 +9,13 @@ const Header = () => {
   const { currentUser } = useAuth()
   const [ username, setUserName ] = useState("")
 
-  async function loadProfilePic() {
-    if(useAuth().currentUser){
+ 
+    
+
+  useEffect(()=>{
+    if(currentUser){
+    async function loadProfilePic() {
+    
       try {
         const docRef = doc(projectFirestore, "users", currentUser.uid);
         const docSnap = await getDoc(docRef)
@@ -23,12 +28,18 @@ const Header = () => {
         const img = document.getElementById('myimg');
         img.setAttribute('src', url);
       } catch (error) {
-        console.log("user has no profile pic:", error)
-        console.log("Error getting user data:", error);
+       /*  console.log("user has no profile pic:", error)
+        console.log("Error getting user data:", error); */
       }
     }
+    loadProfilePic();
   }
-  loadProfilePic();
+
+  }, [currentUser])
+   
+  
+
+  
   
 
   return (
@@ -52,7 +63,7 @@ const Header = () => {
            src="src\assets\profile.png" alt="userpic" />
           </div>
           :
-          <div className='mr-8 flex items-center'>
+          <div className='xl:mr-12 mr-2 absolute  h-full right-2 items-center'>
           <HeaderLink title="Sign In" location="/login" />
           </div>}         
           </nav>

@@ -2,14 +2,16 @@ import { useState, useRef, React } from "react";
 import ProgressBar from '../watchpagecomp/ProgressBar';
 import {  ref, getDownloadURL } from "firebase/storage";
 import {  projectStorage } from "../../../firebase/config";
-import { useAuth } from '../../contexts/AuthContext';
 import { motion } from 'framer-motion'
 import ImageEditor from '../profilecomp/ImageEditor';
 import { FileUploader } from "react-drag-drop-files";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 
 const UploadForm = ({ file, setFile, onImageUpload}) => {
-    
+   const { currentUser } = useAuth()
+    const navigate = useNavigate()
     const [error, setError] = useState(null);
     const types = ['image/png', 'image/jpeg'];
     const isGallery = true;
@@ -30,7 +32,8 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
     
   const handleFileChange = (e) => {
   
-    console.log("first url:" + picture.img)
+    //console.log("first url:" + picture.img)
+    if (currentUser) {
     let selected = e.target.files[0];
     if(selected && selected.type==="image/gif") {
       setFile(selected)
@@ -51,6 +54,8 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
     else {
       setError("Please select an image file (png, jpg, gif)")
     }
+  }
+  else setError ("Please log in first")
 
      
     
@@ -79,7 +84,7 @@ const UploadForm = ({ file, setFile, onImageUpload}) => {
 
          </div>
          
-         {error && <div className="mt-2 text-md text-darkblue font-body"> {error}</div>}
+         {error && <div className="mt-2 text-lg text-darkblue font-body"> {error}</div>}
          
          </div>
          

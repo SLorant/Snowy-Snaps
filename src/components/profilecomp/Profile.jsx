@@ -41,11 +41,10 @@ const Profile = () => {
 })
 
   }
-  var storageRef = projectStorage.ref(currentUser.uid + "/uploadedpics");
-  
-  
-  //console.log(storageRef.listAll())
-  // Now we get the references of these images
+  var storageRef;
+
+ if (currentUser) {
+  storageRef = projectStorage.ref(currentUser.uid + "/uploadedpics")
   storageRef.listAll().then(function(result) {
     let i=1;
     let img = "";
@@ -59,8 +58,14 @@ const Profile = () => {
       
     });
   }).catch(function(error) {
-    // Handle any errors
+    "Can't load images"
   });
+ }
+  
+  
+  //console.log(storageRef.listAll())
+  // Now we get the references of these images
+  
 
   function displayImage(imageRef, img) {
     imageRef.getDownloadURL().then(function(url) {

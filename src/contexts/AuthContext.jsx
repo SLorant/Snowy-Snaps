@@ -1,8 +1,14 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth } from "../../firebase/config"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 
 const AuthContext = React.createContext()
+
+auth.useDeviceLanguage();
+
+
+
 
 export function useAuth() {
   return useContext(AuthContext)
@@ -36,6 +42,36 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+   function signInWithPopup(auth, provider){
+    console.log("asd")
+    signInWithPopup(auth, provider)
+    console.log("asd")
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    return user;
+  }
+  /* .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    return user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  }); */
+
+
   
 
   useEffect(() => {
@@ -54,7 +90,8 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    signInWithPopup
   }
 
   return (

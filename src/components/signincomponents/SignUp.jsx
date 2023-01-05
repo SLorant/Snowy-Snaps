@@ -5,7 +5,11 @@ import { motion } from "framer-motion"
 import { createUserDocument, auth } from "../../../firebase/config"
 import useStorage from "../hooks/useStorage";
 
+//import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+
 const SignUp = () => {
+    //const provider = new GoogleAuthProvider();
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef =useRef()
@@ -33,10 +37,11 @@ const SignUp = () => {
             setError('')
             setLoading(true)
             console.log(emailRef.current.value)
-            const { user }  = await signup(
+             const { user }  = await signup(
                 emailRef.current.value,
                 passwordRef.current.value
-              );
+              ); 
+           
               console.log(user)
              
             //await signup(emailRef.current.value, passwordRef.current.value, )
@@ -116,6 +121,9 @@ const SignUp = () => {
          border-2  w-32 ml-28 border-stone-600 mt-4 cursor-pointer shadow-[3px_2px_1px_1px_rgba(0,0,0,0.3)]"
          whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>
             <input className="cursor-pointer " disabled={loading}  type="submit" value="Sign up"/></motion.button>
+        
+        
+        
     </form>
     
     

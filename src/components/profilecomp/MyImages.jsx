@@ -13,23 +13,26 @@ const  MyImages = ({ setSelectedImg }) => {
      const { currentUser, logout } = useAuth()
      const navigate = useNavigate()
      const [error, setError] = useState(null);
- 
- useEffect(() => {
-     const fetchImages = async () => {
-       let result = await projectStorage.ref().child(`${currentUser.uid}/uploadedpics`).listAll();
-       let urlPromises = result.items.map((imageRef) =>
-         imageRef.getDownloadURL()
-       );
- 
-       return Promise.all(urlPromises);
-     };
- 
-     const loadImages = async () => {
-       const urls = await fetchImages();
-       setFiles(urls);
-     };
-     loadImages();
- }, []);
+ if (currentUser) {
+  useEffect(() => {
+    const fetchImages = async () => {
+      let result = await projectStorage.ref().child(`${currentUser.uid}/uploadedpics`).listAll();
+      let urlPromises = result.items.map((imageRef) =>
+        imageRef.getDownloadURL()
+      );
+
+      return Promise.all(urlPromises);
+    };
+
+    const loadImages = async () => {
+      const urls = await fetchImages();
+      setFiles(urls);
+    };
+    loadImages();
+}, []);
+
+ }
+
  
    //console.log(files);
    async function handleNavigate(){

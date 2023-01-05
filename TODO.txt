@@ -1,8 +1,9 @@
 Image upload warning
 Gif upload emotion
 upload image md size bad, others good
-Not signed in user can access profile?
+POST error when logging out from the same account twice
 USername unique?
+login google facebook
 Header logo + header arrow
 
 BIG:
@@ -10,6 +11,7 @@ DESIGN REWORK:
     logo, avatar choice, landing page, emotions
 responsiveness, mobile page
 code cleaning, optimizing
+dark mode
 Learn page
 Let's play
 Home page rework
