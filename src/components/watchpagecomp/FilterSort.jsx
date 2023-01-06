@@ -65,10 +65,10 @@ const FilterSort= ({ setOrder, emotionArray, setEmotionArray, setImgType}) => {
           </div>
         </div>
 
-        <div className={`${filteropen ? "flex" : "hidden md:flex"} flex-col   items-center`}>
-          <h2 className="text-2xl  text-center mt-1 md:mt-3  xl:text-3xl text-peach font-header  ">Filter emotion</h2>
+        <div className={`${filteropen ? "flex" : "hidden md:flex"} flex-col 2xl:mb-1    items-center`}>
+          <h2 className="text-2xl  text-center mt-1 md:mt-3 2xl:mt-0    xl:text-3xl text-peach font-header  ">Filter emotion</h2>
           
-          <div className="gap-4 md:gap-2 2xl:gap-4  2xl:mb-3 grid grid-cols-4 my-2 2xl:flex">
+          <div className="gap-4 md:gap-2 2xl:gap-4  2xl:mb-3 grid grid-cols-4 my-2 2xl:mt-4 2xl:flex">
             {emotions.map(emotion => (
         <div className="flex justify-center items-center w-10" key={emotion.label} onClick={() => handleOnClickEmotion(emotion.label)}>
           <Emoji emotionArray={emotionArray} source={emotion.label} />

@@ -51,54 +51,14 @@ async function handleSubmit(e) {
 setLoading(false)
 }
 
-/* if( useAuth().currentUser){
-  getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`))
- .then((url) => {
-    // Or inserted into an <img> element
-    const img = document.getElementById('myimg');
-    img.setAttribute('src', url);
-  })
-  .catch((error) => {
-   console.log("user has no profile pic")
-  });
- }  */
-
- /* const [ imgstate, setImgState] = useState({
-  image: "src/assets/profile.png",
-  allowZoomOut: false,
-  position: { x: 0.5, y: 0.5 },
-  scale: 1,
-  rotate: 0,
-  borderRadius: 50,
-  preview: null,
-  width: 200,
-  height: 200
-})
-
- const handleNewImage = (e) => {
-  setImgState({ image: e.target.files[0] });
-};
-
-const handleScale = (e) => {
-  const scale = parseFloat(e.target.value);
-  setImgState({ scale });
-};
-
-const handlePositionChange = (position) => {
-  setImgState({ position });
-}; */
-
-
-
-//<img className="rounded-full border-4 border-slate-700 object-cover" id="myimg" src="src\assets\profile.png" alt="" />
-    
+   
   return (
     <div >
-        <div className="w-full h-screen bg-stone-100 flex justify-center items-center">
-            <div className="w-1/2 h-3/4 mt-12  rounded-xl bg-white border-2 border-slate-600">
+        <div className="w-full h-screen bg-cream flex justify-center items-center">
+            <div className="w-1/2 h-3/4   rounded-xl bg-white ">
                 <div className='flex flex-col justify-center items-center '>
-                  <div className="w-full mt-6 h-14 bg-stone-200 flex justify-center items-center">
-                    <p className="font-hbold  text-slate-800 text-3xl ">Upload your profile picture</p>
+                  <div className="w-full mt-8  flex justify-center items-center">
+                    <p className="font-header  text-peach text-3xl ">Upload your profile picture</p>
                     </div>
                     <ImgCrop />
                 </div>

@@ -62,7 +62,7 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
         if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, gif})
         
         })
-            console.log(uploadType)
+            //Sconsole.log(uploadType)
             setUrl(url);
            
             

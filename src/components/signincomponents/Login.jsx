@@ -44,7 +44,7 @@ const Login = () => {
         </div>
         <div className=" form-group flex flex-col mb-6 w-60">
             <label className="font-header  text-blue">Password</label>
-            <input type="password" ref={passwordRef} required className="input h-8 font-body bg-cream   rounded-sm" />
+            <input type="password" ref={passwordRef} required className="input h-8 bg-cream   rounded-sm" />
         </div>
 
         <motion.button className="text-lg flex justify-center items-center mt-4  bg-sand w-24 md:w-28 lg:w-32 xl:w-32  h-10 md:h-12  text-blue

@@ -5,6 +5,7 @@ POST error when logging out from the same account twice
 USername unique?
 login google facebook
 Header logo + header arrow
+rename some components
 
 BIG:
 DESIGN REWORK:

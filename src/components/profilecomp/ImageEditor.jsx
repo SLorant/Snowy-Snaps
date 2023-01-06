@@ -105,8 +105,8 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
             
               </div>
               <div className="flex flex-col mr-8   items-center justify-center">
-               {isGallery &&
-               <div className='flex flex-col h-full  justify-center items-center'>
+              
+               
                 <div className='flex flex-col lg:mb-4 justify-center items-center mt-2  lg:mt-2  w-56 xl:w-80 '>
               <p className='text-xl text-center  lg:text-2xl text-blue font-header mt-2  '>Zoom in or out</p>
               <Slider 
@@ -120,6 +120,8 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
               style={{ color: '#2D4550' }}
             />
             </div>
+            {isGallery &&
+            <div className='flex flex-col h-full  justify-center items-center'>
              <div className="flex  flex-col gap-1 ">
                 <p className='text-xl  text-center  lg:text-2xl text-blue font-header'>Pick an aspect ratio</p>
                 <div className='lg:flex lg:flex-row   md:mt-4 lg:mt-4 flex 
