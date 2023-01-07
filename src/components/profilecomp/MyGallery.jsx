@@ -7,12 +7,16 @@ import Modal from '../watchpagecomp/Modal'
 
 const WatchPage = () => {
   const [selectedImg, setSelectedImg] = useState(null);
-
+  const [imgData, setImgData] = useState({
+    user: "",
+    emotion: "",
+    createdAt: ""
+  })
   return (
     <div>
         
-        <MyImages setSelectedImg = {setSelectedImg}/>
-        { selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }
+        <MyImages imgData={imgData} setImgData={setImgData} setSelectedImg = {setSelectedImg}/>
+        { selectedImg && <Modal imgData={imgData} setImgData={setImgData} selectedImg={selectedImg} setSelectedImg={setSelectedImg}/> }
 
         </div>
   )

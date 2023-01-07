@@ -11,11 +11,11 @@ const ImageGrid = ({ setSelectedImg, order, emotionArray,  imgType, uploaded,  o
     
     
         if (uploaded) {
-            ({docs}  = useFirestore('images', order, emotionArray, "picture"))
+            ({docs}  = useFirestore('images',undefined, order, emotionArray, "picture"))
             onImageUpload(false)
         }
         else {
-            ({docs}  = useFirestore('images', order, emotionArray, imgType))
+            ({docs}  = useFirestore('images',undefined, order, emotionArray, imgType))
         }
     
   

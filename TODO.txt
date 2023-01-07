@@ -1,11 +1,16 @@
 Image upload warning
+sign up failed to create account instead: email already exists etc
 Gif upload emotion
-upload image md size bad, others good
 POST error when logging out from the same account twice
 USername unique?
 login google facebook
-Header logo + header arrow
+Header logo
 rename some components
+change username in profile?
+profile avatars for upload/update profile
+upload update profile later button delete current image
+motion design for mobile header
+learn page infographic
 
 BIG:
 DESIGN REWORK:
@@ -14,7 +19,7 @@ responsiveness, mobile page
 code cleaning, optimizing
 dark mode
 Learn page
-Let's play
+Let's play?
 Home page rework
 video upload?
 Like system: firebase array to image, likedby: [user1, user2]

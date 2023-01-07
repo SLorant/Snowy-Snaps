@@ -48,18 +48,20 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
             //const emotion = "happy"
             
             let user = "";
+            let email = "";
             const docSnap = await getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-                //console.log("Document data:", docSnap.data());
+                console.log("Document data:", docSnap.data());
                 const data = docSnap.data();
                 user = data.username
+                email = data.email
                 //console.log(data.username)
             } else {
                 // doc.data() will be undefined in this case
                 //console.log("No such document!");
         }
 
-        if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, gif})
+        if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, email, gif})
         
         })
             //Sconsole.log(uploadType)

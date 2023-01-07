@@ -4,8 +4,9 @@ import { useAuth } from '../../contexts/AuthContext'
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom';
+import useFirestore from '../hooks/useFirestore';
 
-const  MyImages = ({ setSelectedImg }) => {
+const  MyImages = ({ setSelectedImg, setImgData}) => {
   
 
   // Get all the images from Storage
@@ -13,25 +14,7 @@ const  MyImages = ({ setSelectedImg }) => {
      const { currentUser, logout } = useAuth()
      const navigate = useNavigate()
      const [error, setError] = useState(null);
- if (currentUser) {
-  useEffect(() => {
-    const fetchImages = async () => {
-      let result = await projectStorage.ref().child(`${currentUser.uid}/uploadedpics`).listAll();
-      let urlPromises = result.items.map((imageRef) =>
-        imageRef.getDownloadURL()
-      );
 
-      return Promise.all(urlPromises);
-    };
-
-    const loadImages = async () => {
-      const urls = await fetchImages();
-      setFiles(urls);
-    };
-    loadImages();
-}, []);
-
- }
 
  
    //console.log(files);
@@ -44,22 +27,28 @@ const  MyImages = ({ setSelectedImg }) => {
     }
    }
 
+   const {docs}  = useFirestore('images', currentUser)
+
 
   return (
     <div className=" h-full ">
         <div className="mt-20 mx-20 flex flex-col justify-center items-center">
           <div className="flex justify-between w-full">
-            <h1 className="ml-7 my-4 text-4xl text-slate-800 font-hbold">My gallery</h1>
-            <motion.p onClick={handleNavigate} className="text-slate-800 text-lg font-hbold  mt-7 h-6 cursor-pointer"
+            <h1 className="ml-7 my-4 text-4xl text-blue font-header">My gallery</h1>
+            <motion.p onClick={handleNavigate} className="text-peach text-lg font-header  mt-7 h-6 cursor-pointer"
              whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>Back to profile</motion.p>
           </div>
             <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto space-y-3 pb-28 mt-4 mx-4">
 
-                { files && files.map(file => (
-                 <motion.div className="break-inside-avoid" key={file}
+                { docs && docs.map(doc => (
+                 <motion.div className="break-inside-avoid" key={doc.id}
                  layout
-                 onClick={() => {setSelectedImg(file)}}>
-                <motion.img  src={file} className="object-cover w-full h-full hover:opacity-100 opacity-80 rounded-lg" loading="lazy" alt="huskypic"
+                 onClick={() => {setSelectedImg(doc.url); setImgData({
+                    user: doc.user,
+                    emotion: doc.emotion,
+                    createdAt: doc.createdAt
+                 })}}>
+                <motion.img  src={doc.url} className="object-cover w-full h-full hover:opacity-100 opacity-80 rounded-lg" loading="lazy" alt="huskypic"
                     initial = {{ opacity: 0}}
                     animate = {{ opacity: 1}}
                     transition = {{ delay: 1}} />

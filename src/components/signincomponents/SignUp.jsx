@@ -48,7 +48,7 @@ const SignUp = () => {
             await createUserDocument(user, { username });
 
             navigate('/upload-profile')
-        } catch {
+        } catch(error) {
             if (passwordRef.current.value.length < 6)
             {  setError("Password have to be at least 6 characters long")}
             else setError('Failed to create an account')

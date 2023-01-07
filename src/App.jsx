@@ -11,6 +11,7 @@ import LoginPage from './components/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/signincomponents/ForgotPassword';
 import Profile from './components/profilecomp/Profile';
+import UpdateProfile from './components/profilecomp/UpdateProfile';
 import MyGallery from './components/profilecomp/MyGallery';
 import UploadProfilePic from './components/profilecomp/UploadProfilePic';
 import ImgCrop from './components/profilecomp/ImgCrop';
@@ -27,7 +28,8 @@ function App() {
   Auth() */
   const ProtectedProfile = WithAuth(Profile);
   const ProtectedGallery = WithAuth(MyGallery);
-   const ProtectedUploadProfile = WithAuth(UploadProfilePic);
+  const ProtectedUploadProfile = WithAuth(UploadProfilePic);
+  const ProtectedUpdateProfile = WithAuth(UpdateProfile);
   /*useEffect(() => {
     const getHuskies = async() => {
       const huskiesFromServer = await fetchHusky()
@@ -60,8 +62,10 @@ function App() {
         
       
         <Route path="profile" element={<ProtectedProfile />} />
+        <Route path="update-profile" element={<ProtectedUpdateProfile />} />
         <Route path="my-gallery" element={<ProtectedGallery />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
+
         
       </Route>
       <Route path="signup" element={<SignInPage />} />
