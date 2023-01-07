@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { DateTime } from "luxon";
+import useLike from '../hooks/useLike';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
 
@@ -15,7 +17,10 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
         }
         
     }
-
+    const {currentUser} = useAuth()
+    console.log(imgData.createdAt)
+    useLike(imgData.createdAt)
+    
     /* const handleClick2 = () => {
       console.log((new Date(imgData.createdAt.seconds*1000)).toString())
     }  */

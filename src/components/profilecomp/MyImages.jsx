@@ -6,6 +6,9 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom';
 import useFirestore from '../hooks/useFirestore';
 
+
+
+
 const  MyImages = ({ setSelectedImg, setImgData}) => {
   
 
@@ -15,7 +18,7 @@ const  MyImages = ({ setSelectedImg, setImgData}) => {
      const navigate = useNavigate()
      const [error, setError] = useState(null);
 
-
+    
  
    //console.log(files);
    async function handleNavigate(){
