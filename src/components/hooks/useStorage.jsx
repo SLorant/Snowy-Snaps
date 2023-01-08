@@ -28,6 +28,7 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
         //const user = username;
         
         const docRef = doc(projectFirestore, "users", currentUser.uid);
+       
         const collectionRef = projectFirestore.collection('images');
         const db = getFirestore()
         //console.log('i fire once');
@@ -49,19 +50,30 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
             
             let user = "";
             let email = "";
+            let id = "";
             const docSnap = await getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
                 console.log("Document data:", docSnap.data());
                 const data = docSnap.data();
                 user = data.username
                 email = data.email
+                id = data.id
                 //console.log(data.username)
             } else {
                 // doc.data() will be undefined in this case
                 //console.log("No such document!");
         }
 
-        if (uploadType==="gallery") collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, email, gif})
+        if (uploadType==="gallery") {
+            async function addCity() {
+                const newCityAdded = await collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, email, gif})
+                const data = { id: newCityAdded.id };
+                const imageRef = doc(projectFirestore, "images", newCityAdded.id);
+                await updateDoc(imageRef, data);
+                console.log("its id:", newCityAdded.id)
+            }
+            addCity()
+        }
         
         })
             //Sconsole.log(uploadType)

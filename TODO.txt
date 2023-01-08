@@ -11,6 +11,7 @@ profile avatars for upload/update profile
 upload update profile later button delete current image
 motion design for mobile header
 learn page infographic
+links instead of navigate
 
 BIG:
 DESIGN REWORK:

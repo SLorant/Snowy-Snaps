@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { DateTime } from "luxon";
 import useLike from '../hooks/useLike';
 import { useAuth } from '../../contexts/AuthContext';
+import LikeButton from './LikeButton';
 
 const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
-
+    //const useLikeHook  = useLike();
+    const [isLiked, setIsLiked] = useState(false)
     const handleClick = (e) => {
         if(e.target.classList.contains('backdrop')){
             setSelectedImg(null);
@@ -19,12 +21,18 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     }
     const {currentUser} = useAuth()
     console.log(imgData.createdAt)
-    useLike(imgData.createdAt)
+    //useLike(imgData.createdAt)
     
     /* const handleClick2 = () => {
       console.log((new Date(imgData.createdAt.seconds*1000)).toString())
     }  */
     const date = (new Date(imgData.createdAt.seconds*1000))
+
+     const handleLike = () => {
+      setIsLiked(true)
+    }; 
+
+  
 
    
     const finaldate = date.toLocaleString(DateTime.DATE_SHORT); //=>  'Thursday, 4/20/2017'
@@ -43,6 +51,8 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
           <p>By {imgData.user}</p>
           <p>Husky emotion: {imgData.emotion}</p>
           <p>Uploaded at: <br />{finaldate}</p>
+          <button onClick={handleLike}>LIKE</button>
+          {isLiked && <LikeButton imgdata = {imgData.createdAt}/>}
           
           
          </div>

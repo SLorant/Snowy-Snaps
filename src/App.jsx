@@ -17,6 +17,7 @@ import UploadProfilePic from './components/profilecomp/UploadProfilePic';
 import ImgCrop from './components/profilecomp/ImgCrop';
 import { useAuth } from './contexts/AuthContext'
 import WithAuth from './WithAuth';
+import LikedGallery from './components/profilecomp/LikedGallery';
 
 
 
@@ -28,8 +29,10 @@ function App() {
   Auth() */
   const ProtectedProfile = WithAuth(Profile);
   const ProtectedGallery = WithAuth(MyGallery);
+  const ProtectedLikedGallery = WithAuth(LikedGallery);
   const ProtectedUploadProfile = WithAuth(UploadProfilePic);
   const ProtectedUpdateProfile = WithAuth(UpdateProfile);
+
   /*useEffect(() => {
     const getHuskies = async() => {
       const huskiesFromServer = await fetchHusky()
@@ -64,6 +67,7 @@ function App() {
         <Route path="profile" element={<ProtectedProfile />} />
         <Route path="update-profile" element={<ProtectedUpdateProfile />} />
         <Route path="my-gallery" element={<ProtectedGallery />} />
+        <Route path="liked-gallery" element={<ProtectedLikedGallery />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
 
         

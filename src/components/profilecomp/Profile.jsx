@@ -6,7 +6,7 @@ import { useState } from 'react';
 import useFirestore from '../hooks/useFirestore'
 import { projectFirestore, projectStorage } from "../../../firebase/config";
 import {  ref, getDownloadURL } from "firebase/storage";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ShowcaseImg from './ShowcaseImg';
 import LargeButton from '../homepagecomp/LargeButton';
 
@@ -102,6 +102,16 @@ const Profile = () => {
       setError('Failed to go to my gallery')
     }}
 
+    async function handleNavigate2() {
+      setError('')
+  
+      try{
+        
+        navigate('/liked-gallery')
+      } catch {
+        setError('Failed to go to my gallery')
+      }}
+
    async function handleLogout() {
      setError('')
  
@@ -136,6 +146,7 @@ const Profile = () => {
           </motion.div>
 
           <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
+           onClick={handleNavigate2}
           whileHover={{ scale: 1.03, transition: { duration: 0.3 }}}
           initial = {{ opacity: 0}}
           animate = {{ opacity: 1, transition: {duration: 0.5, delay:0.2}}}
