@@ -65,14 +65,13 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
         }
 
         if (uploadType==="gallery") {
-            async function addCity() {
-                const newCityAdded = await collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, email, gif})
-                const data = { id: newCityAdded.id };
-                const imageRef = doc(projectFirestore, "images", newCityAdded.id);
+            async function addtoFireStore() {
+                const newImgAdded = await collectionRef.add({url, createdAt, emotion, emotion2, emotion3, user, email, gif})
+                const data = { id: newImgAdded.id };
+                const imageRef = doc(projectFirestore, "images", newImgAdded.id);
                 await updateDoc(imageRef, data);
-                console.log("its id:", newCityAdded.id)
             }
-            addCity()
+            addtoFireStore()
         }
         
         })

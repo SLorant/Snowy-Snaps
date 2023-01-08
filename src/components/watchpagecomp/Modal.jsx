@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 import useLike from '../hooks/useLike';
 import { useAuth } from '../../contexts/AuthContext';
 import LikeButton from './LikeButton';
+import useIsLiked from './isLiked';
 
 const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     //const useLikeHook  = useLike();
@@ -20,7 +21,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
         
     }
     const {currentUser} = useAuth()
-    console.log(imgData.createdAt)
+    //console.log(imgData.createdAt)
     //useLike(imgData.createdAt)
     
     /* const handleClick2 = () => {
@@ -28,8 +29,10 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     }  */
     const date = (new Date(imgData.createdAt.seconds*1000))
 
+    useIsLiked(imgData.createdAt, setIsLiked)
+
      const handleLike = () => {
-      setIsLiked(true)
+      isLiked ? "" : setIsLiked(true)
     }; 
 
   
@@ -51,7 +54,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
           <p>By {imgData.user}</p>
           <p>Husky emotion: {imgData.emotion}</p>
           <p>Uploaded at: <br />{finaldate}</p>
-          <button onClick={handleLike}>LIKE</button>
+          <button className='w-20 bg-blue text-lg text-cream font-header' onClick={handleLike}>LIKE</button>
           {isLiked && <LikeButton imgdata = {imgData.createdAt}/>}
           
           

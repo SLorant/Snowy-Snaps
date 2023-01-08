@@ -46,7 +46,9 @@ const Header = () => {
     <header className="fixed flex top-0 w-full z-40 ">
         <nav className="flex sticky w-full justify-between items-center h-12 xl:h-[72px] bg-sand  ">  
         <a href="#"  className="absolute font-headersc font-bold text-lg text-blue  lg:text-2xl xl:text-4xl
-         left-2 lg:left-8 xl:left-8 mb-1">Snowy Snaps</a>
+         left-2 lg:left-8 top-3 w-52 xl:left-8 mb-1">
+          <img src="src/assets/logo.png" alt="logo" />
+         </a>
 
           <div className="ml-28 lg:ml-60 flex justify-center items-center w-2/3 h-full">
            <HeaderLink title="Home" location="/" />
