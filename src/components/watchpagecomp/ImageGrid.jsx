@@ -11,7 +11,7 @@ const ImageGrid = ({ setSelectedImg, order, emotionArray,  imgType, uploaded,  o
     
     
         if (uploaded) {
-            ({docs}  = useFirestore('images',undefined, order, emotionArray, "picture"))
+            ({docs}  = useFirestore('images',undefined, order, emotionArray, imgType))
             onImageUpload(false)
         }
         else {
@@ -26,10 +26,10 @@ const ImageGrid = ({ setSelectedImg, order, emotionArray,  imgType, uploaded,  o
         
        {/*  flex flex-wrap */}
       {/*  grid grid-cols-5  */}
-            <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto space-y-3 mt-4 mx-4">
+            <div className=" columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 mx-auto space-y-3 mt-4 mx-4">
 
                 { docs && docs.map(doc => (
-                 <motion.div className="break-inside-avoid" key={doc.id}
+                 <motion.div className="break-inside-avoid " key={doc.id}
                  layout
                  onClick={() => {setSelectedImg(doc.url); setImgData({
                     user: doc.user,

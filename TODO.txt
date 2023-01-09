@@ -12,6 +12,11 @@ upload update profile later button delete current image
 motion design for mobile header
 learn page infographic
 links instead of navigate
+when uploading image progressbar placing
+grid view in gallery in mobile mode, or maybe masonry library?
+
+Not important:
+delete uploaded picture
 
 BIG:
 DESIGN REWORK:

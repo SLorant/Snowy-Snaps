@@ -55,10 +55,10 @@ setLoading(false)
   return (
     <div >
         <div className="w-full h-screen bg-cream flex justify-center items-center">
-            <div className="2xl:w-1/2 md:w-2/3 w-full h-full md:h-2/3 xl:h-4/5  2xl:h-3/4   rounded-xl bg-white ">
+            <div className="2xl:w-2/3 md:w-2/3 w-full h-full md:h-2/3 xl:h-4/5  2xl:h-4/5   rounded-xl bg-white ">
                 <div className='flex flex-col  justify-center  items-center '>
-                  <div className="w-full mt-8  flex justify-center items-center">
-                    <p className="font-header  text-peach text-2xl md:text-3xl ">Upload your profile picture</p>
+                  <div className="w-full mt-8   flex justify-center items-center">
+                    <p className="font-header  text-peach text-2xl md:text-3xl ">Profile picture</p>
                     </div>
                     <ImgCrop />
                 </div>

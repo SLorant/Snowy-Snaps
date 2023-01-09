@@ -14,13 +14,16 @@ const useIsLiked = (created, setIsLiked) => {
         const docSnap = await getDoc(docRef)
         const docdata = docSnap.data();
         const username = docdata.username;
-        //console.log(username)
+        //console.log(userniame)
         const querySnapshot = await getDocs(q)
         const likedImage = querySnapshot.docs[0];
         const likedby = likedImage.get("likedby") || [];
         //console.log(likedby)
         for (let i=0; i<likedby.length; i++){
-            if(likedby[i].username === username) setIsLiked(true)
+            if(likedby[i].username === username) {
+                setIsLiked(true)
+                //console.log(likedby[i])
+                }
         }
         
         

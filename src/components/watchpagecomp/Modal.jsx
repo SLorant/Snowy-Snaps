@@ -5,6 +5,7 @@ import useLike from '../hooks/useLike';
 import { useAuth } from '../../contexts/AuthContext';
 import LikeButton from './LikeButton';
 import useIsLiked from './isLiked';
+import Dislike from './Dislike';
 
 const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     //const useLikeHook  = useLike();
@@ -21,10 +22,12 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
         
     }
     const {currentUser} = useAuth()
-    //console.log(imgData.createdAt)
+    const userid = currentUser.uid
+    
     //useLike(imgData.createdAt)
     
     /* const handleClick2 = () => {
+      const {currentUser} = useAuth()
       console.log((new Date(imgData.createdAt.seconds*1000)).toString())
     }  */
     const date = (new Date(imgData.createdAt.seconds*1000))
@@ -32,7 +35,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     useIsLiked(imgData.createdAt, setIsLiked)
 
      const handleLike = () => {
-      isLiked ? "" : setIsLiked(true)
+      isLiked ? Dislike(imgData.createdAt, setIsLiked, userid) : setIsLiked(true)
     }; 
 
   

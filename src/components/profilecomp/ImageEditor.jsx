@@ -156,7 +156,7 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
               <motion.button  className="text-lg flex justify-center items-center bg-sand w-24 md:w-28 lg:w-32 xl:w-40 h-10 md:h-12  text-blue
                 hover:bg-blue hover:text-peach font-headersc  rounded-md "
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}
-                onClick={() => handleSave()}>Upload</motion.button>
+                onClick={() => handleSave()}>Select</motion.button>
          </div>
               </div>
             </div>
