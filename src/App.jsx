@@ -14,7 +14,6 @@ import Profile from './components/profilecomp/Profile';
 import UpdateProfile from './components/profilecomp/UpdateProfile';
 import MyGallery from './components/profilecomp/MyGallery';
 import UploadProfilePic from './components/profilecomp/UploadProfilePic';
-import ImgCrop from './components/profilecomp/ImgCrop';
 import { useAuth } from './contexts/AuthContext'
 import WithAuth from './WithAuth';
 import LikedGallery from './components/profilecomp/LikedGallery';

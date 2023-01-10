@@ -1,8 +1,8 @@
 import React from 'react'
-import ImgCrop from './ImgCrop'
 import { useState, useRef } from "react"
 import { useAuth } from "../../contexts/AuthContext"
 import { motion } from 'framer-motion'
+import AvatarChooser from './AvatarChooser'
 
 const UpdateProfile = () => {
   const [ error, setError] = useState('')
@@ -11,7 +11,7 @@ const UpdateProfile = () => {
   const { currentUser, resetPassword } = useAuth()
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    //e.preventDefault()
     try {
         setMessage('')
         setError('')
@@ -32,7 +32,7 @@ const UpdateProfile = () => {
     <div className=' bg-white flex flex-col w-1/2 h-full rounded-xl justify-center items-center'>
       <div className=' w-2/3   flex flex-col justify-center items-center'>
       <h2 className='font-header text-peach text-3xl '>Change your profile picture</h2>
-      <ImgCrop type="update"/>
+      <AvatarChooser type="update"/>
       </div>
       <div className='w-1/2 mt-8  flex flex-col justify-center items-center '>
         <h2 className='font-header text-peach text-3xl'>Change your password</h2>

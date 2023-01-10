@@ -12,12 +12,13 @@ import {
     addDoc, deleteDoc, doc, updateDoc
   } from 'firebase/firestore'
   import {  ref, getDownloadURL } from "firebase/storage";
-import ImgCrop from './ImgCrop';
+
+import AvatarChooser from './AvatarChooser';
 
 const UploadProfilePic = () => {
     const { currentUser, logout } = useAuth()
     const [ error, setError] = useState('')
-    const [ loading, setLoading] = useState(false)
+    
     const navigate =  useNavigate()
     
    
@@ -55,12 +56,12 @@ setLoading(false)
   return (
     <div >
         <div className="w-full h-screen bg-cream flex justify-center items-center">
-            <div className="2xl:w-2/3 md:w-2/3 w-full h-full md:h-2/3 xl:h-4/5  2xl:h-4/5   rounded-xl bg-white ">
+            <div className="xl:w-2/3 md:w-4/5 w-full h-full md:h-3/4 lg:h-4/5   rounded-xl bg-white ">
                 <div className='flex flex-col  justify-center  items-center '>
                   <div className="w-full mt-8   flex justify-center items-center">
-                    <p className="font-header  text-peach text-2xl md:text-3xl ">Profile picture</p>
+                    <p className="font-header  text-peach text-3xl ">Profile picture</p>
                     </div>
-                    <ImgCrop />
+                    <AvatarChooser />
                 </div>
 
                 <div className="flex flex-col justify-center items-center  w-full  ">

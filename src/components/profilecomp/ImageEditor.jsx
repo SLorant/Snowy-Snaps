@@ -7,7 +7,7 @@ import Emoji from '../watchpagecomp/Emoji';
 import ChooseButton from './ChooseButton';
 import  useWindowSize  from "../hooks/useWindowSize"
 
-const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3, editor, isGallery, setEmotion, setEmotion2, setEmotion3}) => {
+const ImageEditor = ({picture, setPicture, setFile, setCurrentFile, emotion, emotion2, emotion3, editor, isGallery, setEmotion, setEmotion2, setEmotion3}) => {
    
   const [chooseEmotionArray, setChooseEmotionArray] = useState([])
   const windowSize = useWindowSize();
@@ -71,14 +71,16 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
           }
           var objecturl = URL.createObjectURL(dataURItoBlob(croppedImg));
           let blob = await fetch(objecturl).then(r => r.blob());
-          var file = new File([blob], "my_image.png",{type:"image/png", lastModified:new Date().getTime()})
-          setFile(file)
+          
+          /* isGallery ? setFile(file) :  */
           setPicture({
             ...picture,
             img: null,
             cropperOpen: false,
             croppedImg: croppedImg
           });
+          var file = new File([blob], "my_image.png",{type:"image/png", lastModified:new Date().getTime()})
+          setFile(file)
         }
       };
 
@@ -148,8 +150,8 @@ const ImageEditor = ({picture, setPicture, setFile, emotion, emotion2, emotion3,
               </div>}
               
 
-              <div className="flex lg:flex-row  gap-8  my-2   lg:mr-0 lg:mt-10 mb-4">
-              <motion.button  className="text-lg flex justify-center items-center bg-sand w-24 md:w-28 lg:w-32 xl:w-40 h-10 md:h-12  text-blue
+              <div className="flex lg:flex-row  gap-8  my-2  md:mt-0 mt-4 lg:mr-0 lg:mt-10 mb-4">
+              <motion.button  className="text-lg flex justify-center items-center bg-sand  w-24 md:w-28 lg:w-32 xl:w-40 h-10 md:h-12  text-blue
                 hover:bg-blue hover:text-peach font-headersc  rounded-md "
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}
                 onClick={() => handleCancel()}>Cancel</motion.button>

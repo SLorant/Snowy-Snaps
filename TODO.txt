@@ -28,4 +28,5 @@ Learn page
 Let's play?
 Home page rework
 video upload?
+Others can see your profile page
 Like system: firebase array to image, likedby: [user1, user2]
