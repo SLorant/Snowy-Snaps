@@ -13,10 +13,13 @@ motion design for mobile header
 learn page infographic
 links instead of navigate
 when uploading image progressbar placing
-grid view in gallery in mobile mode, or maybe masonry library?
+Home page 3rd slide like first one, staying there
+
 
 Not important:
 delete uploaded picture
+user profile short description?
+grid view in gallery in mobile mode, or maybe masonry library?
 
 BIG:
 DESIGN REWORK:

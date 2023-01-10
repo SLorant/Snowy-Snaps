@@ -1,8 +1,5 @@
-
 import { projectFirestore } from "../../../firebase/config";
 import {  collection, query, where, getDocs, getDoc,setDoc, updateDoc, doc   } from "firebase/firestore";
-import { useAuth } from '../../contexts/AuthContext';
-import { useState, useEffect } from "react";
 
 const Dislike = (created, setIsLiked, userid) => {
     const collectionRef = collection(projectFirestore, 'images');
@@ -13,41 +10,42 @@ const Dislike = (created, setIsLiked, userid) => {
         const docSnap = await getDoc(docRef)
         const docdata = docSnap.data();
         const username = docdata.username;
-        //console.log(username)
+ 
         const querySnapshot = await getDocs(q)
         const likedImage = querySnapshot.docs[0];
-        console.log(likedImage)
         const likedby = likedImage.get("likedby") || [];
         let documents = [];
         querySnapshot.forEach(doc => {
                 documents.push({...doc.data(), id: doc.id})   
             })
-
+        const likedpics = docSnap.get('likedpics') || []
         const imgRef = doc(projectFirestore, 'images', documents[0].id);
-        //console.log(likedby)
         for (let i=0; i<likedby.length; i++){
             if(likedby[i].username === username) {
-                const newArray = likedby.filter(item => item !== likedby[i])
                 setIsLiked(false)
+                let deleteImgData;
 
+                for (let j=0; j<likedpics.length; j++){
+                    if(likedpics[j].id === likedImage.id) {
+                        const deleteFromUser = likedpics.filter(item => item !== likedpics[j])
+                        const likedpicsSet = new Set(deleteFromUser.map(pic => pic.id));
+                        deleteImgData = { likedpics: [...likedpicsSet].map(id => ({ id })) };
+                    }
+                }
+                const newArray = likedby.filter(item => item !== likedby[i])
                 const likedbySet = new Set(newArray.map(pic => pic.username));
                 const likedbydata = { likedby: [...likedbySet].map(username => ({ username })) };
 
                 try {
-                    console.log(likedbydata)
-                    console.log(likedby)
                     await updateDoc( imgRef, likedbydata);
-                    //await setDoc(likedImage, { likedby: newArray.map(item => item.username) });
+                    await updateDoc( docRef, deleteImgData);
                   } catch (error) {
                     console.error(error);
                   }
             }
         }
-        
-        
     }
     DislikeThis()
-
 }
 
 export default Dislike

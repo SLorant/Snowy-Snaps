@@ -161,7 +161,7 @@ const Profile = () => {
           <div className="mt-4  flex justify-between   w-5/6">
           
           <div className='ml-2 mt-2'>
-          <LargeButton title={"Change my profile"} link="/update-profile"/>
+          <LargeButton title={"Change my profile"}/>
           </div> 
           <div onClick={handleLogout} className='mr-2 mt-2'>
           <LargeButton  title={"Log out"}/>

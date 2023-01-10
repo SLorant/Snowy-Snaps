@@ -34,6 +34,8 @@ const ImageGrid = ({ setSelectedImg, order, emotionArray,  imgType, uploaded,  o
                  onClick={() => {setSelectedImg(doc.url); setImgData({
                     user: doc.user,
                     emotion: doc.emotion,
+                    emotion2: doc.emotion2,
+                    emotion3: doc.emotion3,
                     createdAt: doc.createdAt
                  })}}>
                 <motion.img  src={doc.url} className="object-cover w-full h-full hover:opacity-100 opacity-80 rounded-lg" loading="lazy" alt="huskypic"
