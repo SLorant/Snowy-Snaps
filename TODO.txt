@@ -1,10 +1,10 @@
-Image upload warning
+Image upload show instantly
 sign up failed to create account instead: email already exists etc
 Gif upload emotion
 POST error when logging out from the same account twice
 USername unique?
 login google facebook
-Header logo
+Heade
 rename some components
 change username in profile?
 profile avatars for upload/update profile
@@ -14,6 +14,7 @@ learn page infographic
 links instead of navigate
 when uploading image progressbar placing
 Home page 3rd slide like first one, staying there
+Upload emotion must choose at least one?
 
 
 Not important:

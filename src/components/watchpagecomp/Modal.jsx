@@ -4,12 +4,13 @@ import { DateTime } from "luxon";
 import useLike from '../hooks/useLike';
 import { useAuth } from '../../contexts/AuthContext';
 import LikeButton from './LikeButton';
-import useIsLiked from './isLiked';
-import Dislike from './Dislike';
+import IsLiked from './isLiked';
+
 
 const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     //const useLikeHook  = useLike();
     const [isLiked, setIsLiked] = useState(false)
+    const [likes, setLikes] = useState(0);
     const handleClick = (e) => {
         if(e.target.classList.contains('backdrop')){
             setSelectedImg(null);
@@ -31,8 +32,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
       [{ label: "stubborn" },  {src: "src/assets/emojis/stubborn.png"}],
       [{ label: "sad" }, {src: "src/assets/emojis/sad.png"}],
     ];
-    const {currentUser} = useAuth()
-    const userid = currentUser.uid
+   
 
     function getEmotionImg(emotion) {
       for (let i = 0; i < emotions.length; i++) {
@@ -42,7 +42,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
         //else return emotions[7][1].src;
       
       }
-      return '';
+      return ;
     }
     
     //useLike(imgData.createdAt)
@@ -50,13 +50,17 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     /* const handleClick2 = () => {
       const {currentUser} = useAuth()
       console.log((new Date(imgData.createdAt.seconds*1000)).toString())
+      
     }  */
+    const {currentUser} = useAuth()
+    const userid = currentUser.uid
     const date = (new Date(imgData.createdAt.seconds*1000))
 
-    useIsLiked(imgData.createdAt, setIsLiked)
+    IsLiked(imgData.createdAt, userid, setIsLiked, setLikes)
+    
 
      const handleLike = () => {
-      isLiked ? Dislike(imgData.createdAt, setIsLiked, userid) : setIsLiked(true)
+      isLiked ? "" : setIsLiked(true)
     }; 
 
   
@@ -67,38 +71,48 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
     
  
   return (
-    <motion.div className="backdrop fixed top-0 left-0 w-full h-full bg-black/70  z-50 flex items-center" onClick={handleClick}
+    <motion.div className="backdrop fixed top-0 left-0 w-full h-full bg-black/70 justify-center  z-50 flex items-center" onClick={handleClick}
     initial={{opacity:0}}
     animate={{opacity:1}}>
-      <motion.div className="mb-10  rounded-lg bg-white min-w-[25%] max-w-1/3 h-[50%]  mx-auto flex items-center"
+      <motion.div className="mb-10   rounded-lg bg-white min-w-[15%] max-w-1/2 h-[60%]  flex items-center"
       initial={{ y: "-100vh"}}
       animate={{ y: 0}}>
-
-        <motion.img  src={selectedImg} className="block h-[92%]  mx-4  rounded-lg border-white border-4" alt="modalpic"/>
-         <div className='mr-4 flex flex-col justify-center items-center gap-2 '>
-          <p className='font-header text-2xl text-blue text-center'>By {imgData.user}</p>
-          <div className=' flex gap-2 '>
+        <div className='flex flex-col h-full justify-center items-center'>
+          <motion.img  src={selectedImg} className="block h-[96%]  mx-2 rounded-lg border-white " alt="modalpic"/>
+          
+        </div>
+        </motion.div>
+      
+         <motion.div className='flex flex-col bg-cream justify-center w-40  ml-6 h-[30%] rounded-lg  items-center' 
+            initial={{ y: "-100vh"}}
+            animate={{ y: 0}}>
+         <p className='font-header mb-2 text-xl text-blue text-center'>By {imgData.user}</p>
+          <p className='font-header mb-4 text-sm text-center text-blue  '>{finalfinaldate}</p>
+          
+          <div className=' flex mb-2  gap-2 '>
           {/*   <p  className='font-header text-blue text-center'>Husky emotions:</p> */}
             <img className='w-9 h-10' src={getEmotionImg(imgData.emotion)} alt={imgData.emotion}/>
             <img className='w-9 h-10' src={getEmotionImg(imgData.emotion2)} alt={imgData.emotion2}/>
             <img className='w-9 h-10' src={getEmotionImg(imgData.emotion3)} alt={imgData.emotion3}/>
            </div>
-           <p className='font-header text-center text-blue '>Uploaded at: <br />{finalfinaldate}</p>
-          <button className='w-20 bg-blue text-lg text-cream font-header' onClick={handleLike}>LIKE</button>
+           
+        
 
 
-          {!isLiked &&<motion.button className='flex items-center justify-center' whileHover={{ scale: 1.2 }} onClick={handleLike}>
-          <p className='font-header absolute text-lg text-blue '>
-       40</p>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="80" height="80" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2D4550" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          {!isLiked &&<motion.button className='flex items-center justify-center'  onClick={handleLike}
+           whileHover={{ scale: 1.2 }}
+           >
+          <p className='font-header absolute text-lg text-blue '>{likes}</p>
+          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-heart" width="80" height="80" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2D4550" fill="none" strokeLinecap="round" strokeLinejoin="round"
+           >
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
 </svg></motion.button>}
-          {isLiked && <LikeButton imgdata = {imgData.createdAt}/>}
+          {isLiked && <LikeButton imgdata = {imgData.createdAt} setIsLiked={setIsLiked}/>}
           
           
-         </div>
-        </motion.div>
+         </motion.div>
+        
     </motion.div>
   )
 }
