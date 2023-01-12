@@ -19,9 +19,7 @@ const Profile = () => {
   const [ error, setError] = useState('')
     const [ loading, setLoading] = useState(false)
 
-  const myImages = [
-    {id: "myimg1"}, {id: "myimg2"}, {id: "myimg3"}, {id: "myimg4"}, {id: "myimg5"}
-    ]
+  
   const likedImages = [
     {id: "myimg6"}, {id: "myimg7"}, {id: "myimg8"}, {id: "myimg9"}, {id: "myimg10"}
   ]
@@ -41,39 +39,14 @@ const Profile = () => {
 })
 
   }
-  var storageRef;
 
- if (currentUser) {
-  storageRef = projectStorage.ref(currentUser.uid + "/uploadedpics")
-  storageRef.listAll().then(function(result) {
-    let i=1;
-    let img = "";
-    result.items.forEach(function(imageRef) {
-      
-      img = document.getElementById('myimg' + i);
-      displayImage(imageRef, img);
-      i++;
-      //console.log(img)
-      // And finally display them
-      
-    });
-  }).catch(function(error) {
-    "Can't load images"
-  });
- }
   
   
   //console.log(storageRef.listAll())
   // Now we get the references of these images
   
 
-  function displayImage(imageRef, img) {
-    imageRef.getDownloadURL().then(function(url) {
-      img.setAttribute('src', url);
-    }).catch(function(error) {
-      // Handle any errors
-    });
-  }
+  
 
 
 
@@ -126,26 +99,27 @@ const Profile = () => {
  // if (currentUser.email === docs.map(doc) )
   return (
     <div className="h-screen flex justify-center bg-cream  items-center w-full">
-     <div className="flex w-5/6 flex-col items-center   rounded-lg  h-5/6 mt-8">
+     <div className="flex w-5/6 flex-col    rounded-lg  h-5/6 mt-8">
 
       
       <div className="mt-4 w-full h-14 flex justify-center items-center ">
         <p className="text-4xl mb-4 text-blue font-header">Hi, {username}</p>
         </div>
 
-        <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
-        onClick={handleNavigate}
-        whileHover={{ scale: 1.03, transition: { duration: 0.3 }}}
+        <motion.div className="mt-4  w-1/3 items-center   rounded-lg flex flex-col justify-center"
+        
+      
         initial = {{ opacity: 0}}
         animate = {{ opacity: 1, transition: {duration: 0.5, delay: 0.2}}}>
           <p className="my-2 ml-4  font-headersc text-darkblue text-2xl ">Go to my gallery</p>
-          <div className='flex mr-8 mb-4 gap-12 items-center justify-center w-full  '>
-            {myImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))}
+          <div className='flex ml-12  mt-6 mb-20 items-center justify-start w-full  '>
+          {/*   {myImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))} */}
+            <ShowcaseImg onClick={handleNavigate}/>
           </div>
       
           </motion.div>
 
-          <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/2"
+          <motion.div className="cursor-pointer mt-4 bg-sand   rounded-lg flex flex-col justify-center   h-1/6 w-40"
            onClick={handleNavigate2}
           whileHover={{ scale: 1.03, transition: { duration: 0.3 }}}
           initial = {{ opacity: 0}}
@@ -153,7 +127,7 @@ const Profile = () => {
           >
           <p className="my-2 ml-4  font-headersc text-darkblue text-2xl ">Go to liked pics</p>
           <div className='flex mr-8 mb-4 gap-12 items-center justify-center w-full  '>
-            {likedImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))}
+           {/*  {likedImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))} */}
           </div>
       
           </motion.div>

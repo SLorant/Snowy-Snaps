@@ -10,6 +10,8 @@ const WatchPage = () => {
   const [imgData, setImgData] = useState({
     user: "",
     emotion: "",
+    emotion2: "",
+    emotion3: "",
     createdAt: ""
   })
   return (
