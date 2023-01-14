@@ -1,19 +1,33 @@
 import React from 'react'
-import { Link,  useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom'
 
-const HeaderLink = ({title, location}) => {
-    const { pathname } = useLocation();
+const HeaderLink = ({ title, location, currLoc }) => {
+  const { pathname } = useLocation()
 
   return (
-    <Link to={location} className={`${pathname ===  location  ? ' border-darkblue hover:border-darkblue' : 'border-sand'}
-    ${location === "/profile" ? "font-header" : "font-headersc"}
-     p-2 xl:p-3 px-2 lg:px-4 xl:px-6  border-b-2 block h-full  transition duration-500 hover:bg-cream
-             hover:border-peach text-lg text-blue    lg:text-xl xl:text-2xl`}>{title}</Link>
+    <Link
+      to={location}
+      className={`${
+        pathname === location ? ' border-darkblue' : 'border-transparent'
+      }
+    ${location === '/profile' ? 'font-header' : 'font-headersc'}
+    ${
+      currLoc === '/'
+        ? 'hover:border-peach hover:bg-cream'
+        : currLoc === '/watch'
+        ? 'hover:border-peach hover:bg-cream'
+        : 'hover:border-peach hover:bg-white'
+    }
+     z-50 block h-full border-b-2 p-2 px-2 text-lg text-blue transition  duration-500  lg:px-4
+              lg:text-xl xl:p-3    xl:px-4 xl:text-2xl`}
+    >
+      {title}
+    </Link>
   )
 }
 
 HeaderLink.defaultProps = {
-    title: 'Header',
-  }
+  title: 'Header',
+}
 
 export default HeaderLink

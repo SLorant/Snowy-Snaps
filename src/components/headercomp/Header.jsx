@@ -1,77 +1,96 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import { doc, getDoc } from "firebase/firestore";
-import { projectFirestore, projectStorage } from "../../../firebase/config";
-import {  ref, getDownloadURL } from "firebase/storage";
-import HeaderLink from './HeaderLink';
+import { doc, getDoc } from 'firebase/firestore'
+import { projectFirestore, projectStorage } from '../../../firebase/config'
+import { ref, getDownloadURL } from 'firebase/storage'
+import HeaderLink from './HeaderLink'
+import { useLocation } from 'react-router-dom'
 
 const Header = () => {
   const { currentUser } = useAuth()
-  const [ username, setUserName ] = useState("")
+  const [username, setUserName] = useState('')
+  const currentLocation = useLocation()
+  const currLoc = currentLocation.pathname
 
- 
-    
+  useEffect(() => {
+    if (currentUser) {
+      async function loadProfilePic() {
+        try {
+          const docRef = doc(projectFirestore, 'users', currentUser.uid)
+          const docSnap = await getDoc(docRef)
+          if (docSnap.exists()) {
+            const data = docSnap.data()
+            setUserName(data.username)
+          } else console.log('No such document!')
 
-  useEffect(()=>{
-    if(currentUser){
-    async function loadProfilePic() {
-    
-      try {
-        const docRef = doc(projectFirestore, "users", currentUser.uid);
-        const docSnap = await getDoc(docRef)
-         if (docSnap.exists()) {
-        const data = docSnap.data();
-        setUserName(data.username);
-        } else console.log("No such document!");
-         
-        const url = await getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`));
-        const img = document.getElementById('myimg');
-        img.setAttribute('src', url);
-      } catch (error) {
-       /*  console.log("user has no profile pic:", error)
+          const url = await getDownloadURL(
+            ref(projectStorage, `${currentUser.uid}/profilepics/image`),
+          )
+          const img = document.getElementById('myimg')
+          img.setAttribute('src', url)
+        } catch (error) {
+          /*  console.log("user has no profile pic:", error)
         console.log("Error getting user data:", error); */
+        }
       }
+      loadProfilePic()
     }
-    loadProfilePic();
-  }
-
   }, [currentUser])
-   
-  
-
-  
-  
 
   return (
-    <header className="fixed flex top-0 w-full z-40 ">
-        <nav className="flex sticky w-full justify-between items-center h-12 xl:h-[72px] bg-sand  ">  
-        <a href="#"  className="absolute font-headersc font-bold text-lg text-blue  lg:text-2xl xl:text-4xl
-         left-2 lg:left-6 xl:left-8 top-3 lg:top-2 xl:top-3 w-36 lg:w-44 xl:w-52 xl:left-8 mb-1">
+    <header className="fixed top-0 z-40 flex w-full ">
+      <nav
+        className={`${
+          currLoc === '/'
+            ? 'bg-sand'
+            : currLoc === '/watch'
+            ? 'bg-white'
+            : 'bg-cream'
+        } 
+        sticky flex h-12 w-full items-center justify-between xl:h-[72px]   `}
+      >
+        <a
+          href="#"
+          className="absolute left-2 top-3 mb-1 w-36  font-headersc text-lg
+         font-bold text-blue lg:left-6 lg:top-2 lg:w-44 lg:text-2xl xl:left-8 xl:left-8 xl:top-3 xl:w-52 xl:text-4xl"
+        >
           <img src="src/assets/logo.png" alt="logo" />
-         </a>
+        </a>
 
-          <div className="ml-28 lg:ml-60 flex justify-center items-center w-2/3 h-full">
-           <HeaderLink title="Home" location="/" />
-           <HeaderLink title="Learn" location="/learn" />
-           <HeaderLink title="Huskies' Gallery" location="/watch" />
+        <div className=" ml-28 flex h-full w-2/3 items-center justify-center lg:ml-60">
+          <HeaderLink title="Home" location="/" currLoc={currLoc} />
+          <HeaderLink title="Learn" location="/learn" currLoc={currLoc} />
+          <HeaderLink
+            title="Huskies' Gallery"
+            location="/watch"
+            currLoc={currLoc}
+          />
+        </div>
+
+        {useAuth().currentUser ? (
+          <div className="flex h-full items-start  justify-center">
+            <div className="mr-16 h-full w-full xl:mr-20">
+              <HeaderLink
+                title={username}
+                location="/profile"
+                currLoc={currLoc}
+              />
             </div>
-
-           {useAuth().currentUser  ?
-           <div className="flex items-start justify-center  h-full">
-           <div className="mr-16 xl:mr-20 w-full h-full">
-          <HeaderLink title={username} location="/profile"/>
+            <img
+              id="myimg"
+              className="absolute right-2 top-[2px] h-11 w-11 rounded-full shadow-md lg:right-3 xl:right-5 xl:top-1 xl:h-12 xl:w-12"
+              src="src\assets\profile.png"
+              alt="userpic"
+            />
           </div>
-          <img id="myimg" className="w-11 h-11 xl:w-12 xl:h-12 rounded-full absolute right-2 lg:right-3 xl:right-5 top-[2px] xl:top-1 shadow-md"
-           src="src\assets\profile.png" alt="userpic" />
+        ) : (
+          <div className="absolute right-2 mr-2  h-full items-center xl:mr-12">
+            <HeaderLink title="Sign In" location="/login" currLoc={currLoc} />
           </div>
-          :
-          <div className='xl:mr-12 mr-2 absolute  h-full right-2 items-center'>
-          <HeaderLink title="Sign In" location="/login" />
-          </div>}         
-          </nav>
+        )}
+      </nav>
     </header>
   )
 }
 
 export default Header
-

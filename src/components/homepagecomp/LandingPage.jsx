@@ -23,14 +23,14 @@ const LandingPage = () => {
     </div>
     <div className='w-1/2 mt-4'>
       <div className='w-1/2 ml-2'>
-        <p className='text-blue font-body text-base'>
+        <div className='text-blue font-body text-base'>
          A community for husky lovers to share and discover pictures of these beautiful dogs. 
         <p className='hidden xl:inline'>
         &nbsp;But it's not just about the images – Snowy Snaps also provides resources and information on how to care for and train your husky.
         </p>
         &nbsp;Whether you're a seasoned husky owner or just looking to learn more about these majestic animals,
            Snowy Snaps is the perfect place to start. So join the pack and share your love of huskies with us!
-        </p>
+        </div>
         </div>
       </div>
     </div>
