@@ -5,63 +5,113 @@ import updateBio from './updateBio'
 import { motion } from 'framer-motion'
 
 const Bio = ({ loadedBio }) => {
-  const userNameRef = useRef()
-  const [charactersRemaining, setCharactersRemaining] = useState(150)
+  const bioRef = useRef()
+  const loadedLength = 150 - loadedBio.length
+  const [charactersRemaining, setCharactersRemaining] = useState(loadedLength)
   const [error, setError] = useState('')
   const { currentUser } = useAuth()
   const userid = currentUser.uid
+  const notInitialRender = useRef(false)
+  const [showUpdate, setShowUpdate] = useState(false)
+  const [showChar, setShowChar] = useState(false)
+  const [updated, setUpdated] = useState(false)
+  const [bio, setBio] = useState('')
+
+  /* useEffect(() => {
+    bioRef.current.addEventListener('input', () => {
+      setCharactersRemaining(150 - bioRef.current.value.length)
+    })
+  }, []) */
 
   useEffect(() => {
-    userNameRef.current.addEventListener('input', () => {
-      setCharactersRemaining(150 - userNameRef.current.value.length)
+    bioRef.current.addEventListener('input', () => {
+      setCharactersRemaining(150 - bioRef.current.value.length)
     })
   }, [])
 
+  const handleOnChange = () => {
+    setShowChar(true)
+  }
+  const handleOnClick = () => {
+    setShowUpdate(true)
+    setBio(bioRef.current.value)
+  }
+  const handleCancel = () => {
+    setShowUpdate(false)
+    setShowChar(false)
+    updated
+      ? (document.getElementById('area').value = bio)
+      : (document.getElementById('area').value = loadedBio)
+  }
+
   async function handleSubmit(e) {
     //e.preventDefault()
-    const bio = userNameRef.current.value
+    //bio = bioRef.current.value
+    setBio(bioRef.current.value)
     try {
       setError('')
-      updateBio(userid, bio)
-      //userNameRef.current.value = ''
+      setShowChar(false)
+      setShowUpdate(false)
+      setUpdated(true)
+      updateBio(userid, bioRef.current.value)
+      //bioRef.current.value = ''
     } catch (error) {
       console.log(error)
     }
   }
-  //console.log(loadedBio)
 
   return (
-    <div>
-      <div className="form-group ml-12 mb-4 flex h-44 w-72  flex-col">
-        <label className="font-header  text-blue ">Bio</label>
+    <div className="">
+      <div className="form-group it mr-12 mb-4 flex h-52 w-72 flex-col items-start  ">
+        <label className="mr-1 font-header text-peach ">Bio</label>
         {/* <input */}
-        <div className="h-full w-full rounded-lg border-2 border-blue  ">
+        <div className="max-h-3/4 h-2/3 w-full rounded-lg border-2  border-blue focus:bg-white  ">
           <textarea
+            /*      onClick={handleOnClick} */
             type="text"
-            ref={userNameRef}
+            ref={bioRef}
+            onChange={handleOnChange}
+            onClick={handleOnClick}
             defaultValue={loadedBio}
             maxLength={150}
-            className="h-full w-full rounded-sm bg-white font-body text-darkblue"
+            id="area"
+            className="max-h-5/6 mx-2 my-2 h-[90%] w-[95%] resize-none rounded-sm border-none bg-cream font-body text-darkblue outline-none"
           ></textarea>
         </div>
-        <span className="font-body text-xs text-darkblue">
-          {charactersRemaining}
-        </span>
+        {showChar && (
+          <span className="mr-1 font-body text-xs text-darkblue">
+            {charactersRemaining}
+          </span>
+        )}
+
+        {showUpdate && (
+          <div className="items-between mt-2 flex w-full justify-between">
+            <motion.button
+              onClick={handleCancel}
+              className="text-md mt-0 flex h-6
+        w-24  items-center justify-center rounded-md bg-sand font-headersc text-blue hover:bg-blue  hover:text-peach
+               md:h-8 md:w-28 lg:w-32  xl:w-20  "
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+            >
+              Cancel
+            </motion.button>
+            <motion.button
+              onClick={handleSubmit}
+              className="text-md mt-0 flex h-10
+         w-24  items-center justify-center rounded-md bg-sand font-headersc  text-blue hover:bg-blue  hover:text-peach
+                md:h-8 md:w-28 lg:w-32  xl:w-20  "
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+            >
+              <input
+                className="cursor-pointer  "
+                /* disabled={loading} */
+                type="submit"
+                value="Update"
+              />
+            </motion.button>
+          </div>
+        )}
       </div>
-      <motion.button
-        onClick={handleSubmit}
-        className="mt-4 flex h-10 w-24
-         items-center  justify-center rounded-md bg-sand font-headersc text-lg  text-blue hover:bg-blue  hover:text-peach
-                md:h-12 md:w-28 lg:w-32  xl:w-32  "
-        whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-      >
-        <input
-          className="cursor-pointer  "
-          /* disabled={loading} */
-          type="submit"
-          value="Update"
-        />
-      </motion.button>
     </div>
   )
 }

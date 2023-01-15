@@ -104,9 +104,36 @@ const Profile = () => {
   // if (currentUser.email === docs.map(doc) )
   return (
     <div className="flex h-screen w-full items-center  justify-center bg-cream">
-      <div className="mt-8 flex h-5/6 w-5/6  flex-col rounded-lg">
+      <div className="flex h-1/3 w-1/5 flex-col items-start justify-center gap-2 rounded-r-lg    ">
+        <Link to="/upload-profile">
+          <motion.button
+            whileHover={{ translateX: 20, transition: { duration: 0.3 } }}
+            className="rounded-r-md bg-sand px-2 py-1 font-header  text-lg text-blue hover:rounded-md hover:bg-blue hover:text-peach"
+          >
+            Change profile image
+          </motion.button>
+        </Link>
+        <Link to="/reset-password">
+          <motion.button
+            whileHover={{ translateX: 20, transition: { duration: 0.3 } }}
+            className="rounded-r-md bg-sand px-2 py-1 font-header  text-lg text-blue hover:rounded-md hover:bg-blue hover:text-peach"
+          >
+            Change password
+          </motion.button>
+        </Link>
+        <Link to="/login">
+          <motion.button
+            whileHover={{ translateX: 20, transition: { duration: 0.3 } }}
+            onClick={handleLogout}
+            className="rounded-r-md bg-sand px-2 py-1 font-header  text-lg text-blue hover:rounded-md hover:bg-blue hover:text-peach"
+          >
+            Log out
+          </motion.button>
+        </Link>
+      </div>
+      <div className="mt-20 mr-20 flex h-5/6 w-5/6  flex-col rounded-lg">
         <div className="mt-2 flex h-14 w-full items-center justify-center ">
-          <p className="mb-2 font-header text-4xl text-blue">Hi, {username}</p>
+          <p className="mb-2  font-header text-4xl text-blue">Hi, {username}</p>
         </div>
 
         <motion.div
@@ -115,13 +142,13 @@ const Profile = () => {
           animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
         >
           <div className="flex  w-full items-center justify-center">
+            <Bio loadedBio={loadedBio} />
             <img
               className="w-60 "
               id="profileimg"
               src="src\assets\profile.png"
               alt="userpic"
             />
-            <Bio loadedBio={loadedBio} />
           </div>
           <div className="my-8 flex flex-col items-center justify-center bg-sand">
             <p className="mt-4   font-header text-3xl text-peach ">
@@ -133,30 +160,6 @@ const Profile = () => {
             </div>
           </div>
         </motion.div>
-
-        <motion.div
-          className="mt-4 flex h-1/6   w-40 cursor-pointer flex-col justify-center   rounded-lg bg-sand"
-          onClick={handleNavigate2}
-          whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
-        >
-          <p className="my-2 ml-4  font-headersc text-2xl text-darkblue ">
-            Go to liked pics
-          </p>
-          <div className="mr-8 mb-4 flex w-full items-center justify-center gap-12  ">
-            {/*  {likedImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))} */}
-          </div>
-        </motion.div>
-
-        <div className="mt-4  flex w-5/6   justify-between">
-          <div className="ml-2 mt-2">
-            <LargeButton title={'Change my profile'} />
-          </div>
-          <div onClick={handleLogout} className="mr-2 mt-2">
-            <LargeButton title={'Log out'} />
-          </div>
-        </div>
       </div>
     </div>
   )

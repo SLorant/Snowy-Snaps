@@ -1,77 +1,84 @@
 import React from 'react'
 import UploadForm from '../watchpagecomp/UploadForm'
 import ProgressBar from '../watchpagecomp/ProgressBar'
-import { projectFirestore, projectStorage } from "../../../firebase/config";
-import { useState } from 'react';
+import { projectFirestore, projectStorage } from '../../../firebase/config'
+import { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import AvatarEditor from 'react-avatar-editor'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
-    getFirestore, collection, onSnapshot, getDoc,
-    addDoc, deleteDoc, doc, updateDoc
-  } from 'firebase/firestore'
-  import {  ref, getDownloadURL } from "firebase/storage";
+  getFirestore,
+  collection,
+  onSnapshot,
+  getDoc,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from 'firebase/firestore'
+import { ref, getDownloadURL } from 'firebase/storage'
 
-import AvatarChooser from './AvatarChooser';
+import AvatarChooser from './AvatarChooser'
 
 const UploadProfilePic = () => {
-    const { currentUser, logout } = useAuth()
-    const [ error, setError] = useState('')
-    
-    const navigate =  useNavigate()
-    
-   
+  const { currentUser, logout } = useAuth()
+  const [error, setError] = useState('')
 
-const db = getFirestore()
-//const docRef = doc(db, "users", "LUdJmSsMLQSVErWaJwPyKUlQaIv2");
+  const navigate = useNavigate()
 
-// Set the "capital" field of the city 'DC'
-/* onSnapshot(docRef, (doc) => {
+  const db = getFirestore()
+  //const docRef = doc(db, "users", "LUdJmSsMLQSVErWaJwPyKUlQaIv2");
+
+  // Set the "capital" field of the city 'DC'
+  /* onSnapshot(docRef, (doc) => {
   console.log(doc.data(), doc.id)
 }) */
 
-async function handleSubmit(e) {
-  e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-  try {
-    setError('')
-    setLoading(true)
-    let docRef = doc(db, 'users', currentUser.uid)
+    try {
+      setError('')
+      setLoading(true)
+      let docRef = doc(db, 'users', currentUser.uid)
 
-    /* await updateDoc(docRef, {
+      /* await updateDoc(docRef, {
        profilePic: "profilephotsassa"
     }); */
-  
-    //navigate('/')
-} catch {
-   
-    setError('Failed to update')
-    
-}
-setLoading(false)
-}
 
-   
+      //navigate('/')
+    } catch {
+      setError('Failed to update')
+    }
+    setLoading(false)
+  }
+
   return (
-    <div >
-        <div className="w-full h-screen bg-cream flex justify-center items-center">
-            <div className="xl:w-2/3 md:w-4/5 w-full h-full md:h-3/4 lg:h-4/5   rounded-xl bg-white ">
-                <div className='flex flex-col  justify-center  items-center '>
-                  <div className="w-full mt-8   flex justify-center items-center">
-                    <p className="font-header  text-peach text-3xl ">Profile picture</p>
-                    </div>
-                    <AvatarChooser />
-                </div>
-
-                <div className="flex flex-col justify-center items-center  w-full  ">
-                {error && <div className="w-80 h-16 font-hlight flex justify-center text-red-700 bg-red-100 font-bold
-                items-center rounded-md text-lg text-center">
-                {error}
-                </div>}
-                </div>
+    <div>
+      <div className=" flex h-screen w-full items-center justify-center bg-cream ">
+        <div className=" h-full h-full w-full rounded-xl bg-white  md:w-4/5 xl:w-2/3   2xl:h-4/5 ">
+          <div className="flex flex-col  items-center  justify-center ">
+            <div className="mt-8 flex   w-full items-center justify-center">
+              <p className="font-header  text-3xl text-peach ">
+                Profile picture
+              </p>
             </div>
+            <AvatarChooser />
+          </div>
+
+          <div className="flex w-full flex-col items-center  justify-center  ">
+            {error && (
+              <div
+                className="font-hlight text-red-700 bg-red-100 flex h-16 w-80 items-center justify-center
+                rounded-md text-center text-lg font-bold"
+              >
+                {error}
+              </div>
+            )}
+          </div>
         </div>
+      </div>
     </div>
   )
 }
