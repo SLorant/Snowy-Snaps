@@ -43,41 +43,37 @@ const ShowcaseImg = () => {
       })
   }
   return (
-    <div className="relative top-0 left-0 flex cursor-pointer">
-      <motion.img
-        className="relative top-0 left-0 z-50 h-48 w-48 rounded-md object-cover object-center shadow-lg"
+    <div className="group relative top-0 left-0 flex cursor-pointer">
+      <img
+        className="relative top-1 left-1 z-10 h-48 w-48
+         -rotate-3 rounded-md object-cover object-center shadow-lg transition duration-500 ease-in-out
+         group-hover:translate-y-4 group-hover:-translate-x-20 group-hover:-rotate-12  "
         src="src\assets\profile.png"
         alt="pic"
         id="myimg1"
-        whileHover={{ translateY: -30, transition: { duration: 0.2 } }}
       />
-      <motion.img
-        className="absolute left-12 top-2 z-40 h-48 w-48 rounded-md object-cover  object-center shadow-lg"
+      <img
+        className="absolute left-4 top-4 z-20 h-48 w-48 rotate-2 rounded-md object-cover  object-center shadow-lg
+          transition duration-500 ease-in-out
+        group-hover:-translate-y-2 group-hover:-translate-x-8 group-hover:-rotate-3"
         src="src\assets\profile.png"
         alt="pic"
         id="myimg2"
-        whileHover={{ translateY: -30, transition: { duration: 0.2 } }}
       />
-      <motion.img
-        className="absolute left-24 top-4 z-30 h-48 w-48 rounded-md object-cover object-center shadow-lg"
+      <img
+        className="absolute left-8 top-7 z-30  h-48 w-48 -rotate-2 rounded-md object-cover object-center shadow-lg
+        transition duration-500 ease-in-out group-hover:-translate-y-4 group-hover:translate-x-2 group-hover:rotate-3"
         src="src\assets\profile.png"
         alt="pic"
         id="myimg3"
-        whileHover={{ translateY: -30, transition: { duration: 0.2 } }}
       />
-      <motion.img
-        className="absolute left-36 top-6 z-20 h-48 w-48 rounded-md object-cover object-center shadow-lg"
+      <img
+        className="absolute left-14 top-6 z-40 h-48 w-48 rotate-1 rounded-md object-cover object-center shadow-lg
+         transition duration-500 ease-in-out
+        group-hover:translate-y-4 group-hover:translate-x-14 group-hover:rotate-12"
         src="src\assets\profile.png"
         alt="pic"
         id="myimg4"
-        whileHover={{ translateY: -30, transition: { duration: 0.2 } }}
-      />
-      <motion.img
-        className="absolute left-48 top-8 h-48 w-48 rounded-md object-cover  object-center shadow-lg"
-        src="src\assets\profile.png"
-        alt="pic"
-        id="myimg5"
-        whileHover={{ translateY: -30, transition: { duration: 0.2 } }}
       />
     </div>
   )

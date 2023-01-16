@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import ShowcaseImg from './ShowcaseImg'
 import LargeButton from '../homepagecomp/LargeButton'
 import Bio from './Bio'
+import Settings from './Settings'
 
 const Profile = () => {
   const { currentUser, logout } = useAuth()
@@ -90,76 +91,41 @@ const Profile = () => {
     }
   }
 
-  async function handleLogout() {
-    setError('')
-
-    try {
-      await logout()
-      navigate('/login')
-    } catch {
-      setError('Failed to log out')
-    }
-  }
-
   // if (currentUser.email === docs.map(doc) )
   return (
     <div className="flex h-screen w-full items-center  justify-center bg-cream">
-      <div className="flex h-1/3 w-1/5 flex-col items-start justify-center gap-2 rounded-r-lg    ">
-        <Link to="/upload-profile">
-          <motion.button
-            whileHover={{ translateX: 20, transition: { duration: 0.3 } }}
-            className="rounded-r-md bg-sand px-2 py-1 font-header  text-lg text-blue hover:rounded-md hover:bg-blue hover:text-peach"
+      <div className=" flex h-3/4 w-2/3 flex-col items-center justify-center rounded-lg bg-white">
+        <p className="mb-2 mt-12  font-header text-4xl text-blue">
+          Hi, {username}
+        </p>
+        <div className="flex w-full items-center justify-around rounded-lg  ">
+          <motion.div
+            className="mt-0  flex w-full items-center  justify-center gap-40 "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
           >
-            Change profile image
-          </motion.button>
-        </Link>
-        <Link to="/reset-password">
-          <motion.button
-            whileHover={{ translateX: 20, transition: { duration: 0.3 } }}
-            className="rounded-r-md bg-sand px-2 py-1 font-header  text-lg text-blue hover:rounded-md hover:bg-blue hover:text-peach"
-          >
-            Change password
-          </motion.button>
-        </Link>
-        <Link to="/login">
-          <motion.button
-            whileHover={{ translateX: 20, transition: { duration: 0.3 } }}
-            onClick={handleLogout}
-            className="rounded-r-md bg-sand px-2 py-1 font-header  text-lg text-blue hover:rounded-md hover:bg-blue hover:text-peach"
-          >
-            Log out
-          </motion.button>
-        </Link>
-      </div>
-      <div className="mt-20 mr-20 flex h-5/6 w-5/6  flex-col rounded-lg">
-        <div className="mt-2 flex h-14 w-full items-center justify-center ">
-          <p className="mb-2  font-header text-4xl text-blue">Hi, {username}</p>
-        </div>
-
-        <motion.div
-          className="mt-0  flex w-full  flex-col items-center justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
-        >
-          <div className="flex  w-full items-center justify-center">
-            <Bio loadedBio={loadedBio} />
-            <img
-              className="w-60 "
-              id="profileimg"
-              src="src\assets\profile.png"
-              alt="userpic"
-            />
-          </div>
-          <div className="my-8 flex flex-col items-center justify-center bg-sand">
-            <p className="mt-4   font-header text-3xl text-peach ">
-              Go to my Gallery
-            </p>
-            <div className="mr-52 mt-6 flex  w-full items-center justify-center  ">
-              {/*   {myImages.map( image => ( <ShowcaseImg key={image.id} id={image.id}/>))} */}
-              <ShowcaseImg onClick={handleNavigate} />
+            <div className="flex   flex-col  items-center justify-center ">
+              <img
+                className="w-60 "
+                id="profileimg"
+                src="src\assets\profile.png"
+                alt="userpic"
+              />
+              <Bio loadedBio={loadedBio} />
             </div>
-          </div>
-        </motion.div>
+            <div className="mb-8 flex  flex-col items-center justify-center">
+              <p className=" mb-6 font-header text-2xl text-peach ">
+                My Gallery
+              </p>
+              <div className="mr-0 mb-20 flex  w-full items-center justify-center  ">
+                <Link to="/my-gallery">
+                  <ShowcaseImg onClick={handleNavigate} />
+                </Link>
+              </div>
+              <Settings />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   )
