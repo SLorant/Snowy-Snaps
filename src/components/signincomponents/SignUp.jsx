@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { createUserDocument, auth } from '../../../firebase/config'
 import useStorage from '../hooks/useStorage'
+import ProgressBar from '../watchpagecomp/ProgressBar'
 
 //import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
@@ -17,8 +18,9 @@ const SignUp = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
+  const [file, setFile] = useState(null)
   const [charactersRemaining, setCharactersRemaining] = useState(20)
+  const uploadType = 'profile'
 
   useEffect(() => {
     userNameRef.current.addEventListener('input', () => {
@@ -37,17 +39,22 @@ const SignUp = () => {
       setError('')
       setLoading(true)
       console.log(emailRef.current.value)
-      const { user } = await signup(
-        emailRef.current.value,
-        passwordRef.current.value,
-      )
+      const { user } = await signup(emailRef.current.value, passwordRef.current.value)
 
       console.log(user)
 
       //await signup(emailRef.current.value, passwordRef.current.value, )
       await createUserDocument(user, { username })
+      const response = await fetch('src/assets/avatars/normalavatar.png')
+      const file = await response.arrayBuffer()
+      console.log(file)
+      var newFile = new File([file], 'my_image.png', {
+        type: 'image/png',
+        lastModified: new Date().getTime(),
+      })
+      setFile(newFile)
 
-      navigate('/upload-profile')
+      /* navigate('/upload-profile') */
     } catch (error) {
       if (passwordRef.current.value.length < 6) {
         setError('Password have to be at least 6 characters long')
@@ -62,16 +69,12 @@ const SignUp = () => {
         {error && (
           <div
             className="mb-6 flex h-16 w-80 items-center justify-center
-     text-center  font-header text-lg text-blue"
-          >
+     text-center  font-header text-lg text-blue">
             {error}
           </div>
         )}
 
-        <form
-          onSubmit={handleSubmit}
-          className="w-68 flex flex-col items-center justify-center"
-        >
+        <form onSubmit={handleSubmit} className="w-68 flex flex-col items-center justify-center">
           <div className="form-group flex w-60  flex-col  ">
             <div className="flex items-center justify-between">
               <label className="font-header text-blue  ">Email</label>
@@ -83,8 +86,7 @@ const SignUp = () => {
                 />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-10 
-                h-14 w-48 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  "
-                >
+                h-14 w-48 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  ">
                   <p className="mt-2 ml-2 font-body text-sm text-white">
                     Email format required. <br /> user.name@example.com
                   </p>
@@ -110,11 +112,8 @@ const SignUp = () => {
                 />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-5 
-                h-9 w-40 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   "
-                >
-                  <p className="mt-2 ml-2 font-body text-sm text-white">
-                    At least 6 characters.
-                  </p>
+                h-9 w-40 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   ">
+                  <p className="mt-2 ml-2 font-body text-sm text-white">At least 6 characters.</p>
                 </div>
               </div>
             </div>
@@ -153,16 +152,21 @@ const SignUp = () => {
             className="mt-4 flex h-10 w-24
          items-center  justify-center rounded-md bg-sand font-headersc text-lg  text-blue hover:bg-blue  hover:text-peach
                 md:h-12 md:w-28 lg:w-32  xl:w-32  "
-            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-          >
-            <input
-              className="cursor-pointer  "
-              disabled={loading}
-              type="submit"
-              value="Sign up"
-            />
+            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+            <input className="cursor-pointer  " disabled={loading} type="submit" value="Sign up" />
           </motion.button>
         </form>
+        {file && (
+          <div className="hidden">
+            <ProgressBar
+              setLoading={setLoading}
+              file={file}
+              setFile={setFile}
+              uploadType={uploadType}
+              isFirst={true}
+            />
+          </div>
+        )}
       </div>
     </div>
   )

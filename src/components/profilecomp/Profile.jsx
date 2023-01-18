@@ -18,7 +18,7 @@ const Profile = () => {
   //db.collection('books').doc('fK3ddutEpD2qQqRMXNW5').get()
   const [username, setUserName] = useState('')
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
   const [loadedBio, setLoadedBio] = useState('')
 
   const likedImages = [
@@ -37,7 +37,7 @@ const Profile = () => {
         if (profDocSnap.exists()) {
           const data = profDocSnap.data()
           setUserName(data.username)
-          data.bio.length ? setLoadedBio(data.bio) : ''
+          data.bio ? setLoadedBio(data.bio) : ''
         } else console.log('No such document!')
 
         const url = await getDownloadURL(
@@ -46,8 +46,8 @@ const Profile = () => {
         const img = document.getElementById('profileimg')
         img.setAttribute('src', url)
       } catch (error) {
-        /*  console.log("user has no profile pic:", error)
-        console.log("Error getting user data:", error); */
+        console.log('user has no profile pic:', error)
+        console.log('Error getting user data:', error)
       }
     }
     loadProfilePic()
@@ -91,19 +91,27 @@ const Profile = () => {
     }
   }
 
+  const handleSelectSettings = () => {}
+
   // if (currentUser.email === docs.map(doc) )
   return (
     <div className="flex h-screen w-full items-center  justify-center bg-cream">
-      <div className=" flex h-4/5 w-1/2 flex-col items-center justify-center rounded-lg bg-white">
+      <div className=" flex h-4/5 w-full flex-col items-center justify-center rounded-lg bg-white md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
         <div className="flex w-full items-center justify-around rounded-lg  ">
           <motion.div
             className="mt-0  flex w-full flex-col items-center  justify-center "
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
-          >
-            <div className="flex  items-center justify-center gap-4 ">
+            animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}>
+            <div className="flex flex-col-reverse items-center  justify-center gap-4 md:flex-row ">
               <div className="relative flex items-end">
-                <motion.button className="absolute" whileFocus={{ rotate: 90 }}>
+                <motion.button
+                  className="absolute"
+                  /*  whileFocus={{ rotate: 90 }} */
+
+                  animate={showSettings ? { rotate: 90 } : { rotate: 0 }}
+                  onClick={() => {
+                    setShowSettings(!showSettings)
+                  }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-settings  cursor-pointer"
@@ -114,8 +122,7 @@ const Profile = () => {
                     stroke="#2D4550"
                     fill="none"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
+                    stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
                     <circle cx="12" cy="12" r="3" />
@@ -127,14 +134,14 @@ const Profile = () => {
                   src="src\assets\profile.png"
                   alt="userpic"
                 />
+                {showSettings && <Settings />}
               </div>
-              <div className=" mt-8 flex flex-col items-end ">
+              <div className=" mt-8 flex flex-col items-center md:items-end ">
                 <div className="flex items-end justify-between ">
                   <p
                     className={`${
                       username.length > 10 ? ' text-2xl' : 'text-4xl'
-                    }  font-header  text-blue`}
-                  >
+                    }   font-header text-blue`}>
                     Hi, {username}
                   </p>
                 </div>
@@ -142,9 +149,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="mb-8 flex  flex-col items-center justify-center">
-              <p className=" mb-6 font-header text-3xl text-peach ">
-                My Gallery
-              </p>
+              <p className=" mb-6 font-header text-3xl text-peach ">My Gallery</p>
               <div className="mr-8 mb-8  flex  w-full items-center justify-center  ">
                 <Link to="/my-gallery">
                   <ShowcaseImg onClick={handleNavigate} />

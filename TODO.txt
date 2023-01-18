@@ -12,25 +12,19 @@ upload update profile later button delete current image
 motion design for mobile header
 learn page infographic
 links instead of navigate
-when uploading image progressbar placing
 Home page 3rd slide like first one, staying there
-Upload emotion must choose at least one?
+profile change flashing pic
 
 
 Not important:
 delete uploaded picture
-user profile short description?
 grid view in gallery in mobile mode, or maybe masonry library?
 
 BIG:
-DESIGN REWORK:
-    logo, avatar choice, landing page, emotions
 responsiveness, mobile page
 code cleaning, optimizing
 dark mode
 Learn page
-Let's play?
 Home page rework
 video upload?
 Others can see your profile page
-Like system: firebase array to image, likedby: [user1, user2]

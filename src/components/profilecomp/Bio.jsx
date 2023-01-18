@@ -62,7 +62,7 @@ const Bio = ({ loadedBio }) => {
 
   return (
     <div className="">
-      <div className="form-group mt-4 mb-4 flex h-44 w-72 flex-col items-end  ">
+      <div className="form-group mt-2 mb-4 flex h-44 w-72 flex-col items-end  ">
         {/* <input */}
         <div className="max-h-3/4 h-4/5 w-full rounded-lg   bg-cream  ">
           <label className="ml-2 font-header text-lg text-peach">Bio</label>

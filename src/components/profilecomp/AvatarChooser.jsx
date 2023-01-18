@@ -12,9 +12,7 @@ const AvatarChooser = ({ type }) => {
   const { currentUser } = useAuth()
   const [file, setFile] = useState(null)
   const [currentFile, setCurrentFile] = useState(null)
-  const [selected, setSelected] = useState(
-    'src/assets/avatars/normalavatar.png',
-  )
+  const [selected, setSelected] = useState('src/assets/avatars/normalavatar.png')
 
   const avatars = [
     { normal: 'src/assets/avatars/normalavatar.png' },
@@ -93,8 +91,7 @@ const AvatarChooser = ({ type }) => {
       <div className="flex h-full flex-col md:w-[95%] md:flex-row  xl:w-[90%] ">
         <div
           className={`${type === 'update' ? 'mt-8' : ''}
-           flex w-full  flex-col items-center justify-center   gap-2 `}
-        >
+           flex w-full  flex-col items-center justify-center   gap-2 `}>
           <p className=" mb-2  text-center font-header text-lg text-blue">
             Choose from these avatars
           </p>
@@ -129,12 +126,10 @@ const AvatarChooser = ({ type }) => {
             <motion.button
               className="uploadbutton flex h-12 w-32 items-center  justify-center  rounded-md bg-cream  font-headersc
     text-blue hover:bg-blue hover:text-peach  md:h-12 "
-              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-            >
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               <label
                 htmlFor="files"
-                className=" flex w-32 cursor-pointer items-center justify-center gap-1 text-center text-lg"
-              >
+                className=" flex w-32 cursor-pointer items-center justify-center gap-1  text-center text-lg">
                 Upload
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -146,8 +141,7 @@ const AvatarChooser = ({ type }) => {
                   stroke="#2D4550"
                   fill="none"
                   strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                  strokeLinejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
                   <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
@@ -172,26 +166,18 @@ const AvatarChooser = ({ type }) => {
             src={picture.croppedImg}
             className="mt-10  w-60 rounded-full md:w-60 lg:mt-6 lg:w-72 xl:mt-0 xl:w-80 2xl:w-[425px]  "
           />
-          <p className="mt-2 text-center font-header text-blue lg:text-lg">
-            Your chosen profile
-          </p>
+          <p className="mt-2 text-center font-header text-blue lg:text-lg">Your chosen profile</p>
           <motion.button
             onClick={handleUploadButtonClick}
             className="my-4 flex h-12 w-24 items-center 
          justify-center rounded-md bg-sand font-header text-lg text-blue hover:bg-blue hover:text-peach md:mt-2 md:mb-0 md:w-28 lg:w-32 xl:w-32 "
-            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-          >
+            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             I'm done
           </motion.button>
         </div>
       </div>
       {picture.cropperOpen && (
-        <ImageEditor
-          setFile={setFile}
-          picture={picture}
-          setPicture={setPicture}
-          editor={editor}
-        />
+        <ImageEditor setFile={setFile} picture={picture} setPicture={setPicture} editor={editor} />
       )}
 
       {/*    <Link  className={`${ type ==="update" ? "hidden" : "block"}`} to="/profile"> */}
