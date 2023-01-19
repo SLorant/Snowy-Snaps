@@ -62,7 +62,7 @@ const Bio = ({ loadedBio }) => {
 
   return (
     <div className="">
-      <div className="form-group mt-2 mb-4 flex h-44 w-72 flex-col items-end  ">
+      <div className="form-group mt-2 flex h-44 w-64 flex-col items-end md:mb-4 md:w-72  ">
         {/* <input */}
         <div className="max-h-3/4 h-4/5 w-full rounded-lg   bg-cream  ">
           <label className="ml-2 font-header text-lg text-peach">Bio</label>
@@ -75,33 +75,28 @@ const Bio = ({ loadedBio }) => {
             defaultValue={loadedBio}
             maxLength={150}
             id="area"
-            className="mx-2  h-3/4 w-[95%] resize-none rounded-sm border-none bg-cream font-body text-darkblue outline-none"
-          ></textarea>
+            className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body text-darkblue outline-none"></textarea>
         </div>
         {showChar && (
-          <span className="ml-1 font-body text-xs text-darkblue">
-            {charactersRemaining}
-          </span>
+          <span className="ml-1 mt-1 font-body text-xs text-darkblue">{charactersRemaining}</span>
         )}
 
         {showUpdate && (
-          <div className="items-between mt-2 flex w-full justify-between">
+          <div className="items-between mt-1 mb-4 flex w-full justify-between">
             <motion.button
               onClick={handleCancel}
-              className="text-md mt-0 flex h-6
+              className="text-md mt-0 flex h-8
         w-24  items-center justify-center rounded-md bg-sand font-headersc text-blue hover:bg-blue  hover:text-peach
                md:h-8 md:w-28 lg:w-32  xl:w-20  "
-              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-            >
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               Cancel
             </motion.button>
             <motion.button
               onClick={handleSubmit}
-              className="text-md mt-0 flex h-10
+              className="text-md mt-0 flex h-8
          w-24  items-center justify-center rounded-md bg-sand font-headersc  text-blue hover:bg-blue  hover:text-peach
                 md:h-8 md:w-28 lg:w-32  xl:w-20  "
-              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-            >
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               <input
                 className="cursor-pointer  "
                 /* disabled={loading} */

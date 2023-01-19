@@ -95,69 +95,74 @@ const Profile = () => {
 
   // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="flex h-screen w-full items-center  justify-center bg-cream">
-      <div className=" flex h-4/5 w-full flex-col items-center justify-center rounded-lg bg-white md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
-        <div className="flex w-full items-center justify-around rounded-lg  ">
-          <motion.div
-            className="mt-0  flex w-full flex-col items-center  justify-center "
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}>
-            <div className="flex flex-col-reverse items-center  justify-center gap-4 md:flex-row ">
-              <div className="relative flex items-end">
-                <motion.button
-                  className="absolute"
-                  /*  whileFocus={{ rotate: 90 }} */
+    <div className="z-50 h-full w-full  bg-black">
+      <div className=" flex  h-full w-full items-center  justify-center bg-cream">
+        <div className="flex h-3/4 w-full flex-col items-center justify-center rounded-lg bg-white md:my-20  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
+          <div className="flex w-full items-center justify-around rounded-lg  ">
+            <motion.div
+              className="mt-36 flex w-full  flex-col items-center justify-center md:mt-0  "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}>
+              <div className="flex flex-col items-center  justify-center gap-4 md:flex-row ">
+                <div className="flex items-end md:relative">
+                  <motion.button
+                    className="invisible absolute md:visible"
+                    /*  whileFocus={{ rotate: 90 }} */
 
-                  animate={showSettings ? { rotate: 90 } : { rotate: 0 }}
-                  onClick={() => {
-                    setShowSettings(!showSettings)
-                  }}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-settings  cursor-pointer"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="#2D4550"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </motion.button>
-                <img
-                  className="relative w-52 rounded-full"
-                  id="profileimg"
-                  src="src\assets\profile.png"
-                  alt="userpic"
-                />
-                {showSettings && <Settings />}
-              </div>
-              <div className=" mt-8 flex flex-col items-center md:items-end ">
-                <div className="flex items-end justify-between ">
-                  <p
-                    className={`${
-                      username.length > 10 ? ' text-2xl' : 'text-4xl'
-                    }   font-header text-blue`}>
-                    Hi, {username}
-                  </p>
+                    animate={showSettings ? { rotate: 90 } : { rotate: 0 }}
+                    onClick={() => {
+                      setShowSettings(!showSettings)
+                    }}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="icon icon-tabler icon-tabler-settings  cursor-pointer"
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="#2D4550"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </motion.button>
+                  <img
+                    className="relative w-52 rounded-full"
+                    id="profileimg"
+                    src="src\assets\profile.png"
+                    alt="userpic"
+                  />
+                  {showSettings && <Settings />}
                 </div>
-                <Bio loadedBio={loadedBio} />
+                <div className=" flex flex-col items-center md:mt-8 md:items-end ">
+                  <div className="absolute top-20 flex items-end justify-between md:static ">
+                    <p
+                      className={`${
+                        username.length > 10 ? ' text-2xl' : 'text-4xl'
+                      }   font-header text-blue`}>
+                      Hi, {username}
+                    </p>
+                  </div>
+                  <Bio loadedBio={loadedBio} />
+                </div>
               </div>
-            </div>
-            <div className="mb-8 flex  flex-col items-center justify-center">
-              <p className=" mb-6 font-header text-3xl text-peach ">My Gallery</p>
-              <div className="mr-8 mb-8  flex  w-full items-center justify-center  ">
-                <Link to="/my-gallery">
-                  <ShowcaseImg onClick={handleNavigate} />
-                </Link>
+              <div className="mb-8 flex  flex-col items-center justify-center">
+                <p className=" mb-6 font-header text-3xl text-peach ">My Gallery</p>
+                <div className="mr-12 mb-8 flex  w-full  items-center justify-center md:mr-8  ">
+                  <Link to="/my-gallery">
+                    <ShowcaseImg onClick={handleNavigate} />
+                  </Link>
+                </div>
               </div>
-            </div>
-            {/*  <Settings /> */}
-          </motion.div>
+              {/*  <Settings /> */}
+            </motion.div>
+          </div>
+          <div className="mb-0 mt-6 block flex w-full items-center justify-center md:hidden">
+            <Settings />
+          </div>
         </div>
       </div>
     </div>

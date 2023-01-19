@@ -43,17 +43,17 @@ const Settings = () => {
 
   return (
     <motion.div
-      className="absolute top-[270px] flex w-48 flex-col items-start justify-center rounded-lg bg-cream md:right-16 lg:right-24    "
+      className="flex w-full flex-col items-start justify-center bg-cream md:absolute md:top-[270px] md:right-16 md:w-48 md:rounded-lg lg:right-24    "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.3 } }}>
-      <div className="group w-full cursor-pointer rounded-md border-b-2 border-sand  transition duration-200  ease-in-out hover:border-peach hover:bg-blue">
+      <div className="group w-full cursor-pointer border-b-2 border-sand transition  duration-200 ease-in-out  hover:border-peach hover:bg-blue md:rounded-md">
         <button
           className="float-left my-1 w-full text-start  font-header text-blue transition duration-200  ease-in-out  group-hover:text-peach  "
-          onClick={() => navigate('/my-gallery')}>
+          onClick={() => navigate('/upload-profile')}>
           <p className="ml-2">Change profile image</p>
         </button>
       </div>
-      <div className="group w-full cursor-pointer rounded-md border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach hover:bg-blue">
+      <div className="group w-full cursor-pointer border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach hover:bg-blue md:rounded-md">
         <button
           onClick={handleResetPassword}
           className=" my-1 w-full text-start font-header  text-blue transition duration-200  ease-in-out group-hover:text-peach">
@@ -63,7 +63,7 @@ const Settings = () => {
       {showElement && message && (
         <div className="mt-2 mb-4 w-60 font-body text-lg  text-darkblue">{message}</div>
       )}
-      <div className="group w-full cursor-pointer rounded-md  transition duration-200  ease-in-out hover:bg-blue">
+      <div className="group w-full cursor-pointer transition  duration-200 ease-in-out  hover:bg-blue md:rounded-md">
         <button
           onClick={handleLogout}
           className=" my-1 w-full text-start  font-header text-blue transition  duration-200 ease-in-out  group-hover:text-peach">

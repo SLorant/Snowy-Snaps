@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "SimsBoldSC";
-  src: url("./TheSimsSansBoldSC.otf");
+  font-family: 'SimsBoldSC';
+  src: url('./TheSimsSansBoldSC.otf');
 }
 @font-face {
-  font-family: "SimsBold";
-  src: url("./TheSimsSansBold.otf");
+  font-family: 'SimsBold';
+  src: url('./TheSimsSansBold.otf');
 }
 @font-face {
-  font-family: "WithoutRain";
-  src: url("./AYearWithoutRain.ttf");
+  font-family: 'WithoutRain';
+  src: url('./AYearWithoutRain.ttf');
 }
 ::-webkit-scrollbar {
   width: 12px;
@@ -27,6 +27,11 @@
 }
 html {
   scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
 }
 
 .uploadbutton:hover .icon-tabler-file-upload {

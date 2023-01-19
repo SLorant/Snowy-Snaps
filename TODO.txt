@@ -1,6 +1,6 @@
 Image upload show instantly
 sign up failed to create account instead: email already exists etc
-Gif upload emotion
+Gif upload emotion, error doesnt disappear
 POST error when logging out from the same account twice
 USername unique?
 login google facebook
@@ -14,6 +14,8 @@ learn page infographic
 links instead of navigate
 Home page 3rd slide like first one, staying there
 profile change flashing pic
+&& instead of ternary
+h2 h1 instead of p
 
 
 Not important:

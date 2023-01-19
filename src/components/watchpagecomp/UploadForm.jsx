@@ -7,6 +7,7 @@ import ImageEditor from '../profilecomp/ImageEditor'
 import { FileUploader } from 'react-drag-drop-files'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
+import GifUploader from './GifUploader'
 
 const UploadForm = ({ file, setFile, onImageUpload }) => {
   const { currentUser } = useAuth()
@@ -21,22 +22,28 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
   const [emotion2, setEmotion2] = useState('')
   const [emotion3, setEmotion3] = useState('')
   const [gif, setGif] = useState(false)
+  const [showGifUp, setShowGifUp] = useState(false)
   const [picture, setPicture] = useState({
     cropperOpen: false,
     img: null,
     zoom: 2,
     croppedImg: 'src/assets/profile.png',
   })
+  let selected
 
+  const [pic, setPic] = useState(null)
   const handleFileChange = (e) => {
     //console.log("first url:" + picture.img)
     if (currentUser) {
-      let selected = e.target.files[0]
-      if (selected && selected.type === 'image/gif') {
-        setFile(selected)
-        setGif(true)
-      }
+      selected = e.target.files[0]
+      /* if (selected && selected.type === 'image/gif') {
+        
+      } */
       let url = URL.createObjectURL(e.target.files[0])
+      console.log(url)
+      setPic(url)
+      console.log(selected)
+
       if (selected && types.includes(selected.type)) {
         document.body.style.overflow = 'hidden'
         setGif(false)
@@ -47,7 +54,8 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
         })
         setError('')
       } else if (selected.type === 'image/gif') {
-        setError('Uploaded gif successfully')
+        setGif(true)
+        setShowGifUp(true)
       } else {
         setError('Please select an image file (png, jpg, gif)')
       }
@@ -55,6 +63,19 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
   }
   return (
     <div className=" relative mb-4 flex w-0 items-start justify-start md:w-1/4  lg:ml-4  xl:ml-0">
+      {showGifUp && (
+        <GifUploader
+          setShowGifUp={setShowGifUp}
+          setFile={setFile}
+          url={pic}
+          setEmotion={setEmotion}
+          setEmotion2={setEmotion2}
+          setEmotion3={setEmotion3}
+          emotion={emotion}
+          emotion2={emotion2}
+          emotion3={emotion3}
+        />
+      )}
       <div className="ml-8 mt-4 hidden w-full flex-col items-center justify-start md:flex lg:mt-8 xl:mt-4">
         <h2 className="text-center   font-header text-xl text-blue md:w-32 lg:w-80 xl:text-2xl ">
           Post your own husky!
@@ -95,7 +116,7 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
             <input className="hidden" id="files" type="file" onChange={handleFileChange} />
           </motion.button>
         </div>
-
+        <p className="font-headersc text-sm text-blue opacity-40">PNG, JPG, GIF</p>
         {error && <div className="mt-2 font-body text-lg text-darkblue"> {error}</div>}
       </div>
 
