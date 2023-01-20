@@ -45,36 +45,28 @@ const Header = () => {
             ? 'bg-sand'
             : currLoc === '/watch'
             ? 'bg-white'
+            : currLoc === '/my-gallery'
+            ? 'bg-white '
             : 'bg-cream'
         } 
-        sticky flex h-12 w-full items-center justify-between xl:h-[72px]   `}
-      >
+        sticky flex h-12 w-full items-center justify-between xl:h-[72px]   `}>
         <a
           href="#"
           className="absolute left-2 top-3 mb-1 w-36  font-headersc text-lg
-         font-bold text-blue lg:left-6 lg:top-2 lg:w-44 lg:text-2xl xl:left-8 xl:left-8 xl:top-3 xl:w-52 xl:text-4xl"
-        >
+         font-bold text-blue lg:left-6 lg:top-2 lg:w-44 lg:text-2xl xl:left-8 xl:left-8 xl:top-3 xl:w-52 xl:text-4xl">
           <img src="src/assets/logo.png" alt="logo" />
         </a>
 
         <div className=" ml-28 flex h-full w-2/3 items-center justify-center lg:ml-60">
           <HeaderLink title="Home" location="/" currLoc={currLoc} />
           <HeaderLink title="Learn" location="/learn" currLoc={currLoc} />
-          <HeaderLink
-            title="Huskies' Gallery"
-            location="/watch"
-            currLoc={currLoc}
-          />
+          <HeaderLink title="Huskies' Gallery" location="/watch" currLoc={currLoc} />
         </div>
 
         {useAuth().currentUser ? (
           <div className="flex h-full items-start  justify-center">
             <div className="mr-16 h-full w-full xl:mr-20">
-              <HeaderLink
-                title={username}
-                location="/profile"
-                currLoc={currLoc}
-              />
+              <HeaderLink title={username} location="/profile" currLoc={currLoc} />
             </div>
             <img
               id="myimg"

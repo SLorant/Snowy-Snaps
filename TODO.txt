@@ -1,6 +1,5 @@
 Image upload show instantly
 sign up failed to create account instead: email already exists etc
-Gif upload emotion, error doesnt disappear
 POST error when logging out from the same account twice
 USername unique?
 login google facebook
@@ -8,7 +7,6 @@ upload profile responsiveness test
 rename some components
 change username in profile?
 profile avatars for upload/update profile
-upload update profile later button delete current image
 motion design for mobile header
 learn page infographic
 links instead of navigate

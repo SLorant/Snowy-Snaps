@@ -1,4 +1,4 @@
-import { useState, useRef, React } from 'react'
+import { useState, useEffect, React } from 'react'
 import ProgressBar from '../watchpagecomp/ProgressBar'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { projectStorage } from '../../../firebase/config'
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
 
-const UploadForm = ({ file, setFile, onImageUpload }) => {
+const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
   const { currentUser } = useAuth()
   const navigate = useNavigate()
   const [error, setError] = useState(null)
@@ -30,8 +30,15 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
     croppedImg: 'src/assets/profile.png',
   })
   let selected
+  const [showError, setShowError] = useState(true)
 
   const [pic, setPic] = useState(null)
+  useEffect(() => {
+    setTimeout(function () {
+      setError(null)
+    }, 10000)
+  }, [error])
+
   const handleFileChange = (e) => {
     //console.log("first url:" + picture.img)
     if (currentUser) {
@@ -62,7 +69,10 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
     } else setError('Please log in first')
   }
   return (
-    <div className=" relative mb-4 flex w-0 items-start justify-start md:w-1/4  lg:ml-4  xl:ml-0">
+    <div
+      className={`${
+        gallery ? '' : ' relative mb-4 w-0 items-start justify-start  md:w-1/4  lg:ml-4  xl:ml-0'
+      } flex `}>
       {showGifUp && (
         <GifUploader
           setShowGifUp={setShowGifUp}
@@ -76,8 +86,11 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
           emotion3={emotion3}
         />
       )}
-      <div className="ml-8 mt-4 hidden w-full flex-col items-center justify-start md:flex lg:mt-8 xl:mt-4">
-        <h2 className="text-center   font-header text-xl text-blue md:w-32 lg:w-80 xl:text-2xl ">
+      <div
+        className={`${
+          gallery ? '' : ' ml-8 mt-4'
+        } hidden w-full flex-col items-center justify-start md:flex lg:mt-8 xl:mt-4`}>
+        <h2 className="  text-center font-header text-xl text-blue md:w-32 lg:w-80 xl:text-2xl ">
           Post your own husky!
         </h2>
         <div className=" flex items-center justify-center">
@@ -85,7 +98,6 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
             className="uploadbutton flex h-16 w-40 items-center  justify-center rounded-md  bg-cream font-headersc  text-blue
     hover:bg-blue hover:text-peach lg:h-12  lg:w-52 "
             whileHover={{
-              translateY: 10,
               transition: {
                 duration: 0.2,
               },
@@ -120,7 +132,7 @@ const UploadForm = ({ file, setFile, onImageUpload }) => {
         {error && <div className="mt-2 font-body text-lg text-darkblue"> {error}</div>}
       </div>
 
-      <div className="absolute bottom-2 right-24 flex flex-col  items-center justify-center">
+      <div className="absolute bottom-0 right-16 flex flex-col  items-center justify-center">
         {file && (
           <div className="">
             <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div>

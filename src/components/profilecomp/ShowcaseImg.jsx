@@ -50,7 +50,7 @@ const ShowcaseImg = () => {
          group-hover:-rotate-12 md:h-48 md:w-48  "
         src="src\assets\placeholder.png"
         alt="pic"
-        id="myimg1"
+        id="myimg4"
       />
       <img
         className="absolute left-4 top-4 z-20 h-36 w-36 rotate-2 rounded-md object-cover object-center drop-shadow-lg  transition duration-500
@@ -58,14 +58,14 @@ const ShowcaseImg = () => {
         group-hover:-rotate-6 md:h-48 md:w-48"
         src="src\assets\placeholder.png"
         alt="pic"
-        id="myimg2"
+        id="myimg3"
       />
       <img
         className="absolute  left-8 top-7 z-30  h-36 w-36 -rotate-2 rounded-md object-cover object-center drop-shadow-lg transition duration-500
         ease-in-out group-hover:-translate-y-4 group-hover:translate-x-4 group-hover:rotate-3 md:h-48 md:w-48"
         src="src\assets\placeholder.png"
         alt="pic"
-        id="myimg3"
+        id="myimg2"
       />
       <img
         className="absolute left-14 top-6 z-40  h-36 w-36 rotate-1 rounded-md object-cover object-center drop-shadow-lg transition duration-500
@@ -73,7 +73,7 @@ const ShowcaseImg = () => {
         group-hover:rotate-12 md:h-48 md:w-48"
         src="src\assets\placeholder.png"
         alt="pic"
-        id="myimg4"
+        id="myimg1"
       />
     </div>
   )
