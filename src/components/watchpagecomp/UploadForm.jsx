@@ -106,7 +106,7 @@ const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
             <label
               htmlFor="files"
               className=" flex h-16 w-40 cursor-pointer items-center justify-center gap-2  text-center text-lg lg:h-12 lg:w-52">
-              Upload image
+              Upload snap
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-file-upload   lg:w-auto"
