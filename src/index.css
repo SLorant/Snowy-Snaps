@@ -52,3 +52,13 @@ input:-webkit-autofill:active {
 input:-webkit-autofill {
   -webkit-text-fill-color: #14232c !important;
 }
+
+@layer utilities {
+  .clip-img {
+    clip-path: inset(0px 0px 0px 0px round 6px);
+    box-shadow: inset 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+.imagecontainer {
+  box-shadow: inset 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+}
