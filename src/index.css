@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  font-size: 16px;
+}
+
 @font-face {
   font-family: 'SimsBoldSC';
   src: url('./TheSimsSansBoldSC.otf');
@@ -24,14 +38,6 @@
 }
 ::-webkit-scrollbar-thumb {
   background: #888;
-}
-html {
-  scroll-behavior: smooth;
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
 }
 
 .uploadbutton:hover .icon-tabler-file-upload {

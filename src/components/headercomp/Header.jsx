@@ -53,7 +53,7 @@ const Header = () => {
         <a
           href="#"
           className="absolute left-2 top-3 mb-1 w-36  font-headersc text-lg
-         font-bold text-blue lg:left-6 lg:top-2 lg:w-44 lg:text-2xl xl:left-8 xl:left-8 xl:top-3 xl:w-52 xl:text-4xl">
+         font-bold text-blue lg:left-6 lg:top-2 lg:w-44 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl">
           <img src="src/assets/logo.png" alt="logo" />
         </a>
 

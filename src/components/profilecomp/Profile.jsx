@@ -95,7 +95,7 @@ const Profile = () => {
 
   // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="z-50 h-full w-full  bg-black">
+    <div className="z-50 h-full w-full  ">
       <div className=" flex  h-full w-full items-center  justify-center bg-cream">
         <div className="flex h-3/4 w-full flex-col items-center justify-center rounded-lg bg-white md:my-20  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
           <div className="flex w-full items-center justify-around rounded-lg  ">

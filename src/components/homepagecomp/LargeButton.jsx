@@ -8,7 +8,7 @@ const LargeButton = ({ title, link }) => {
       <motion.div
         className=" cursor-pointer rounded-md bg-cream "
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-        <h2 className="py-2  px-4 text-center font-header text-darkblue md:text-lg  lg:text-xl 2xl:text-2xl ">
+        <h2 className="py-3  px-6 text-center font-header text-blue md:text-lg  lg:text-xl 2xl:text-3xl ">
           {title}
         </h2>
       </motion.div>

@@ -14,6 +14,7 @@ Home page 3rd slide like first one, staying there
 profile change flashing pic
 && instead of ternary
 h2 h1 instead of p
+font families
 
 
 Not important:
