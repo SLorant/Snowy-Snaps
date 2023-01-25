@@ -13,10 +13,10 @@ const GalleryTop = ({ likedGallery, setLikedGallery }) => {
     }
   }
   return (
-    <div className="mr-24 mt-5 flex w-1/2 flex-col  items-center justify-center gap-0 ">
-      <div className="flex w-full ">
+    <div className=" mt-5 flex w-[450px] flex-col items-center  justify-center gap-0  ">
+      <div className="flex w-full items-center justify-center ">
         <div className=" flex w-full flex-col content-center gap-2 rounded-md bg-cream">
-          <h2 className="mt-2  text-center font-header text-2xl text-peach xl:text-3xl   ">
+          <h2 className="mt-2  text-center font-header text-3xl text-peach xl:text-4xl   ">
             Choose content
           </h2>
           <div className="mb-2 flex items-center justify-center gap-10">
@@ -31,7 +31,7 @@ const GalleryTop = ({ likedGallery, setLikedGallery }) => {
               onClick={() => setLikedGallery(false)}
               className={`${
                 likedGallery ? 'opacity-60' : 'opacity-100'
-              } cursor-pointer text-center font-header text-xl text-blue`}
+              } cursor-pointer text-center font-header text-2xl text-blue`}
               whileHover={{ scale: 1.1 }}>
               Uploaded snaps
             </motion.p>
@@ -40,7 +40,7 @@ const GalleryTop = ({ likedGallery, setLikedGallery }) => {
               onClick={() => setLikedGallery(true)}
               className={`${
                 likedGallery ? 'opacity-100' : 'opacity-60'
-              }  cursor-pointer text-center font-header text-xl text-blue`}
+              }  cursor-pointer text-center font-header text-2xl text-blue`}
               whileHover={{ scale: 1.1 }}>
               Liked snaps
             </motion.p>

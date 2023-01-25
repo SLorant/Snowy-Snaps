@@ -34,10 +34,10 @@ const WatchPage = () => {
   }
   return (
     <div>
-      <div className="mt-24 flex flex-col items-center justify-center">
-        <h1 className=" font-header  text-3xl  text-blue xl:text-4xl">My Gallery</h1>
-        <div className="mt-2 flex w-2/3  items-center  justify-center gap-20 ">
-          <div className="w-60 ">
+      <div className="mt-32 flex flex-col items-center justify-center">
+        <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">My Gallery</h1>
+        <div className="mt-2 flex w-full items-center justify-center   md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-24 2xl:gap-28 ">
+          <div className="mt-1 md:w-60">
             <UploadForm
               gallery={gallery}
               onImageUpload={handleImageUpload}
@@ -48,9 +48,10 @@ const WatchPage = () => {
           <GalleryTop likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
           <motion.button
             onClick={handleNavigate}
-            className=" mt-6 w-1/5 cursor-pointer rounded-md bg-cream p-2 font-header text-lg  text-blue hover:bg-blue hover:text-peach"
+            className="mt-6 hidden w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue hover:bg-blue hover:text-peach md:block   lg:text-xl xl:w-1/6"
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-            Back to profile
+            Back
+            <p className="hidden xl:inline">&nbsp;to profile</p>
           </motion.button>
         </div>
       </div>

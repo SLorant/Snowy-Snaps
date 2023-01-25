@@ -61,11 +61,11 @@ const Bio = ({ loadedBio }) => {
   }
 
   return (
-    <div className="">
-      <div className="form-group mt-2 flex h-44 w-64 flex-col items-end md:mb-4 md:w-72  ">
+    <div className="w-full">
+      <div className="form-group mt-2 flex h-52   w-80 flex-col  items-end md:mb-4  ">
         {/* <input */}
         <div className="max-h-3/4 h-4/5 w-full rounded-lg   bg-cream  ">
-          <label className="ml-2 font-header text-lg text-peach">Bio</label>
+          <label className="ml-2 font-header text-2xl text-peach">Bio</label>
           <textarea
             /*      onClick={handleOnClick} */
             type="text"
@@ -75,10 +75,10 @@ const Bio = ({ loadedBio }) => {
             defaultValue={loadedBio}
             maxLength={150}
             id="area"
-            className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body text-darkblue outline-none"></textarea>
+            className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body text-lg text-darkblue outline-none"></textarea>
         </div>
         {showChar && (
-          <span className="ml-1 mt-1 font-body text-xs text-darkblue">{charactersRemaining}</span>
+          <span className="ml-1 mt-1 font-body text-sm text-darkblue">{charactersRemaining}</span>
         )}
 
         {showUpdate && (

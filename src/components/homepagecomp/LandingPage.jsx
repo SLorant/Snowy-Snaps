@@ -37,7 +37,7 @@ const LandingPage = () => {
         <img
           src="src/assets/landinghusky.png"
           alt="huskylove"
-          className="absolute -top-6 z-30 h-[1000px] w-full object-cover opacity-100"
+          className="absolute -top-10 z-30 h-[1000px] w-full object-cover opacity-100"
         />
       </div>
 

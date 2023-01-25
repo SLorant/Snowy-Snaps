@@ -49,15 +49,15 @@ const Header = () => {
             ? 'bg-white '
             : 'bg-cream'
         } 
-        sticky flex h-12 w-full items-center justify-between xl:h-[72px]   `}>
+        sticky flex h-14 w-full items-center justify-between  xl:h-[72px]   `}>
         <a
           href="#"
-          className="absolute left-2 top-3 mb-1 w-36  font-headersc text-lg
-         font-bold text-blue lg:left-6 lg:top-2 lg:w-44 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl">
+          className="absolute left-2 top-4 mb-1 w-44  font-headersc text-lg
+         font-bold text-blue lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl">
           <img src="src/assets/logo.png" alt="logo" />
         </a>
 
-        <div className=" ml-28 flex h-full w-2/3 items-center justify-center lg:ml-60">
+        <div className=" ml-40 flex h-full w-2/3 items-center justify-center lg:ml-60 xl:ml-80">
           <HeaderLink title="Home" location="/" currLoc={currLoc} />
           <HeaderLink title="Learn" location="/learn" currLoc={currLoc} />
           <HeaderLink title="Huskies' Gallery" location="/watch" currLoc={currLoc} />
@@ -70,7 +70,7 @@ const Header = () => {
             </div>
             <img
               id="myimg"
-              className="absolute right-2 top-[2px] h-11 w-11 rounded-full shadow-md lg:right-3 xl:right-5 xl:top-1 xl:h-12 xl:w-12"
+              className="absolute right-2 top-[2px] h-11 w-11 rounded-full shadow-md lg:right-3 xl:right-5 xl:top-2 xl:h-14 xl:w-14"
               src="src\assets\profile.png"
               alt="userpic"
             />

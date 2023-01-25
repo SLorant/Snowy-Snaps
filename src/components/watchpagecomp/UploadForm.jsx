@@ -5,7 +5,7 @@ import { projectStorage } from '../../../firebase/config'
 import { motion } from 'framer-motion'
 import ImageEditor from '../profilecomp/ImageEditor'
 import { FileUploader } from 'react-drag-drop-files'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
 
@@ -90,13 +90,13 @@ const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
         className={`${
           gallery ? '' : ' ml-8 mt-4'
         } hidden w-full flex-col items-center justify-start md:flex lg:mt-8 xl:mt-4`}>
-        <h2 className="  text-center font-header text-xl text-blue md:w-32 lg:w-80 xl:text-2xl ">
+        <h2 className="  mb-2 text-center font-header text-xl text-blue md:w-32 lg:w-80 xl:text-3xl ">
           Post your own husky!
         </h2>
         <div className=" flex items-center justify-center">
           <motion.button
             className="uploadbutton flex h-16 w-40 items-center  justify-center rounded-md  bg-cream font-headersc  text-blue
-    hover:bg-blue hover:text-peach lg:h-12  lg:w-52 "
+    hover:bg-blue hover:text-peach lg:h-14  lg:w-52 "
             whileHover={{
               transition: {
                 duration: 0.2,
@@ -105,7 +105,7 @@ const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
             }}>
             <label
               htmlFor="files"
-              className=" flex h-16 w-40 cursor-pointer items-center justify-center gap-2  text-center text-lg lg:h-12 lg:w-52">
+              className=" flex h-16 w-40 cursor-pointer items-center justify-center gap-2  text-center text-xl lg:h-12 lg:w-52">
               Upload snap
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -128,8 +128,12 @@ const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
             <input className="hidden" id="files" type="file" onChange={handleFileChange} />
           </motion.button>
         </div>
-        <p className="font-headersc text-sm text-blue opacity-40">PNG, JPG, GIF</p>
-        {error && <div className="mt-2 font-body text-lg text-darkblue"> {error}</div>}
+        <p className="mt-1 font-headersc text-base text-blue opacity-40">PNG, JPG, GIF</p>
+        {error && (
+          <div className="mt-2 font-body text-xl text-darkblue underline">
+            <Link to="/login"> {error}</Link>
+          </div>
+        )}
       </div>
 
       <div className="absolute bottom-0 right-16 flex flex-col  items-center justify-center">
@@ -166,14 +170,14 @@ const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
         )}
       </div>
 
-      <button className="fixed right-3 bottom-3 h-16 w-16 rounded-full bg-sand md:hidden">
+      <button className="fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:hidden">
         <div className="flex items-center justify-center">
           <label
             htmlFor="files"
-            className="uploadbutton flex h-16 w-16 cursor-pointer items-center justify-center rounded-full text-center text-lg duration-200 hover:bg-blue">
+            className="uploadbutton flex h-20 w-20 cursor-pointer items-center justify-center rounded-full text-center text-lg duration-200 hover:bg-blue">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon  icon-tabler icon-tabler-file-upload z-10  w-11 lg:w-auto"
+              className="icon  icon-tabler icon-tabler-file-upload z-10  w-14 md:w-11 lg:w-auto"
               width="64"
               height="64"
               viewBox="0 0 24 24"

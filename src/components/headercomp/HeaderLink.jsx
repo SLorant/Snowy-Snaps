@@ -18,8 +18,8 @@ const HeaderLink = ({ title, location, currLoc }) => {
         ? 'hover:border-peach hover:bg-cream'
         : 'hover:border-peach hover:bg-white'
     }
-     headerlink z-50 block flex h-full items-center border-b-2 p-2 px-2 text-center text-xl text-blue  transition  duration-500
-              lg:px-4 lg:text-2xl    xl:px-6   2xl:text-3xl`}>
+     headerlink z-50 block flex h-full items-center border-b-2 p-2 px-2 text-center text-2xl text-blue  transition  duration-500
+              lg:px-4 lg:text-2xl    xl:px-6   xl:text-3xl`}>
       {title}
     </Link>
   )

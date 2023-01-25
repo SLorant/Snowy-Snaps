@@ -95,9 +95,9 @@ const Profile = () => {
 
   // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="z-50 h-full w-full  ">
+    <div className="z-50 h-full w-full md:h-screen  ">
       <div className=" flex  h-full w-full items-center  justify-center bg-cream">
-        <div className="flex h-3/4 w-full flex-col items-center justify-center rounded-lg bg-white md:my-20  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
+        <div className="flex h-full w-full flex-col items-center justify-center rounded-lg bg-white md:my-20 md:h-4/5  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
           <div className="flex w-full items-center justify-around rounded-lg  ">
             <motion.div
               className="mt-36 flex w-full  flex-col items-center justify-center md:mt-0  "
@@ -130,14 +130,14 @@ const Profile = () => {
                     </svg>
                   </motion.button>
                   <img
-                    className="relative w-52 rounded-full"
+                    className="relative w-64 rounded-full  md:mt-0"
                     id="profileimg"
                     src="src\assets\profile.png"
                     alt="userpic"
                   />
                   {showSettings && <Settings />}
                 </div>
-                <div className=" flex flex-col items-center md:mt-8 md:items-end ">
+                <div className=" flex flex-col items-center  md:mt-8 md:items-end ">
                   <div className="absolute top-20 flex items-end justify-between md:static ">
                     <p
                       className={`${
@@ -150,8 +150,8 @@ const Profile = () => {
                 </div>
               </div>
               <div className="mb-8 flex  flex-col items-center justify-center">
-                <p className=" mb-6 font-header text-3xl text-peach ">My Gallery</p>
-                <div className="mr-12 mb-8 flex  w-full  items-center justify-center md:mr-8  ">
+                <p className=" mb-6 font-header text-4xl text-peach ">My Gallery</p>
+                <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
                   <Link to="/my-gallery">
                     <ShowcaseImg onClick={handleNavigate} />
                   </Link>

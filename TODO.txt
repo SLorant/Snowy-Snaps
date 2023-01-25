@@ -15,6 +15,7 @@ profile change flashing pic
 && instead of ternary
 h2 h1 instead of p
 font families
+modal like if not logged in?
 
 
 Not important:

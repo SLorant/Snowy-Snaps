@@ -77,17 +77,17 @@ const SignUp = () => {
         <form onSubmit={handleSubmit} className="w-68 flex flex-col items-center justify-center">
           <div className="form-group flex w-60  flex-col  ">
             <div className="flex items-center justify-between">
-              <label className="font-header text-blue  ">Email</label>
-              <div className=" group relative h-4 w-4">
+              <label className="font-header text-lg text-blue  ">Email</label>
+              <div className=" group relative h-5 w-5">
                 <img
-                  className=" h-4 w-4 cursor-pointer"
+                  className=" h-5 w-5 cursor-pointer"
                   src="./src/assets/question.png"
                   alt="questionmark"
                 />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-10 
-                h-14 w-48 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  ">
-                  <p className="mt-2 ml-2 font-body text-sm text-white">
+                h-16 w-48 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  ">
+                  <p className="mt-2 ml-2 font-body  text-white">
                     Email format required. <br /> user.name@example.com
                   </p>
                 </div>
@@ -97,23 +97,23 @@ const SignUp = () => {
               type="email"
               ref={emailRef}
               required
-              className="h-8 rounded-sm bg-cream font-body  text-darkblue"
+              className="h-9 rounded-sm bg-cream font-body text-lg  text-darkblue"
             />
           </div>
 
           <div className="form-group my-6 flex w-60 flex-col">
             <div className="flex items-center justify-between">
-              <label className="font-header text-blue ">Password</label>
-              <div className=" group relative h-4 w-4">
+              <label className="font-header text-lg text-blue">Password</label>
+              <div className=" group relative h-5 w-5">
                 <img
-                  className=" h-4 w-4 cursor-pointer"
+                  className=" h-5 w-5 cursor-pointer"
                   src="./src/assets/question.png"
                   alt="questionmark"
                 />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-5 
-                h-9 w-40 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   ">
-                  <p className="mt-2 ml-2 font-body text-sm text-white">At least 6 characters.</p>
+                h-10 w-40 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   ">
+                  <p className="mt-2 ml-2 font-body  text-white">At least 6 characters.</p>
                 </div>
               </div>
             </div>
@@ -121,36 +121,36 @@ const SignUp = () => {
               type="password"
               ref={passwordRef}
               required
-              className="h-8 rounded-sm  bg-cream text-darkblue"
+              className="h-9 rounded-sm  bg-cream text-darkblue"
             />
           </div>
 
           <div className=" form-group mb-4 flex w-60 flex-col">
-            <label className="font-header  text-blue ">Confirm password</label>
+            <label className="font-header text-lg  text-blue ">Confirm password</label>
             <input
               type="password"
               ref={passwordConfirmRef}
               required
-              className="h-8 rounded-sm bg-cream  text-darkblue"
+              className="h-9 rounded-sm bg-cream  text-darkblue"
             />
           </div>
           <div className=" form-group mb-4 flex w-60 flex-col">
-            <label className="font-header  text-blue ">Username</label>
+            <label className="font-header text-lg text-blue ">Username</label>
             <input
               type="text"
               ref={userNameRef}
               maxLength={20}
               required
-              className="h-8 rounded-sm bg-cream font-body text-darkblue"
+              className="h-9 rounded-sm bg-cream font-body text-lg text-darkblue"
             />
-            <span className="font-body text-xs text-darkblue">
+            <span className="font-body text-sm text-darkblue">
               Maximum {charactersRemaining} characters remaining
             </span>
           </div>
 
           <motion.button
             className="mt-4 flex h-10 w-24
-         items-center  justify-center rounded-md bg-sand font-headersc text-lg  text-blue hover:bg-blue  hover:text-peach
+         items-center  justify-center rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
                 md:h-12 md:w-28 lg:w-32  xl:w-32  "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             <input className="cursor-pointer  " disabled={loading} type="submit" value="Sign up" />

@@ -43,21 +43,21 @@ const Settings = () => {
 
   return (
     <motion.div
-      className="flex w-full flex-col items-start justify-center bg-cream md:absolute md:top-[270px] md:right-16 md:w-48 md:rounded-lg lg:right-24    "
+      className="flex w-full flex-col items-start justify-center bg-cream md:absolute md:top-[270px] md:right-32 md:w-52 md:rounded-lg lg:right-36    "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.3 } }}>
       <div className="group w-full cursor-pointer border-b-2 border-sand transition  duration-200 ease-in-out  hover:border-peach hover:bg-blue md:rounded-md">
         <button
           className="float-left my-1 w-full text-start  font-header text-blue transition duration-200  ease-in-out  group-hover:text-peach  "
           onClick={() => navigate('/upload-profile')}>
-          <p className="ml-2">Change profile image</p>
+          <p className="ml-2 text-lg">Change profile image</p>
         </button>
       </div>
       <div className="group w-full cursor-pointer border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach hover:bg-blue md:rounded-md">
         <button
           onClick={handleResetPassword}
           className=" my-1 w-full text-start font-header  text-blue transition duration-200  ease-in-out group-hover:text-peach">
-          <p className="ml-2">Change password</p>
+          <p className="ml-2 text-lg">Change password</p>
         </button>
       </div>
       {showElement && message && (
@@ -67,7 +67,7 @@ const Settings = () => {
         <button
           onClick={handleLogout}
           className=" my-1 w-full text-start  font-header text-blue transition  duration-200 ease-in-out  group-hover:text-peach">
-          <p className="ml-2">Log out</p>
+          <p className="ml-2 text-lg">Log out</p>
         </button>
       </div>
     </motion.div>
