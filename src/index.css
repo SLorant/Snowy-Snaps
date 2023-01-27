@@ -68,3 +68,11 @@ input:-webkit-autofill {
 .imagecontainer {
   box-shadow: inset 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
 }
+
+:focus {
+  outline: none;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}

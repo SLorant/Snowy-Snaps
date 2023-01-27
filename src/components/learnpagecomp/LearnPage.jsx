@@ -1,0 +1,237 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const LearnPage = () => {
+  return (
+    <div className=" h-full w-full bg-cream">
+      <div className=" flex  w-full flex-col items-center justify-center  bg-cream md:mt-16 ">
+        <h1 className=" mb-6 mt-14 font-header text-3xl  text-blue xl:text-5xl">Huskypedia</h1>
+        <div className="fixed top-60 left-40 flex h-[500px] w-80 flex-col items-center justify-center rounded-md bg-white">
+          <h2 className=" font-headersc text-3xl text-blue">Table of contents</h2>
+          <ul className="mt-4 flex flex-col gap-2 font-header text-xl text-blue">
+            <li>Specifications</li>
+            <li>Personality</li>
+            <li>Husky care</li>
+            <ul>
+              <li className="ml-5 text-base">
+                <Link to=""> Food</Link>
+              </li>
+              <li className="ml-5 text-base">Grooming</li>
+              <li className="ml-5 text-base">Environment and children</li>
+              <li className="ml-5 text-base">Other pets and training</li>
+              <li className="ml-5  text-base">Puppies</li>
+            </ul>
+            <li>Training a husky</li>
+            <ul>
+              <li className="ml-5 text-base">Potty</li>
+              <li className="ml-5 text-base">Crate</li>
+              <li className="ml-5 text-base">Leash</li>
+              <li className="ml-5 mb-2 text-base">Clicker</li>
+            </ul>
+          </ul>
+        </div>
+        <div className="mt-12 flex h-full w-5/12 flex-col items-center justify-start rounded-md bg-white">
+          <h2 className=" mt-6 font-header text-4xl text-peach">Introduction</h2>
+          <div className="mx-20 mt-4 flex-col items-center justify-start text-justify font-body text-lg text-blue">
+            {' '}
+            Welcome to HuskyPedia! Please note that while I have done my best to provide accurate
+            and up-to-date information, I am not an expert in the field. This is a hobby project and
+            should be used for informational purposes only. If you are considering getting a husky
+            or are a current owner, I strongly recommend consulting a professional trainer or
+            veterinarian for personalized advice. Additionally, please take the time to check out
+            the sources, as they contain more detailed and reliable information on the topic. Thanks
+            for visiting!
+            <h2 className=" mt-4 text-center font-header text-4xl text-peach">
+              Husky Specifications
+            </h2>
+            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <p className=" mt-6 text-justify">
+              {' '}
+              The husky is a large dog breed, with an average height of 51-60 cm. They typically
+              weigh between 16-27 kg. With proper care and attention, a husky can live for over 10
+              years.
+              <br className="mb-4" /> The females are thinner without any fragility of structure,
+              while the males are strong but never coarse looking. In good condition, the Siberian
+              Husky has strong, well-developed muscles, and is not (and cannot be!) overweight. Make
+              sure the parents of your puppy have undergone the necessary health screenings if you
+              are thinking about purchasing a puppy to lessen the likelihood that your puppy may be
+              impacted by specific problems.
+              <br className="mb-4" />
+              We need to understand the Siberian Husky's fundamental traits before we can properly
+              care for them. The Siberian Husky is a subtype of the Husky dog breed and belongs to
+              the Spitz genetic subfamily. They were transported to Alaska in 1909 and are Siberian
+              natives. Northeast Asian Chukchi people developed this breed as an endurance sled dog.
+              <br className="mb-4" /> Huskies are medium-sized working dogs. They have a thick
+              double coat that keeps them warm in the summer and shields them from the icy Arctic
+              winter. They can have a variety of coat colors and patterns, but typically have white
+              paws, legs, facial markings, and tail tips. Black and white coats are the most
+              prevalent. Their almond-shaped eyes can have the following colors: brown, blue, or
+              black. Sometimes, each of their eyes may be a distinct color.
+              <br className="mb-4" />
+              These dogs have a higher risk of developing specific hereditary conditions like
+              seizures and eye abnormalities. It's crucial that you keep up with your pet's
+              vaccination and deworming schedules and take them in for routine checks at the vet. In
+              order to catch any pathologies early on, we must also take them to the vet for routine
+              checkups every 6 to 12 months.
+            </p>
+            <h2 className=" mt-6 text-center font-header text-4xl text-peach">Personality</h2>
+            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <div className="mt-6 text-justify">
+              Siberian Huskies are energetic, clever canines that are constantly moving about. One
+              of the quickest sled dog breeds, they are renowned for their endurance and ability to
+              run for extended periods of time. They are sociable and will want to greet everyone
+              they encounter.
+              <br className="mb-4" />
+              Huskies are the perfect walking companion if you enjoy climbing snow-covered mountains
+              because they were bred for very cold climates. Because of their high intelligence and
+              reputation for mischief, they are best suited for experienced owners who can handle
+              their demanding training and exercise requirements.
+              <br className="mb-4" />
+              Because Huskies are pack animals, they require an owner who is the undisputed leader.
+              This makes training easier because your dog will respect you, but don't be surprised
+              if he occasionally pushes the boundaries of your authority among the pack. It's
+              crucial to resist their pushiness when this occurs. Establish your authority by
+              reiterating the ground rules in a clear and consistent manner rather than by
+              intimidating or beating.
+              <br className="mb-4" />
+              <div className="mx-8 mb-4 flex items-center  rounded-md bg-sand text-left ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-2  w-1/3  grow"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#2c3e50"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
+                  <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
+                  <line x1="9.7" y1="17" x2="14.3" y2="17" />
+                </svg>
+                <p className="my-3 mr-2 shrink leading-tight">
+                  One of the easiest methods to establish your authority is to make your dog wait to
+                  eat. The Husky will consider you to be the guardian of all valuable possessions,
+                  including food, treats, toys, and other canine belongings.
+                </p>
+              </div>
+              When bored or not given enough exercise, this high-energy breed may be destructive
+              both inside and outside. Nevertheless, due to their cheeky and playful attitude, they
+              may be rather endearing. They enjoy interacting with others and bragging about their
+              skills.
+              <br className="mb-4" />
+              The good news is that Siberian Huskies don't bark. The bad news is that they adore
+              howling, which can be extremely annoying for your neighbors.They are not the best pets
+              for apartments unless you have one that is well-trained and exercised.{' '}
+              <br className="mb-4" />
+              Always meet at least one parent to make sure they are pleasant and comfortable around
+              you. Usually, the mother is the one who is available. Huskies require early exposure
+              to a wide variety of people, sights, sounds, and experiences while they are young,
+              much like all dogs. Your puppy will be more well-rounded as an adult thanks to
+              socialization.
+            </div>
+            <h2 className=" mt-4 text-center font-header text-4xl text-peach">
+              How to care for a husky
+            </h2>
+            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <h3 className=" mt-6 font-header text-3xl text-blue">Feeding</h3>
+            <div className="mt-4 text-justify">
+              Feed a high-quality diet devoid of artificial additives. Due to their size, your Husky
+              might consume more than you anticipate, which could result in unexpectedly high food
+              costs. You should provide them full dog food that is of good quality and available in
+              stores. <br className="mb-4" />
+              Feed three times per day, then cut back to two. A husky adult ought to eat twice
+              daily. However, puppies will initially require more frequent feedings. Feed your puppy
+              three times a day, then beginning at three months of age, two meals per day. Treats
+              shouldn't be more than 10% of their total daily calorie intake as this can throw their
+              diet out of balance. <br className="mb-4" />
+              <div className="mx-8 mb-4 flex items-center  rounded-md bg-sand text-left ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-notes float-left mx-2 mb-2  w-1/3  grow"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#2c3e50"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <rect x="5" y="3" width="14" height="18" rx="2" />
+                  <line x1="9" y1="7" x2="15" y2="7" />
+                  <line x1="9" y1="11" x2="15" y2="11" />
+                  <line x1="9" y1="15" x2="13" y2="15" />
+                </svg>
+                <p className="my-3 mr-2 shrink leading-tight">
+                  To help your dog establish a routine, try feeding them at the same time each day.
+                  It's recommended to wait some time after eating and before exercising. At any age,
+                  never let your husky "free feed."
+                </p>
+              </div>
+              Following a dog's natural diet is advised. The main components of a natural canine
+              diet are meat-based protein and essential fatty acids. Whole chickens, lamb, beef, and
+              fish are a few examples. You can choose chicken fat as a fat source. Some of the most
+              crucial vitamins a dog requires can be soluted by healthy fat sources.{' '}
+              <br className="mb-4" />
+              As dogs thrive on meat, carbohydrate intake should be kept to a minimum. Professionals
+              advise using sweet potatoes and other whole grains in small amounts when preparing
+              food for your dog. Last but not least, you can give your dog some fruits and
+              vegetables that are rich in vitamins and minerals to improve their general health.
+              <h3 className=" mt-6 font-header text-3xl text-blue">Grooming</h3>
+              <p className="mt-4 text-justify">
+                Siberian Huskies are tidy dogs who will spend the time to groom themselves, just
+                like cats do. They rarely require baths and don't typically emit a "doggy" odor.
+                Unless of course they find something repulsive to wiggle in the backyard or a body
+                of water to jump in. When it's time to give your dog a bath, choose a high-quality
+                dog shampoo that is made to preserve the natural oils in their skin and coat.{' '}
+                <br className="mb-4" />
+                When they blow their coats in the spring and fall, expect a lot of hair and
+                shedding. Nevertheless, this breed is relatively simple to maintain. If you make an
+                effort to brushing your dog's coat at least once a week throughout the year and
+                every day during shedding season, you can prevent matting and excess hair on your
+                furniture. <br className="mb-4" />
+                In order to get rid of tartar buildup and the bacteria that lurk inside it, brush
+                your Husky's teeth at least twice or three times per week. If you want to avoid bad
+                breath and gum disease, brushing every day is even better.
+                <br className="mb-4" />
+                If your dog doesn't wear his nails down naturally, trim them once or twice a month
+                to avoid painful tears and other issues. They are too long if you can hear them
+                clicking on the floor. Because dog toenails contain blood vessels, cutting them too
+                short can result in bleeding, which may make your dog uncooperative the next time
+                the nail clippers are pulled out. Ask a veterinarian or groomer for advice if you
+                aren't familiar with trimming dog nails.
+                <br className="mb-4" />
+                Every week, you should check his ears for redness or an unpleasant smell that could
+                be an infection. To help prevent infections, clean your dog's ears when you check
+                them with a cotton ball dampened with a mild, pH-balanced ear cleaner. Simply clean
+                the outer ear; avoid inserting anything into the ear canal.
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Environment and children</h3>
+              <p className="mt-4 text-justify">
+                When adopting a dog, we must provide a secure setting where they can play and
+                unwind. A medium-sized dog like a Siberian Husky requires appropriate space and
+                activity for their size. Make sure to provide them with a sizable, cozy dog bed so
+                they can stretch out, roll over, and of course sleep. <br className="mb-4" />
+                Making sure the environment is "dog-friendly". This means that your dog cannot
+                access anything that could be harmful. We must also keep in mind that dogs are very
+                curious and playful, training them will help to avoid any accidents. They can choose
+                any object to play with, regardless of its nature or intended use.
+                <br className="mb-4" />
+                Make your house and yard escape-proof. Huskies are the escape artists of the dog
+                world.. To make it difficult for them to flee, you'll need to make preparations for
+                this in your home.A husky requires more or less constant attention. Additionally, a
+                sturdy fence that is at least 6 feet (1.8 m) high will be necessary. At the base of
+                the fence, concrete or sturdy mesh works well.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default LearnPage

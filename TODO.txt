@@ -16,6 +16,9 @@ profile change flashing pic
 h2 h1 instead of p
 font families
 modal like if not logged in?
+modal X button
+
+Pictures and infos mention source
 
 
 Not important:

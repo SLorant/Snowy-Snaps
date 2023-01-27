@@ -1,18 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html",
-  "./src/**/*.{js,ts,jsx,tsx}",],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
-      center:true,
-      padding: '2rem'
+      center: true,
+      padding: '2rem',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
       headersc: ['SimsBoldSC', 'sans-serif'],
       header: ['SimsBold', 'sans-serif'],
-      body: ['Centaur', 'sans-serif']
+      body: ['Lato', 'sans-serif'],
     },
     maxWidth: {
       '1/10': '10%',
@@ -43,23 +42,19 @@ module.exports = {
       '4/8': '50%',
       '5/8': '62.5%',
       '6/8': '75%',
-      '7/8':'87.5%'
+      '7/8': '87.5%',
     },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      'white': '#ffffff',
-      'black' : "#000000",
-      'peach' : "#DE9873",
-      'sand' : "#D9D3C0",
-      'blue': "#2D4550",
-      'darkblue' : "#14232C",
-      'cream': "#F8F0E2"
-    }
-   
+      white: '#ffffff',
+      black: '#000000',
+      peach: '#DE9873',
+      sand: '#D9D3C0',
+      blue: '#2D4550',
+      darkblue: '#14232C',
+      cream: '#F8F0E2',
+    },
   },
-  plugins: [
-    require('tailwindcss-textshadow'),
-    require("tailwind-gradient-mask-image")
-  ],
+  plugins: [require('tailwindcss-textshadow'), require('tailwind-gradient-mask-image')],
 }

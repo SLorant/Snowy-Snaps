@@ -95,9 +95,9 @@ const Profile = () => {
 
   // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="z-50 h-full w-full md:h-screen  ">
-      <div className=" flex  h-full w-full items-center  justify-center bg-cream">
-        <div className="flex h-full w-full flex-col items-center justify-center rounded-lg bg-white md:my-20 md:h-4/5  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
+    <div className="z-50 h-full w-full md:h-full  ">
+      <div className="z-20 flex h-full w-full items-center  justify-center bg-cream">
+        <div className=" z-20  flex h-full w-full flex-col items-center justify-center rounded-lg bg-white md:mb-10 md:mt-28 md:h-4/5  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
           <div className="flex w-full items-center justify-around rounded-lg  ">
             <motion.div
               className="mt-36 flex w-full  flex-col items-center justify-center md:mt-0  "
@@ -165,6 +165,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <div className="absolute top-0 left-0 z-0 h-screen w-full bg-cream"></div>
     </div>
   )
 }
