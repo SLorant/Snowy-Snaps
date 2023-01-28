@@ -221,10 +221,199 @@ const LearnPage = () => {
                 any object to play with, regardless of its nature or intended use.
                 <br className="mb-4" />
                 Make your house and yard escape-proof. Huskies are the escape artists of the dog
-                world.. To make it difficult for them to flee, you'll need to make preparations for
+                world. To make it difficult for them to flee, you'll need to make preparations for
                 this in your home.A husky requires more or less constant attention. Additionally, a
                 sturdy fence that is at least 6 feet (1.8 m) high will be necessary. At the base of
                 the fence, concrete or sturdy mesh works well.
+                <br className="mb-4" />
+                Your Husky will enjoy being around children as long as they have been properly
+                socialized (for the simple reason that they are social creatures!). But because of
+                their size and power, we wouldn't advise getting a Husky if you have smaller kids
+                because they might accidentally knock them over. They are appropriate for households
+                without children or with teenagers. <br className="mb-4" />
+                Always keep an eye on your Husky when around kids or elderly people to prevent any
+                accidents. Although they enjoy being around people, they can become a little rowdy
+                and overexcited, which may come as a surprise to those who are unfamiliar with the
+                breed.
+                <br className="mb-4" />
+                Always educate kids on how to deal with dogs, and watch over any interactions
+                between small kids and dogs to avoid any biting or tugging of ears or tails from
+                either party. Teach your youngster to never try to steal a dog's food or approach a
+                dog while he or she is eating. There should never be a dog left alone with a child.
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Other pets and training</h3>
+              <p className="mt-4 text-justify">
+                For your Siberian Husky to keep a stable temperament as an adult dog, socializing
+                them as a puppy is crucial. You should slowly acclimate them to new situations,
+                things, and people in order to socialize them. Conflicts must be avoided at all
+                costs since they might traumatize them and cause later behavioral problems.
+                <br className="mb-4" />
+                Even if they have been introduced when they were young, huskies have such a high
+                prey drive that we don't advise keeping them with smaller pets. Additionally, you'll
+                need to maintain a tight hold on their lead when you're out and about in case they
+                pick up on the scent of something they might want to chase. <br className="mb-4" />
+                Early socialization will have a significant influence on your dog's personality.
+                Poor socialization is frequently the cause of undesirable behaviors such as biting,
+                barking, and "resource guarding."
+                <br className="mb-4" />
+                All puppies require playtime, but for breeds as energetic as the Siberian Husky,
+                this requirement is even more crucial. As a result, we must give our Husky dogs a
+                ton of toys to keep them occupied and take them on lengthy walks. Siberian Huskies
+                in adulthood require more than two hours of exercise every day.{' '}
+                <br className="mb-4" />
+                You should train them with positive reinforcement when it comes to training. By
+                doing things this way, you'll strengthen your relationship with your dog and prevent
+                any trauma from punishments. Siberian Huskies are intelligent working dogs, which
+                makes training them simpler for us. <br className="mb-4" />
+                For detailed description of training a Husky, check out the Training section!
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Puppies</h3>
+              <p className="mt-4 text-justify">
+                We must use additional caution when raising Siberian Husky puppies, especially
+                during the weaning process. Do not overfeed puppies; instead, follow a natural diet
+                for them. After they have finished eating, you can wait 10 minutes before removing
+                any leftover food.
+                <br className="mb-4" />
+                It's crucial to regularly feed them new food and to maintain their bowl clean. We
+                can prevent any potential illnesses this way. Try to stay away from any overly
+                processed foods when it comes to their diet. This includes dog treats, which can be
+                seriously detrimental to a puppy's health.
+                <br className="mb-4" />
+                Don't neglect the feet of your puppy. You should keep their nails cut and trim any
+                long hairs on their feet. Check your puppy's eyes. Given the Siberian husky's
+                propensity for eye issues, it's crucial to have your puppy's eyes examined as early
+                as possible.
+                <br className="mb-4" />
+                Exercise your pet frequently. Siberian husky puppies require a lot of exercise due
+                to their energetic personalities. You must make sure it exercises effectively for 30
+                to 60 minutes each day. <br className="mb-4" />
+                Introduce different animals and people to your dog. Huskies are friendly by nature.
+                A husky puppy will need socialization to become comfortable around people and other
+                animals, just like any other dog. Make sure to socialize your puppy with many people
+                and other canines from an early age by taking it out into the world.{' '}
+                <br className="mb-4" />
+                Puppy socialization and training sessions may be a smart choice if your puppy
+                appears uneasy or wary of other pets or people. These training sessions teach your
+                dog how to behave among others. <br className="mb-4" /> Due to their high dependence
+                on their human companion and the need to settle into their new home, puppies require
+                different sleeping arrangements than adult dogsLast but not least, when taking care
+                of a puppy, you should start teaching them simple commands or habits, such paper
+                training.
+              </p>
+            </div>
+            <h2 className=" mt-4 text-center font-header text-4xl text-peach">Training a husky</h2>
+            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <div className="mt-4 text-justify">
+              Ideal owners for Siberian Huskies are those who are knowledgeable about the breed.
+              Despite their high intelligence, they have autonomous minds and require constant,
+              reward-based teaching throughout their whole lives. Avoid yelling at or punishing your
+              dog because doing so will seriously undermine their training and damage your
+              relationship. <br className="mb-4" />A least of two hours of exercise should be
+              provided to your Husky each day. To prevent them from getting bored, we advise spacing
+              this out throughout the day and changing up your walking routes. The ideal scenario
+              would also involve off-lead exercise in a safe environment. In addition to training
+              sessions, your Husky will require a lot of playtime with you and leisure time in the
+              garden. <br className="mb-4" />
+              Because Huskies have such thick coats, they can quickly overheat in the summer. Watch
+              them closely for symptoms of heat exhaustion and try to avoid exercising while it's
+              hot outside. The optimum times to go for lengthy walks and runs are generally in the
+              early morning and late evening.
+              <h3 className=" mt-6 font-header text-3xl text-blue">Fundamentals</h3>
+              <p className="mt-4 text-justify">
+                Clearly define your boundaries. Huskies are notoriously stubborn, so it's critical
+                to establish limits as soon as possible. They must understand your authority.
+                <br className="mb-4" />
+                Allowing your dog to sleep in your bed will confuse it about its place in the
+                family. When the dog reaches an older age, you might occasionally make an exception.
+                Give the dog a handful of kibble from everyone in the house. Your husky learns from
+                this that everyone in the house has the power to limit its access to food. Be
+                consistent with every rule you establish.
+                <br className="mb-4" />
+                If you're not, the dog will discover that with enough effort, it sometimes succeeds
+                in getting what it wants. Ensure that everyone else in the house understands the
+                situation. Be tolerant. If you are firm and persistent, your dog can be trained.
+                Because they are working dogs, huskies frequently appreciate training exercises.
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Potty</h3>
+              <p className="mt-4 text-justify">
+                Potty train your pet. Your Siberian husky will need to be housebroken, just like any
+                new puppy. <br className="mb-4" />
+                Watch your puppy. To avoid accidents, watch your puppy closely when it is indoors.
+                Constricting the dog to a specific area of your house makes this process simpler.
+                Make a loud noise and yell "no!" if you see your dog urinating or defecating
+                indoors. Then immediately take the dog outside.
+                <br className="mb-4" />
+                Make several trips outside. A puppy will require more trips to the potty than an
+                older dog. Take the puppy outside as frequently as you can and on a regular basis to
+                reduce the possibility of interior accidents. <br className="mb-4" />
+                Give praise for the desired behavior. When your dog relieves itself outside, reward
+                it with a tiny treat and give it a pat on the head. This will encourage the habit
+                and help it understand where it should do its business.
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Crate</h3>
+              <p className="mt-4 text-justify">
+                Train your puppy in crates. Crate training is a crucial step in potty training your
+                dog. You should use this time to encourage your puppy to enjoy its time spent in its
+                crate. Dogs won't want to mess up their own area.
+                <br className="mb-4" />
+                This is a great strategy to prevent damage to your house from huskies while you are
+                away. Put your dog in its box with a treat or some kibble and a chew toy when you
+                can't watch over it. The dog will eventually grow to appreciate being there and may
+                even retreat there in times of stress. <br className="mb-4" />
+                The simplest way to begin crate training your dog is to place a goodie inside the
+                crate without shutting the door. You can try closing the door for brief intervals of
+                time after doing this several times over the course of about a day. Then you can
+                progress to spending longer times in the crate.
+                <br className="mb-4" />
+                If you want to properly crate train your dog, never use the crate as a form of
+                punishment.
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Leash</h3>
+              <p className="mt-4 text-justify">
+                Your dog should be leash-trained. For huskies, leash training is also essential. You
+                must train them to be cooperative when walking on a leash due to their desire to run
+                off. <br className="mb-4" />
+                If not on a leash, huskies can easily run off and get lost. Put a collar on your dog
+                while it is eating to help it become acclimated to it. The dog will grow accustomed
+                to the collar and may even form pleasant associations with it.
+                <br className="mb-4" />
+                Start off by simply taking it for brief walks around the home, rewarding it with
+                goodies anytime it stays by your side and doesn't pull on the leash. When you've
+                mastered that, try it outside!
+              </p>
+              <h3 className=" mt-6 font-header text-3xl text-blue">Clicker</h3>
+              <p className="mt-4 text-justify">
+                Use a clicker to practice. Huskies can be trained with the clicker, much as other
+                puppies, to learn orders and obey.
+                <br className="mb-4" />
+                With clicker training, you reward your dog every time it complies with an
+                instruction by clicking the clicker and giving it a treat. Your dog learns what you
+                want it to perform more rapidly when the sound is combined with a reward.{' '}
+                <br className="mb-4" />
+                Initially, work on getting your dog to connect clicking with treats. Simply click at
+                random intervals and then give a reward right away. Once your dog has mastered this
+                association, you can begin rewarding desired behaviors with the clicker and treats.
+              </p>
+              <h2 className=" mt-4 text-center font-header text-4xl text-peach">Sources</h2>
+              <p className="mt-4">
+                Here are the sources I used to create Huskypedia:
+                <br className="mb-2" />
+                <a href="https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/large-dogs/siberian-husky">
+                  https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/large-dogs/siberian-husky
+                </a>
+                <br className="mb-2" />
+                <a href=" https://www.wikihow.com/Train-and-Care-for-Your-New-Siberian-Husky-Puppy">
+                  https://www.wikihow.com/Train-and-Care-for-Your-New-Siberian-Husky-Puppy
+                </a>
+                <br className="mb-2" />
+                <a href=" https://www.animalwised.com/how-to-take-care-of-a-siberian-husky-3485.html">
+                  https://www.animalwised.com/how-to-take-care-of-a-siberian-husky-3485.html
+                </a>
+                <br className="mb-2" />
+                <a href="https://dogtime.com/dog-breeds/siberian-husky#/slide/1">
+                  https://dogtime.com/dog-breeds/siberian-husky#/slide/1
+                </a>
+                <br className="mb-8" />
               </p>
             </div>
           </div>
