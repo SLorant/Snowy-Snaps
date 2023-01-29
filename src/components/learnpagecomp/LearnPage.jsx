@@ -52,21 +52,17 @@ const LearnPage = () => {
               years.
               <br className="mb-4" /> The females are thinner without any fragility of structure,
               while the males are strong but never coarse looking. In good condition, the Siberian
-              Husky has strong, well-developed muscles, and is not (and cannot be!) overweight. Make
-              sure the parents of your puppy have undergone the necessary health screenings if you
-              are thinking about purchasing a puppy to lessen the likelihood that your puppy may be
-              impacted by specific problems.
+              Husky has strong, well-developed muscles, and is not (and cannot be!) overweight.
               <br className="mb-4" />
-              We need to understand the Siberian Husky's fundamental traits before we can properly
-              care for them. The Siberian Husky is a subtype of the Husky dog breed and belongs to
-              the Spitz genetic subfamily. They were transported to Alaska in 1909 and are Siberian
-              natives. Northeast Asian Chukchi people developed this breed as an endurance sled dog.
-              <br className="mb-4" /> Huskies are medium-sized working dogs. They have a thick
-              double coat that keeps them warm in the summer and shields them from the icy Arctic
-              winter. They can have a variety of coat colors and patterns, but typically have white
-              paws, legs, facial markings, and tail tips. Black and white coats are the most
-              prevalent. Their almond-shaped eyes can have the following colors: brown, blue, or
-              black. Sometimes, each of their eyes may be a distinct color.
+              The Siberian Husky is a subtype of the Husky dog breed and belongs to the Spitz
+              genetic subfamily. They were transported to Alaska in 1909 and are Siberian natives.
+              Northeast Asian Chukchi people developed this breed as an endurance sled dog.
+              <br className="mb-4" /> They have a thick double coat that reflects heat in the summer
+              and shields them from the icy Arctic winter. They can have a variety of coat colors
+              and patterns, but typically have white paws, legs, facial markings, and tail tips.
+              Black and white coats are the most prevalent. Their almond-shaped eyes can have the
+              following colors: brown, blue, or black. Sometimes, each of their eyes may be a
+              distinct color.
               <br className="mb-4" />
               These dogs have a higher risk of developing specific hereditary conditions like
               seizures and eye abnormalities. It's crucial that you keep up with your pet's
@@ -79,13 +75,12 @@ const LearnPage = () => {
             <div className="mt-6 text-justify">
               Siberian Huskies are energetic, clever canines that are constantly moving about. One
               of the quickest sled dog breeds, they are renowned for their endurance and ability to
-              run for extended periods of time. They are sociable and will want to greet everyone
-              they encounter.
+              run for extended periods of time.
               <br className="mb-4" />
               Huskies are the perfect walking companion if you enjoy climbing snow-covered mountains
-              because they were bred for very cold climates. Because of their high intelligence and
-              reputation for mischief, they are best suited for experienced owners who can handle
-              their demanding training and exercise requirements.
+              due to the fact that they were bred for very cold climates. Because of their high
+              intelligence and reputation for mischief, they are best suited for experienced owners
+              who can handle their demanding training and exercise requirements.
               <br className="mb-4" />
               Because Huskies are pack animals, they require an owner who is the undisputed leader.
               This makes training easier because your dog will respect you, but don't be surprised
@@ -119,18 +114,12 @@ const LearnPage = () => {
               </div>
               When bored or not given enough exercise, this high-energy breed may be destructive
               both inside and outside. Nevertheless, due to their cheeky and playful attitude, they
-              may be rather endearing. They enjoy interacting with others and bragging about their
-              skills.
+              may be rather endearing. They are sociable and will want to greet everyone they
+              encounter, and they enjoy interacting with others and bragging about their skills.
               <br className="mb-4" />
               The good news is that Siberian Huskies don't bark. The bad news is that they adore
               howling, which can be extremely annoying for your neighbors.They are not the best pets
               for apartments unless you have one that is well-trained and exercised.{' '}
-              <br className="mb-4" />
-              Always meet at least one parent to make sure they are pleasant and comfortable around
-              you. Usually, the mother is the one who is available. Huskies require early exposure
-              to a wide variety of people, sights, sounds, and experiences while they are young,
-              much like all dogs. Your puppy will be more well-rounded as an adult thanks to
-              socialization.
             </div>
             <h2 className=" mt-4 text-center font-header text-4xl text-peach">
               How to care for a husky
@@ -140,13 +129,11 @@ const LearnPage = () => {
             <div className="mt-4 text-justify">
               Feed a high-quality diet devoid of artificial additives. Due to their size, your Husky
               might consume more than you anticipate, which could result in unexpectedly high food
-              costs. You should provide them full dog food that is of good quality and available in
-              stores. <br className="mb-4" />
-              Feed three times per day, then cut back to two. A husky adult ought to eat twice
-              daily. However, puppies will initially require more frequent feedings. Feed your puppy
-              three times a day, then beginning at three months of age, two meals per day. Treats
-              shouldn't be more than 10% of their total daily calorie intake as this can throw their
-              diet out of balance. <br className="mb-4" />
+              costs. <br className="mb-4" />
+              A husky adult ought to eat twice daily. However, puppies will initially require more
+              frequent feedings. Feed your puppy three meals per day, then beginning at three months
+              of age, two meals per day. Treats shouldn't be more than 10% of their total daily
+              calorie intake as this can throw their diet out of balance. <br className="mb-4" />
               <div className="mx-8 mb-4 flex items-center  rounded-md bg-sand text-left ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -167,24 +154,22 @@ const LearnPage = () => {
                 </svg>
                 <p className="my-3 mr-2 shrink leading-tight">
                   To help your dog establish a routine, try feeding them at the same time each day.
-                  It's recommended to wait some time after eating and before exercising. At any age,
-                  never let your husky "free feed."
+                  At any age, never let your husky "free feed."
                 </p>
               </div>
               Following a dog's natural diet is advised. The main components of a natural canine
               diet are meat-based protein and essential fatty acids. Whole chickens, lamb, beef, and
-              fish are a few examples. You can choose chicken fat as a fat source. Some of the most
-              crucial vitamins a dog requires can be soluted by healthy fat sources.{' '}
+              fish are a few examples.
               <br className="mb-4" />
               As dogs thrive on meat, carbohydrate intake should be kept to a minimum. Professionals
-              advise using sweet potatoes and other whole grains in small amounts when preparing
-              food for your dog. Last but not least, you can give your dog some fruits and
-              vegetables that are rich in vitamins and minerals to improve their general health.
+              advise using sweet potatoes and whole grains in small amounts when preparing food for
+              your dog. Last but not least, you can give your dog some fruits and vegetables that
+              are rich in vitamins and minerals to improve their general health.
               <h3 className=" mt-6 font-header text-3xl text-blue">Grooming</h3>
               <p className="mt-4 text-justify">
                 Siberian Huskies are tidy dogs who will spend the time to groom themselves, just
-                like cats do. They rarely require baths and don't typically emit a "doggy" odor.
-                Unless of course they find something repulsive to wiggle in the backyard or a body
+                like cats do. They rarely require baths and don't typically emit a "doggy" odor,
+                unless of course they find something repulsive to wiggle in the backyard or a body
                 of water to jump in. When it's time to give your dog a bath, choose a high-quality
                 dog shampoo that is made to preserve the natural oils in their skin and coat.{' '}
                 <br className="mb-4" />
@@ -199,43 +184,33 @@ const LearnPage = () => {
                 <br className="mb-4" />
                 If your dog doesn't wear his nails down naturally, trim them once or twice a month
                 to avoid painful tears and other issues. They are too long if you can hear them
-                clicking on the floor. Because dog toenails contain blood vessels, cutting them too
-                short can result in bleeding, which may make your dog uncooperative the next time
-                the nail clippers are pulled out. Ask a veterinarian or groomer for advice if you
-                aren't familiar with trimming dog nails.
+                BARNA clicking on the floor. Because dog toenails contain blood vessels, cutting
+                them too short can result in bleeding, which may make your dog uncooperative the
+                next time the nail clippers are pulled out.
                 <br className="mb-4" />
                 Every week, you should check his ears for redness or an unpleasant smell that could
                 be an infection. To help prevent infections, clean your dog's ears when you check
-                them with a cotton ball dampened with a mild, pH-balanced ear cleaner. Simply clean
-                the outer ear; avoid inserting anything into the ear canal.
+                them with a cotton ball dampened mild, pH-balanced ear cleaner. Simply clean the
+                outer ear; avoid inserting anything into the ear canal.
               </p>
               <h3 className=" mt-6 font-header text-3xl text-blue">Environment and children</h3>
               <p className="mt-4 text-justify">
-                When adopting a dog, we must provide a secure setting where they can play and
+                When adopting a dog, we must give them a secure setting where they can play and
                 unwind. A medium-sized dog like a Siberian Husky requires appropriate space and
-                activity for their size. Make sure to provide them with a sizable, cozy dog bed so
-                they can stretch out, roll over, and of course sleep. <br className="mb-4" />
+                activity. Make sure to provide them with a sizable, cozy dog bed so they can stretch
+                out, roll over, and of course sleep. <br className="mb-4" />
                 Making sure the environment is "dog-friendly". This means that your dog cannot
-                access anything that could be harmful. We must also keep in mind that dogs are very
-                curious and playful, training them will help to avoid any accidents. They can choose
-                any object to play with, regardless of its nature or intended use.
+                access anything that could be harmful. They can choose any object to play with,
+                regardless of its nature or intended use.
                 <br className="mb-4" />
                 Make your house and yard escape-proof. Huskies are the escape artists of the dog
                 world. To make it difficult for them to flee, you'll need to make preparations for
-                this in your home.A husky requires more or less constant attention. Additionally, a
-                sturdy fence that is at least 6 feet (1.8 m) high will be necessary. At the base of
-                the fence, concrete or sturdy mesh works well.
+                this in your home.
                 <br className="mb-4" />
                 Your Husky will enjoy being around children as long as they have been properly
-                socialized (for the simple reason that they are social creatures!). But because of
-                their size and power, we wouldn't advise getting a Husky if you have smaller kids
-                because they might accidentally knock them over. They are appropriate for households
-                without children or with teenagers. <br className="mb-4" />
-                Always keep an eye on your Husky when around kids or elderly people to prevent any
-                accidents. Although they enjoy being around people, they can become a little rowdy
-                and overexcited, which may come as a surprise to those who are unfamiliar with the
-                breed.
-                <br className="mb-4" />
+                socialized. But because of their size and power, we wouldn't advise getting a Husky
+                if you have smaller kids because they might accidentally knock them over. They are
+                better for households without children or with teenagers. <br className="mb-4" />
                 Always educate kids on how to deal with dogs, and watch over any interactions
                 between small kids and dogs to avoid any biting or tugging of ears or tails from
                 either party. Teach your youngster to never try to steal a dog's food or approach a

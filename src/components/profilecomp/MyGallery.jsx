@@ -6,12 +6,22 @@ import Modal from '../watchpagecomp/Modal'
 import UploadForm from '../watchpagecomp/UploadForm'
 import GalleryTop from './GalleryTop'
 import LikedImages from './LikedImages'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 
 const WatchPage = () => {
   const [selectedImg, setSelectedImg] = useState(null)
   const [likedGallery, setLikedGallery] = useState(false)
   const navigate = useNavigate()
+  let { state } = useLocation()
+  let userID
+  let userName
+  let imgData2
+  if (state) {
+    userID = state.userId
+    userName = state.userName
+    imgData2 = state.imgData
+  }
+
   const [file, setFile] = useState(null)
   const [imgData, setImgData] = useState({
     user: '',
@@ -27,17 +37,20 @@ const WatchPage = () => {
 
   async function handleNavigate() {
     try {
-      navigate('/profile')
+      userName !== 'profile' ? navigate(`/${userName}`) : navigate('/profile')
     } catch {
       setError("Couldn't load page")
     }
   }
+  console.log(userName)
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
-        <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">My Gallery</h1>
+        <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">
+          {`${userName !== 'profile' ? `${userName}'s Gallery` : 'My Gallery'}`}
+        </h1>
         <div className="mt-2 flex w-full items-center justify-center   md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-24 2xl:gap-28 ">
-          <div className="mt-1 md:w-60">
+          <div className={`${userName !== 'profile' ? 'invisible' : 'visible'} mt-1 md:w-60`}>
             <UploadForm
               gallery={gallery}
               onImageUpload={handleImageUpload}
@@ -46,17 +59,27 @@ const WatchPage = () => {
             />
           </div>
           <GalleryTop likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
-          <motion.button
-            onClick={handleNavigate}
-            className="mt-6 hidden w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue hover:bg-blue hover:text-peach md:block   lg:text-xl xl:w-1/6"
-            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-            Back
-            <p className="hidden xl:inline">&nbsp;to profile</p>
-          </motion.button>
+          <Link
+            to={`${userName !== 'profile' ? `/${imgData2.user}` : '/profile'}`}
+            /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
+            state={{ imgData: imgData2 }}>
+            <motion.button
+              /* onClick={handleNavigate} */
+              className="mt-6 hidden w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue hover:bg-blue hover:text-peach md:block   lg:text-xl xl:w-1/6"
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+              Back
+              <p className="hidden xl:inline">&nbsp;to profile</p>
+            </motion.button>
+          </Link>
         </div>
       </div>
       {!likedGallery && (
-        <MyImages imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
+        <MyImages
+          userID={userID}
+          imgData={imgData}
+          setImgData={setImgData}
+          setSelectedImg={setSelectedImg}
+        />
       )}
       {likedGallery && (
         <LikedImages imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />

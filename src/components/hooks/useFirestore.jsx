@@ -1,21 +1,8 @@
 import { useState, useEffect } from 'react'
 import { projectFirestore } from '../../../firebase/config'
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  orderBy,
-  limit,
-} from 'firebase/firestore'
+import { collection, query, where, getDocs, orderBy, limit } from 'firebase/firestore'
 
-const useFirestore = (
-  imageCollection,
-  currentUser,
-  sort,
-  emotionArray,
-  imgType,
-) => {
+const useFirestore = (imageCollection, userID, sort, emotionArray, imgType) => {
   const [docs, setDocs] = useState([])
   let q, q2, q3
   let ismore = false
@@ -24,17 +11,14 @@ const useFirestore = (
   useEffect(() => {
     imgType === 'gif' ? (isGif = true) : (isGif = false)
 
-    if (currentUser)
+    if (userID)
       q = query(
         collection(projectFirestore, imageCollection),
-        where('email', '==', currentUser.email),
+        where('userid', '==', userID),
         orderBy('createdAt', 'desc'),
       )
     else if (!emotionArray.length && imgType === '') {
-      q = query(
-        collection(projectFirestore, imageCollection),
-        orderBy('createdAt', sort),
-      )
+      q = query(collection(projectFirestore, imageCollection), orderBy('createdAt', sort))
     } else if (!emotionArray.length) {
       q = query(
         collection(projectFirestore, imageCollection),

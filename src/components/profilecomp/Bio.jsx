@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import updateBio from './updateBio'
 import { motion } from 'framer-motion'
 
-const Bio = ({ loadedBio }) => {
+const Bio = ({ loadedBio, canEdit }) => {
   const bioRef = useRef()
   const loadedLength = 150 - loadedBio.length
   const [charactersRemaining, setCharactersRemaining] = useState(loadedLength)
@@ -74,14 +74,15 @@ const Bio = ({ loadedBio }) => {
             onClick={handleOnClick}
             defaultValue={loadedBio}
             maxLength={150}
+            disabled={canEdit ? false : true}
             id="area"
-            className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body text-lg text-darkblue outline-none"></textarea>
+            className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body  text-darkblue outline-none"></textarea>
         </div>
-        {showChar && (
-          <span className="ml-1 mt-1 font-body text-sm text-darkblue">{charactersRemaining}</span>
+        {showChar && canEdit && (
+          <span className="ml-1  font-body text-sm text-darkblue">{charactersRemaining}</span>
         )}
 
-        {showUpdate && (
+        {showUpdate && canEdit && (
           <div className="items-between mt-1 mb-4 flex w-full justify-between">
             <motion.button
               onClick={handleCancel}

@@ -90,7 +90,11 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
           <div
             className="mt-2 flex h-2 w-full items-center justify-center gap-8 md:ml-4 md:mt-0  md:h-10 md:w-1/3
             md:flex-col md:gap-0 lg:mb-4 lg:ml-0 lg:mt-4   lg:w-full">
-            <p className="text-center font-header text-2xl text-blue lg:mb-2">By {imgData.user}</p>
+            <Link to={`/${imgData.user}`} state={{ imgData: imgData }}>
+              <p className="text-center font-header text-2xl text-blue lg:mb-2">
+                By {imgData.user}
+              </p>
+            </Link>
             <p className="text-center font-header text-base text-blue lg:mb-4  ">{finaldate}</p>
           </div>
           <div

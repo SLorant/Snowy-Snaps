@@ -2,7 +2,7 @@ import { projectStorage } from '../../../firebase/config'
 import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
 
-const ShowcaseImg = () => {
+const ShowcaseImg = ({ userID }) => {
   const { currentUser, logout } = useAuth()
   const myImages = [
     { id: 'myimg1' },
@@ -13,7 +13,7 @@ const ShowcaseImg = () => {
   ]
   var storageRef
 
-  if (currentUser) {
+  if (currentUser === userID) {
     storageRef = projectStorage.ref(currentUser.uid + '/uploadedpics')
     storageRef
       .listAll()
@@ -31,7 +31,26 @@ const ShowcaseImg = () => {
       .catch(function (error) {
         "Can't load images"
       })
+  } else {
+    storageRef = projectStorage.ref(userID + '/uploadedpics')
+    storageRef
+      .listAll()
+      .then(function (result) {
+        let i = 1
+        let img = ''
+        result.items.forEach(function (imageRef) {
+          img = document.getElementById('myimg' + i)
+          displayImage(imageRef, img)
+          i++
+          //console.log(img)
+          // And finally display them
+        })
+      })
+      .catch(function (error) {
+        "Can't load images"
+      })
   }
+
   function displayImage(imageRef, img) {
     imageRef
       .getDownloadURL()
