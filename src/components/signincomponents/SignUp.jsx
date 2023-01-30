@@ -86,7 +86,7 @@ const SignUp = () => {
                 />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-10 
-                h-16 w-48 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  ">
+                h-16 w-52 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  ">
                   <p className="mt-2 ml-2 font-body  text-white">
                     Email format required. <br /> user.name@example.com
                   </p>
@@ -112,7 +112,7 @@ const SignUp = () => {
                 />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-5 
-                h-10 w-40 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   ">
+                h-10 w-44 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   ">
                   <p className="mt-2 ml-2 font-body  text-white">At least 6 characters.</p>
                 </div>
               </div>

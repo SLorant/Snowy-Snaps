@@ -60,9 +60,7 @@ const UploadProfilePic = () => {
         <div className=" h-full h-full w-full rounded-xl bg-white  md:w-4/5 xl:w-2/3   2xl:h-4/5 ">
           <div className="flex flex-col  items-center  justify-center ">
             <div className="mt-8 flex   w-full items-center justify-center">
-              <p className="font-header  text-3xl text-peach ">
-                Profile picture
-              </p>
+              <p className="font-header  text-4xl text-peach ">Profile picture</p>
             </div>
             <AvatarChooser />
           </div>
@@ -71,8 +69,7 @@ const UploadProfilePic = () => {
             {error && (
               <div
                 className="font-hlight text-red-700 bg-red-100 flex h-16 w-80 items-center justify-center
-                rounded-md text-center text-lg font-bold"
-              >
+                rounded-md text-center text-lg font-bold">
                 {error}
               </div>
             )}

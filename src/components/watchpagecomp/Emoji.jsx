@@ -7,7 +7,7 @@ const Emoji = ({ source, emotionArray }) => {
       <motion.img
         src={`src/assets/emojis/${source}.png`}
         className={`${emotionArray.includes(source) ? 'opacity-100' : 'opacity-60'}
-        h-11 w-10 cursor-pointer  2xl:h-11 2xl:w-10`}
+        h-11 w-10 cursor-pointer  2xl:h-12 2xl:w-11`}
         alt="emotion"
         whileHover={{ scale: 1.2 }}
       />

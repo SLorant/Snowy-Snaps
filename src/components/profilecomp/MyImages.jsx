@@ -14,7 +14,7 @@ const MyImages = ({ setSelectedImg, setImgData, userID }) => {
   const [error, setError] = useState(null)
 
   //console.log(files);
-
+  console.log(userID)
   const { docs } = useFirestore('images', userID)
 
   return (

@@ -42,6 +42,14 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
       })
     }
   }
+  const handleExit = () => {
+    setSelectedImg(null)
+    setImgData({
+      user: '',
+      emotion: '',
+      createdAt: '',
+    })
+  }
   function getEmotionImg(emotion) {
     for (let i = 0; i < emotions.length; i++) {
       if (emotions[i][0].label === emotion) {
@@ -65,7 +73,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
 
   return (
     <motion.div
-      className="backdrop fixed top-0 left-0 z-50 flex h-full w-full flex-col items-center justify-center bg-black/70 lg:flex-row"
+      className="backdrop fixed top-0 left-0 z-50 flex h-full w-full flex-col items-center justify-center bg-black/80 lg:flex-row"
       onClick={handleClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}>
@@ -74,6 +82,26 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
         md:mb-4   md:mb-0 md:bg-transparent  lg:mb-10 lg:h-1/2  lg:flex-row  xl:h-[60%]"
         initial={{ y: '-100vh' }}
         animate={{ y: 0 }}>
+        <motion.div
+          className="absolute -top-16 right-4 cursor-pointer md:-top-2 md:-right-20 lg:-top-3 lg:-right-3"
+          onClick={handleExit}
+          whileHover={{ scale: 1.2 }}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-x"
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="#ffffff"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </motion.div>
         <div className="flex h-full w-full flex-col  items-center justify-center">
           <motion.img
             src={selectedImg}
@@ -90,11 +118,13 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
           <div
             className="mt-2 flex h-2 w-full items-center justify-center gap-8 md:ml-4 md:mt-0  md:h-10 md:w-1/3
             md:flex-col md:gap-0 lg:mb-4 lg:ml-0 lg:mt-4   lg:w-full">
-            <Link to={`/${imgData.user}`} state={{ imgData: imgData }}>
-              <p className="text-center font-header text-2xl text-blue lg:mb-2">
-                By {imgData.user}
-              </p>
-            </Link>
+            <div className="flex text-center font-header text-2xl text-blue lg:mb-2">
+              By&nbsp;
+              <Link to={`/${imgData.user}`} state={{ imgData: imgData }}>
+                <p className=" underline"> {imgData.user}</p>
+              </Link>
+            </div>
+
             <p className="text-center font-header text-base text-blue lg:mb-4  ">{finaldate}</p>
           </div>
           <div
@@ -124,7 +154,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
               )}
             </div>
             {!isLiked && (
-              <div>
+              <div className="flex flex-col items-center justify-center">
                 <motion.button
                   className="mb-2 flex  items-center justify-center rounded-b-lg md:bg-transparent"
                   onClick={handleLike}
@@ -146,7 +176,7 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
                   </svg>
                 </motion.button>
                 {error && (
-                  <div className="font-body text-xl text-darkblue underline">
+                  <div className="static top-8 -right-32  font-header text-xl text-peach underline md:absolute lg:static">
                     <Link to="/login">{error}</Link>
                   </div>
                 )}

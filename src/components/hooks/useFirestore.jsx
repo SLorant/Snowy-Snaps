@@ -10,7 +10,7 @@ const useFirestore = (imageCollection, userID, sort, emotionArray, imgType) => {
 
   useEffect(() => {
     imgType === 'gif' ? (isGif = true) : (isGif = false)
-
+    console.log(userID)
     if (userID)
       q = query(
         collection(projectFirestore, imageCollection),

@@ -36,7 +36,7 @@ const Profile = () => {
   console.log(state)
   let imgData
   let userId = currentUser.uid
-  if (state.imgData !== undefined) {
+  if (state) {
     /*  const imgData = state ? state.imgData : null */
     imgData = state.imgData
     console.log(state.imgData.userid)

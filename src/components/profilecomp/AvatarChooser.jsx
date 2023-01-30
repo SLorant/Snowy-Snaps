@@ -68,10 +68,10 @@ const AvatarChooser = ({ type }) => {
 
   const handleOnClick = async (avatar) => {
     setSelected(avatar)
-    setPicture({
+    /* setPicture({
       ...picture,
       croppedImg: avatar,
-    })
+    }) */
     const response = await fetch(avatar)
     const file = await response.arrayBuffer()
     var newFile = new File([file], 'my_image.png', {
@@ -91,8 +91,8 @@ const AvatarChooser = ({ type }) => {
       <div className="flex h-full flex-col md:w-[95%] md:flex-row  xl:w-[90%] ">
         <div
           className={`${type === 'update' ? 'mt-8' : ''}
-           flex w-full  flex-col items-center justify-center   gap-2 `}>
-          <p className=" mb-2  text-center font-header text-lg text-blue">
+           mt-2 flex  w-full flex-col items-center  justify-center gap-2 `}>
+          <p className=" mb-2  text-center font-header text-2xl text-blue">
             Choose from these avatars
           </p>
           <div className="mb-4  grid grid-cols-2 gap-4">
@@ -103,7 +103,7 @@ const AvatarChooser = ({ type }) => {
                   key={index}
                   className={`${
                     selected === avatarPath ? 'opacity-100' : 'opacity-50'
-                  } w-28 cursor-pointer rounded-full md:w-24 lg:w-28 xl:w-[145px] 2xl:w-32`}
+                  } w-28 w-40 cursor-pointer rounded-full md:w-28 xl:w-[145px] 2xl:w-48`}
                   onClick={() => handleOnClick(avatarPath)}
                   src={avatarPath}
                   alt="avatar"
@@ -113,7 +113,7 @@ const AvatarChooser = ({ type }) => {
           </div>
 
           <div className="mt-2 flex flex-col items-center justify-center gap-0">
-            <p className=" mb-2 text-center font-header text-lg text-blue">
+            <p className=" mb-2 text-center font-header text-2xl text-blue">
               Or upload your own image
             </p>
             {/*   <motion.button  className="text-lg flex justify-center  items-center bg-sand w-32 xl:w-40  h-10 text-blue
@@ -124,12 +124,12 @@ const AvatarChooser = ({ type }) => {
          </motion.button> */}
 
             <motion.button
-              className="uploadbutton flex h-12 w-32 items-center  justify-center  rounded-md bg-cream  font-headersc
-    text-blue hover:bg-blue hover:text-peach  md:h-12 "
+              className="uploadbutton flex h-14 w-40 items-center  justify-center  rounded-md bg-cream  font-headersc
+    text-blue hover:bg-blue hover:text-peach  md:h-14 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               <label
                 htmlFor="files"
-                className=" flex w-32 cursor-pointer items-center justify-center gap-1  text-center text-lg">
+                className=" flex w-32 cursor-pointer items-center justify-center gap-1  text-center text-xl">
                 Upload
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -164,13 +164,15 @@ const AvatarChooser = ({ type }) => {
           <img
             id="bigimg"
             src={picture.croppedImg}
-            className="mt-10  w-60 rounded-full md:w-60 lg:mt-6 lg:w-72 xl:mt-0 xl:w-80 2xl:w-[425px]  "
+            className="mt-10  w-72 rounded-full  md:mt-6 md:w-72 xl:mt-0 xl:w-80 2xl:w-[425px]  "
           />
-          <p className="mt-2 text-center font-header text-blue lg:text-lg">Your chosen profile</p>
+          <p className="mt-2 text-center font-header text-2xl text-blue md:text-2xl">
+            Your chosen profile
+          </p>
           <motion.button
             onClick={handleUploadButtonClick}
-            className="my-4 flex h-12 w-24 items-center 
-         justify-center rounded-md bg-sand font-header text-lg text-blue hover:bg-blue hover:text-peach md:mt-2 md:mb-0 md:w-28 lg:w-32 xl:w-32 "
+            className="my-4 flex h-12 w-32 items-center 
+         justify-center rounded-md bg-sand font-header text-xl text-blue hover:bg-blue hover:text-peach md:mt-4 md:mb-0  lg:w-32 xl:w-32 "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             I'm done
           </motion.button>
@@ -183,7 +185,7 @@ const AvatarChooser = ({ type }) => {
       {/*    <Link  className={`${ type ==="update" ? "hidden" : "block"}`} to="/profile"> */}
 
       <div className="items-around flex  w-full justify-between">
-        <div className="ml-8 h-4  w-1/2 ">
+        <div className="ml-8 mt-2 h-4  w-1/2 ">
           {file && (
             <ProgressBar
               setLoading={setLoading}

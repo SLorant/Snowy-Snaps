@@ -77,11 +77,7 @@ const ImageEditor = ({
   const handleOnClickEmoji = (label) => {
     if (chooseEmotionArray.includes(label)) {
       setChooseEmotionArray((arr) => arr.filter((item) => item !== label))
-      emotion === label
-        ? setEmotion('')
-        : emotion2 === label
-        ? setEmotion2('')
-        : setEmotion3('')
+      emotion === label ? setEmotion('') : emotion2 === label ? setEmotion2('') : setEmotion3('')
     } else if (chooseEmotionArray.length === 3) {
       setChooseEmotionArray((arr) => [...arr])
     } else {
@@ -148,10 +144,9 @@ const ImageEditor = ({
   return (
     <div className="fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center overflow-auto bg-white">
       <div
-        className="flex  h-full 
-             w-full flex-col items-center justify-around   bg-white lg:flex-row lg:items-center lg:justify-center  lg:gap-40"
-      >
-        <div className="mt-40  flex w-80  items-center justify-center md:mt-20 lg:my-8  lg:ml-10 lg:mt-0  lg:mr-0 lg:mt-24">
+        className=" flex 
+             h-full w-full flex-col items-center justify-center   bg-white lg:flex-row lg:items-center lg:justify-center lg:gap-40 2xl:gap-64">
+        <div className="mt-20  flex w-80  items-center justify-center md:mt-20 lg:my-8  lg:ml-10 lg:mt-0  lg:mr-0 lg:mt-24">
           {/* 2xl:w-2/3 xl:w-3/4 lg:w-5/6 md:w-4/5 w-[90%] lg:h-4/5 md:h-5/6 h-[92%] */}
           <AvatarEditor
             className=" z-50  rounded-lg lg:ml-8"
@@ -167,9 +162,9 @@ const ImageEditor = ({
             scale={picture.zoom}
           />
         </div>
-        <div className="mr-8 flex flex-col   items-center justify-center">
+        <div className="mr-8 mt-4  flex flex-col   items-center justify-center">
           <div className="mt-2 flex w-56 flex-col items-center justify-center  lg:mb-4  lg:mt-2 xl:w-80 ">
-            <p className="mt-2 text-center  font-header text-xl text-blue lg:text-2xl  ">
+            <p className="mt-2 text-center  font-header text-2xl text-blue lg:text-3xl  ">
               Zoom in or out
             </p>
             <Slider
@@ -186,49 +181,41 @@ const ImageEditor = ({
           {isGallery && (
             <div className="flex h-full flex-col  items-center justify-center">
               <div className="flex  flex-col gap-1 ">
-                <p className="text-center  font-header  text-xl text-blue lg:text-2xl">
+                <p className="mt-2  text-center font-header  text-2xl text-blue lg:text-3xl">
                   Pick an aspect ratio
                 </p>
                 <div
                   className="flex place-items-center   items-center justify-center gap-2 
-                 md:mt-4 md:gap-4 lg:mt-4 lg:flex lg:flex-row"
-                >
-                  {ratioButtons.map(
-                    ({ width, height, ratio, buttonheight, buttonwidth }) => (
-                      <ChooseButton
-                        key={ratio}
-                        width={width}
-                        height={height}
-                        ratio={ratio}
-                        setWidth={setWidth}
-                        setHeight={setHeight}
-                        selected={selected}
-                        setSelected={setSelected}
-                        buttonwidth={buttonwidth}
-                        buttonheight={buttonheight}
-                      />
-                    ),
-                  )}
+                 md:mt-4 md:gap-4 lg:mt-4 lg:flex lg:flex-row">
+                  {ratioButtons.map(({ width, height, ratio, buttonheight, buttonwidth }) => (
+                    <ChooseButton
+                      key={ratio}
+                      width={width}
+                      height={height}
+                      ratio={ratio}
+                      setWidth={setWidth}
+                      setHeight={setHeight}
+                      selected={selected}
+                      setSelected={setSelected}
+                      buttonwidth={buttonwidth}
+                      buttonheight={buttonheight}
+                    />
+                  ))}
                 </div>
               </div>
               <div
                 className="flex flex-col  items-center justify-center
-                lg:relative lg:bottom-auto lg:left-auto lg:mt-0"
-              >
-                <p className="mb-2 text-center font-header  text-xl text-blue lg:text-2xl xl:mt-2">
+                lg:relative lg:bottom-auto lg:left-auto lg:mt-0">
+                <p className="mb-2 mt-4 text-center font-header   text-2xl text-blue lg:text-3xl xl:mt-2">
                   Choose up to 3 emotions
                 </p>
                 <div className=" my-1 mb-3 grid grid-cols-4 gap-4 md:my-2 xl:gap-6 ">
                   {emotions.map((emotion) => (
                     <div
-                      className="flex w-10 items-center justify-center"
+                      className="flex w-11 items-center justify-center"
                       key={emotion.label}
-                      onClick={() => handleOnClickEmoji(emotion.label)}
-                    >
-                      <Emoji
-                        emotionArray={chooseEmotionArray}
-                        source={emotion.label}
-                      />
+                      onClick={() => handleOnClickEmoji(emotion.label)}>
+                      <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
                     </div>
                   ))}
                 </div>
@@ -238,19 +225,17 @@ const ImageEditor = ({
 
           <div className="my-2 mt-4  mb-4  flex  gap-8 md:mt-0 lg:mr-0 lg:mt-10 lg:flex-row">
             <motion.button
-              className="flex h-10 w-24 items-center justify-center  rounded-md bg-sand font-headersc text-lg text-blue hover:bg-blue  hover:text-peach
+              className="flex h-10 w-24 items-center justify-center  rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
                 md:h-12 md:w-28 lg:w-32  xl:w-40 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-              onClick={() => handleCancel()}
-            >
+              onClick={() => handleCancel()}>
               Cancel
             </motion.button>
             <motion.button
-              className="flex h-10 w-24 items-center justify-center rounded-md bg-sand font-headersc text-lg text-blue hover:bg-blue  hover:text-peach
+              className="flex h-10 w-24 items-center justify-center rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
                 md:h-12 md:w-28 lg:w-32  xl:w-40 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-              onClick={() => handleSave()}
-            >
+              onClick={() => handleSave()}>
               Select
             </motion.button>
           </div>

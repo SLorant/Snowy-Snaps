@@ -12,23 +12,19 @@ const LandingPage = () => {
         className={`${
           inViewport ? 'opacity-100' : 'sticky top-0'
         }  z-0 flex w-full flex-col items-center justify-center`}>
-        <div className="absolute top-16 z-50 flex w-full flex-col items-end justify-end ">
-          <div className="mt-20 flex w-1/2 items-center justify-start">
-            <h1 className="mr-4 font-header  text-3xl text-blue xl:text-4xl 2xl:text-4xl">
-              Welcome To Snowy Snaps!
+        <div className="absolute top-10 z-50 flex w-full flex-col items-end justify-end ">
+          <div className="mt-20  flex w-1/2 items-center justify-start">
+            <h1 className="mr-4  font-header text-4xl text-blue xl:text-4xl 2xl:text-5xl">
+              Welcome to Snowy Snaps!
             </h1>
           </div>
           <div className="mt-4 w-1/2">
             <div className="ml-2 w-1/2">
-              <div className="font-body text-xl text-blue">
+              <div className=" font-body text-blue md:text-xl">
                 A community for husky lovers to share and discover pictures of these beautiful dogs.
-                <p className="hidden xl:inline">
-                  &nbsp;But it's not just about the images – Snowy Snaps also provides resources and
-                  information on how to care for and train your husky.
-                </p>
-                &nbsp;Whether you're a seasoned husky owner or just looking to learn more about
-                these majestic animals, Snowy Snaps is the perfect place to start. So join the pack
-                and share your love of huskies with us!
+                Whether you're a seasoned husky owner or just looking to learn more about these
+                majestic animals, Snowy Snaps is the perfect place to start. So join the pack and
+                share your love of huskies with us!
               </div>
             </div>
           </div>
@@ -41,7 +37,7 @@ const LandingPage = () => {
         />
       </div>
 
-      <div className="z-20 mt-[770px] h-[1000px] w-full md:mt-[540px]  lg:mt-[560px] xl:mt-[970px]">
+      <div className="z-20  mt-[970px] h-[1000px]   w-full xl:mt-[970px]">
         <div></div>
         <Sections />
       </div>
