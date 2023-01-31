@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import WatchPage from './components/WatchPage'
-import HomePage from './components/HomePage'
+import HomePage from './components/homepagecomp/HomePage'
 import LearnPage from './components/learnpagecomp/LearnPage'
 import PlayPage from './components/PlayPage'
 import SignInPage from './components/SignUpPage'

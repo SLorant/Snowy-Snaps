@@ -44,7 +44,11 @@ const LearnPage = () => {
             <h2 className=" mt-4 text-center font-header text-4xl text-peach">
               Husky Specifications
             </h2>
-            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <img
+              className="mt-4 w-full rounded-md"
+              src="src/assets/illustrations/huskyjump.png"
+              alt="spec"
+            />
             <p className=" mt-6 text-justify">
               {' '}
               The husky is a large dog breed, with an average height of 51-60 cm. They typically
@@ -124,7 +128,11 @@ const LearnPage = () => {
             <h2 className=" mt-4 text-center font-header text-4xl text-peach">
               How to care for a husky
             </h2>
-            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <img
+              className="mt-4 w-full rounded-md"
+              src="src/assets/illustrations/huskyeating.png"
+              alt="spec"
+            />
             <h3 className=" mt-6 font-header text-3xl text-blue">Feeding</h3>
             <div className="mt-4 text-justify">
               Feed a high-quality diet devoid of artificial additives. Due to their size, your Husky
@@ -193,6 +201,11 @@ const LearnPage = () => {
                 them with a cotton ball dampened mild, pH-balanced ear cleaner. Simply clean the
                 outer ear; avoid inserting anything into the ear canal.
               </p>
+              <img
+                className="mt-4 w-full rounded-md"
+                src="src/assets/illustrations/huskyfence.png"
+                alt="spec"
+              />
               <h3 className=" mt-6 font-header text-3xl text-blue">Environment and children</h3>
               <p className="mt-4 text-justify">
                 When adopting a dog, we must give them a secure setting where they can play and
@@ -277,7 +290,11 @@ const LearnPage = () => {
               </p>
             </div>
             <h2 className=" mt-4 text-center font-header text-4xl text-peach">Training a husky</h2>
-            <img className="mt-4 w-full rounded-md" src="src/assets/husky2wide.jpg" alt="spec" />
+            <img
+              className="mt-4 w-full rounded-md"
+              src="src/assets/illustrations/huskyreading.png"
+              alt="spec"
+            />
             <div className="mt-4 text-justify">
               Ideal owners for Siberian Huskies are those who are knowledgeable about the breed.
               Despite their high intelligence, they have autonomous minds and require constant,
@@ -343,6 +360,11 @@ const LearnPage = () => {
                 If you want to properly crate train your dog, never use the crate as a form of
                 punishment.
               </p>
+              <img
+                className="mt-4 w-full rounded-md"
+                src="src/assets/illustrations/huskyleash.png"
+                alt="spec"
+              />
               <h3 className=" mt-6 font-header text-3xl text-blue">Leash</h3>
               <p className="mt-4 text-justify">
                 Your dog should be leash-trained. For huskies, leash training is also essential. You

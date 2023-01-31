@@ -31,6 +31,10 @@ body {
 ::-webkit-scrollbar {
   width: 12px;
 }
+.landingpage {
+  position: -webkit-sticky;
+  position: sticky;
+}
 
 /* Track */
 ::-webkit-scrollbar-track {

@@ -7,8 +7,8 @@ const WatchSection = () => {
   return (
     <div className=" z-30 flex w-full flex-col bg-cream  shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]  ">
       <div className="mx-6 flex w-auto gap-6 ">
-        <div className="ml-40 w-1/3  ">
-          <div className=" grid w-full grid-cols-2  items-center justify-center">
+        <div className="ml-40 h-[800px] w-1/3 ">
+          <div className="grid hidden w-full grid-cols-2 items-center  justify-center md:block">
             <div className="col-span-2 flex w-full  items-center justify-center ">
               <h2 className="mt-12 font-header text-2xl text-blue   lg:text-2xl xl:text-4xl">
                 Watch photos and gifs

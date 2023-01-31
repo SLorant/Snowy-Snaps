@@ -38,7 +38,7 @@ const Header = () => {
   }, [currentUser])
 
   return (
-    <header className="fixed top-0 z-40 flex w-full ">
+    <header className="fixed top-0 z-40 flex  w-full ">
       <nav
         className={`${
           currLoc === '/'
@@ -49,7 +49,7 @@ const Header = () => {
             ? 'bg-white '
             : 'bg-cream'
         } 
-        sticky flex h-14 w-full items-center justify-between  xl:h-[72px]   `}>
+        sticky flex h-14  w-full items-center justify-between  xl:h-[72px]   `}>
         <a
           href="#"
           className="absolute left-2 top-4 mb-1 w-44  font-headersc text-lg

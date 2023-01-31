@@ -212,7 +212,7 @@ const ImageEditor = ({
                 <div className=" my-1 mb-3 grid grid-cols-4 gap-4 md:my-2 xl:gap-6 ">
                   {emotions.map((emotion) => (
                     <div
-                      className="flex w-11 items-center justify-center"
+                      className="flex w-11 items-center justify-center "
                       key={emotion.label}
                       onClick={() => handleOnClickEmoji(emotion.label)}>
                       <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />

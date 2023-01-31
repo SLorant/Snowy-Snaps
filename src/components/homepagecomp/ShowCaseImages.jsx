@@ -1,8 +1,21 @@
 import React from 'react'
+import { useRef, useEffect } from 'react'
+import useIntersection from '../hooks/useIntersection'
 import { motion } from 'framer-motion'
 import LargeButton from './LargeButton'
 
 const ShowCaseImages = ({ move, setMove }) => {
+  const ref = useRef()
+  const inViewport = useIntersection(ref, '-100px')
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setTimeout(function () {
+        inViewport ? setMove(true) : ''
+      }, 500)
+      !inViewport ? setMove(false) : ''
+    }
+  }, [inViewport])
+
   return (
     <motion.div
       className="clip-img group z-20  col-span-2 mb-48 mt-12  h-[620px]   w-[620px] rounded-md bg-sand  "
@@ -15,11 +28,13 @@ const ShowCaseImages = ({ move, setMove }) => {
           transition={{ delay: 1 }}
           onMouseOver={() => setMove(true)}
           onMouseOut={() => setMove(false)}
+          ref={ref}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
           <div className="absolute bottom-10 left-44 z-50 cursor-pointer drop-shadow-lg">
             <LargeButton title="Show me more" link="/watch" />
           </div>
         </motion.div>
+
         <img
           src="src/assets/showcaseimages/huskytop.jpg"
           alt="huskypic"
