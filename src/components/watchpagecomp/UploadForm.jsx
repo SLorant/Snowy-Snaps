@@ -9,7 +9,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
 
-const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
+const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
   const { currentUser } = useAuth()
   const navigate = useNavigate()
   const [error, setError] = useState(null)
@@ -141,7 +141,7 @@ const UploadForm = ({ gallery, file, setFile, onImageUpload }) => {
           <div className="">
             <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div>
             <ProgressBar
-              onImageUpload={onImageUpload}
+              setUploaded={setUploaded}
               file={file}
               emotion={emotion}
               emotion2={emotion2}

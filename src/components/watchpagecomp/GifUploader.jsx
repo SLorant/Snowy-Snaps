@@ -69,14 +69,14 @@ const GifUploader = ({
   }
   return (
     <div className="fixed top-0 left-0 z-50 flex h-full w-full  items-center justify-center bg-black/70">
-      <div className="flex h-[490px] w-80 flex-col items-center justify-center rounded-md bg-white">
-        <h2 className="mb-2 font-header text-lg text-blue">Choose emotions for your gif</h2>
+      <div className="flex h-[490px] w-96 flex-col items-center justify-center rounded-md bg-white">
+        <h2 className="mb-2 font-header text-2xl text-blue">Choose emotions for your gif</h2>
         {/*  <button onClick={handleFetch}>show</button> */}
-        <img className="my-2  h-36 rounded-md" src={blobUrl} alt="" />
-        <div className=" my-2 grid grid-cols-4 gap-2 md:my-2 xl:gap-2 ">
+        <img className=" my-4 h-44 rounded-md" src={blobUrl} alt="" />
+        <div className=" my-2 grid grid-cols-4 gap-2 md:my-2 xl:gap-3 ">
           {emotions.map((emotion) => (
             <div
-              className="flex w-10 items-center justify-center"
+              className="flex w-11 items-center justify-center"
               key={emotion.label}
               onClick={() => handleOnClickEmoji(emotion.label)}>
               <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
@@ -86,17 +86,17 @@ const GifUploader = ({
         <div className="my-4 flex gap-6">
           <motion.button
             onClick={handleCancel}
-            className="text-md mt-0 flex h-8
-        w-24  items-center justify-center rounded-md bg-sand font-headersc text-blue hover:bg-blue  hover:text-peach
-               md:h-8 md:w-28 lg:w-32  xl:w-20  "
+            className="mt-0 flex h-10 w-24
+        items-center  justify-center rounded-md bg-sand font-headersc text-lg text-blue hover:bg-blue  hover:text-peach
+               md:h-10 md:w-28 lg:w-32  xl:w-24  "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             Cancel
           </motion.button>
           <motion.button
             onClick={handleSave}
-            className="text-md mt-0 flex h-8
-        w-24  items-center justify-center rounded-md bg-sand font-headersc text-blue hover:bg-blue  hover:text-peach
-               md:h-8 md:w-28 lg:w-32  xl:w-20  "
+            className="mt-0 flex h-10 w-24
+        items-center  justify-center rounded-md bg-sand font-headersc text-lg text-blue hover:bg-blue  hover:text-peach
+               md:h-10 md:w-28 lg:w-32  xl:w-24 "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             Upload
           </motion.button>

@@ -13,6 +13,7 @@ const WatchPage = () => {
   const [selectedImg, setSelectedImg] = useState(null)
   const [likedGallery, setLikedGallery] = useState(false)
   const navigate = useNavigate()
+  const [uploaded, setUploaded] = useState(false)
   const { currentUser } = useAuth()
   let { state } = useLocation()
   let userID = currentUser.uid
@@ -57,7 +58,7 @@ const WatchPage = () => {
               : `${userName}'s Gallery`
           }`}
         </h1>
-        <div className="mt-2 flex w-full items-center justify-center   md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-24 2xl:gap-28 ">
+        <div className="mt-2 flex w-full items-center justify-center   md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div
             className={`${
               userName === 'profile'
@@ -66,23 +67,19 @@ const WatchPage = () => {
                 ? 'visible'
                 : 'invisible'
             } mt-1 md:w-60`}>
-            <UploadForm
-              gallery={gallery}
-              onImageUpload={handleImageUpload}
-              file={file}
-              setFile={setFile}
-            />
+            <UploadForm setUploaded={setUploaded} gallery={gallery} file={file} setFile={setFile} />
           </div>
           <GalleryTop likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
           {userName === 'profile' ? (
             <Link
+              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
               to="/profile"
               /* to={`${userName !== 'profile' ? `/${imgData2.user}` : '/profile'}`} */
               /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
             >
               <motion.button
                 /* onClick={handleNavigate} */
-                className="mt-6 hidden w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue hover:bg-blue hover:text-peach md:block   lg:text-xl xl:w-1/6"
+                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
                 Back
                 <p className="hidden xl:inline">&nbsp;to profile</p>
@@ -91,11 +88,12 @@ const WatchPage = () => {
           ) : userID === currentUser.uid ? (
             <Link
               to="/profile"
+              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
               /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
             >
               <motion.button
                 /* onClick={handleNavigate} */
-                className="mt-6 hidden w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue hover:bg-blue hover:text-peach md:block   lg:text-xl xl:w-1/6"
+                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
                 Back
                 <p className="hidden xl:inline">&nbsp;to profile</p>
@@ -104,11 +102,12 @@ const WatchPage = () => {
           ) : (
             <Link
               to={`/${imgData2.user}`}
+              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
               /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
               state={{ imgData: imgData2 }}>
               <motion.button
                 /* onClick={handleNavigate} */
-                className="mt-6 hidden w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue hover:bg-blue hover:text-peach md:block   lg:text-xl xl:w-1/6"
+                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
                 Back
                 <p className="hidden xl:inline">&nbsp;to profile</p>
@@ -121,12 +120,19 @@ const WatchPage = () => {
         <MyImages
           userID={userID}
           imgData={imgData}
+          uploaded={uploaded}
+          setUploaded={setUploaded}
           setImgData={setImgData}
           setSelectedImg={setSelectedImg}
         />
       )}
       {likedGallery && (
-        <LikedImages imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
+        <LikedImages
+          userID={userID}
+          imgData={imgData}
+          setImgData={setImgData}
+          setSelectedImg={setSelectedImg}
+        />
       )}
       {selectedImg && (
         <Modal

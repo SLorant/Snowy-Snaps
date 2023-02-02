@@ -2,7 +2,15 @@ import { useState, useEffect } from 'react'
 import { projectFirestore } from '../../../firebase/config'
 import { collection, query, where, getDocs, orderBy, limit } from 'firebase/firestore'
 
-const useFirestore = (imageCollection, userID, sort, emotionArray, imgType) => {
+const useFirestore = (
+  imageCollection,
+  userID,
+  uploaded,
+  setUploaded,
+  sort,
+  emotionArray,
+  imgType,
+) => {
   const [docs, setDocs] = useState([])
   let q, q2, q3
   let ismore = false
@@ -77,11 +85,12 @@ const useFirestore = (imageCollection, userID, sort, emotionArray, imgType) => {
       })
 
       setDocs(documents)
+      setUploaded(false)
       //console.log(documents)
       return () => querySnapshot()
     }
     GalleryQuery()
-  }, [imageCollection, sort, emotionArray, imgType])
+  }, [imageCollection, sort, emotionArray, imgType, uploaded])
 
   return { docs }
 }

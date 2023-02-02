@@ -59,13 +59,13 @@ const Header = () => {
 
         <div className=" ml-40 flex h-full w-2/3 items-center justify-center lg:ml-60 xl:ml-80">
           <HeaderLink title="Home" location="/" currLoc={currLoc} />
-          <HeaderLink title="Learn" location="/learn" currLoc={currLoc} />
-          <HeaderLink title="Huskies' Gallery" location="/watch" currLoc={currLoc} />
+          <HeaderLink title="Gallery" location="/watch" currLoc={currLoc} />
+          <HeaderLink title="Huskypedia" location="/learn" currLoc={currLoc} />
         </div>
 
         {useAuth().currentUser ? (
           <div className="flex h-full items-start  justify-center">
-            <div className="mr-16 h-full w-full xl:mr-20">
+            <div className="mr-16 h-full w-full xl:mr-24">
               <HeaderLink title={username} location="/profile" currLoc={currLoc} />
             </div>
             <img

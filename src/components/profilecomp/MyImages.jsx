@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
 import useFirestore from '../hooks/useFirestore'
 
-const MyImages = ({ setSelectedImg, setImgData, userID }) => {
+const MyImages = ({ setSelectedImg, setImgData, userID, uploaded, setUploaded }) => {
   // Get all the images from Storage
   const [files, setFiles] = useState()
   const { currentUser, logout } = useAuth()
@@ -15,7 +15,7 @@ const MyImages = ({ setSelectedImg, setImgData, userID }) => {
 
   //console.log(files);
   console.log(userID)
-  const { docs } = useFirestore('images', userID)
+  const { docs } = useFirestore('images', userID, uploaded, setUploaded)
 
   return (
     <div className=" h-full">

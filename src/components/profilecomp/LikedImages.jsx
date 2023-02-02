@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import useFirestore from '../hooks/useFirestore'
 import useShowLiked from '../hooks/useShowLiked'
 
-const LikedImages = ({ setSelectedImg, setImgData }) => {
+const LikedImages = ({ userID, setSelectedImg, setImgData }) => {
   // Get all the images from Storage
   const [files, setFiles] = useState()
   const { currentUser, logout } = useAuth()
@@ -16,7 +16,7 @@ const LikedImages = ({ setSelectedImg, setImgData }) => {
 
   //console.log(files);
 
-  const { docs } = useShowLiked()
+  const { docs } = useShowLiked(userID)
 
   //useShowLiked()
 

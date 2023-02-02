@@ -1,12 +1,10 @@
-Image upload show instantly
 sign up failed to create account instead: email already exists etc
 POST error when logging out from the same account twice
 USername unique?
-br doesnt work on chrome?
-emoji size
-My gallery and liked pics gallery
+
 delete uploaded picture
 error text bad 
+progressbar bad placing in gallery, and in my gallery
 rename some components
 motion design for mobile header
 learn page infographic
@@ -15,12 +13,13 @@ links instead of navigate
 h2 h1 instead of p
 font families
 
+
 Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (127.0.0.1) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab.
 setcapture outdated
 
 
-Not important:
-
+Not urgent:
+My Gallery page redesign, it looks bad
 login google facebook
 grid view in gallery in mobile mode, or maybe masonry library?
 
@@ -30,4 +29,3 @@ code cleaning, optimizing
 dark mode
 Learn page
 Home page rework
-video upload?

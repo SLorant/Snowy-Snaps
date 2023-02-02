@@ -17,14 +17,6 @@ const WatchPage = () => {
   const [file, setFile] = useState(null)
   let changed = false
 
-  const handleImageUpload = (value) => {
-    setUploaded(value)
-  }
-
-  useEffect(() => {
-    setUploaded(false)
-  }, [uploaded])
-
   const [imgData, setImgData] = useState({
     user: '',
     emotion: '',
@@ -47,13 +39,13 @@ const WatchPage = () => {
           file={file}
         />
 
-        <UploadForm onImageUpload={handleImageUpload} file={file} setFile={setFile} />
+        <UploadForm setUploaded={setUploaded} file={file} setFile={setFile} />
       </div>
 
       <ImageGrid
         imgData={imgData}
-        onImageUpload={handleImageUpload}
         uploaded={uploaded}
+        setUploaded={setUploaded}
         setImgData={setImgData}
         setSelectedImg={setSelectedImg}
         order={order}

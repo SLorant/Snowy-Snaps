@@ -8,7 +8,7 @@ import ChooseButtons from './signincomponents/ChooseButtons'
 const SignInPage = () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-white md:bg-cream ">
-      <div className="mb-2 flex h-1/2 w-full flex-col items-center  justify-center rounded-xl  bg-white bg-white  md:w-1/2 lg:w-1/3 2xl:w-1/4">
+      <div className="mb-2 flex h-[480px] w-full flex-col items-center  justify-center rounded-xl  bg-white bg-white  md:w-1/2 lg:w-1/3 2xl:w-1/4">
         <div className="z-0">
           <div className="mt-10 mb-4 rounded-md py-2 font-header text-5xl text-peach">Login</div>
         </div>

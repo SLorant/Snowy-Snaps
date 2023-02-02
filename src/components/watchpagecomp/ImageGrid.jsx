@@ -10,18 +10,25 @@ const ImageGrid = ({
   emotionArray,
   imgType,
   uploaded,
-  onImageUpload,
+  setUploaded,
   setImgData,
   imgData,
 }) => {
-  let { docs } = ''
-
-  if (uploaded) {
+  /*   let { docs } = '' */
+  const { docs } = useFirestore(
+    'images',
+    undefined,
+    uploaded,
+    setUploaded,
+    order,
+    emotionArray,
+    imgType,
+  )
+  /* if (uploaded) {
     ;({ docs } = useFirestore('images', undefined, order, emotionArray, imgType))
-    onImageUpload(false)
   } else {
     ;({ docs } = useFirestore('images', undefined, order, emotionArray, imgType))
-  }
+  } */
 
   return (
     <div className="  ">
