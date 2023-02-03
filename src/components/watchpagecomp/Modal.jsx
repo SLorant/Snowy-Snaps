@@ -6,7 +6,7 @@ import LikedButton from './LikedButton'
 import IsLiked from './isLiked'
 import { Link } from 'react-router-dom'
 
-const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
+const Modal = ({ myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
   const [isLiked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(0)
   const [error, setError] = useState(null)
@@ -111,8 +111,10 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
           />
         </div>
         <motion.div
-          className="flex h-8 items-start justify-center gap-8 rounded-b-lg   md:mt-6
-          md:h-24  md:w-96 md:items-center md:rounded-lg  md:bg-cream   lg:mt-0  lg:ml-6 lg:h-64 lg:w-40 lg:flex-col lg:gap-0 lg:bg-cream"
+          className={`${
+            myImages ? 'lg:h-64' : 'lg:h-64'
+          } flex h-8 items-start justify-center gap-8 rounded-b-lg   md:mt-6
+          md:h-24  md:w-96 md:items-center md:rounded-lg  md:bg-cream   lg:mt-0  lg:ml-6  lg:w-40 lg:flex-col lg:gap-0 lg:bg-cream`}
           initial={{ y: '-100vh' }}
           animate={{ y: 0 }}>
           <div
@@ -121,7 +123,9 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
             <div className="flex text-center font-header text-2xl text-blue lg:mb-2">
               By&nbsp;
               <Link to={`/${imgData.user}`} state={{ imgData: imgData }}>
-                <p className=" underline"> {imgData.user}</p>
+                <motion.p className=" underline" whileHover={{ scale: 1.1 }}>
+                  {imgData.user}
+                </motion.p>
               </Link>
             </div>
 
@@ -183,6 +187,38 @@ const Modal = ({ selectedImg, setSelectedImg, imgData, setImgData }) => {
               </div>
             )}
             {isLiked && <LikedButton imgdata={imgData.createdAt} setIsLiked={setIsLiked} />}
+            {myImages && (
+              <motion.button
+                className=" absolute -bottom-20  flex w-40 items-center justify-center rounded-md bg-cream p-2
+              "
+                whileHover={{
+                  transition: {
+                    duration: 0.2,
+                  },
+                  scale: 1.1,
+                }}>
+                <p className="mr-2 font-header text-lg text-blue">Delete snap</p>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-file-trash"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="#2c3e50"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <line x1="4" y1="7" x2="20" y2="7" />
+                  <line x1="10" y1="11" x2="10" y2="17" />
+                  <line x1="14" y1="11" x2="14" y2="17" />
+                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                </svg>
+              </motion.button>
+            )}
           </div>
         </motion.div>
       </motion.div>

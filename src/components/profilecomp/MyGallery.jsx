@@ -37,6 +37,7 @@ const WatchPage = () => {
     setUploaded(value)
   }
   const gallery = true
+  const [myImages, setMyImages] = useState(true)
 
   async function handleNavigate() {
     try {
@@ -69,7 +70,11 @@ const WatchPage = () => {
             } mt-1 md:w-60`}>
             <UploadForm setUploaded={setUploaded} gallery={gallery} file={file} setFile={setFile} />
           </div>
-          <GalleryTop likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
+          <GalleryTop
+            setMyImages={setMyImages}
+            likedGallery={likedGallery}
+            setLikedGallery={setLikedGallery}
+          />
           {userName === 'profile' ? (
             <Link
               className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
@@ -136,6 +141,7 @@ const WatchPage = () => {
       )}
       {selectedImg && (
         <Modal
+          myImages={myImages}
           imgData={imgData}
           setImgData={setImgData}
           selectedImg={selectedImg}

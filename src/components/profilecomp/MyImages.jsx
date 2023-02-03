@@ -8,10 +8,6 @@ import useFirestore from '../hooks/useFirestore'
 
 const MyImages = ({ setSelectedImg, setImgData, userID, uploaded, setUploaded }) => {
   // Get all the images from Storage
-  const [files, setFiles] = useState()
-  const { currentUser, logout } = useAuth()
-  const navigate = useNavigate()
-  const [error, setError] = useState(null)
 
   //console.log(files);
   console.log(userID)

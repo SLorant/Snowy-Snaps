@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
 
-const GalleryTop = ({ likedGallery, setLikedGallery }) => {
+const GalleryTop = ({ setMyImages, likedGallery, setLikedGallery }) => {
   const navigate = useNavigate()
   const [error, setError] = useState(null)
   async function handleNavigate() {
@@ -11,6 +11,14 @@ const GalleryTop = ({ likedGallery, setLikedGallery }) => {
     } catch {
       setError("Couldn't load page")
     }
+  }
+  const HandleOnClick = () => {
+    setLikedGallery(false)
+    setMyImages(true)
+  }
+  const HandleOnClick2 = () => {
+    setLikedGallery(true)
+    setMyImages(false)
   }
   return (
     <div className=" mt-5 flex w-[450px] flex-col items-center  justify-center gap-0  ">
@@ -28,7 +36,7 @@ const GalleryTop = ({ likedGallery, setLikedGallery }) => {
               Uploaded pics
             </button> */}
             <motion.p
-              onClick={() => setLikedGallery(false)}
+              onClick={HandleOnClick}
               className={`${
                 likedGallery ? 'opacity-60' : 'opacity-100'
               } cursor-pointer text-center font-header text-2xl text-blue`}
@@ -37,7 +45,7 @@ const GalleryTop = ({ likedGallery, setLikedGallery }) => {
             </motion.p>
 
             <motion.p
-              onClick={() => setLikedGallery(true)}
+              onClick={HandleOnClick2}
               className={`${
                 likedGallery ? 'opacity-100' : 'opacity-60'
               }  cursor-pointer text-center font-header text-2xl text-blue`}

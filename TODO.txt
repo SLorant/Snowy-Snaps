@@ -7,7 +7,6 @@ error text bad
 progressbar bad placing in gallery, and in my gallery
 rename some components
 motion design for mobile header
-learn page infographic
 links instead of navigate
 && instead of ternary
 h2 h1 instead of p
