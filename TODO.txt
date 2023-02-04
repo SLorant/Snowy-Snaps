@@ -2,7 +2,6 @@ sign up failed to create account instead: email already exists etc
 POST error when logging out from the same account twice
 USername unique?
 
-delete uploaded picture
 error text bad 
 progressbar bad placing in gallery, and in my gallery
 rename some components

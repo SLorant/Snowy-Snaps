@@ -5,8 +5,17 @@ import { useAuth } from '../../contexts/AuthContext'
 import LikedButton from './LikedButton'
 import IsLiked from './isLiked'
 import { Link } from 'react-router-dom'
+import DeleteSnap from './DeleteSnap'
 
-const Modal = ({ myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
+const Modal = ({
+  uploaded,
+  setUploaded,
+  myImages,
+  selectedImg,
+  setSelectedImg,
+  imgData,
+  setImgData,
+}) => {
   const [isLiked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(0)
   const [error, setError] = useState(null)
@@ -50,6 +59,21 @@ const Modal = ({ myImages, selectedImg, setSelectedImg, imgData, setImgData }) =
       createdAt: '',
     })
   }
+
+  const handleDelete = () => {
+    DeleteSnap(imgData.createdAt)
+    setSelectedImg(null)
+    setImgData({
+      user: '',
+      emotion: '',
+      createdAt: '',
+    })
+    console.log(uploaded)
+    setTimeout(function () {
+      setUploaded(true)
+    }, 600)
+  }
+
   function getEmotionImg(emotion) {
     for (let i = 0; i < emotions.length; i++) {
       if (emotions[i][0].label === emotion) {
@@ -191,6 +215,7 @@ const Modal = ({ myImages, selectedImg, setSelectedImg, imgData, setImgData }) =
               <motion.button
                 className=" absolute -bottom-20  flex w-40 items-center justify-center rounded-md bg-cream p-2
               "
+                onClick={handleDelete}
                 whileHover={{
                   transition: {
                     duration: 0.2,

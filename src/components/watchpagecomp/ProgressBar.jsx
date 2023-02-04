@@ -22,7 +22,11 @@ const ProgressBar = ({
     if (url) {
       setFile(null)
       console.log(isFirst)
-      uploadType === 'gallery' ? setUploaded(true) : ''
+      uploadType === 'gallery'
+        ? setTimeout(function () {
+            setUploaded(true)
+          }, 600)
+        : ''
       isFirst ? navigate('/upload-profile') : ''
       //setLoading(false)
     }

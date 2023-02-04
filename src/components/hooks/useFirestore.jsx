@@ -18,7 +18,7 @@ const useFirestore = (
 
   useEffect(() => {
     imgType === 'gif' ? (isGif = true) : (isGif = false)
-    console.log(userID)
+    console.log(uploaded)
     if (userID)
       q = query(
         collection(projectFirestore, imageCollection),

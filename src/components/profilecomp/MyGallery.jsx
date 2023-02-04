@@ -46,7 +46,6 @@ const WatchPage = () => {
       setError("Couldn't load page")
     }
   }
-  console.log(userName)
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
@@ -124,7 +123,6 @@ const WatchPage = () => {
       {!likedGallery && (
         <MyImages
           userID={userID}
-          imgData={imgData}
           uploaded={uploaded}
           setUploaded={setUploaded}
           setImgData={setImgData}
@@ -141,6 +139,8 @@ const WatchPage = () => {
       )}
       {selectedImg && (
         <Modal
+          uploaded={uploaded}
+          setUploaded={setUploaded}
           myImages={myImages}
           imgData={imgData}
           setImgData={setImgData}
