@@ -3,6 +3,8 @@ POST error when logging out from the same account twice
 USername unique?
 
 error text bad 
+learn page component too long
+cant access other profiles from liked gallery
 progressbar bad placing in gallery, and in my gallery
 rename some components
 motion design for mobile header

@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { createUserDocument, auth } from '../../../firebase/config'
 import useStorage from '../hooks/useStorage'
 import ProgressBar from '../watchpagecomp/ProgressBar'
+import checkUsername from './checkUsername'
+import checkEmail from './checkEmail'
 
 //import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
@@ -28,9 +30,25 @@ const SignUp = () => {
     })
   }, [])
 
+  useEffect(() => {
+    setTimeout(function () {
+      setError(null)
+    }, 10000)
+  }, [error])
+
   async function handleSubmit(e) {
     e.preventDefault()
-
+    const userNameTaken = await checkUsername(userNameRef.current.value)
+    const emailTaken = await checkEmail(emailRef.current.value)
+    if (emailTaken) {
+      return setError('User with this email already exists')
+    }
+    if (userNameTaken) {
+      return setError('Username already taken')
+    }
+    if (passwordRef.current.value.length < 6) {
+      return setError('Password have to be at least 6 characters long')
+    }
     if (passwordRef.current.value !== passwordConfirmRef.current.value)
       return setError("Passwords don't match")
     const username = userNameRef.current.value
@@ -38,10 +56,8 @@ const SignUp = () => {
     try {
       setError('')
       setLoading(true)
-      console.log(emailRef.current.value)
-      const { user } = await signup(emailRef.current.value, passwordRef.current.value)
 
-      console.log(user)
+      const { user } = await signup(emailRef.current.value, passwordRef.current.value)
 
       //await signup(emailRef.current.value, passwordRef.current.value, )
       await createUserDocument(user, { username })
@@ -56,9 +72,7 @@ const SignUp = () => {
 
       /* navigate('/upload-profile') */
     } catch (error) {
-      if (passwordRef.current.value.length < 6) {
-        setError('Password have to be at least 6 characters long')
-      } else setError('Failed to create an account')
+      setError('Failed to create an account')
     }
     setLoading(false)
   }
@@ -68,7 +82,7 @@ const SignUp = () => {
       <div className="flex w-full flex-col items-center  justify-center  ">
         {error && (
           <div
-            className="mb-6 flex h-16 w-80 items-center justify-center
+            className="mb-6 flex h-4 w-80 items-center justify-center
      text-center  font-header text-lg text-blue">
             {error}
           </div>
@@ -149,9 +163,9 @@ const SignUp = () => {
           </div>
 
           <motion.button
-            className="mt-4 flex h-10 w-24
-         items-center  justify-center rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
-                md:h-12 md:w-28 lg:w-32  xl:w-32  "
+            className="mt-4 flex h-12 
+         w-28  items-center justify-center rounded-md bg-sand font-headersc text-xl text-blue  hover:bg-blue
+                hover:text-peach md:h-12 lg:w-32  xl:w-32  "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             <input className="cursor-pointer  " disabled={loading} type="submit" value="Sign up" />
           </motion.button>

@@ -141,6 +141,8 @@ const WatchPage = () => {
         <Modal
           uploaded={uploaded}
           setUploaded={setUploaded}
+          userID={userID}
+          userName={userName}
           myImages={myImages}
           imgData={imgData}
           setImgData={setImgData}

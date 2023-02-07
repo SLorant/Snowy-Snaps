@@ -6,10 +6,12 @@ import LikedButton from './LikedButton'
 import IsLiked from './isLiked'
 import { Link } from 'react-router-dom'
 import DeleteSnap from './DeleteSnap'
-
+import Test from '../signincomponents/checkUsername'
 const Modal = ({
   uploaded,
   setUploaded,
+  userID,
+  userName,
   myImages,
   selectedImg,
   setSelectedImg,
@@ -20,10 +22,18 @@ const Modal = ({
   const [likes, setLikes] = useState(0)
   const [error, setError] = useState(null)
   const { currentUser } = useAuth()
+  const [canDelete, setCanDelete] = useState(false)
   let userid
   if (currentUser) {
     userid = currentUser.uid
   }
+  useEffect(() => {
+    userName === 'profile'
+      ? setCanDelete(true)
+      : userID === currentUser.uid
+      ? setCanDelete(true)
+      : setCanDelete(false)
+  }, [])
 
   const date = new Date(imgData.createdAt.seconds * 1000)
   const newdate = date.toLocaleString(DateTime.DATE_MED)
@@ -40,6 +50,7 @@ const Modal = ({
   ]
 
   currentUser ? IsLiked(imgData.createdAt, userid, setIsLiked, setLikes) : ''
+  currentUser ? Test() : ''
 
   const handleClick = (e) => {
     if (e.target.classList.contains('backdrop')) {
@@ -211,7 +222,8 @@ const Modal = ({
               </div>
             )}
             {isLiked && <LikedButton imgdata={imgData.createdAt} setIsLiked={setIsLiked} />}
-            {myImages && (
+
+            {myImages && canDelete && (
               <motion.button
                 className=" absolute -bottom-20  flex w-40 items-center justify-center rounded-md bg-cream p-2
               "
