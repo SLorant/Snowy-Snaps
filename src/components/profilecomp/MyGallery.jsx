@@ -16,7 +16,8 @@ const WatchPage = () => {
   const [uploaded, setUploaded] = useState(false)
   const { currentUser } = useAuth()
   let { state } = useLocation()
-  let userID = currentUser.uid
+  let userID
+  if (currentUser) userID = currentUser.uid
   let userName
   let imgData2
   if (state) {
@@ -51,8 +52,12 @@ const WatchPage = () => {
       <div className="mt-32 flex flex-col items-center justify-center">
         <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">
           {`${
-            userName === 'profile'
+            !imgData2
+              ? 'Please check profiles through the main gallery'
+              : userName === 'profile'
               ? `My Gallery`
+              : !currentUser
+              ? `${userName}'s Gallery`
               : userID === currentUser.uid
               ? 'My Gallery'
               : `${userName}'s Gallery`
@@ -63,6 +68,8 @@ const WatchPage = () => {
             className={`${
               userName === 'profile'
                 ? 'visible'
+                : !currentUser
+                ? 'invisible'
                 : userID === currentUser.uid
                 ? 'visible'
                 : 'invisible'
@@ -74,13 +81,36 @@ const WatchPage = () => {
             likedGallery={likedGallery}
             setLikedGallery={setLikedGallery}
           />
-          {userName === 'profile' ? (
+          {!imgData2 ? (
+            <Link className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6" to="/profile">
+              <motion.button
+                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+                Back
+                <p className="hidden xl:inline">&nbsp;to profile</p>
+              </motion.button>
+            </Link>
+          ) : userName === 'profile' ? (
             <Link
               className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
               to="/profile"
               /* to={`${userName !== 'profile' ? `/${imgData2.user}` : '/profile'}`} */
               /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
             >
+              <motion.button
+                /* onClick={handleNavigate} */
+                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+                Back
+                <p className="hidden xl:inline">&nbsp;to profile</p>
+              </motion.button>
+            </Link>
+          ) : !currentUser ? (
+            <Link
+              to={`/${imgData2.user}`}
+              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
+              /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
+              state={{ imgData: imgData2 }}>
               <motion.button
                 /* onClick={handleNavigate} */
                 className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
@@ -120,7 +150,7 @@ const WatchPage = () => {
           )}
         </div>
       </div>
-      {!likedGallery && (
+      {imgData2 && !likedGallery && (
         <MyImages
           userID={userID}
           uploaded={uploaded}
@@ -129,7 +159,7 @@ const WatchPage = () => {
           setSelectedImg={setSelectedImg}
         />
       )}
-      {likedGallery && (
+      {imgData2 && likedGallery && (
         <LikedImages
           userID={userID}
           imgData={imgData}

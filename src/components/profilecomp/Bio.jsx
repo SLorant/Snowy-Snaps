@@ -10,7 +10,9 @@ const Bio = ({ loadedBio, canEdit }) => {
   const [charactersRemaining, setCharactersRemaining] = useState(loadedLength)
   const [error, setError] = useState('')
   const { currentUser } = useAuth()
-  const userid = currentUser.uid
+  let userid
+  if (currentUser) userid = currentUser.uid
+
   const notInitialRender = useRef(false)
   const [showUpdate, setShowUpdate] = useState(false)
   const [showChar, setShowChar] = useState(false)

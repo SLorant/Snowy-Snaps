@@ -34,6 +34,7 @@ const LikedImages = ({ userID, setSelectedImg, setImgData }) => {
                   setSelectedImg(doc.url)
                   setImgData({
                     user: doc.user,
+                    userid: doc.userid,
                     emotion: doc.emotion,
                     emotion2: doc.emotion2,
                     emotion3: doc.emotion3,

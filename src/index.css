@@ -18,16 +18,13 @@ body {
 
 @font-face {
   font-family: 'SimsBoldSC';
-  src: url('./TheSimsSansBoldSC.otf');
+  src: url('/public/TheSimsSansBoldSC.otf');
 }
 @font-face {
   font-family: 'SimsBold';
-  src: url('./TheSimsSansBold.otf');
+  src: url('/public/TheSimsSansBold.otf');
 }
-@font-face {
-  font-family: 'WithoutRain';
-  src: url('./AYearWithoutRain.ttf');
-}
+
 ::-webkit-scrollbar {
   width: 12px;
 }

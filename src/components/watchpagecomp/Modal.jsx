@@ -27,26 +27,28 @@ const Modal = ({
   if (currentUser) {
     userid = currentUser.uid
   }
-  useEffect(() => {
-    userName === 'profile'
-      ? setCanDelete(true)
-      : userID === currentUser.uid
-      ? setCanDelete(true)
-      : setCanDelete(false)
-  }, [])
+  if (currentUser) {
+    useEffect(() => {
+      userName === 'profile'
+        ? setCanDelete(true)
+        : userID === currentUser.uid
+        ? setCanDelete(true)
+        : setCanDelete(false)
+    }, [])
+  }
 
   const date = new Date(imgData.createdAt.seconds * 1000)
   const newdate = date.toLocaleString(DateTime.DATE_MED)
   const finaldate = newdate.substring(0, 12)
   const emotions = [
-    [{ label: 'happy' }, { src: 'src/assets/emojis/happy.png' }],
-    [{ label: 'silly' }, { src: 'src/assets/emojis/silly.png' }],
-    [{ label: 'relaxed' }, { src: 'src/assets/emojis/relaxed.png' }],
-    [{ label: 'excited' }, { src: 'src/assets/emojis/excited.png' }],
-    [{ label: 'confused' }, { src: 'src/assets/emojis/confused.png' }],
-    [{ label: 'mischievous' }, { src: 'src/assets/emojis/mischievous.png' }],
-    [{ label: 'stubborn' }, { src: 'src/assets/emojis/stubborn.png' }],
-    [{ label: 'sad' }, { src: 'src/assets/emojis/sad.png' }],
+    [{ label: 'happy' }, { src: '/src/assets/emojis/happy.png' }],
+    [{ label: 'silly' }, { src: '/src/assets/emojis/silly.png' }],
+    [{ label: 'relaxed' }, { src: '/src/assets/emojis/relaxed.png' }],
+    [{ label: 'excited' }, { src: '/src/assets/emojis/excited.png' }],
+    [{ label: 'confused' }, { src: '/src/assets/emojis/confused.png' }],
+    [{ label: 'mischievous' }, { src: '/src/assets/emojis/mischievous.png' }],
+    [{ label: 'stubborn' }, { src: '/src/assets/emojis/stubborn.png' }],
+    [{ label: 'sad' }, { src: '/src/assets/emojis/sad.png' }],
   ]
 
   currentUser ? IsLiked(imgData.createdAt, userid, setIsLiked, setLikes) : ''

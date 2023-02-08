@@ -17,6 +17,7 @@ const Profile = () => {
   //const { users } = useFirestore('users');
   //db.collection('books').doc('fK3ddutEpD2qQqRMXNW5').get()
   const [username, setUserName] = useState('')
+  const [profilename, setProfileName] = useState('')
   const [galleryText, setGalleryText] = useState('')
   const [error, setError] = useState('')
   const [showSettings, setShowSettings] = useState(false)
@@ -35,9 +36,13 @@ const Profile = () => {
   let { state } = useLocation()
   console.log(state)
   let imgData
-  let userId = currentUser.uid
+  let userId
+  if (currentUser) {
+    userId = currentUser.uid
+  }
   if (state) {
     /*  const imgData = state ? state.imgData : null */
+    console.log(state)
     imgData = state.imgData
     console.log(state.imgData.userid)
     userId = state.imgData.userid
@@ -47,9 +52,10 @@ const Profile = () => {
 
   const user = pathname.substring(1)
   console.log(userId)
+  console.log(user)
 
   useEffect(() => {
-    if (currentUser.uid === userId) {
+    if (currentUser && currentUser.uid === userId) {
       async function loadProfilePic() {
         try {
           setCanEdit(true)
@@ -57,7 +63,8 @@ const Profile = () => {
           const profDocSnap = await getDoc(profDocRef)
           if (profDocSnap.exists()) {
             const data = profDocSnap.data()
-            setUserName(`Hi, ${data.username}`)
+            setUserName(`${data.username}`)
+            setProfileName(`Hi, ${data.username}`)
             setGalleryText('My Gallery')
             data.bio ? setLoadedBio(data.bio) : ''
           } else console.log('No such document!')
@@ -83,7 +90,8 @@ const Profile = () => {
           const profDocSnap = await getDoc(profDocRef)
           if (profDocSnap.exists()) {
             const data = profDocSnap.data()
-            setUserName(`${data.username}'s profile`)
+            setUserName(`${data.username}`)
+            setProfileName(`${data.username}'s profile`)
             setGalleryText(`${data.username}'s Gallery`)
             data.bio ? setLoadedBio(data.bio) : ''
           } else console.log('No such document!')
@@ -120,7 +128,13 @@ const Profile = () => {
     setError('')
 
     try {
-      navigate('/my-gallery')
+      if (currentUser && currentUser.uid === userId) {
+        console.log('kakakakak2')
+        navigate('/my-gallery')
+      } else {
+        console.log('kakakakak')
+        navigate(`/`)
+      }
     } catch {
       setError('Failed to go to my gallery')
     }
@@ -188,9 +202,9 @@ const Profile = () => {
                   <div className="absolute top-20 flex items-end justify-between md:static ">
                     <p
                       className={`${
-                        username.length > 20 ? ' text-2xl' : 'text-4xl'
+                        profilename.length > 20 ? ' text-2xl' : 'text-4xl'
                       }   font-header text-blue`}>
-                      {username}
+                      {profilename}
                     </p>
                   </div>
                   <Bio canEdit={canEdit} loadedBio={loadedBio} />
@@ -199,8 +213,10 @@ const Profile = () => {
               <div className="mb-8 flex  flex-col items-center justify-center">
                 <p className=" mb-6 font-header text-4xl text-peach ">{galleryText}</p>
                 <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
-                  <Link to="/gallery" state={{ userId: userId, userName: user, imgData: imgData }}>
-                    <ShowcaseImg onClick={handleNavigate} userID={userId} />
+                  <Link
+                    to={`/${username}/gallery`}
+                    state={{ userId: userId, userName: user, imgData: imgData }}>
+                    <ShowcaseImg userID={userId} />
                   </Link>
                 </div>
               </div>

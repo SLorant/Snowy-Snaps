@@ -55,10 +55,11 @@ function App() {
             <Route path="learn" element={<LearnPage />} />
             <Route path="watch" element={<WatchPage />} />
             <Route path="login" element={<LoginPage />} />
-            <Route path="/:userId" element={<ProtectedProfile />} /* component={Profile} */ />
+            <Route path="/:userId" element={<Profile />} /* component={Profile} */ />
             <Route path="profile" element={<ProtectedProfile />} />
             <Route path="update-profile" element={<ProtectedUpdateProfile />} />
             <Route path="gallery" element={<ProtectedGallery />} />
+            <Route path="/:userId/gallery" element={<MyGallery />} />
             {/* <Route path="/:userId/gallery" element={<ProtectedGallery />} /> */}
             <Route path="liked-gallery" element={<ProtectedLikedGallery />} />
             <Route path="forgot-password" element={<ForgotPassword />} />

@@ -31,7 +31,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
   })
   let selected
   const [showError, setShowError] = useState(true)
-
+  const [loginError, setLoginError] = useState(false)
   const [pic, setPic] = useState(null)
   useEffect(() => {
     setTimeout(function () {
@@ -66,7 +66,10 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
       } else {
         setError('Please select an image file (png, jpg, gif)')
       }
-    } else setError('Please log in first')
+    } else {
+      setLoginError(true)
+      setError('Please log in first')
+    }
   }
   return (
     <div
@@ -130,8 +133,9 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
         </div>
         <p className="mt-1 font-headersc text-base text-blue opacity-40">PNG, JPG, GIF</p>
         {error && (
-          <div className="mt-2 font-body text-xl text-darkblue underline">
-            <Link to="/login"> {error}</Link>
+          <div className="mt-2 font-body text-lg text-darkblue underline">
+            {loginError && <Link to="/login"> {error}</Link>}
+            {!loginError && <p> {error}</p>}
           </div>
         )}
       </div>
