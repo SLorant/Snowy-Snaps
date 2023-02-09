@@ -32,6 +32,7 @@ const ShowcaseImg = ({ userID }) => {
         "Can't load images"
       })
   } else {
+    console.log(userID)
     storageRef = projectStorage.ref(userID + '/uploadedpics')
     storageRef
       .listAll()
@@ -72,8 +73,9 @@ const ShowcaseImg = ({ userID }) => {
         id="myimg4"
       />
       <img
-        className="absolute left-4 top-4 z-20 h-44 w-44 rotate-2 rounded-md object-cover object-center drop-shadow-lg  transition duration-500
-          ease-in-out group-hover:-translate-y-2 group-hover:-translate-x-10
+        className="group-hover:-tran slate-y-2 absolute left-4 top-4 z-20 h-44 w-44 rotate-2 rounded-md object-cover  object-center drop-shadow-lg
+          transition duration-500
+          ease-in-out group-hover:-translate-x-10
         group-hover:-rotate-6 md:h-60 md:w-60"
         src="src\assets\placeholder.png"
         alt="pic"

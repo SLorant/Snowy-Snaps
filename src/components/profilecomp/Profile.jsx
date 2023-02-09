@@ -1,14 +1,14 @@
 import React from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, getDocs, query, collection, where } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 import useFirestore from '../hooks/useFirestore'
 import { projectFirestore, projectStorage } from '../../../firebase/config'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import ShowcaseImg from './ShowcaseImg'
-import LargeButton from '../homepagecomp/LargeButton'
+import useLoadProfile from './useLoadProfile'
 import Bio from './Bio'
 import Settings from './Settings'
 
@@ -31,98 +31,32 @@ const Profile = () => {
     { id: 'myimg9' },
     { id: 'myimg10' },
   ]
-  /* const history = useNavigate() */
+
   const navigate = useNavigate()
-  let { state } = useLocation()
-  console.log(state)
+
   let imgData
-  let userId
+  const [userId, setUserId] = useState('')
   if (currentUser) {
-    userId = currentUser.uid
-  }
-  if (state) {
-    /*  const imgData = state ? state.imgData : null */
-    console.log(state)
-    imgData = state.imgData
-    console.log(state.imgData.userid)
-    userId = state.imgData.userid
+    setUserId(currentUser.uid)
   }
 
   const pathname = useLocation().pathname
 
   const user = pathname.substring(1)
-  console.log(userId)
+
   console.log(user)
+  let bio
+  let url
 
-  useEffect(() => {
-    if (currentUser && currentUser.uid === userId) {
-      async function loadProfilePic() {
-        try {
-          setCanEdit(true)
-          const profDocRef = doc(projectFirestore, 'users', currentUser.uid)
-          const profDocSnap = await getDoc(profDocRef)
-          if (profDocSnap.exists()) {
-            const data = profDocSnap.data()
-            setUserName(`${data.username}`)
-            setProfileName(`Hi, ${data.username}`)
-            setGalleryText('My Gallery')
-            data.bio ? setLoadedBio(data.bio) : ''
-          } else console.log('No such document!')
-
-          const url = await getDownloadURL(
-            ref(projectStorage, `${currentUser.uid}/profilepics/image`),
-          )
-
-          const img = document.getElementById('profileimg')
-          img.setAttribute('src', url)
-        } catch (error) {
-          console.log('user has no profile pic:', error)
-          console.log('Error getting user data:', error)
-        }
-      }
-      loadProfilePic()
-    } else {
-      console.log('other')
-      async function loadProfileOther() {
-        try {
-          setCanEdit(false)
-          const profDocRef = doc(projectFirestore, 'users', userId)
-          const profDocSnap = await getDoc(profDocRef)
-          if (profDocSnap.exists()) {
-            const data = profDocSnap.data()
-            setUserName(`${data.username}`)
-            setProfileName(`${data.username}'s profile`)
-            setGalleryText(`${data.username}'s Gallery`)
-            data.bio ? setLoadedBio(data.bio) : ''
-          } else console.log('No such document!')
-
-          const url = await getDownloadURL(ref(projectStorage, `${userId}/profilepics/image`))
-          const img = document.getElementById('profileimg')
-          img.setAttribute('src', url)
-        } catch (error) {
-          console.log('user has no profile pic:', error)
-          console.log('Error getting user data:', error)
-        }
-      }
-      loadProfileOther()
-    }
-  }, [])
-
-  //console.log(storageRef.listAll())
-  // Now we get the references of these images
-
-  /* if( useAuth().currentUser){
-    getDownloadURL(ref(projectStorage, `${currentUser.uid}/uploadedpics/image`))
-   .then((url) => {
-      // Or inserted into an <img> element
-      const img = document.getElementById('myimg2');
-      img.setAttribute('src', url);
-      //console.log(url)
-    })
-    .catch((error) => {
-     console.log("user has no profile pic")
-    });
-   }  */
+  useLoadProfile(
+    userId,
+    setUserId,
+    setUserName,
+    setGalleryText,
+    setLoadedBio,
+    setCanEdit,
+    setProfileName,
+  )
 
   async function handleNavigate() {
     setError('')
@@ -139,6 +73,7 @@ const Profile = () => {
       setError('Failed to go to my gallery')
     }
   }
+  console.log(userId)
 
   async function handleNavigate2() {
     setError('')
@@ -215,7 +150,8 @@ const Profile = () => {
                 <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
                   <Link
                     to={`/${username}/gallery`}
-                    state={{ userId: userId, userName: user, imgData: imgData }}>
+                    /* state={{ userId: userId, userName: user, imgData: imgData }} */
+                  >
                     <ShowcaseImg userID={userId} />
                   </Link>
                 </div>

@@ -80,9 +80,11 @@ const useFirestore = (
 
       querySnapshot.forEach((doc) => {
         if (!documents.find((d) => d.id === doc.id)) {
+          console.log(doc.data().user)
           documents.push({ ...doc.data(), id: doc.id })
         }
       })
+      console.log(documents[0].user)
 
       setDocs(documents)
       setUploaded(false)

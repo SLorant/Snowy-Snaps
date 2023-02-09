@@ -159,7 +159,7 @@ const Modal = ({
             md:flex-col md:gap-0 lg:mb-4 lg:ml-0 lg:mt-4   lg:w-full">
             <div className="flex text-center font-header text-2xl text-blue lg:mb-2">
               By&nbsp;
-              <Link to={`/${imgData.user}`} state={{ imgData: imgData }}>
+              <Link to={`/${imgData.user}`} /* state={{ imgData: imgData }} */>
                 <motion.p className=" underline" whileHover={{ scale: 1.1 }}>
                   {imgData.user}
                 </motion.p>

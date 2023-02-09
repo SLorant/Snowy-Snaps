@@ -9,7 +9,7 @@ import useFirestore from '../hooks/useFirestore'
 const MyImages = ({ setSelectedImg, setImgData, userID, uploaded, setUploaded }) => {
   // Get all the images from Storage
 
-  //console.log(files);
+  console.log(userID)
 
   const { docs } = useFirestore('images', userID, uploaded, setUploaded)
 

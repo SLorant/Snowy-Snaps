@@ -8,6 +8,7 @@ import GalleryTop from './GalleryTop'
 import { useAuth } from '../../contexts/AuthContext'
 import LikedImages from './LikedImages'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
+import useLoadGallery from './useLoadGallery'
 
 const WatchPage = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -16,15 +17,9 @@ const WatchPage = () => {
   const [uploaded, setUploaded] = useState(false)
   const { currentUser } = useAuth()
   let { state } = useLocation()
-  let userID
-  if (currentUser) userID = currentUser.uid
-  let userName
-  let imgData2
-  if (state) {
-    userID = state.userId
-    userName = state.userName
-    imgData2 = state.imgData
-  }
+  let [userID, setUserID] = useState('')
+
+  const [userName, setUserName] = useState('')
 
   const [file, setFile] = useState(null)
   const [imgData, setImgData] = useState({
@@ -34,6 +29,8 @@ const WatchPage = () => {
     emotion3: '',
     createdAt: '',
   })
+  const [galleryText, setGalleryText] = useState('')
+  useLoadGallery(userID, setUserID, setUserName, setGalleryText)
   const handleImageUpload = (value) => {
     setUploaded(value)
   }
@@ -47,22 +44,11 @@ const WatchPage = () => {
       setError("Couldn't load page")
     }
   }
+  console.log(userID)
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
-        <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">
-          {`${
-            !imgData2
-              ? 'Please check profiles through the main gallery'
-              : userName === 'profile'
-              ? `My Gallery`
-              : !currentUser
-              ? `${userName}'s Gallery`
-              : userID === currentUser.uid
-              ? 'My Gallery'
-              : `${userName}'s Gallery`
-          }`}
-        </h1>
+        <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">{`${galleryText}`}</h1>
         <div className="mt-2 flex w-full items-center justify-center   md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div
             className={`${
@@ -81,76 +67,22 @@ const WatchPage = () => {
             likedGallery={likedGallery}
             setLikedGallery={setLikedGallery}
           />
-          {!imgData2 ? (
-            <Link className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6" to="/profile">
-              <motion.button
-                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                Back
-                <p className="hidden xl:inline">&nbsp;to profile</p>
-              </motion.button>
-            </Link>
-          ) : userName === 'profile' ? (
-            <Link
-              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
-              to="/profile"
-              /* to={`${userName !== 'profile' ? `/${imgData2.user}` : '/profile'}`} */
-              /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
-            >
-              <motion.button
-                /* onClick={handleNavigate} */
-                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                Back
-                <p className="hidden xl:inline">&nbsp;to profile</p>
-              </motion.button>
-            </Link>
-          ) : !currentUser ? (
-            <Link
-              to={`/${imgData2.user}`}
-              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
-              /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
-              state={{ imgData: imgData2 }}>
-              <motion.button
-                /* onClick={handleNavigate} */
-                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                Back
-                <p className="hidden xl:inline">&nbsp;to profile</p>
-              </motion.button>
-            </Link>
-          ) : userID === currentUser.uid ? (
-            <Link
-              to="/profile"
-              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
-              /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
-            >
-              <motion.button
-                /* onClick={handleNavigate} */
-                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                Back
-                <p className="hidden xl:inline">&nbsp;to profile</p>
-              </motion.button>
-            </Link>
-          ) : (
-            <Link
-              to={`/${imgData2.user}`}
-              className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
-              /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
-              state={{ imgData: imgData2 }}>
-              <motion.button
-                /* onClick={handleNavigate} */
-                className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                Back
-                <p className="hidden xl:inline">&nbsp;to profile</p>
-              </motion.button>
-            </Link>
-          )}
+          <Link
+            to="/profile"
+            className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6"
+            /*  state={`${userName !== 'profile' ? { imgData: imgData2 } : null}`} */
+          >
+            <motion.button
+              /* onClick={handleNavigate} */
+              className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
+              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+              Back
+              <p className="hidden xl:inline">&nbsp;to profile</p>
+            </motion.button>
+          </Link>
         </div>
       </div>
-      {imgData2 && !likedGallery && (
+      {!likedGallery && (
         <MyImages
           userID={userID}
           uploaded={uploaded}
@@ -159,7 +91,7 @@ const WatchPage = () => {
           setSelectedImg={setSelectedImg}
         />
       )}
-      {imgData2 && likedGallery && (
+      {likedGallery && (
         <LikedImages
           userID={userID}
           imgData={imgData}
