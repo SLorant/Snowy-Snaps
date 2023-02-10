@@ -57,7 +57,7 @@ const UploadProfilePic = () => {
   return (
     <div>
       <div className=" flex h-screen w-full items-center justify-center bg-cream ">
-        <div className=" h-full h-full w-full rounded-xl bg-white  md:w-4/5 xl:w-2/3   2xl:h-4/5 ">
+        <div className=" flex h-full w-full flex-col rounded-xl bg-white md:h-3/4  md:w-4/5 md:justify-around xl:w-2/3  2xl:h-4/5 ">
           <div className="flex flex-col  items-center  justify-center ">
             <div className="mt-8 flex   w-full items-center justify-center">
               <p className="font-header  text-4xl text-peach ">Profile picture</p>

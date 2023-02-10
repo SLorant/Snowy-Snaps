@@ -1,8 +1,6 @@
-POST error when logging out from the same account twice
 
 error text bad 
-access profiles with just url?
-learn page component too long
+learn page responsiveness
 progressbar bad placing in gallery, and in my gallery
 rename some components
 motion design for mobile header

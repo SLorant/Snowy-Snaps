@@ -54,7 +54,7 @@ const Header = () => {
           href="#"
           className="absolute left-2 top-4 mb-1 w-44  font-headersc text-lg
          font-bold text-blue lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl">
-          <img src="src/assets/logo.png" alt="logo" />
+          <img src="/src/assets/logo.png" alt="logo" />
         </a>
 
         <div className=" ml-40 flex h-full w-2/3 items-center justify-center lg:ml-60 xl:ml-80">

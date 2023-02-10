@@ -5,68 +5,70 @@ import { projectFirestore, projectStorage } from '../../../firebase/config'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { useLocation } from 'react-router-dom'
 
-const useLoadProfile = (
-  userId,
-  setUserId,
-  setUserName,
-  setGalleryText,
-  setLoadedBio,
-  setCanEdit,
-  setProfileName,
-) => {
+const useLoadProfile = (setUser) => {
   const { currentUser, logout } = useAuth()
   const pathname = useLocation().pathname
-  const user = pathname.substring(1)
+  let user = pathname.substring(1)
+  let bio
 
-  if (currentUser) {
-    setUserId(currentUser.uid)
+  async function loadProfilePic() {
+    try {
+      let data
+      if (currentUser) {
+        const profDocRef = doc(projectFirestore, 'users', currentUser.uid)
+        const profDocSnap = await getDoc(profDocRef)
+        data = profDocSnap.data()
+      }
+      if (currentUser && (data.username === user || user === 'profile')) {
+        setUser({
+          userName: `${data.username}`,
+          userID: `${currentUser.uid}`,
+          galleryText: 'My Gallery',
+          profileName: `Hi, ${data.username}`,
+          loadedBio: data.bio ? data.bio : '',
+          canEdit: true,
+        })
+
+        return currentUser.uid
+      } else {
+        const q = query(collection(projectFirestore, 'users'), where('username', '==', user))
+        const querySnapshot = await getDocs(q)
+        let id
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id)
+          id = doc.id
+          bio = doc.data().bio
+        })
+        setUser({
+          userName: `${user}`,
+          userID: id,
+          galleryText: `${user}'s Gallery`,
+          profileName: `${user}'s profile`,
+          loadedBio: bio ? bio : '',
+          canEdit: false,
+        })
+
+        return id
+      }
+    } catch (error) {
+      console.log('Error getting user data:', error)
+    }
   }
 
-  let bio
-  let url
-
   useEffect(() => {
-    async function loadProfilePic() {
-      try {
-        if (currentUser) {
-          const profDocRef = doc(projectFirestore, 'users', currentUser.uid)
-          const profDocSnap = await getDoc(profDocRef)
-          /*   if (profDocSnap.exists()) { */
+    ;(async () => {
+      let user2 = await loadProfilePic()
+      console.log(user2)
+      const url = await getDownloadURL(ref(projectStorage, `${user2}/profilepics/image`))
 
-          const data = profDocSnap.data()
-
-          if (data.username === user) {
-            setCanEdit(true)
-            setUserName(`${data.username}`)
-            setProfileName(`Hi, ${data.username}`)
-            setGalleryText('My Gallery')
-            data.bio ? setLoadedBio(data.bio) : ''
-          }
-        } else {
-          setCanEdit(false)
-          const q = query(collection(projectFirestore, 'users'), where('username', '==', user))
-          const querySnapshot = await getDocs(q)
-          querySnapshot.forEach((doc) => {
-            console.log(doc.id)
-            setUserId(doc.id)
-            bio = doc.data().bio
-          })
-          setUserName(`${user}`)
-          setProfileName(`${user}'s profile`)
-          setGalleryText(`${user}'s Gallery`)
-          console.log(userId)
-          url = await getDownloadURL(ref(projectStorage, `${userId}/profilepics/image`))
-          console.log(url)
-          const img = document.getElementById('profileimg')
-          img.setAttribute('src', url)
-          bio ? setLoadedBio(bio) : ''
-        }
-      } catch (error) {
-        console.log('Error getting user data:', error)
-      }
-    }
+      const img = document.getElementById('profileimg')
+      img.setAttribute('src', url)
+    })()
+  }, [])
+  /*  useEffect(() => {
+   
     loadProfilePic()
-  }, [userId])
+  }, [userId]) */
 }
 
 export default useLoadProfile

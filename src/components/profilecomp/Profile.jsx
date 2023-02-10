@@ -36,62 +36,47 @@ const Profile = () => {
 
   let imgData
   const [userId, setUserId] = useState('')
-  if (currentUser) {
-    setUserId(currentUser.uid)
-  }
 
-  const pathname = useLocation().pathname
+  /* const pathname = useLocation().pathname
 
-  const user = pathname.substring(1)
+  const user= pathname.substring(1) */
 
-  console.log(user)
   let bio
   let url
+  const [loading, setLoading] = useState(true)
 
-  useLoadProfile(
-    userId,
-    setUserId,
-    setUserName,
-    setGalleryText,
-    setLoadedBio,
-    setCanEdit,
-    setProfileName,
-  )
+  const [user, setUser] = useState({
+    userName: '',
+    userID: '',
+    galleryText: '',
+    profileName: '',
+    loadedBio: '',
+    canEdit: false,
+  })
+  useLoadProfile(setUser)
+  /* useEffect(() => {
+    getImage()
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }, [user.userID])
 
-  async function handleNavigate() {
-    setError('')
-
+  async function getImage() {
+    console.log(user.userID)
     try {
-      if (currentUser && currentUser.uid === userId) {
-        console.log('kakakakak2')
-        navigate('/my-gallery')
-      } else {
-        console.log('kakakakak')
-        navigate(`/`)
-      }
-    } catch {
-      setError('Failed to go to my gallery')
+      
+    } catch (error) {
+      console.log('no image: ' + error)
     }
-  }
-  console.log(userId)
-
-  async function handleNavigate2() {
-    setError('')
-
-    try {
-      navigate('/liked-gallery')
-    } catch {
-      setError('Failed to go to my gallery')
-    }
-  }
-
-  const handleSelectSettings = () => {}
+  } */
 
   // if (currentUser.email === docs.map(doc) )
   return (
-    <div className="z-50 h-full w-full md:h-full  ">
+    /* !loading && */ <div className="z-50 h-full w-full md:h-full  ">
       <div className="z-20 flex h-full w-full items-center  justify-center bg-cream">
-        <div className=" z-20  flex h-full w-full flex-col items-center justify-center rounded-lg bg-white md:mb-10 md:mt-28 md:h-4/5  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
+        <div
+          className=" z-20  flex h-full w-full flex-col items-center justify-center 
+        rounded-lg bg-white md:mb-10 md:mt-28 md:h-4/5  md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2">
           <div className="flex w-full items-center justify-around rounded-lg  ">
             <motion.div
               className="mt-36 flex w-full  flex-col items-center justify-center md:mt-0  "
@@ -99,7 +84,7 @@ const Profile = () => {
               animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}>
               <div className="flex flex-col items-center  justify-center gap-4 md:flex-row ">
                 <div className="flex items-end md:relative">
-                  {canEdit && (
+                  {user.canEdit && (
                     <motion.button
                       className="invisible absolute md:visible"
                       /*  whileFocus={{ rotate: 90 }} */
@@ -131,35 +116,35 @@ const Profile = () => {
                     src="src\assets\profile.png"
                     alt="userpic"
                   />
-                  {showSettings && canEdit && <Settings />}
+                  {showSettings && user.canEdit && <Settings />}
                 </div>
                 <div className=" flex flex-col items-center  md:mt-8 md:items-end ">
                   <div className="absolute top-20 flex items-end justify-between md:static ">
                     <p
                       className={`${
-                        profilename.length > 20 ? ' text-2xl' : 'text-4xl'
+                        user.profileName.length > 20 ? ' text-2xl' : 'text-4xl'
                       }   font-header text-blue`}>
-                      {profilename}
+                      {user.profileName}
                     </p>
                   </div>
-                  <Bio canEdit={canEdit} loadedBio={loadedBio} />
+                  <Bio canEdit={user.canEdit} loadedBio={user.loadedBio} />
                 </div>
               </div>
               <div className="mb-8 flex  flex-col items-center justify-center">
-                <p className=" mb-6 font-header text-4xl text-peach ">{galleryText}</p>
+                <p className=" mb-6 font-header text-4xl text-peach ">{user.galleryText}</p>
                 <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
                   <Link
-                    to={`/${username}/gallery`}
+                    to={`/${user.userName}/gallery`}
                     /* state={{ userId: userId, userName: user, imgData: imgData }} */
                   >
-                    <ShowcaseImg userID={userId} />
+                    <ShowcaseImg userID={user.userID} />
                   </Link>
                 </div>
               </div>
               {/*  <Settings /> */}
             </motion.div>
           </div>
-          {canEdit && (
+          {user.canEdit && (
             <div className="mb-0 mt-6 block flex w-full items-center justify-center md:hidden">
               <Settings />
             </div>
