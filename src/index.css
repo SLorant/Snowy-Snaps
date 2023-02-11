@@ -43,6 +43,7 @@ body {
 
 .uploadbutton:hover .icon-tabler-file-upload {
   stroke: #de9873;
+  transition-duration: 0.3s;
 }
 
 .uploadbutton2:hover .file-upload-mobile {

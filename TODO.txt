@@ -1,6 +1,7 @@
 
 error text bad 
 learn page responsiveness
+like button move on click too
 progressbar bad placing in gallery, and in my gallery
 rename some components
 motion design for mobile header
