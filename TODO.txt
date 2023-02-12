@@ -1,6 +1,8 @@
 
 error text bad 
-learn page responsiveness
+huskypedia first time there table of content show popup (cookies)
+Cookies
+useloadheader component
 like button move on click too
 progressbar bad placing in gallery, and in my gallery
 rename some components

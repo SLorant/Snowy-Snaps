@@ -36,6 +36,7 @@ const Settings = () => {
       setError('')
       await resetPassword(currentUser.email)
       setMessage('We sent you an email with a link where you can reset your password.')
+      alert(message)
     } catch {
       setError('Something failed. Try again?')
     }
@@ -48,26 +49,26 @@ const Settings = () => {
       animate={{ opacity: 1, transition: { duration: 0.3 } }}>
       <div className="group w-full cursor-pointer border-b-2 border-sand transition  duration-200 ease-in-out  hover:border-peach hover:bg-blue md:rounded-md">
         <button
-          className="float-left my-1 w-full text-start  font-header text-blue transition duration-200  ease-in-out  group-hover:text-peach  "
+          className="float-left my-2 w-full text-start font-header  text-blue transition duration-200 ease-in-out  group-hover:text-peach  md:my-1  "
           onClick={() => navigate('/upload-profile')}>
-          <p className="ml-2 text-lg">Change profile image</p>
+          <p className="ml-6 text-lg md:ml-2">Change profile image</p>
         </button>
       </div>
       <div className="group w-full cursor-pointer border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach hover:bg-blue md:rounded-md">
         <button
           onClick={handleResetPassword}
-          className=" my-1 w-full text-start font-header  text-blue transition duration-200  ease-in-out group-hover:text-peach">
-          <p className="ml-2 text-lg">Change password</p>
+          className=" my-2 w-full text-start font-header text-blue  transition duration-200 ease-in-out  group-hover:text-peach md:my-1">
+          <p className="ml-6 text-lg md:ml-2">Change password</p>
         </button>
       </div>
-      {showElement && message && (
+      {/* {showElement && message && (
         <div className="mt-2 mb-4 w-60 font-body text-lg  text-darkblue">{message}</div>
-      )}
+      )} */}
       <div className="group w-full cursor-pointer transition  duration-200 ease-in-out  hover:bg-blue md:rounded-md">
         <button
           onClick={handleLogout}
-          className=" my-1 w-full text-start  font-header text-blue transition  duration-200 ease-in-out  group-hover:text-peach">
-          <p className="ml-2 text-lg">Log out</p>
+          className=" my-2 w-full text-start font-header  text-blue transition duration-200  ease-in-out group-hover:text-peach  md:my-1">
+          <p className="ml-6 text-lg md:ml-2">Log out</p>
         </button>
       </div>
     </motion.div>

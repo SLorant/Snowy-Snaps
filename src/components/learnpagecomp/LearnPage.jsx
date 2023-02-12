@@ -57,11 +57,11 @@ const LearnPage = () => {
         <motion.div
           className={`${
             showT ? '' : 'visible'
-          } fixed top-0 right-0 z-40 flex h-full w-64 flex-col items-center justify-center 
-            md:top-52 md:h-[500px]    2xl:visible`}
+          } fixed top-0 right-0 z-40 flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
+              lg:h-[850px] lg:w-80 lg:rounded-l-md 2xl:visible`}
           variants={{
             open: {
-              boxShadow: '0px 0px 10px 5px rgba(0, 0, 0, 0.3)',
+              boxShadow: '0px 0px 10px 3px rgba(0, 0, 0, 0.3)',
               transition: {
                 type: 'spring',
                 bounce: 0,
@@ -80,7 +80,7 @@ const LearnPage = () => {
           {variants}
         animate={showT ? 'rotate' : 'stop'} */}
           <motion.ul
-            className="flex h-full w-full flex-col  justify-center   gap-2 bg-cream font-header text-2xl text-blue "
+            className="flex h-full w-full flex-col justify-center gap-2   bg-cream font-header text-2xl text-blue lg:rounded-l-md xl:bg-cream "
             variants={{
               open: {
                 clipPath: 'inset(0% 0% 0% 0% round 10px)',
@@ -104,19 +104,24 @@ const LearnPage = () => {
               },
             }}
             style={{ pointerEvents: showT ? 'auto' : 'none' }}>
-            <div className=" mb-20  flex flex-col  justify-center gap-2 ">
+            <div className=" mb-28  flex flex-col  justify-center gap-2 ">
               <div className=" flex w-full items-center justify-center">
-                <h2 className=" mb-4 font-headersc text-2xl text-blue">Table of contents</h2>
+                <h2 className=" mt-0 mb-4 font-headersc text-2xl text-blue lg:mb-10 lg:text-3xl">
+                  Table of contents
+                </h2>
               </div>
               {links.map((link) => (
                 <motion.div
                   variants={itemVariants}
-                  className="w-full cursor-pointer border-b-2 border-sand"
+                  className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue hover:text-peach xl:border-sand"
                   onClick={() => {
                     setShowT(false)
                   }}>
                   {/*   <TableOfContent link={link.link} text={link.text} main={link.main} /> */}
-                  <motion.li className={`${link.main ? 'ml-4' : 'ml-8 text-lg'} flex  w-full`}>
+                  <motion.li
+                    className={`${
+                      link.main ? 'ml-4 lg:ml-8' : 'ml-8 text-lg lg:ml-12'
+                    } flex  w-full`}>
                     <Link className=" w-full " to={link.link}>
                       {' '}
                       {link.text}
@@ -136,14 +141,14 @@ const LearnPage = () => {
         </div>
 
         <motion.button
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
           onClick={() => {
             setShowT(!showT)
           }}
           className={`${
             showT ? 'bg-blue' : 'bg-sand'
           } uploadbutton fixed right-6 bottom-6 z-50  rounded-2xl  p-2
-           transition duration-300 ease-in-out hover:bg-blue md:right-16 md:bg-white lg:bottom-12 lg:right-14 2xl:hidden`}>
+            hover:bg-blue   lg:bottom-6 lg:right-28 `}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon-tabler-file-upload icon icon-tabler icon-tabler-eye-table"
