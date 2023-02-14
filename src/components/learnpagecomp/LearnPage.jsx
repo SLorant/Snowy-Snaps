@@ -57,7 +57,7 @@ const LearnPage = () => {
         <motion.div
           className={`${
             showT ? '' : 'visible'
-          } fixed top-0 right-0 z-40 flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
+          } fixed top-0 right-0 z-50 flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
               lg:h-[850px] lg:w-80 lg:rounded-l-md 2xl:visible`}
           variants={{
             open: {
@@ -112,6 +112,7 @@ const LearnPage = () => {
               </div>
               {links.map((link) => (
                 <motion.div
+                  key={link.link}
                   variants={itemVariants}
                   className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue hover:text-peach xl:border-sand"
                   onClick={() => {

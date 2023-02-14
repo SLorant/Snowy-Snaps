@@ -7,12 +7,14 @@ import HeaderLink from './HeaderLink'
 import { useLocation, Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import data from './data.json'
+import { HalfSun } from '@theme-toggles/react'
 
 const Header = () => {
   const { currentUser } = useAuth()
   const [username, setUserName] = useState('')
   const currentLocation = useLocation()
   const currLoc = currentLocation.pathname
+  const lottieRef = useRef()
   /*  const bodymovinOptions = {
     loop: true,
     autoplay: true,
@@ -29,6 +31,42 @@ const Header = () => {
   } */
 
   const [showMenu, setShowMenu] = useState(false)
+
+  useEffect(() => {
+    if (showMenu) {
+      lottieRef.current.playSegments([0, 30], false)
+    } else {
+      /* lottieRef.current.setDirection(-1) */
+      lottieRef.current.playSegments([30, 0], false)
+      console.log(showMenu)
+    }
+  }, [showMenu])
+
+  const handleClickMenu = () => {
+    setShowMenu(!showMenu)
+    /* showMenu ? lottieRef.current.play() : lottieRef.current.pause() */
+  }
+  const [headerBg, setHeaderBg] = useState('bg-white')
+  const setBg = () => {
+    switch (currLoc) {
+      case '/':
+        setHeaderBg('bg-sand')
+        break
+      case '/watch':
+        setHeaderBg('bg-white')
+        break
+      case '/my-gallery':
+        setHeaderBg('bg-white')
+        break
+      default:
+        setHeaderBg('bg-cream')
+    }
+  }
+
+  useEffect(() => {
+    setBg()
+    if (showMenu) setHeaderBg('bg-sand')
+  })
 
   useEffect(() => {
     if (currentUser) {
@@ -57,73 +95,57 @@ const Header = () => {
 
   return (
     <header
-      className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-40 flex  w-full `}>
+      className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-50 flex  w-full `}>
       <nav
-        className={`${
-          currLoc === '/'
-            ? 'bg-sand'
-            : currLoc === '/watch'
-            ? 'bg-white'
-            : currLoc === '/my-gallery'
-            ? 'bg-white '
-            : 'bg-cream'
-        } 
-        ${showMenu ? 'h-2/3 bg-cream' : 'h-16'}
-      sticky flex  w-full  items-center justify-between md:h-14  xl:h-[72px]   `}>
+        className={`
+        ${showMenu ? 'h-2/3' : 'h-16'}
+        ${headerBg}
+      sticky flex  w-full  items-center justify-center  md:h-14 md:justify-between  xl:h-[72px]   `}>
         <a
           href="#"
           className="absolute left-2 top-4 mb-1 hidden w-40 font-headersc  text-lg font-bold
          text-blue md:block lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl">
           <img src="/src/assets/logo.png" alt="logo" />
         </a>
-        <button
-          className="absolute top-1 left-2 md:hidden"
-          onClick={() => {
-            setShowMenu(!showMenu)
-          }}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-menu-2"
-            width="55"
-            height="55"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="#2c3e50"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="20" y2="18" />
-          </svg>
-        </button>
+        <div className="">
+          <button className="absolute top-1 left-2 w-12 md:hidden" onClick={handleClickMenu}>
+            <Lottie autoplay={false} loop={false} lottieRef={lottieRef} animationData={data} />
+          </button>
+        </div>
 
         <div
           className={`${
             showMenu
-              ? 'h-2/3 flex-col items-start justify-start '
+              ? 'h-2/3 w-full flex-col items-start justify-start  '
               : 'hidden h-full w-full items-center justify-center md:flex'
-          } flex    md:ml-40 md:flex-row lg:ml-60 xl:ml-80`}>
-          <HeaderLink title="Home" location="/" currLoc={currLoc} showMenu={showMenu} />
-          <div className="w-10">
-            <Lottie loop={true} animationData={data} />
+          }  mx-4 grid grid-cols-2 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80`}>
+          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream">
+            <HeaderLink title="Home" location="/" currLoc={currLoc} showMenu={showMenu} />
           </div>
-          <HeaderLink title="Gallery" location="/watch" currLoc={currLoc} showMenu={showMenu} />
-          <HeaderLink title="Huskypedia" location="/learn" currLoc={currLoc} showMenu={showMenu} />
-          <div className="md:hidden">
+          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream">
+            <HeaderLink title="Gallery" location="/watch" currLoc={currLoc} showMenu={showMenu} />
+          </div>
+          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream">
+            <HeaderLink
+              title="Huskypedia"
+              location="/learn"
+              currLoc={currLoc}
+              showMenu={showMenu}
+            />
+          </div>
+          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream md:hidden">
             <HeaderLink title="Profile" location="/learn" currLoc={currLoc} showMenu={showMenu} />
           </div>
 
-          <div className="md:hidden">
+          {/*  <div className="md:hidden">
             <HeaderLink
               title="My Gallery"
               location="/learn"
               currLoc={currLoc}
               showMenu={showMenu}
             />
-          </div>
-          <div className="md:hidden">
+          </div>*/}
+          <div className="col-span-2 flex h-28 w-full items-center justify-center rounded-md bg-cream md:hidden">
             <HeaderLink
               title="Upload picture"
               location="/learn"
@@ -131,6 +153,9 @@ const Header = () => {
               showMenu={showMenu}
             />
           </div>
+          <button className="h-40 w-40">
+            <HalfSun className="" />
+          </button>
         </div>
 
         {useAuth().currentUser ? (
