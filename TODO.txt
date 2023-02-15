@@ -1,5 +1,6 @@
 
 error text bad 
+progressbar placing on mobile, uploadform on mobile
 huskypedia first time there table of content show popup (cookies)
 Cookies
 useloadheader component

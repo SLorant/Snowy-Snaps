@@ -98,13 +98,15 @@ const Header = () => {
       className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-50 flex  w-full `}>
       <nav
         className={`
-        ${showMenu ? 'h-2/3' : 'h-16'}
+        ${showMenu ? 'h-full flex-col bg-sand' : 'h-16'}
         ${headerBg}
       sticky flex  w-full  items-center justify-center  md:h-14 md:justify-between  xl:h-[72px]   `}>
         <a
           href="#"
-          className="absolute left-2 top-4 mb-1 hidden w-40 font-headersc  text-lg font-bold
-         text-blue md:block lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl">
+          className={`${
+            showMenu ? 'right-6' : 'left-2 hidden md:block '
+          } absolute top-4 mb-1  w-40 font-headersc  text-lg font-bold
+         text-blue  lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
           <img src="/src/assets/logo.png" alt="logo" />
         </a>
         <div className="">
@@ -116,16 +118,16 @@ const Header = () => {
         <div
           className={`${
             showMenu
-              ? 'h-2/3 w-full flex-col items-start justify-start  '
+              ? '  absolute top-48 h-2/3 w-full flex-col items-start justify-start  '
               : 'hidden h-full w-full items-center justify-center md:flex'
-          }  mx-4 grid grid-cols-2 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80`}>
-          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream">
+          }  mx-4  flex md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80`}>
+          <div className=" mx-4 my-2 flex h-14 w-[90%] items-center justify-between rounded-md bg-cream">
             <HeaderLink title="Home" location="/" currLoc={currLoc} showMenu={showMenu} />
           </div>
-          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream">
+          <div className="mx-4 my-2 flex h-14 w-[90%] items-center justify-between rounded-md bg-cream ">
             <HeaderLink title="Gallery" location="/watch" currLoc={currLoc} showMenu={showMenu} />
           </div>
-          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream">
+          <div className="mx-4 my-2 flex h-14 w-[90%] items-center justify-between rounded-md bg-cream">
             <HeaderLink
               title="Huskypedia"
               location="/learn"
@@ -133,8 +135,8 @@ const Header = () => {
               showMenu={showMenu}
             />
           </div>
-          <div className="flex h-28 w-40 items-center justify-center rounded-md bg-cream md:hidden">
-            <HeaderLink title="Profile" location="/learn" currLoc={currLoc} showMenu={showMenu} />
+          <div className="mx-4 my-2 flex h-14 w-[90%] items-center justify-between rounded-md bg-cream  md:hidden">
+            <HeaderLink title="Profile" location="/profile" currLoc={currLoc} showMenu={showMenu} />
           </div>
 
           {/*  <div className="md:hidden">
@@ -145,36 +147,78 @@ const Header = () => {
               showMenu={showMenu}
             />
           </div>*/}
-          <div className="col-span-2 flex h-28 w-full items-center justify-center rounded-md bg-cream md:hidden">
+          <div className="mx-4 my-2 flex h-14 w-[90%] items-center justify-between rounded-md bg-cream  md:hidden">
             <HeaderLink
-              title="Upload picture"
-              location="/learn"
+              title="My Snaps"
+              location={`/${username}/gallery`}
               currLoc={currLoc}
               showMenu={showMenu}
             />
           </div>
-          <button className="h-40 w-40">
-            <HalfSun className="" />
-          </button>
+
+          <div className="mx-4 mt-40 flex w-[91%] items-end justify-between">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-moon"
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#2c3e50"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-logout"
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#2c3e50"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+              <path d="M7 12h14l-3 -3m0 6l3 -3" />
+            </svg>
+          </div>
         </div>
 
         {useAuth().currentUser ? (
           <div
             className={`${
-              showMenu ? '' : 'flex h-full w-full items-start justify-center md:w-auto'
+              showMenu
+                ? 'absolute top-28 left-0 flex w-full items-center justify-center'
+                : 'flex h-full w-full items-start justify-center md:w-auto'
             }  `}>
-            <div
-              className={`${
-                showMenu
-                  ? 'absolute top-2 right-20 '
-                  : 'mr-16 flex hidden h-full w-full justify-end'
-              }     md:block md:w-auto xl:mr-24`}>
-              <HeaderLink title={username} location="/profile" currLoc={currLoc} />
+            <div className="flex w-3/4 flex-col items-end">
+              <div
+                className={`${
+                  showMenu
+                    ? ' flex h-6 w-full   justify-end '
+                    : 'mr-16 flex hidden h-full w-full justify-end'
+                }  ${
+                  username.length > 10 ? 'text-xl' : ' text-2xl'
+                }   md:block md:w-auto xl:mr-24`}>
+                <HeaderLink title={username} location="/profile" currLoc={currLoc} />
+              </div>
+              <Link
+                to="/profile"
+                className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-sm  text-blue`}>
+                {currentUser.email}
+              </Link>
             </div>
             <Link to="/profile" className="">
               <img
                 id="myimg"
-                className="absolute right-2 top-2 h-12 w-12 rounded-full shadow-md md:top-[2px] md:h-11 md:w-11 lg:right-3 xl:right-5 xl:top-2 xl:h-14 xl:w-14"
+                className={`${
+                  showMenu ? ' h-14 w-14' : ' absolute right-2 top-2'
+                } h-12 w-12 rounded-full shadow-md md:top-[2px] md:h-11 md:w-11 lg:right-3 xl:right-5 xl:top-2 xl:h-14 xl:w-14`}
                 src="src\assets\profile.png"
                 alt="userpic"
               />

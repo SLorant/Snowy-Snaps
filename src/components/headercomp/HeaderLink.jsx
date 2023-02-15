@@ -8,7 +8,7 @@ const HeaderLink = ({ showMenu, title, location, currLoc }) => {
     <Link
       to={location}
       className={`${pathname === location ? ' border-darkblue' : 'border-transparent'}
-    ${location === '/profile' ? 'font-header' : 'font-headersc'}
+    ${location === '/profile' ? 'font-header' : 'font-header md:font-headersc'}
     ${
       currLoc === '/'
         ? 'hover:border-peach hover:bg-cream'
@@ -18,8 +18,8 @@ const HeaderLink = ({ showMenu, title, location, currLoc }) => {
         ? 'hover:border-peach hover:bg-cream'
         : 'hover:border-peach hover:bg-white'
     }
-    ${showMenu ? ' h-14 border-none text-3xl' : ' h-full'}
-     headerlink z-50 block flex items-center border-b-2 p-2 px-2 text-center text-2xl text-blue  transition  duration-500
+    ${showMenu ? 'my-2 ml-4 h-14 border-none text-3xl tracking-wide' : ' h-full'}
+     headerlink z-50 block flex items-center border-b-2 p-2 px-2 text-center  text-blue  transition  duration-500
               lg:px-4 lg:text-2xl    xl:px-6   xl:text-3xl`}>
       {title}
     </Link>
