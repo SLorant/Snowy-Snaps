@@ -18,7 +18,7 @@ const ShowCaseImages = ({ move, setMove }) => {
 
   return (
     <motion.div
-      className="clip-img group z-20  col-span-2 mb-48 mt-12  h-[620px]   w-[620px] rounded-md bg-sand  "
+      className="clip-img group z-20    mb-48 mt-12  h-[620px]   w-[620px] rounded-md bg-sand  "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, delay: 1 }}>
       <div className="group relative top-0 left-0 z-20 flex h-full w-full rounded-md    ">

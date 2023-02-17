@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
+import { useMediaQuery } from 'react-responsive'
 import { doc, getDoc } from 'firebase/firestore'
 import { projectFirestore, projectStorage } from '../../../firebase/config'
 import { ref, getDownloadURL } from 'firebase/storage'
@@ -16,6 +17,7 @@ const Header = () => {
   const currLoc = currentLocation.pathname
   const lottieRef = useRef()
   const navigate = useNavigate()
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const itemVariants = {
     open: {
       opacity: 1,
@@ -75,6 +77,7 @@ const Header = () => {
   useEffect(() => {
     setBg()
     if (showMenu) setHeaderBg('bg-sand')
+    if (!isMobile) setShowMenu(false)
   })
 
   useEffect(() => {
@@ -105,13 +108,13 @@ const Header = () => {
   return (
     <header
       className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-50 flex  w-full `}>
-      <nav
+      <motion.nav
         className={`
         ${showMenu ? 'h-full flex-col bg-sand' : 'h-16'}
         ${headerBg}
       sticky flex  w-full items-center justify-center   md:h-14 md:justify-between  xl:h-[72px]   `}
-        initial={'closed'}
-        animate={showMenu ? 'open' : 'open'}>
+        initial={isMobile ? 'closed' : 'none'}
+        animate={isMobile ? (showMenu ? 'open' : 'closed') : 'none'}>
         <Link
           to="/"
           className={`${
@@ -149,17 +152,42 @@ const Header = () => {
               },
             },
           }}
-          style={{ pointerEvents: showMenu ? 'auto' : 'none' }}
+          /*   style={{ pointerEvents: showMenu ? 'auto' : 'none' }} */
+          style={showMenu ? { pointerEvents: 'auto' } : {}}
           className={`${
             showMenu
-              ? 'absolute top-48 h-2/3 w-full flex-col items-start justify-start  '
-              : 'hidden h-full  items-center justify-center md:flex'
-          }  mx-4 flex  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80`}>
-          <HeaderLink title="Home" location="/" currLoc={currLoc} showMenu={showMenu} />
-          <HeaderLink title="Gallery" location="/watch" currLoc={currLoc} showMenu={showMenu} />
-          <HeaderLink title="Huskypedia" location="/learn" currLoc={currLoc} showMenu={showMenu} />
+              ? 'absolute top-52 h-2/3 w-full flex-col items-start justify-start  '
+              : 'hidden h-full  items-center justify-center '
+          }  mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80`}>
+          <HeaderLink
+            title="Home"
+            location="/"
+            currLoc={currLoc}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          <HeaderLink
+            title="Gallery"
+            location="/watch"
+            currLoc={currLoc}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          <HeaderLink
+            title="Huskypedia"
+            location="/learn"
+            currLoc={currLoc}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
           <div className="w-full md:hidden">
-            <HeaderLink title="Profile" location="/profile" currLoc={currLoc} showMenu={showMenu} />
+            <HeaderLink
+              title="Profile"
+              location="/profile"
+              currLoc={currLoc}
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+            />
           </div>
           {/*  <div className="md:hidden">
             <HeaderLink
@@ -175,6 +203,7 @@ const Header = () => {
               location={`/${username}/gallery`}
               currLoc={currLoc}
               showMenu={showMenu}
+              setShowMenu={setShowMenu}
             />
           </div>
         </motion.div>
@@ -217,7 +246,7 @@ const Header = () => {
           <div
             className={`${
               showMenu
-                ? 'absolute top-28 left-0 flex w-full items-center justify-center'
+                ? 'absolute top-32 left-0 flex w-full items-center justify-center'
                 : 'flex h-full w-full items-start justify-center md:w-auto'
             }  `}>
             <div className="flex w-3/4 flex-col items-end">
@@ -260,7 +289,7 @@ const Header = () => {
             <HeaderLink title="Sign In" location="/login" currLoc={currLoc} />
           </div>
         )}
-      </nav>
+      </motion.nav>
     </header>
   )
 }

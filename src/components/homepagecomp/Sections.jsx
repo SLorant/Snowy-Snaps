@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import useIntersection from '../hooks/useIntersection'
 import AddHusky from './AddHuskySection'
-import Learn from './LearnSection'
-import Watch from './WatchSection'
+import ShareSection from './LearnSection'
+import WatchSection from './WatchSection'
 
 const Sections = () => {
   const ref2 = useRef()
@@ -24,10 +24,10 @@ const Sections = () => {
           </div>
         </div>
         <div ref={ref2} className={` w-full ${inViewport ? 'sticky top-14' : 'z-10 '}`}>
-          <Watch />
+          <WatchSection />
         </div>
         <div className="z-30 w-full">
-          <Learn />
+          <ShareSection />
         </div>
         <AddHusky />
       </div>

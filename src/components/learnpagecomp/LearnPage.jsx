@@ -56,8 +56,8 @@ const LearnPage = () => {
 
         <motion.div
           className={`${
-            showT ? '' : 'visible'
-          } fixed top-0 right-0 z-50 flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
+            showT ? 'z-50' : 'visible z-30'
+          } fixed top-0 right-0  flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
               lg:h-[850px] lg:w-80 lg:rounded-l-md 2xl:visible`}
           variants={{
             open: {
@@ -147,8 +147,8 @@ const LearnPage = () => {
             setShowT(!showT)
           }}
           className={`${
-            showT ? 'bg-blue' : 'bg-sand'
-          } uploadbutton fixed right-6 bottom-6 z-50  rounded-2xl  p-2
+            showT ? 'z-50 bg-blue' : 'z-30 bg-sand'
+          } uploadbutton fixed right-6 bottom-6   rounded-2xl  p-2
             hover:bg-blue   lg:bottom-6 lg:right-28 `}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

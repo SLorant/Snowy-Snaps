@@ -1,6 +1,8 @@
 
 error text bad 
 progressbar placing on mobile, uploadform on mobile
+uploadform missing from my gallery
+react helmet for SEO
 huskypedia first time there table of content show popup (cookies)
 Cookies
 useloadheader component
