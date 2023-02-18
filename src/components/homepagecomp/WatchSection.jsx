@@ -1,8 +1,12 @@
 import LargeButton from './LargeButton'
 import { motion } from 'framer-motion'
 import ShowCaseImages from './ShowCaseImages'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import Lottie from 'lottie-react'
+import huskypedia from './huskypedia.json'
+
 const WatchSection = () => {
+  const lottieRef = useRef()
   const [move, setMove] = useState(false)
   return (
     <div className=" z-30 grid w-full grid-cols-2 justify-items-center  bg-cream  shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]  ">
@@ -20,17 +24,23 @@ const WatchSection = () => {
             </div> */}
       </div>
 
-      <div className="flex w-1/2 flex-col items-center ">
+      <div className="flex w-full flex-col items-center ">
         <h1 className="mt-12 font-header text-xl text-blue lg:text-2xl xl:text-4xl">
           Learn about huskies
         </h1>
-        <div className="mt-12 h-[620px] w-40 rounded-md bg-blue md:w-[620px] ">
-          <motion.img
-            className="mt-52 rounded-md"
-            src="/src/assets/illustrations/huskyreading.png"
-            alt=""
-            whileHover={{ rotate: 5 }}
-          />
+        <div className="relative mt-12  h-[620px] w-[620px]">
+          <div className="relative   h-full w-40 rounded-md bg-sand md:w-full ">
+            <img
+              className="absolute top-0 left-0 z-0  rounded-md"
+              src="/src/assets/illustrations/huskylearn.png"
+              alt=""
+            />
+            <Lottie lottieRef={lottieRef} animationData={huskypedia} />
+          </div>
+          <div className="imagecontainer absolute top-0 left-0 z-40 h-full w-full rounded-md bg-transparent"></div>
+          <div className="absolute bottom-10 left-40 z-40 drop-shadow-lg">
+            <LargeButton title="Go to Huskypedia" link="/learn" />
+          </div>
         </div>
       </div>
     </div>
