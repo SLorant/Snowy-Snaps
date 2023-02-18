@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import Emoji from '../watchpagecomp/Emoji'
 import ChooseButton from './ChooseButton'
 import useWindowSize from '../hooks/useWindowSize'
+import { useMediaQuery } from 'react-responsive'
 
 const ImageEditor = ({
   picture,
@@ -23,9 +24,15 @@ const ImageEditor = ({
 }) => {
   const [chooseEmotionArray, setChooseEmotionArray] = useState([])
   const windowSize = useWindowSize()
-  let [width, setWidth] = useState(400 * (windowSize.width / 1500))
-  let [height, setHeight] = useState(225 * (windowSize.width / 1500))
-  const [selected, setSelected] = useState('16:9')
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+
+  let [width, setWidth] = useState(
+    isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500),
+  )
+  let [height, setHeight] = useState(
+    isMobile ? 400 * (windowSize.width / 1000) : 225 * (windowSize.width / 1500),
+  )
+  const [selected, setSelected] = useState('1:1')
   const emotions = [
     { label: 'happy' },
     { label: 'silly' },
@@ -162,7 +169,7 @@ const ImageEditor = ({
             scale={picture.zoom}
           />
         </div>
-        <div className="mr-8 mt-4  flex flex-col   items-center justify-center">
+        <div className="mt-4 flex  flex-col items-center   justify-center md:mr-8">
           <div className="mt-2 flex w-56 flex-col items-center justify-center  lg:mb-4  lg:mt-2 xl:w-80 ">
             <p className="mt-2 text-center  font-header text-2xl text-blue lg:text-3xl  ">
               Zoom in or out

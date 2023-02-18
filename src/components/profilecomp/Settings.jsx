@@ -30,7 +30,6 @@ const Settings = () => {
   }
 
   async function handleResetPassword(e) {
-    e.preventDefault()
     try {
       setMessage('')
       setError('')

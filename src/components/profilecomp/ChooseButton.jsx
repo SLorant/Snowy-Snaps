@@ -1,6 +1,7 @@
 import React from 'react'
 import useWindowSize from '../hooks/useWindowSize'
 import { motion } from 'framer-motion'
+import { useMediaQuery } from 'react-responsive'
 
 const ChooseButton = ({
   width,
@@ -22,12 +23,12 @@ const ChooseButton = ({
     },
     common: `${buttonheight} ${buttonwidth}  rounded-md font-headersc`,
   }
-
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const windowSize = useWindowSize()
 
   const handleOnClickRatio = (width, height, ratio) => {
-    setWidth(width * (windowSize.width / 1500))
-    setHeight(height * (windowSize.width / 1500))
+    setWidth(isMobile ? width * (windowSize.width / 700) : width * (windowSize.width / 1500))
+    setHeight(isMobile ? height * (windowSize.width / 700) : width * (windowSize.width / 1500))
     setSelected(ratio)
   }
 

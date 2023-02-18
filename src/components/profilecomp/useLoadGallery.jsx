@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { projectFirestore, projectStorage } from '../../../firebase/config'
 import { useLocation } from 'react-router-dom'
 
-const useLoadGallery = (setUser) => {
+const useLoadGallery = (setUser, setCanUpload) => {
   const { currentUser } = useAuth()
   const pathname = useLocation().pathname
   const user = pathname.substring(1, pathname.lastIndexOf('/'))
@@ -19,6 +19,7 @@ const useLoadGallery = (setUser) => {
       }
 
       if (currentUser && data.username === user) {
+        setCanUpload(true)
         if (data.username === user) {
           setUser({
             userID: `${currentUser.uid}`,

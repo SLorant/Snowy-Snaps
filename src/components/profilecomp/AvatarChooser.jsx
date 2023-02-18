@@ -15,10 +15,10 @@ const AvatarChooser = ({ type }) => {
   const [selected, setSelected] = useState('src/assets/avatars/normalavatar.png')
 
   const avatars = [
-    { normal: 'src/assets/avatars/normalavatar.png' },
-    { silly: 'src/assets/avatars/sillyavatar.png' },
-    { puppy: 'src/assets/avatars/puppyavatar.png' },
-    { sung: 'src/assets/avatars/sunglassesavatar.png' },
+    { normal: '/src/assets/avatars/normalavatar.png' },
+    { silly: '/src/assets/avatars/sillyavatar.png' },
+    { puppy: '/src/assets/avatars/puppyavatar.png' },
+    { sung: '/src/assets/avatars/sunglassesavatar.png' },
   ]
   const [{ normal: normalPath }] = avatars
   const [{ silly: sillyPath }] = avatars

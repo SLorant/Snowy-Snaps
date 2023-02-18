@@ -21,10 +21,17 @@ const WatchSection = () => {
       </div>
 
       <div className="flex w-1/2 flex-col items-center ">
-        <h1 className="mt-10 font-header text-xl text-blue lg:text-2xl xl:text-4xl">
+        <h1 className="mt-12 font-header text-xl text-blue lg:text-2xl xl:text-4xl">
           Learn about huskies
         </h1>
-        <div className="mt-20 rounded-md"></div>
+        <div className="mt-12 h-[620px] w-40 rounded-md bg-blue md:w-[620px] ">
+          <motion.img
+            className="mt-52 rounded-md"
+            src="/src/assets/illustrations/huskyreading.png"
+            alt=""
+            whileHover={{ rotate: 5 }}
+          />
+        </div>
       </div>
     </div>
   )

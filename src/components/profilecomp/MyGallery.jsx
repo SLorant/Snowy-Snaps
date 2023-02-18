@@ -42,8 +42,8 @@ const WatchPage = () => {
     }, 1000)
   }, [])
 
-  useLoadGallery(setUser)
-
+  useLoadGallery(setUser, setCanUpload)
+  console.log(canUpload)
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">

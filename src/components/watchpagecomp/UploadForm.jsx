@@ -75,7 +75,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
     <div
       className={`${
         gallery ? '' : ' relative mb-4 w-0 items-start justify-start  md:w-1/4  lg:ml-4  xl:ml-0'
-      } flex `}>
+      } flex flex-col`}>
       {showGifUp && (
         <GifUploader
           setShowGifUp={setShowGifUp}
@@ -140,7 +140,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
         )}
       </div>
 
-      <div className="absolute bottom-0 right-16 flex flex-col  items-center justify-center">
+      <div className="mt-2 flex flex-col  items-center justify-center">
         {file && (
           <div className="">
             <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div>

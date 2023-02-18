@@ -3,9 +3,11 @@ import { HashLink as Link } from 'react-router-hash-link'
 import Content from './Content'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useMediaQuery } from 'react-responsive'
 
 const LearnPage = () => {
-  const [showT, setShowT] = useState(false)
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+  const [showT, setShowT] = useState(isMobile ? false : true)
 
   const links = [
     { text: 'Characteristics', link: '#spec', main: true },

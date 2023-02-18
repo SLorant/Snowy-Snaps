@@ -157,7 +157,7 @@ const Modal = ({
           <div
             className="mt-2 flex h-2 w-full items-center justify-center gap-8 md:ml-4 md:mt-0  md:h-10 md:w-1/3
             md:flex-col md:gap-0 lg:mb-4 lg:ml-0 lg:mt-4   lg:w-full">
-            <div className="flex text-center font-header text-2xl text-blue lg:mb-2">
+            <div className="ml-2 flex text-center font-header text-2xl text-blue lg:mb-2">
               By&nbsp;
               <Link to={`/${imgData.user}`} /* state={{ imgData: imgData }} */>
                 <motion.p className=" underline" whileHover={{ scale: 1.1 }}>
@@ -166,7 +166,9 @@ const Modal = ({
               </Link>
             </div>
 
-            <p className="text-center font-header text-base text-blue lg:mb-4  ">{finaldate}</p>
+            <p className="mr-2 text-center font-header text-base text-blue lg:mb-4  ">
+              {finaldate}
+            </p>
           </div>
           <div
             className="absolute top-12 mt-4 flex w-72 items-center justify-center  gap-6
