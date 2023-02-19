@@ -11,7 +11,7 @@ const useLoadProfile = (setUser) => {
   let user = pathname.substring(1)
   let bio
 
-  async function loadProfilePic() {
+  async function loadProfile() {
     try {
       let data
       if (currentUser) {
@@ -57,7 +57,7 @@ const useLoadProfile = (setUser) => {
 
   useEffect(() => {
     ;(async () => {
-      let user2 = await loadProfilePic()
+      let user2 = await loadProfile()
       console.log(user2)
       const url = await getDownloadURL(ref(projectStorage, `${user2}/profilepics/image`))
 

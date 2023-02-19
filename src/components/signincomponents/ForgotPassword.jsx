@@ -10,6 +10,7 @@ const ForgotPassword = () => {
   const { resetPassword } = useAuth()
 
   async function handleSubmit(e) {
+    e.preventDefault()
     try {
       setMessage('')
       setError('')

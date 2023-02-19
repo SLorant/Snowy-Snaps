@@ -6,13 +6,21 @@ import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
 import ImageEditor from './ImageEditor'
-import LargeButton from '../homepagecomp/LargeButton'
 
 const AvatarChooser = ({ type }) => {
   const { currentUser } = useAuth()
   const [file, setFile] = useState(null)
-  const [currentFile, setCurrentFile] = useState(null)
   const [selected, setSelected] = useState('src/assets/avatars/normalavatar.png')
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const uploadType = 'profile'
+  var editor = ''
+  const [picture, setPicture] = useState({
+    cropperOpen: false,
+    img: null,
+    zoom: 2,
+    croppedImg: 'src/assets/avatars/normalavatar.png',
+  })
 
   const avatars = [
     { normal: '/src/assets/avatars/normalavatar.png' },
@@ -25,40 +33,21 @@ const AvatarChooser = ({ type }) => {
   const [{ puppy: puppyPath }] = avatars
   const [{ sung: sungPath }] = avatars
 
-  const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
-
-  const uploadType = 'profile'
-  var editor = ''
-  const [picture, setPicture] = useState({
-    cropperOpen: false,
-    img: null,
-    zoom: 2,
-    croppedImg: 'src/assets/avatars/normalavatar.png',
-  })
-  //https://upload.wikimedia.org/wikipedia/commons/0/09/Man_Silhouette.png
-
   if (useAuth().currentUser) {
     async function SetProfile() {
       try {
-        const url = await getDownloadURL(
-          ref(projectStorage, `${currentUser.uid}/profilepics/image`),
-        )
+        const url = await getDownloadURL(ref(projectStorage, `${currentUser.uid}/profilepics/image`))
         const img = document.getElementById('bigimg')
         img.setAttribute('src', url)
       } catch (error) {
         console.log('user has no profile pic ', error)
       }
     }
-    /* type === 'update' ? SetProfile() : '' */
     SetProfile()
   }
 
   const handleFileChange = (e) => {
-    console.log('first url:' + picture.img)
-
     let url = URL.createObjectURL(e.target.files[0])
-
     setPicture({
       ...picture,
       img: url,
@@ -68,10 +57,6 @@ const AvatarChooser = ({ type }) => {
 
   const handleOnClick = async (avatar) => {
     setSelected(avatar)
-    /* setPicture({
-      ...picture,
-      croppedImg: avatar,
-    }) */
     const response = await fetch(avatar)
     const file = await response.arrayBuffer()
     var newFile = new File([file], 'my_image.png', {
@@ -84,7 +69,6 @@ const AvatarChooser = ({ type }) => {
   const handleUploadButtonClick = async () => {
     navigate('/')
   }
-  console.log(currentFile)
 
   return (
     <div className=" z-0 mt-6 flex w-full flex-col   items-center  justify-center">
@@ -92,9 +76,7 @@ const AvatarChooser = ({ type }) => {
         <div
           className={`${type === 'update' ? 'mt-8' : ''}
            mt-2 flex  w-full flex-col items-center  justify-center gap-2 `}>
-          <p className=" mb-2  text-center font-header text-2xl text-blue">
-            Choose from these avatars
-          </p>
+          <p className=" mb-2  text-center font-header text-2xl text-blue">Choose from these avatars</p>
           <div className="mb-4  grid grid-cols-2 gap-4">
             {avatars.map((avatar, index) => {
               const avatarPath = Object.values(avatar)[0]
@@ -113,19 +95,10 @@ const AvatarChooser = ({ type }) => {
           </div>
 
           <div className="mt-2 flex flex-col items-center justify-center gap-0">
-            <p className=" mb-2 text-center font-header text-2xl text-blue">
-              Or upload your own image
-            </p>
-            {/*   <motion.button  className="text-lg flex justify-center  items-center bg-sand w-32 xl:w-40  h-10 text-blue
-                hover:bg-blue hover:text-peach font-headersc  rounded-md  "
-         whileHover={{ scale: 1.1, transition: { duration: 0.2 }}}>
-          <label htmlFor="files" className=" w-40 flex justify-center items-center cursor-pointer w-40 ">Upload</label>
-          <input className="hidden" id="files" type="file" accept="image/*" onChange={handleFileChange} />
-         </motion.button> */}
-
+            <p className=" mb-2 text-center font-header text-2xl text-blue">Or upload your own image</p>
             <motion.button
               className="uploadbutton flex h-14 w-40 items-center  justify-center  rounded-md bg-cream  font-headersc
-    text-blue hover:bg-blue hover:text-peach  md:h-14 "
+                          text-blue hover:bg-blue hover:text-peach  md:h-14 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               <label
                 htmlFor="files"
@@ -149,13 +122,7 @@ const AvatarChooser = ({ type }) => {
                   <polyline points="9 14 12 11 15 14" />
                 </svg>
               </label>
-              <input
-                className="hidden"
-                id="files"
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-              />
+              <input className="hidden" id="files" type="file" accept="image/*" onChange={handleFileChange} />
             </motion.button>
           </div>
         </div>
@@ -166,9 +133,7 @@ const AvatarChooser = ({ type }) => {
             src={picture.croppedImg}
             className="mt-10  w-72 rounded-full  md:mt-6 md:w-72 xl:mt-0 xl:w-80 2xl:w-[425px]  "
           />
-          <p className="mt-2 text-center font-header text-2xl text-blue md:text-2xl">
-            Your chosen profile
-          </p>
+          <p className="mt-2 text-center font-header text-2xl text-blue md:text-2xl">Your chosen profile</p>
           <motion.button
             onClick={handleUploadButtonClick}
             className="my-4 flex h-12 w-32 items-center 
@@ -186,14 +151,7 @@ const AvatarChooser = ({ type }) => {
 
       <div className="items-around flex  w-full justify-between">
         <div className="ml-8 mt-2 h-4  w-1/2 ">
-          {file && (
-            <ProgressBar
-              setLoading={setLoading}
-              file={file}
-              setFile={setFile}
-              uploadType={uploadType}
-            />
-          )}
+          {file && <ProgressBar setLoading={setLoading} file={file} setFile={setFile} uploadType={uploadType} />}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import useIntersection from '../hooks/useIntersection'
 import Sections from './Sections'
 
-const LandingPage = () => {
+const IntroScreen = () => {
   /*  const ref = useRef()
   const inViewport = useIntersection(ref, '-1000px') // Trigger as soon as the element becomes visible
   console.log(inViewport) */
@@ -20,10 +20,9 @@ const LandingPage = () => {
           <div className="mt-4 w-1/2">
             <div className="ml-2 w-1/2">
               <div className=" hidden font-body  text-blue sm:block md:text-xl">
-                A community for husky lovers to share and discover pictures of these beautiful dogs.
-                Whether you're a seasoned husky owner or just looking to learn more about these
-                majestic animals, Snowy Snaps is the perfect place to start. So join the pack and
-                share your love of huskies with us!
+                A community for husky lovers to share and discover pictures of these beautiful dogs. Whether you're a
+                seasoned husky owner or just looking to learn more about these majestic animals, Snowy Snaps is the
+                perfect place to start. So join the pack and share your love of huskies with us!
               </div>
             </div>
           </div>
@@ -48,25 +47,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
-
-/*  if (inViewport) {
-    console.log('in viewport:', ref.current);
-}*/
-//${inViewport ? 'absolute top-0' : 'fixed top-0'}
-
-/* colors: {
-  'lightblue' : '#cddcf2',
-  'darkblue': '#405780',
-  'vanilla': '#ffefcc',
-  'white':
-}*/
-
-/*
-    <a href="#watch-media"><svg xmlns="http://www.w3.org/2000/svg" className=" transition cursor-pointer ease-in-out delay-150 hover:translate-y-6 hover:scale-100  duration-500"
-         width="100" height="100" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#7a7c8c" fill="none" strokeLinecap="round" strokeLinejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <line x1="12" y1="5" x2="12" y2="19" />
-  <line x1="16" y1="15" x2="12" y2="19" />
-  <line x1="8" y1="15" x2="12" y2="19" />
-</svg></a>  */
+export default IntroScreen

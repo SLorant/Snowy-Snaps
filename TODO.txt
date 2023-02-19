@@ -1,16 +1,15 @@
 mobile header menu, desktop header nav when user not signed in
 react helmet for SEO
-huskypedia first time there table of content show popup (cookies)
 Cookies
-useloadheader component
 like button move on click too
 mygallery on mobile
-rename some components
 motion design for mobile header
 links instead of navigate
 && instead of ternary
 h2 h1 instead of p
 font families
+
+rename components, variables, make useFirestore clear
 
 
 Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (127.0.0.1) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab.

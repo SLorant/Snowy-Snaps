@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const LearnPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
-  const [showT, setShowT] = useState(isMobile ? false : true)
+  const [showTableOfContents, setShowTableOfContents] = useState(isMobile ? false : true)
 
   const links = [
     { text: 'Characteristics', link: '#spec', main: true },
@@ -26,19 +26,6 @@ const LearnPage = () => {
     { text: 'Sources', link: '#sources', main: true },
   ]
 
-  /* // In the component create variants of your animation state
-  const variants = {
-    rotate: { translateX: 50, opacity: 0, transition: { duration: 0.4 } },
-    // You can do whatever you want here, if you just want it to stop completely use `rotate: 0`
-    stop: {
-      opacity: 1,
-      translateX: -60,
-      transition: { duration: 0.4 } /* transition: { repeat: Infinity, repeatDelay: 3 } ,
-    },
-  } */
-
-  const [isOpen, setIsOpen] = useState(false)
-
   const itemVariants = {
     open: {
       opacity: 1,
@@ -53,12 +40,12 @@ const LearnPage = () => {
       <motion.div
         className=" mt-14  flex w-full flex-col items-center  justify-center bg-cream xl:mt-16 "
         initial={'closed'}
-        animate={showT ? 'open' : 'closed'}>
+        animate={showTableOfContents ? 'open' : 'closed'}>
         <h1 className=" mb-6 mt-14 font-header text-5xl  text-blue ">Huskypedia</h1>
 
         <motion.div
           className={`${
-            showT ? 'z-50' : 'visible z-30'
+            showTableOfContents ? 'z-50' : 'visible z-30'
           } fixed top-0 right-0  flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
               lg:h-[850px] lg:w-80 lg:rounded-l-md 2xl:visible`}
           variants={{
@@ -80,7 +67,7 @@ const LearnPage = () => {
           animate={{ translateX: 40, opacity: 1, transition: { duration: 2 } }} */
           /* variants=
           {variants}
-        animate={showT ? 'rotate' : 'stop'} */}
+        animate={showTableOfContents ? 'rotate' : 'stop'} */}
           <motion.ul
             className="flex h-full w-full flex-col justify-center gap-2   bg-cream font-header text-2xl text-blue lg:rounded-l-md xl:bg-cream "
             variants={{
@@ -105,12 +92,10 @@ const LearnPage = () => {
                 },
               },
             }}
-            style={{ pointerEvents: showT ? 'auto' : 'none' }}>
+            style={{ pointerEvents: showTableOfContents ? 'auto' : 'none' }}>
             <div className=" mb-28  flex flex-col  justify-center gap-2 ">
               <div className=" flex w-full items-center justify-center">
-                <h2 className=" mt-0 mb-4 font-headersc text-2xl text-blue lg:mb-10 lg:text-3xl">
-                  Table of contents
-                </h2>
+                <h2 className=" mt-0 mb-4 font-headersc text-2xl text-blue lg:mb-10 lg:text-3xl">Table of contents</h2>
               </div>
               {links.map((link) => (
                 <motion.div
@@ -118,13 +103,10 @@ const LearnPage = () => {
                   variants={itemVariants}
                   className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue hover:text-peach xl:border-sand"
                   onClick={() => {
-                    setShowT(false)
+                    setShowTableOfContents(false)
                   }}>
                   {/*   <TableOfContent link={link.link} text={link.text} main={link.main} /> */}
-                  <motion.li
-                    className={`${
-                      link.main ? 'ml-4 lg:ml-8' : 'ml-8 text-lg lg:ml-12'
-                    } flex  w-full`}>
+                  <motion.li className={`${link.main ? 'ml-4 lg:ml-8' : 'ml-8 text-lg lg:ml-12'} flex  w-full`}>
                     <Link className=" w-full " to={link.link}>
                       {' '}
                       {link.text}
@@ -138,7 +120,7 @@ const LearnPage = () => {
         <div
           className=" mt-4 flex h-full flex-col items-center justify-start rounded-md bg-white md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-5/12"
           onClick={() => {
-            setShowT(false)
+            setShowTableOfContents(false)
           }}>
           <Content />
         </div>
@@ -146,10 +128,10 @@ const LearnPage = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           onClick={() => {
-            setShowT(!showT)
+            setShowTableOfContents(!showTableOfContents)
           }}
           className={`${
-            showT ? 'z-50 bg-blue' : 'z-30 bg-sand'
+            showTableOfContents ? 'z-50 bg-blue' : 'z-30 bg-sand'
           } uploadbutton fixed right-6 bottom-6   rounded-2xl  p-2
             hover:bg-blue   lg:bottom-6 lg:right-28 `}>
           <svg
@@ -159,7 +141,7 @@ const LearnPage = () => {
             height="64"
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke={`${showT ? '#de9873' : '#2c3e50'}`}
+            stroke={`${showTableOfContents ? '#de9873' : '#2c3e50'}`}
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round">

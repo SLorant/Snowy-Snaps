@@ -1,16 +1,7 @@
 import { useState, useEffect } from 'react'
 import { projectStorage, projectFirestore, timestamp } from '../../../firebase/config'
 import { useAuth } from '../../contexts/AuthContext'
-import {
-  getFirestore,
-  collection,
-  onSnapshot,
-  getDoc,
-  addDoc,
-  deleteDoc,
-  doc,
-  updateDoc,
-} from 'firebase/firestore'
+import { getFirestore, getDoc, doc, updateDoc } from 'firebase/firestore'
 import uuid from 'react-uuid'
 
 const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {

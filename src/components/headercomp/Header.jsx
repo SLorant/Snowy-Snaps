@@ -1,47 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useMediaQuery } from 'react-responsive'
-import { doc, getDoc } from 'firebase/firestore'
-import { projectFirestore, projectStorage } from '../../../firebase/config'
-import { ref, getDownloadURL } from 'firebase/storage'
 import HeaderLink from './HeaderLink'
 import { useLocation, Link, useNavigate } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import data from './data.json'
 import { motion } from 'framer-motion'
+import useLoadHeaderUser from './useLoadHeaderUser'
 
 const Header = () => {
   const { currentUser } = useAuth()
   const [username, setUserName] = useState('')
-  const currentLocation = useLocation()
-  const currLoc = currentLocation.pathname
+  const currentLocation = useLocation().pathname
   const lottieRef = useRef()
-  const navigate = useNavigate()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
-  const itemVariants = {
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 24 },
-    },
-    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-  }
-  /*  const bodymovinOptions = {
-    loop: true,
-    autoplay: true,
-    prerender: true,
-    animationData: data,
-  } */
-  /* const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  } */
-
   const [showMenu, setShowMenu] = useState(false)
+  const [headerBg, setHeaderBg] = useState('bg-white')
 
   useEffect(() => {
     if (showMenu) {
@@ -49,17 +23,15 @@ const Header = () => {
     } else {
       /* lottieRef.current.setDirection(-1) */
       lottieRef.current.playSegments([30, 0], false)
-      console.log(showMenu)
     }
   }, [showMenu])
 
   const handleClickMenu = () => {
     setShowMenu(!showMenu)
-    /* showMenu ? lottieRef.current.play() : lottieRef.current.pause() */
   }
-  const [headerBg, setHeaderBg] = useState('bg-white')
+
   const setBg = () => {
-    switch (currLoc) {
+    switch (currentLocation) {
       case '/':
         setHeaderBg('bg-sand')
         break
@@ -80,34 +52,10 @@ const Header = () => {
     if (!isMobile) setShowMenu(false)
   })
 
-  useEffect(() => {
-    if (currentUser) {
-      async function loadProfilePic() {
-        try {
-          const docRef = doc(projectFirestore, 'users', currentUser.uid)
-          const docSnap = await getDoc(docRef)
-          if (docSnap.exists()) {
-            const data = docSnap.data()
-            setUserName(data.username)
-          } else console.log('No such document!')
-
-          const url = await getDownloadURL(
-            ref(projectStorage, `${currentUser.uid}/profilepics/image`),
-          )
-          const img = document.getElementById('myimg')
-          img.setAttribute('src', url)
-        } catch (error) {
-          /*  console.log("user has no profile pic:", error)
-        console.log("Error getting user data:", error); */
-        }
-      }
-      loadProfilePic()
-    }
-  }, [currentUser])
+  useLoadHeaderUser(setUserName)
 
   return (
-    <header
-      className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-50 flex  w-full `}>
+    <header className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-50 flex  w-full `}>
       <motion.nav
         className={`
         ${showMenu ? 'h-full flex-col bg-sand' : 'h-16'}
@@ -120,7 +68,7 @@ const Header = () => {
           className={`${
             showMenu ? 'right-6' : 'left-2 hidden md:block '
           } absolute top-4 mb-1  w-40 font-headersc  text-lg font-bold
-         text-blue  lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
+            text-blue  lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
           <img src="/src/assets/logo.png" alt="logo" />
         </Link>
         <div className="">
@@ -133,7 +81,6 @@ const Header = () => {
           variants={{
             open: {
               clipPath: 'inset(0% 0% 0% 0% round 10px)',
-
               transition: {
                 type: 'spring',
                 bounce: 0,
@@ -144,12 +91,7 @@ const Header = () => {
             },
             closed: {
               clipPath: 'inset(90% 50% 10% 50% round 10px)',
-
-              transition: {
-                type: 'spring',
-                bounce: 0,
-                duration: 0.4,
-              },
+              transition: { type: 'spring', bounce: 0, duration: 0.4 },
             },
           }}
           /*   style={{ pointerEvents: showMenu ? 'auto' : 'none' }} */
@@ -159,49 +101,16 @@ const Header = () => {
               ? 'absolute top-52 h-2/3 w-full flex-col items-start justify-start  '
               : 'hidden h-full  items-center justify-center '
           }  mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80 `}>
-          <HeaderLink
-            title="Home"
-            location="/"
-            currLoc={currLoc}
-            showMenu={showMenu}
-            setShowMenu={setShowMenu}
-          />
-          <HeaderLink
-            title="Gallery"
-            location="/watch"
-            currLoc={currLoc}
-            showMenu={showMenu}
-            setShowMenu={setShowMenu}
-          />
-          <HeaderLink
-            title="Huskypedia"
-            location="/learn"
-            currLoc={currLoc}
-            showMenu={showMenu}
-            setShowMenu={setShowMenu}
-          />
+          <HeaderLink title="Home" location="/" showMenu={showMenu} setShowMenu={setShowMenu} />
+          <HeaderLink title="Gallery" location="/watch" showMenu={showMenu} setShowMenu={setShowMenu} />
+          <HeaderLink title="Huskypedia" location="/learn" showMenu={showMenu} setShowMenu={setShowMenu} />
           <div className="w-full md:hidden">
-            <HeaderLink
-              title="Profile"
-              location="/profile"
-              currLoc={currLoc}
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-            />
+            <HeaderLink title="Profile" location="/profile" showMenu={showMenu} setShowMenu={setShowMenu} />
           </div>
-          {/*  <div className="md:hidden">
-            <HeaderLink
-              title="My Gallery"
-              location="/learn"
-              currLoc={currLoc}
-              showMenu={showMenu}
-            />
-          </div>*/}
           <div className="w-full md:hidden">
             <HeaderLink
               title="My Snaps"
               location={`/${username}/gallery`}
-              currLoc={currLoc}
               showMenu={showMenu}
               setShowMenu={setShowMenu}
             />
@@ -210,7 +119,7 @@ const Header = () => {
         <div
           className={`${
             showMenu ? 'absolute bottom-6' : 'hidden'
-          }  md:hidden" mx-4 flex w-[91%] items-end justify-between`}>
+          } mx-4 flex w-[91%] items-end justify-between md:hidden`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-moon"
@@ -248,34 +157,26 @@ const Header = () => {
               showMenu
                 ? 'absolute top-32 left-0 flex w-full items-center justify-center'
                 : 'flex h-full w-full items-start justify-center md:w-auto'
-            }  `}>
+            }`}>
             <div className="flex w-3/4 flex-col items-end">
               <motion.div
                 className={`${
-                  showMenu
-                    ? ' flex h-8 w-full   justify-end '
-                    : 'mr-16 flex hidden h-full w-full justify-end md:block'
-                }  ${
-                  username.length > 10 ? 'text-xl' : ' text-2xl'
-                } md:h-14 md:w-auto    xl:mr-16 xl:h-[72px]`}>
+                  showMenu ? ' flex h-8 w-full   justify-end ' : 'mr-16 flex hidden h-full w-full justify-end md:block'
+                }  ${username.length > 10 ? 'text-xl' : ' text-2xl'} md:h-14 md:w-auto    xl:mr-16 xl:h-[72px]`}>
                 <div className="hidden md:block">
                   <HeaderLink
                     title={username}
                     location="/profile"
-                    currLoc={currLoc}
+                    currentLocation={currentLocation}
                     showMenu={showMenu}
                     setShowMenu={setShowMenu}
                   />
                 </div>
-                <Link
-                  to="/profile"
-                  className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-blue  md:hidden`}>
+                <Link to="/profile" className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-blue  md:hidden`}>
                   {username}
                 </Link>
               </motion.div>
-              <Link
-                to="/profile"
-                className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-sm  text-blue`}>
+              <Link to="/profile" className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-sm  text-blue`}>
                 {currentUser.email}
               </Link>
             </div>
@@ -292,7 +193,7 @@ const Header = () => {
           </div>
         ) : (
           <div className=" right-2 mr-2 h-full items-center xl:mr-12">
-            <HeaderLink title="Sign In" location="/login" currLoc={currLoc} />
+            <HeaderLink title="Sign In" location="/login" currentLocation={currentLocation} />
           </div>
         )}
       </motion.nav>

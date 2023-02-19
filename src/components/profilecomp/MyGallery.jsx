@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import MyImages from './MyImages'
 import Modal from '../watchpagecomp/Modal'
 import UploadForm from '../watchpagecomp/UploadForm'
-import GalleryTop from './GalleryTop'
+import MyGalleryFilter from './MyGalleryFilter'
 import { useAuth } from '../../contexts/AuthContext'
 import LikedImages from './LikedImages'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useLoadGallery from './useLoadGallery'
 
 const WatchPage = () => {
@@ -48,18 +48,12 @@ const WatchPage = () => {
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
         <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">{`${user.galleryText}`}</h1>
-        <div className="mt-2 flex w-full items-center justify-center   md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
+        <div className="mt-2 flex w-full items-center justify-center md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div className={`${canUpload ? 'visible' : 'invisible'} mt-1 md:w-60`}>
             <UploadForm setUploaded={setUploaded} gallery={gallery} file={file} setFile={setFile} />
           </div>
-          <GalleryTop
-            setMyImages={setMyImages}
-            likedGallery={likedGallery}
-            setLikedGallery={setLikedGallery}
-          />
-          <Link
-            to={`/${user.userName}`}
-            className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6">
+          <MyGalleryFilter setMyImages={setMyImages} likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
+          <Link to={`/${user.userName}`} className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6">
             <motion.button
               className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
@@ -79,12 +73,7 @@ const WatchPage = () => {
         />
       )}
       {!loading && likedGallery && (
-        <LikedImages
-          userID={user.userID}
-          imgData={imgData}
-          setImgData={setImgData}
-          setSelectedImg={setSelectedImg}
-        />
+        <LikedImages userID={user.userID} imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
       )}
       {selectedImg && (
         <Modal

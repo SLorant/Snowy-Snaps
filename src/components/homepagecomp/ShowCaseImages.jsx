@@ -27,7 +27,7 @@ const ShowCaseImages = ({ move, setMove }) => {
           onMouseOut={() => setMove(false)}
           ref={ref}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
-          <div className="absolute bottom-10 left-44 z-50 cursor-pointer drop-shadow-lg">
+          <div className="absolute bottom-9 left-44 z-50 cursor-pointer drop-shadow-lg">
             <LargeButton title="Show me more" link="/watch" />
           </div>
         </div>
@@ -93,15 +93,3 @@ const ShowCaseImages = ({ move, setMove }) => {
 }
 
 export default ShowCaseImages
-
-/*  <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              onMouseOver={() => setMove(true)}
-              onMouseOut={() => setMove(false)}
-              className="imagecontainer group absolute top-[135px] left-[230px] z-50 h-[620px] w-[603px]  rounded-md bg-transparent">
-              <div className="absolute bottom-10 left-36 z-50 cursor-pointer drop-shadow-lg">
-                <LargeButton title="Show me more" link="/watch" />
-              </div>
-            </motion.div> */

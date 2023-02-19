@@ -47,7 +47,7 @@ const Bio = ({ loadedBio, canEdit }) => {
   }
 
   async function handleSubmit(e) {
-    //e.preventDefault()
+    e.preventDefault()
     //bio = bioRef.current.value
     setBio(bioRef.current.value)
     try {

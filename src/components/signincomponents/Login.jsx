@@ -12,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   async function handleSubmit(e) {
+    e.preventDefault()
     try {
       setError('')
       setLoading(true)

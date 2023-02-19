@@ -37,6 +37,7 @@ const SignUp = () => {
   }, [error])
 
   async function handleSubmit(e) {
+    e.preventDefault()
     const userNameTaken = await checkUsername(userNameRef.current.value)
     const emailTaken = await checkEmail(emailRef.current.value)
     if (emailTaken) {

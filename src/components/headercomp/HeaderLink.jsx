@@ -2,8 +2,9 @@ import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-const HeaderLink = ({ setShowMenu, showMenu, title, location, currLoc }) => {
+const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
   const { pathname } = useLocation()
+  const currentLocation = useLocation().pathname
   const navigate = useNavigate()
 
   const handleClickButton = (url) => {
@@ -33,11 +34,11 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location, currLoc }) => {
         className={`${pathname === location ? ' border-darkblue' : 'border-transparent'}
     ${location === '/profile' ? 'font-header' : 'font-header md:font-headersc'}
     ${
-      currLoc === '/'
+      currentLocation === '/'
         ? 'hover:border-peach hover:bg-cream'
-        : currLoc === '/watch'
+        : currentLocation === '/watch'
         ? 'hover:border-peach hover:bg-cream'
-        : currLoc === '/my-gallery'
+        : currentLocation === '/my-gallery'
         ? 'hover:border-peach hover:bg-cream'
         : 'hover:border-peach hover:bg-white'
     }
