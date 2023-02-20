@@ -44,7 +44,7 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
     }
     ${showMenu ? 'my-2 ml-4 h-14 border-none text-3xl tracking-wide' : 'h-full'}
      headerlink z-50 block flex items-center border-b-2 p-2 px-2 text-center  text-blue  transition  duration-500
-              lg:px-4 lg:text-2xl    xl:px-6   xl:text-3xl`}>
+              md:text-2xl lg:px-4    xl:px-6   xl:text-3xl`}>
         {title}
       </Link>
     </motion.button>

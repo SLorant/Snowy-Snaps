@@ -11,7 +11,7 @@ const LargeButton = ({ title, link }) => {
         className=" cursor-pointer rounded-md bg-cream "
         whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
         <button
-          className="py-3  px-6 text-center font-header text-blue md:text-lg  lg:text-xl 2xl:text-3xl "
+          className="py-3  px-6 text-center font-header text-blue md:text-lg  lg:text-3xl 2xl:text-3xl "
           onClick={() => {
             navigate(link)
           }}>

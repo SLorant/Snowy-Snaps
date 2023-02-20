@@ -75,6 +75,16 @@ const Header = () => {
           <button className="absolute top-1 left-2 w-12 md:hidden" onClick={handleClickMenu}>
             <Lottie autoplay={false} loop={false} lottieRef={lottieRef} animationData={data} />
           </button>
+          {currentUser ? (
+            ''
+          ) : (
+            <Link
+              to="login"
+              className={`${showMenu ? 'hidden' : ''} absolute top-2 right-4 flex items-center p-2
+             px-2  text-center font-header text-2xl text-blue  sm:hidden`}>
+              Sign in
+            </Link>
+          )}
         </div>
 
         <motion.div
@@ -104,17 +114,25 @@ const Header = () => {
           <HeaderLink title="Home" location="/" showMenu={showMenu} setShowMenu={setShowMenu} />
           <HeaderLink title="Gallery" location="/watch" showMenu={showMenu} setShowMenu={setShowMenu} />
           <HeaderLink title="Huskypedia" location="/learn" showMenu={showMenu} setShowMenu={setShowMenu} />
-          <div className="w-full md:hidden">
-            <HeaderLink title="Profile" location="/profile" showMenu={showMenu} setShowMenu={setShowMenu} />
-          </div>
-          <div className="w-full md:hidden">
-            <HeaderLink
-              title="My Snaps"
-              location={`/${username}/gallery`}
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-            />
-          </div>
+          {currentUser ? (
+            <div className="w-full md:hidden">
+              <div className="w-full md:hidden">
+                <HeaderLink title="Profile" location="/profile" showMenu={showMenu} setShowMenu={setShowMenu} />
+              </div>
+              <div className="w-full md:hidden">
+                <HeaderLink
+                  title="My Snaps"
+                  location={`/${username}/gallery`}
+                  showMenu={showMenu}
+                  setShowMenu={setShowMenu}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="w-full md:hidden">
+              <HeaderLink title="Register" location={`signup`} showMenu={showMenu} setShowMenu={setShowMenu} />
+            </div>
+          )}
         </motion.div>
         <div
           className={`${
@@ -151,7 +169,7 @@ const Header = () => {
           </svg>
         </div>
 
-        {useAuth().currentUser ? (
+        {currentUser ? (
           <div
             className={`${
               showMenu
@@ -161,9 +179,11 @@ const Header = () => {
             <div className="flex w-3/4 flex-col items-end">
               <motion.div
                 className={`${
-                  showMenu ? ' flex h-8 w-full   justify-end ' : 'mr-16 flex hidden h-full w-full justify-end md:block'
+                  showMenu
+                    ? ' flex h-8 w-full   justify-end '
+                    : 'mr-12 flex hidden h-full w-full justify-end md:block xl:mr-16'
                 }  ${username.length > 10 ? 'text-xl' : ' text-2xl'} md:h-14 md:w-auto    xl:mr-16 xl:h-[72px]`}>
-                <div className="hidden md:block">
+                <div className=" hidden md:block">
                   <HeaderLink
                     title={username}
                     location="/profile"
@@ -192,7 +212,7 @@ const Header = () => {
             </Link>
           </div>
         ) : (
-          <div className=" right-2 mr-2 h-full items-center xl:mr-12">
+          <div className="right-2  z-50 mr-2 hidden h-full  items-center md:block xl:mr-12">
             <HeaderLink title="Sign In" location="/login" currentLocation={currentLocation} />
           </div>
         )}

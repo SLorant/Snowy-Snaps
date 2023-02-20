@@ -1,4 +1,3 @@
-mobile header menu, desktop header nav when user not signed in
 react helmet for SEO
 Cookies
 like button move on click too
