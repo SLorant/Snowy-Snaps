@@ -7,7 +7,6 @@ import WatchSection from './WatchSection'
 const Sections = () => {
   const ref2 = useRef()
   const inViewport = useIntersection(ref2, '200px') // Trigger as soon as the element becomes visible
-  console.log(inViewport)
   return (
     <div>
       <div className="relative flex flex-col items-center justify-center">

@@ -23,5 +23,4 @@ BIG:
 responsiveness, mobile page
 code cleaning, optimizing
 dark mode
-Learn page
 Home page rework
