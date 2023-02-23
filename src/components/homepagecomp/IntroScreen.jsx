@@ -18,7 +18,7 @@ const IntroScreen = () => {
             <img className=" mr-4 w-5/6 sm:hidden" src="src/assets/logo.png" alt="logo" />
           </div>
           <div className="mt-4 w-7/12 lg:w-1/2">
-            <div className="ml-2 w-4/5 md:ml-6 lg:ml-2 lg:w-3/4 xl:w-2/3 2xl:ml-4 2xl:w-1/2">
+            <div className="ml-6 w-4/5 md:ml-10 lg:ml-2 lg:w-3/4 xl:w-2/3 2xl:ml-4 2xl:w-1/2">
               <div className=" hidden font-body  text-blue sm:block md:text-lg xl:text-xl">
                 A community for husky lovers to share and discover pictures of these beautiful dogs. Whether you're a
                 seasoned husky owner or just looking to learn more about these majestic animals, Snowy Snaps is the

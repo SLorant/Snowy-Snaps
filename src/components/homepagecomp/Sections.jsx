@@ -3,10 +3,14 @@ import useIntersection from '../hooks/useIntersection'
 import AddHusky from './AddHuskySection'
 import ShareSection from './LearnSection'
 import WatchSection from './WatchSection'
+import LargeButton from './LargeButton'
+import Lottie from 'lottie-react'
+import huskypedia from './huskypedia.json'
 
 const Sections = () => {
-  const ref2 = useRef()
-  const inViewport = useIntersection(ref2, '200px') // Trigger as soon as the element becomes visible
+  const ref = useRef()
+  const lottieRef = useRef()
+  const inViewport = useIntersection(ref, '100px') // Trigger as soon as the element becomes visible
   return (
     <div>
       <div className="relative flex flex-col items-center justify-center">
@@ -19,9 +23,33 @@ const Sections = () => {
             place to start. So join the pack and share your love of huskies with us!
           </div>
         </div>
-        <div ref={ref2} className={` w-full ${inViewport ? 'top-14 xl:sticky' : 'z-10 '}`}>
+        <div ref={ref} className={` w-full ${inViewport ? 'sticky top-14 md:static xl:sticky' : 'z-10 '}`}>
           <WatchSection />
         </div>
+
+        <div className="z-40 mt-6 flex w-screen flex-col items-center bg-white md:hidden  xl:mt-0 xl:w-full xl:bg-cream">
+          <h1 className="mt-12 font-header  text-4xl text-blue xl:text-4xl">Learn about huskies</h1>
+          <div className="relative mt-12 h-[400px] w-[400px] md:h-[620px] md:w-[620px] xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]">
+            <div className="relative   h-full  w-full rounded-md bg-sand ">
+              <img
+                className="absolute top-0 left-0 z-0   rounded-md  2xl:w-full"
+                src="/src/assets/illustrations/huskylearn.png"
+                alt=""
+              />
+              <div className="">
+                <Lottie lottieRef={lottieRef} animationData={huskypedia} />
+              </div>
+            </div>
+            <div className="imagecontainer absolute top-0 left-0 z-40 h-full w-full rounded-md bg-transparent"></div>
+            <div className="z-40 hidden drop-shadow-lg xl:absolute xl:bottom-9 xl:left-40 xl:block">
+              <LargeButton title={'Go to Huskypedia'} link="/learn" />
+            </div>
+          </div>
+          <div className="z-40 mt-8 mb-12 drop-shadow-lg xl:absolute xl:bottom-9 xl:left-40 xl:hidden">
+            <LargeButton title={'Go to Huskypedia'} link="/learn" />
+          </div>
+        </div>
+
         <div className="z-30 w-full">
           <ShareSection />
         </div>

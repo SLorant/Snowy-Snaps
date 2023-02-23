@@ -68,7 +68,7 @@ const Header = () => {
           className={`${
             showMenu ? 'right-6' : 'left-2 hidden md:block '
           } absolute top-4 mb-1  w-40 font-headersc  text-lg font-bold
-            text-blue  lg:left-6 lg:top-4 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
+            text-blue  lg:left-6 lg:top-3 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
           <img src="/src/assets/logo.png" alt="logo" />
         </Link>
         <div className="">
