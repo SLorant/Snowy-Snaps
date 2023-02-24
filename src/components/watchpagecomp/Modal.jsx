@@ -166,34 +166,20 @@ const Modal = ({
               </Link>
             </div>
 
-            <p className="mr-2 text-center font-header text-base text-blue lg:mb-4  ">
-              {finaldate}
-            </p>
+            <p className="mr-2 text-center font-header text-base text-blue lg:mb-4  ">{finaldate}</p>
           </div>
           <div
             className="absolute top-12 mt-4 flex w-72 items-center justify-center  gap-6
              rounded-lg bg-cream md:static  md:mt-0 md:w-2/3 md:flex-row lg:w-40 lg:flex-col lg:gap-0">
             <div className=" flex  gap-2  lg:mb-2 ">
               {imgData.emotion && (
-                <img
-                  className="h-11 w-10"
-                  src={getEmotionImg(imgData.emotion)}
-                  alt={imgData.emotion}
-                />
+                <img className="h-11 w-10" src={getEmotionImg(imgData.emotion)} alt={imgData.emotion} />
               )}
               {imgData.emotion2 && (
-                <img
-                  className="h-11 w-10"
-                  src={getEmotionImg(imgData.emotion2)}
-                  alt={imgData.emotion2}
-                />
+                <img className="h-11 w-10" src={getEmotionImg(imgData.emotion2)} alt={imgData.emotion2} />
               )}
               {imgData.emotion3 && (
-                <img
-                  className="h-11 w-10"
-                  src={getEmotionImg(imgData.emotion3)}
-                  alt={imgData.emotion3}
-                />
+                <img className="h-11 w-10" src={getEmotionImg(imgData.emotion3)} alt={imgData.emotion3} />
               )}
             </div>
             {!isLiked && (
@@ -201,7 +187,10 @@ const Modal = ({
                 <motion.button
                   className="mb-2 flex  items-center justify-center rounded-b-lg md:bg-transparent"
                   onClick={handleLike}
-                  whileHover={{ scale: 1.2 }}>
+                  initial={{ scale: 1.2 }}
+                  animate={{ scale: 1 }}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 1.2 }}>
                   <p className="absolute font-header text-xl text-blue ">{likes}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -24,7 +24,7 @@ const useLoadGallery = (setUser, setCanUpload) => {
           setUser({
             userID: `${currentUser.uid}`,
             userName: `${data.username}`,
-            galleryText: 'My Gallery',
+            galleryText: 'My Snaps',
             canUpload: true,
           })
         }
@@ -39,7 +39,7 @@ const useLoadGallery = (setUser, setCanUpload) => {
         setUser({
           userID: `${id}`,
           userName: `${user}`,
-          galleryText: `${user}'s Gallery`,
+          galleryText: `${user}'s Snaps`,
           canUpload: false,
         })
       }

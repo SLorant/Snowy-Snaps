@@ -11,14 +11,18 @@ const ShowCaseImages = ({ move, setMove }) => {
     if (window.innerWidth < 768) {
       setTimeout(function () {
         inViewport ? setMove(true) : ''
-      }, 500)
+      }, 700)
       !inViewport ? setMove(false) : ''
     }
   }, [inViewport])
 
+  const handleImageClick = () => {
+    setMove(!move)
+  }
+
   return (
     <motion.div
-      className="clip-img group z-20 mt-12 h-[550px] w-[550px] rounded-md  bg-sand md:h-[620px]  md:w-[620px]  xl:mb-48 xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]  "
+      className="clip-img group z-20 mt-6 h-[550px] w-[300px] rounded-md bg-sand  sm:mt-12 sm:h-[620px]  sm:w-[620px]  xl:mb-48 xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]  "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, delay: 1 }}>
       <div className="group relative top-0 left-0 z-20 flex h-full w-full rounded-md    ">
@@ -26,6 +30,7 @@ const ShowCaseImages = ({ move, setMove }) => {
           onMouseOver={() => setMove(true)}
           onMouseOut={() => setMove(false)}
           ref={ref}
+          onClick={handleImageClick}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
           <div className="absolute bottom-9 left-44 z-50 hidden cursor-pointer drop-shadow-lg xl:block">
             <LargeButton title="Show me more" link="/watch" />
@@ -37,55 +42,61 @@ const ShowCaseImages = ({ move, setMove }) => {
           alt="huskypic"
           className={`${
             move ? '-translate-x-10 translate-y-36 -rotate-3' : 'rotate-[18deg]'
-          } xl:max-h-80 2xl:max-h-80 relative left-40 -top-52 z-20 
-       w-56 rounded-md object-cover drop-shadow-lg  transition  duration-500
-       ease-in-out  md:h-[22rem]  md:h-[22rem]  md:w-60 xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
+          } xl:max-h-80 2xl:max-h-80 relative left-40 -top-52 z-20 hidden w-56
+       rounded-md object-cover drop-shadow-lg transition  duration-700 ease-in-out  sm:block
+       sm:h-[22rem]    sm:w-60  sm:duration-500 xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
         />
         <img
           src="src/assets/showcaseimages/huskybottomright.jpg"
           alt="huskypic"
           className={`${
-            move ? 'z-0 translate-y-10 translate-x-20 rotate-6' : 'z-0 -rotate-2'
-          } xl:max-h-80 2xl:max-h-80 md
-      absolute -right-10 bottom-10  h-56 h-[22rem]   w-[21rem]  rounded-md object-cover drop-shadow-lg
-       transition duration-500 ease-in-out  md:h-60  xl:h-56  2xl:h-60 2xl:w-[22rem]`}
+            move ? 'z-0 translate-y-10 translate-x-20 rotate-6' : 'z-0 -rotate-12 sm:-rotate-2'
+          } xl:max-h-80 2xl:max-h-80 absolute top-10 -left-20
+      h-52 w-80   rounded-md object-cover  drop-shadow-lg   transition  duration-700 ease-in-out sm:top-auto sm:left-auto sm:-right-10 sm:bottom-10
+       sm:block sm:h-60 sm:w-[21rem]  sm:duration-500  xl:h-56  2xl:h-60 2xl:w-[22rem]`}
         />
 
         <img
           src="src/assets/showcaseimages/huskymiddle.jpg"
           alt="huskygif"
           className={`${
-            move ? 'translate-y-20 translate-x-20 rotate-1' : '-rotate-3'
-          } xl:max-h-80 2xl:max-h-80 absolute top-52
-      left-32 z-0 h-56 h-[22rem]    w-[21rem] rounded-md  object-cover 
-      drop-shadow-lg transition duration-500 ease-in-out  md:h-60  xl:h-56  2xl:h-60  2xl:w-[22rem]`}
+            move
+              ? '-translate-y-56 translate-x-2 -rotate-12 sm:translate-y-20 sm:translate-x-20  sm:rotate-2'
+              : 'rotate-12 sm:-rotate-3'
+          } xl:max-h-80 2xl:max-h-80 absolute -bottom-40 left-0 z-40 h-52
+      w-80 rounded-md object-cover drop-shadow-lg    transition duration-700 ease-in-out  sm:left-32 
+      sm:top-52 sm:z-0 sm:h-60 sm:w-[21rem]  sm:duration-500  xl:h-56  2xl:h-60  2xl:w-[22rem]`}
         />
         <img
           src="src/assets/showcaseimages/huskybottomleft.jpg"
           alt="huskygif"
           className={`${
-            move ? 'z-40 translate-x-20 -translate-y-16 rotate-3' : 'z-40 -rotate-12'
-          } xl:max-h-80 2xl:max-h-80 absolute -bottom-20
-      -left-14  w-56  rounded-md object-cover drop-shadow-lg transition  duration-500 
-      ease-in-out md:h-[22rem] md:h-40  md:w-60   xl:h-[21rem]  2xl:h-[22rem]`}
+            move
+              ? 'translate-y-40 -translate-x-28 rotate-6 sm:z-40 sm:translate-x-20 sm:-translate-y-16'
+              : 'z-20 -rotate-6 sm:z-40 sm:-rotate-12'
+          } xl:max-h-80 2xl:max-h-80 absolute left-10 -bottom-10 h-80
+      w-52 rounded-md object-cover drop-shadow-lg transition duration-700 ease-in-out sm:-bottom-20  sm:-left-14 
+      sm:h-[22rem] sm:w-60   sm:duration-500   xl:h-[21rem]  2xl:h-[22rem]`}
         />
         <img
           src="src/assets/showcaseimages/huskytopright.jpg"
           alt="huskygif"
           className={`${
-            move ? 'translate-y-20 -translate-x-10 rotate-6' : '-rotate-3'
-          } xl:max-h-80 2xl:max-h-80 absolute -top-20
-      -right-8 z-20 w-56 rounded-md object-cover drop-shadow-lg   transition duration-500  ease-in-out 
-      md:h-[22rem] md:h-40 md:w-60   xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
+            move
+              ? '-translate-y-40 rotate-6 sm:translate-y-20 sm:-translate-x-10 xl:translate-x-0 2xl:-translate-x-10'
+              : 'rotate-2 sm:-rotate-3'
+          } xl:max-h-80 2xl:max-h-80 absolute -right-3 -top-8 z-20
+      h-80 w-52 rounded-md object-cover drop-shadow-lg transition duration-700 ease-in-out sm:-top-20   sm:right-0 sm:-right-8  sm:h-[22rem] 
+      sm:w-60  sm:duration-500   xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
         />
         <img
           src="src/assets/showcaseimages/huskytopleft.jpg"
           alt="huskygif"
           className={`${
             move ? 'translate-y-10 -translate-x-32  -rotate-12' : 'rotate-[9deg]'
-          } xl:max-h-80 2xl:max-h-80 absolute -top-12
-      -left-8 z-20 w-56 rounded-md   object-cover drop-shadow-lg transition duration-500  ease-in-out 
-      md:h-[22rem] md:h-40 md:w-60  xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
+          } xl:max-h-80 2xl:max-h-80 absolute -top-12 -left-8 z-20
+      hidden h-80 w-52 rounded-md object-cover   drop-shadow-lg transition duration-700 ease-in-out sm:block  sm:h-[22rem] 
+      sm:w-60  sm:duration-500  xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
         />
       </div>
     </motion.div>

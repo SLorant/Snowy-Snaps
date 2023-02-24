@@ -26,12 +26,8 @@ const ImageEditor = ({
   const windowSize = useWindowSize()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
-  let [width, setWidth] = useState(
-    isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500),
-  )
-  let [height, setHeight] = useState(
-    isMobile ? 400 * (windowSize.width / 1000) : 225 * (windowSize.width / 1500),
-  )
+  let [width, setWidth] = useState(isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500))
+  let [height, setHeight] = useState(isMobile ? 400 * (windowSize.width / 1000) : 225 * (windowSize.width / 1500))
   const [selected, setSelected] = useState('1:1')
   const emotions = [
     { label: 'happy' },
@@ -171,9 +167,7 @@ const ImageEditor = ({
         </div>
         <div className="mt-4 flex  flex-col items-center   justify-center md:mr-8">
           <div className="mt-2 flex w-56 flex-col items-center justify-center  lg:mb-4  lg:mt-2 xl:w-80 ">
-            <p className="mt-2 text-center  font-header text-2xl text-blue lg:text-3xl  ">
-              Zoom in or out
-            </p>
+            <p className="mt-2 text-center  font-header text-2xl text-blue lg:text-3xl  ">Zoom in or out</p>
             <Slider
               className=" mt-1 md:mt-2"
               aria-label="raceSlider"
@@ -188,9 +182,7 @@ const ImageEditor = ({
           {isGallery && (
             <div className="flex h-full flex-col  items-center justify-center">
               <div className="flex  flex-col gap-1 ">
-                <p className="mt-2  text-center font-header  text-2xl text-blue lg:text-3xl">
-                  Pick an aspect ratio
-                </p>
+                <p className="mt-2  text-center font-header  text-2xl text-blue lg:text-3xl">Pick an aspect ratio</p>
                 <div
                   className="flex place-items-center   items-center justify-center gap-2 
                  md:mt-4 md:gap-4 lg:mt-4 lg:flex lg:flex-row">
@@ -230,7 +222,7 @@ const ImageEditor = ({
             </div>
           )}
 
-          <div className="my-2 mt-4  mb-4  flex  gap-8 md:mt-0 lg:mr-0 lg:mt-10 lg:flex-row">
+          <div className="my-2 mt-4  mb-4  flex  gap-8  lg:mr-0 lg:mt-10 lg:flex-row">
             <motion.button
               className="flex h-10 w-24 items-center justify-center  rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
                 md:h-12 md:w-28 lg:w-32  xl:w-40 "

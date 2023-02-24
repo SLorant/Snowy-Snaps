@@ -2,9 +2,7 @@ const ShareSection = () => {
   //bg-gradient-to-b from-stone-700 r to-sky-900
   return (
     <div className="z-50 flex h-[800px] w-full flex-col items-center   bg-sand shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]">
-      <h1 className="mt-10 font-header text-xl text-blue lg:text-2xl xl:text-4xl">
-        Share your own husky!
-      </h1>
+      <h1 className="mt-10 font-header  text-3xl text-blue xl:text-4xl">Share your own husky!</h1>
     </div>
   )
 }

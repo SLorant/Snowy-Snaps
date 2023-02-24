@@ -28,16 +28,16 @@ const ChooseButton = ({
 
   const handleOnClickRatio = (width, height, ratio) => {
     setWidth(isMobile ? width * (windowSize.width / 700) : width * (windowSize.width / 1500))
-    setHeight(isMobile ? height * (windowSize.width / 700) : width * (windowSize.width / 1500))
+    setHeight(isMobile ? height * (windowSize.width / 700) : height * (windowSize.width / 1500))
     setSelected(ratio)
   }
 
   return (
     <motion.button
       key={ratio}
-      className={`${
-        selected === ratio ? buttonStyles.selected.className : buttonStyles.unselected.className
-      } ${buttonStyles.common}`}
+      className={`${selected === ratio ? buttonStyles.selected.className : buttonStyles.unselected.className} ${
+        buttonStyles.common
+      }`}
       onClick={() => handleOnClickRatio(width, height, ratio)}
       whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
       {ratio}

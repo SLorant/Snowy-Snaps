@@ -9,7 +9,7 @@ const LargeButton = ({ title, link }) => {
       {/*  <Link to={link}> */}
       <motion.div className="     " whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
         <button
-          className="rounded-md bg-cream py-3 px-6 text-center font-header text-3xl text-blue hover:bg-blue  hover:text-peach  xl:hover:bg-cream  xl:hover:text-blue 2xl:text-3xl "
+          className="rounded-md bg-cream py-2 px-4 text-center font-header text-2xl text-blue hover:bg-blue hover:text-peach sm:py-3 sm:px-6  sm:text-3xl  xl:hover:bg-cream  xl:hover:text-blue 2xl:text-3xl "
           onClick={() => {
             navigate(link)
           }}>

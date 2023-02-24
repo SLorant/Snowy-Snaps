@@ -47,15 +47,15 @@ const WatchPage = () => {
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
-        <h1 className=" font-header  text-5xl  text-blue xl:text-5xl">{`${user.galleryText}`}</h1>
-        <div className="mt-2 flex w-full items-center justify-center md:gap-10 lg:w-4/5  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
-          <div className={`${canUpload ? 'visible' : 'invisible'} mt-1 md:w-60`}>
+        <h1 className=" font-header  text-4xl  text-blue sm:text-5xl">{`${user.galleryText}`}</h1>
+        <div className="mt-2 flex w-full items-center justify-center md:gap-4 lg:w-4/5 lg:gap-10  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
+          <div className={`${canUpload ? 'visible' : 'invisible'} mt-1  lg:w-60`}>
             <UploadForm setUploaded={setUploaded} gallery={gallery} file={file} setFile={setFile} />
           </div>
           <MyGalleryFilter setMyImages={setMyImages} likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
-          <Link to={`/${user.userName}`} className="mt-6  hidden w-20   md:block lg:text-xl xl:w-1/6">
+          <Link to={`/${user.userName}`} className="mt-6  hidden w-20    md:block lg:w-60 lg:text-xl">
             <motion.button
-              className=" cursor-pointer rounded-md bg-cream  p-2 font-header   text-blue hover:bg-blue hover:text-peach xl:px-4"
+              className=" cursor-pointer rounded-md bg-cream  p-2 font-header text-blue   hover:bg-blue hover:text-peach  xl:px-4"
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               Back
               <p className="hidden xl:inline">&nbsp;to profile</p>

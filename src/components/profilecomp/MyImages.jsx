@@ -13,7 +13,7 @@ const MyImages = ({ setSelectedImg, setImgData, userID, uploaded, setUploaded })
 
   return (
     <div className=" h-full">
-      <div className="mx-0 mt-6 flex flex-col items-center justify-center md:mx-20 lg:mx-32 xl:mx-40 2xl:mx-60">
+      <div className="mx-2 mt-6 flex flex-col items-center justify-center sm:mx-10 md:mx-20 lg:mx-32 xl:mx-40 2xl:mx-60">
         <div className="mx-auto mx-4 mt-4 columns-2 gap-3 space-y-3 pb-28 md:columns-2 lg:columns-3 xl:columns-4 ">
           {docs &&
             docs.map((doc) => (

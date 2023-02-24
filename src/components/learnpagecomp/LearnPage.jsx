@@ -38,7 +38,7 @@ const LearnPage = () => {
   return (
     <div className=" h-full w-full bg-cream">
       <motion.div
-        className=" mt-14  flex w-full flex-col items-center  justify-center bg-cream xl:mt-16 "
+        className=" mt-14  flex w-full flex-col items-center justify-center  bg-cream xl:mt-16 "
         initial={'closed'}
         animate={showTableOfContents ? 'open' : 'closed'}>
         <h1 className=" mb-6 mt-14 font-header text-5xl  text-blue ">Huskypedia</h1>
@@ -46,8 +46,8 @@ const LearnPage = () => {
         <motion.div
           className={`${
             showTableOfContents ? 'z-50' : 'visible z-30'
-          } fixed top-0 right-0  flex h-full w-64 flex-col items-center justify-center  lg:right-0 lg:top-28 
-              lg:h-[850px] lg:w-80 lg:rounded-l-md 2xl:visible`}
+          } fixed top-0 right-0  flex h-full w-64 flex-col items-center justify-center  lg:right-0 
+              lg:top-20 lg:h-[850px] lg:w-80 lg:rounded-l-md 2xl:visible 2xl:top-20`}
           variants={{
             open: {
               boxShadow: '0px 0px 10px 3px rgba(0, 0, 0, 0.3)',
@@ -95,7 +95,7 @@ const LearnPage = () => {
             style={{ pointerEvents: showTableOfContents ? 'auto' : 'none' }}>
             <div className=" mb-28  flex flex-col  justify-center gap-2 ">
               <div className=" flex w-full items-center justify-center">
-                <h2 className=" mt-0 mb-4 font-headersc text-2xl text-blue lg:mb-10 lg:text-3xl">Table of contents</h2>
+                <h2 className=" mt-0 mb-4 font-headersc text-2xl text-blue lg:mb-6 lg:text-3xl">Table of contents</h2>
               </div>
               {links.map((link) => (
                 <motion.div

@@ -91,8 +91,8 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
       )}
       <div
         className={`${
-          gallery ? '' : ' ml-8 mt-4'
-        } hidden w-full flex-col items-center justify-start md:flex lg:mt-8 xl:mt-4`}>
+          gallery ? 'lg:flex' : ' ml-8 mt-4 md:flex'
+        } hidden w-full flex-col items-center justify-start  lg:mt-8 xl:mt-4`}>
         <h2 className="  mb-2 text-center font-header text-xl text-blue md:w-32 lg:w-80 xl:text-3xl ">
           Post your own husky!
         </h2>
@@ -174,14 +174,17 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
         )}
       </div>
 
-      <button className="fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:hidden">
+      <button
+        className={`${
+          gallery ? 'lg:hidden' : 'md:hidden'
+        } fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:h-24 md:w-24`}>
         <div className="flex items-center justify-center">
           <label
             htmlFor="files"
-            className="uploadbutton flex h-20 w-20 cursor-pointer items-center justify-center rounded-full text-center text-lg duration-200 hover:bg-blue">
+            className="uploadbutton flex h-20 w-20 cursor-pointer items-center justify-center rounded-full text-center text-lg duration-200 hover:bg-blue md:h-24 md:w-24">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon  icon-tabler icon-tabler-file-upload z-10  w-14 md:w-11 lg:w-auto"
+              className="icon  icon-tabler icon-tabler-file-upload z-10  w-14 md:w-20 lg:w-auto"
               width="64"
               height="64"
               viewBox="0 0 24 24"
