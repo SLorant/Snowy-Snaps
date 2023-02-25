@@ -47,7 +47,10 @@ const WatchPage = () => {
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
-        <h1 className=" font-header  text-4xl  text-blue sm:text-5xl">{`${user.galleryText}`}</h1>
+        <h1
+          className={`${
+            user.galleryText.length > 15 ? ' text-2xl' : 'text-5xl'
+          }  font-header text-blue `}>{`${user.galleryText}`}</h1>
         <div className="mt-2 flex w-full items-center justify-center md:gap-4 lg:w-4/5 lg:gap-10  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div className={`${canUpload ? 'visible' : 'invisible'} mt-1  lg:w-60`}>
             <UploadForm setUploaded={setUploaded} gallery={gallery} file={file} setFile={setFile} />

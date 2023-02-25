@@ -32,7 +32,7 @@ const ShowCaseImages = ({ move, setMove }) => {
           ref={ref}
           onClick={handleImageClick}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
-          <div className="absolute bottom-9 left-44 z-50 hidden cursor-pointer drop-shadow-lg xl:block">
+          <div className="absolute bottom-5 left-36 z-50 hidden cursor-pointer drop-shadow-lg xl:block 2xl:bottom-9 2xl:left-44">
             <LargeButton title="Show me more" link="/watch" />
           </div>
         </div>

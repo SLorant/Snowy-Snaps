@@ -23,9 +23,9 @@ const useLoadProfile = (setUser) => {
         setUser({
           userName: `${data.username}`,
           userID: `${currentUser.uid}`,
-          galleryText: 'My Gallery',
+          galleryText: 'My Snaps',
           profileName: `Hi, ${data.username}`,
-          loadedBio: data.bio ? data.bio : '',
+          loadedBio: data.bio && data.bio,
           canEdit: true,
         })
 
@@ -42,9 +42,9 @@ const useLoadProfile = (setUser) => {
         setUser({
           userName: `${user}`,
           userID: id,
-          galleryText: `${user}'s Gallery`,
+          galleryText: `${user}'s Snaps`,
           profileName: `${user}'s profile`,
-          loadedBio: bio ? bio : '',
+          loadedBio: bio && bio,
           canEdit: false,
         })
 

@@ -7,16 +7,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import AvatarEditor from 'react-avatar-editor'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import {
-  getFirestore,
-  collection,
-  onSnapshot,
-  getDoc,
-  addDoc,
-  deleteDoc,
-  doc,
-  updateDoc,
-} from 'firebase/firestore'
+import { getFirestore, collection, onSnapshot, getDoc, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { ref, getDownloadURL } from 'firebase/storage'
 
 import AvatarChooser from './AvatarChooser'
@@ -53,9 +44,9 @@ const UploadProfilePic = () => {
   }
 
   return (
-    <div>
-      <div className=" flex h-screen w-full items-center justify-center bg-cream ">
-        <div className=" flex h-full w-full flex-col rounded-xl bg-white md:h-3/4  md:w-4/5 md:justify-around xl:w-2/3  2xl:h-4/5 ">
+    <div className="z-50 h-full w-full bg-cream ">
+      <div className=" flex h-full w-full items-center justify-center bg-cream ">
+        <div className=" flex h-full w-full flex-col rounded-xl bg-white md:mt-20 md:mb-24 md:h-3/4  md:w-4/5 md:justify-around xl:w-2/3  2xl:h-4/5 ">
           <div className="flex flex-col  items-center  justify-center ">
             <div className="mt-8 flex   w-full items-center justify-center">
               <p className="font-header  text-4xl text-peach ">Profile picture</p>

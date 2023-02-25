@@ -6,9 +6,6 @@ links instead of navigate
 && instead of ternary
 h2 h1 instead of p
 font families
-header moves away in home page in mobile mode
-home page section responsivity checks
-Change password alert shows nothing
 rename components, variables, make useFirestore clear
 
 

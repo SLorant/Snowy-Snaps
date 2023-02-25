@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Settings = () => {
   const { currentUser, resetPassword, logout } = useAuth()
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('We sent you an email with a link where you can reset your password.')
   const [error, setError] = useState('')
   const [showElement, setShowElement] = useState(true)
   const navigate = useNavigate()
@@ -31,10 +31,8 @@ const Settings = () => {
 
   async function handleResetPassword(e) {
     try {
-      setMessage('')
       setError('')
       await resetPassword(currentUser.email)
-      setMessage('We sent you an email with a link where you can reset your password.')
       alert(message)
     } catch {
       setError('Something failed. Try again?')

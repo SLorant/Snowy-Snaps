@@ -24,13 +24,7 @@ const Profile = () => {
   const [loadedBio, setLoadedBio] = useState('')
   const [canEdit, setCanEdit] = useState(true)
 
-  const likedImages = [
-    { id: 'myimg6' },
-    { id: 'myimg7' },
-    { id: 'myimg8' },
-    { id: 'myimg9' },
-    { id: 'myimg10' },
-  ]
+  const likedImages = [{ id: 'myimg6' }, { id: 'myimg7' }, { id: 'myimg8' }, { id: 'myimg9' }, { id: 'myimg10' }]
 
   const navigate = useNavigate()
 
@@ -120,10 +114,7 @@ const Profile = () => {
                 </div>
                 <div className=" flex flex-col items-center  md:mt-8 md:items-end ">
                   <div className="absolute top-20 flex items-end justify-between md:static ">
-                    <p
-                      className={`${
-                        user.profileName.length > 20 ? ' text-2xl' : 'text-4xl'
-                      }   font-header text-blue`}>
+                    <p className={`${user.profileName.length > 20 ? ' text-2xl' : 'text-4xl'}   font-header text-blue`}>
                       {user.profileName}
                     </p>
                   </div>
@@ -131,7 +122,10 @@ const Profile = () => {
                 </div>
               </div>
               <div className="mb-8 flex  flex-col items-center justify-center">
-                <p className=" mb-6 font-header text-4xl text-peach ">{user.galleryText}</p>
+                <p
+                  className={`${user.profileName.length > 20 ? ' text-2xl' : 'text-4xl'} mb-6 font-header text-peach `}>
+                  {user.galleryText}
+                </p>
                 <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
                   <Link
                     to={`/${user.userName}/gallery`}

@@ -27,7 +27,7 @@ const ImageEditor = ({
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
   let [width, setWidth] = useState(isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500))
-  let [height, setHeight] = useState(isMobile ? 400 * (windowSize.width / 1000) : 225 * (windowSize.width / 1500))
+  let [height, setHeight] = useState(isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500))
   const [selected, setSelected] = useState('1:1')
   const emotions = [
     { label: 'happy' },
