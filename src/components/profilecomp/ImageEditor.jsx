@@ -8,21 +8,7 @@ import ChooseButton from './ChooseButton'
 import useWindowSize from '../hooks/useWindowSize'
 import { useMediaQuery } from 'react-responsive'
 
-const ImageEditor = ({
-  picture,
-  setPicture,
-  setFile,
-  setCurrentFile,
-  emotion,
-  emotion2,
-  emotion3,
-  editor,
-  isGallery,
-  setEmotion,
-  setEmotion2,
-  setEmotion3,
-}) => {
-  const [chooseEmotionArray, setChooseEmotionArray] = useState([])
+const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUploadedEmotions, editor, isGallery }) => {
   const windowSize = useWindowSize()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
 
@@ -78,20 +64,12 @@ const ImageEditor = ({
   ]
 
   const handleOnClickEmoji = (label) => {
-    if (chooseEmotionArray.includes(label)) {
-      setChooseEmotionArray((arr) => arr.filter((item) => item !== label))
-      emotion === label ? setEmotion('') : emotion2 === label ? setEmotion2('') : setEmotion3('')
-    } else if (chooseEmotionArray.length === 3) {
-      setChooseEmotionArray((arr) => [...arr])
+    if (uploadedEmotions.includes(label)) {
+      setUploadedEmotions((arr) => arr.filter((item) => item !== label))
+    } else if (uploadedEmotions.length === 3) {
+      setUploadedEmotions((arr) => [...arr])
     } else {
-      setChooseEmotionArray((arr) => [...arr, label])
-      emotion === ''
-        ? setEmotion(label)
-        : emotion2 === ''
-        ? setEmotion2(label)
-        : emotion3 === ''
-        ? setEmotion3(label)
-        : ''
+      setUploadedEmotions((arr) => [...arr, label])
     }
   }
   const handleSlider = (event, value) => {
@@ -214,7 +192,7 @@ const ImageEditor = ({
                       className="flex w-11 items-center justify-center "
                       key={emotion.label}
                       onClick={() => handleOnClickEmoji(emotion.label)}>
-                      <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
+                      <Emoji emotionArray={uploadedEmotions} source={emotion.label} />
                     </div>
                   ))}
                 </div>

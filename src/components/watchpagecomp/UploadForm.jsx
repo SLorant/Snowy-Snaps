@@ -18,9 +18,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
   const uploadType = 'gallery'
   var editor = ''
 
-  const [emotion, setEmotion] = useState('')
-  const [emotion2, setEmotion2] = useState('')
-  const [emotion3, setEmotion3] = useState('')
+  const [uploadedEmotions, setUploadedEmotions] = useState([])
   const [gif, setGif] = useState(false)
   const [showGifUp, setShowGifUp] = useState(false)
   const [picture, setPicture] = useState({
@@ -81,12 +79,8 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
           setShowGifUp={setShowGifUp}
           setFile={setFile}
           url={pic}
-          setEmotion={setEmotion}
-          setEmotion2={setEmotion2}
-          setEmotion3={setEmotion3}
-          emotion={emotion}
-          emotion2={emotion2}
-          emotion3={emotion3}
+          uploadedEmotions={uploadedEmotions}
+          setUploadedEmotions={setUploadedEmotions}
         />
       )}
       <div
@@ -147,9 +141,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
             <ProgressBar
               setUploaded={setUploaded}
               file={file}
-              emotion={emotion}
-              emotion2={emotion2}
-              emotion3={emotion3}
+              uploadedEmotions={uploadedEmotions}
               setFile={setFile}
               uploadType={uploadType}
               gif={gif}
@@ -164,12 +156,8 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
             editor={editor}
             setFile={setFile}
             isGallery={isGallery}
-            setEmotion={setEmotion}
-            setEmotion2={setEmotion2}
-            setEmotion3={setEmotion3}
-            emotion={emotion}
-            emotion2={emotion2}
-            emotion3={emotion3}
+            uploadedEmotions={uploadedEmotions}
+            setUploadedEmotions={setUploadedEmotions}
           />
         )}
       </div>

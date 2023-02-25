@@ -10,14 +10,14 @@ const ProgressBar = ({
   setLoading,
   uploadType,
   isFirst,
-  emotion,
-  emotion2,
-  emotion3,
+
+  uploadedEmotions,
+
   gif,
   setUploaded,
 }) => {
   const navigate = useNavigate()
-  const { url, progress } = useStorage(file, uploadType, emotion, emotion2, emotion3, gif)
+  const { url, progress } = useStorage(file, uploadType, uploadedEmotions, gif)
   useEffect(() => {
     if (url) {
       setFile(null)

@@ -10,9 +10,9 @@ const ShowCaseImages = ({ move, setMove }) => {
   useEffect(() => {
     if (window.innerWidth < 768) {
       setTimeout(function () {
-        inViewport ? setMove(true) : ''
+        inViewport && setMove(true)
       }, 700)
-      !inViewport ? setMove(false) : ''
+      !inViewport && setMove(false)
     }
   }, [inViewport])
 

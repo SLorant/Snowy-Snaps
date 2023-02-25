@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { getFirestore, getDoc, doc, updateDoc } from 'firebase/firestore'
 import uuid from 'react-uuid'
 
-const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
+const useStorage = (file, uploadType, uploadedEmotions, gif) => {
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState(null)
   const [url, setUrl] = useState(null)
@@ -47,7 +47,9 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
         const url = await storageRef.getDownloadURL()
         const createdAt = timestamp()
         //const emotion = "happy"
-
+        let emotion = ''
+        let emotion2 = ''
+        let emotion3 = ''
         let user = ''
         let email = ''
         let userid = ''
@@ -58,6 +60,9 @@ const useStorage = (file, uploadType, emotion, emotion2, emotion3, gif) => {
             user = data.username
             email = data.email
             userid = currentUser.uid
+            emotion = uploadedEmotions[0]
+            emotion2 = uploadedEmotions[1]
+            emotion3 = uploadedEmotions[2]
             //console.log(data.username)
           } else {
             // doc.data() will be undefined in this case

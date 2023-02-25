@@ -6,7 +6,6 @@ import LikedButton from './LikedButton'
 import IsLiked from './isLiked'
 import { Link } from 'react-router-dom'
 import DeleteSnap from './DeleteSnap'
-import Test from '../signincomponents/checkUsername'
 const Modal = ({
   uploaded,
   setUploaded,
@@ -24,16 +23,11 @@ const Modal = ({
   const { currentUser } = useAuth()
   const [canDelete, setCanDelete] = useState(false)
   let userid
+
   if (currentUser) {
     userid = currentUser.uid
-  }
-  if (currentUser) {
     useEffect(() => {
-      userName === 'profile'
-        ? setCanDelete(true)
-        : userID === currentUser.uid
-        ? setCanDelete(true)
-        : setCanDelete(false)
+      userID === currentUser.uid ? setCanDelete(true) : setCanDelete(false)
     }, [])
   }
 
@@ -51,8 +45,7 @@ const Modal = ({
     [{ label: 'sad' }, { src: '/src/assets/emojis/sad.png' }],
   ]
 
-  currentUser ? IsLiked(imgData.createdAt, userid, setIsLiked, setLikes) : ''
-  currentUser ? Test() : ''
+  currentUser && IsLiked(imgData.createdAt, userid, setIsLiked, setLikes)
 
   const handleClick = (e) => {
     if (e.target.classList.contains('backdrop')) {

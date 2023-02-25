@@ -7,12 +7,9 @@ const GifUploader = ({
   setShowGifUp,
   setFile,
   url,
-  emotion,
-  emotion2,
-  emotion3,
-  setEmotion,
-  setEmotion2,
-  setEmotion3,
+
+  uploadedEmotions,
+  setUploadedEmotions,
 }) => {
   const emotions = [
     { label: 'happy' },
@@ -27,25 +24,17 @@ const GifUploader = ({
   const handleCancel = () => {
     setShowGifUp(false)
   }
-  const [chooseEmotionArray, setChooseEmotionArray] = useState([])
 
   const handleOnClickEmoji = (label) => {
-    if (chooseEmotionArray.includes(label)) {
-      setChooseEmotionArray((arr) => arr.filter((item) => item !== label))
-      emotion === label ? setEmotion('') : emotion2 === label ? setEmotion2('') : setEmotion3('')
-    } else if (chooseEmotionArray.length === 3) {
-      setChooseEmotionArray((arr) => [...arr])
+    if (uploadedEmotions.includes(label)) {
+      setUploadedEmotions((arr) => arr.filter((item) => item !== label))
+    } else if (uploadedEmotions.length === 3) {
+      setUploadedEmotions((arr) => [...arr])
     } else {
-      setChooseEmotionArray((arr) => [...arr, label])
-      emotion === ''
-        ? setEmotion(label)
-        : emotion2 === ''
-        ? setEmotion2(label)
-        : emotion3 === ''
-        ? setEmotion3(label)
-        : ''
+      setUploadedEmotions((arr) => [...arr, label])
     }
   }
+  console.log(uploadedEmotions)
   let blob
   //console.log(blob)
   const [blobUrl, setBlobUrl] = useState(null)
@@ -79,7 +68,7 @@ const GifUploader = ({
               className="flex w-11 items-center justify-center"
               key={emotion.label}
               onClick={() => handleOnClickEmoji(emotion.label)}>
-              <Emoji emotionArray={chooseEmotionArray} source={emotion.label} />
+              <Emoji emotionArray={uploadedEmotions} source={emotion.label} />
             </div>
           ))}
         </div>
