@@ -4,26 +4,9 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 //import { useForceUpdate } from './useForceUpdate'
 
-const ImageGrid = ({
-  setSelectedImg,
-  order,
-  emotionArray,
-  imgType,
-  uploaded,
-  setUploaded,
-  setImgData,
-  imgData,
-}) => {
+const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, uploaded, setUploaded, setImgData, imgData }) => {
   /*   let { docs } = '' */
-  const { docs } = useFirestore(
-    'images',
-    undefined,
-    uploaded,
-    setUploaded,
-    order,
-    emotionArray,
-    imgType,
-  )
+  const { docs } = useFirestore('images', undefined, uploaded, setUploaded, order, emotionArray, imgType)
   /* if (uploaded) {
     ;({ docs } = useFirestore('images', undefined, order, emotionArray, imgType))
   } else {

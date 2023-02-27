@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { projectStorage, projectFirestore, timestamp } from '../../../firebase/config'
 import { useAuth } from '../../contexts/AuthContext'
-import { getFirestore, getDoc, doc, updateDoc } from 'firebase/firestore'
+import { getDoc, doc, updateDoc } from 'firebase/firestore'
 import uuid from 'react-uuid'
 
 const useStorage = (file, uploadType, uploadedEmotions, gif) => {
@@ -9,9 +9,6 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
   const [error, setError] = useState(null)
   const [url, setUrl] = useState(null)
   const { currentUser } = useAuth()
-  // const [user, setUser] = useState("");
-  //console.log(username)
-  //const filename = file.name
   let storageRef
 
   useEffect(() => {
@@ -19,20 +16,8 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
     uploadType === 'profile'
       ? (storageRef = projectStorage.ref(`${currentUser.uid}/profilepics/image`))
       : (storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`))
-
-    //const storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`);
-    //const user = username;
-
     const docRef = doc(projectFirestore, 'users', currentUser.uid)
-
     const collectionRef = projectFirestore.collection('images')
-    const db = getFirestore()
-    //console.log('i fire once');
-    // Create a storage reference
-    //const reviewRef = projectStorage.ref(`profilepics/${file.name}`);
-
-    // Upload the object to that ref
-    //reviewRef.put(file);
 
     storageRef.put(file).on(
       'state_changed',
@@ -46,7 +31,6 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
       async () => {
         const url = await storageRef.getDownloadURL()
         const createdAt = timestamp()
-        //const emotion = "happy"
         let emotion = ''
         let emotion2 = ''
         let emotion3 = ''
@@ -55,20 +39,21 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
         let userid = ''
         const docSnap = await getDoc(docRef).then((docSnap) => {
           if (docSnap.exists()) {
-            console.log('Document data:', docSnap.data())
+            //console.log('Document data:', docSnap.data())
             const data = docSnap.data()
             user = data.username
             email = data.email
             userid = currentUser.uid
-            emotion = uploadedEmotions[0]
-            emotion2 = uploadedEmotions[1]
-            emotion3 = uploadedEmotions[2]
-            //console.log(data.username)
+            if (uploadedEmotions === undefined) console.log('undefined emotions')
+            else {
+              if (uploadedEmotions[0] !== undefined) emotion = uploadedEmotions[0]
+              if (uploadedEmotions[1] !== undefined) emotion2 = uploadedEmotions[1]
+              if (uploadedEmotions[2] !== undefined) emotion3 = uploadedEmotions[2]
+            }
           } else {
             // doc.data() will be undefined in this case
             //console.log("No such document!");
           }
-
           if (uploadType === 'gallery') {
             async function addtoFireStore() {
               const newImgAdded = await collectionRef.add({
@@ -82,26 +67,17 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
                 email,
                 gif,
               })
-              const data = { id: newImgAdded.id }
+              const docID = { id: newImgAdded.id }
               const imageRef = doc(projectFirestore, 'images', newImgAdded.id)
-              await updateDoc(imageRef, data)
+              await updateDoc(imageRef, docID)
             }
             addtoFireStore()
           }
         })
-        //Sconsole.log(uploadType)
         setUrl(url)
-
-        /*let docRef = doc(db, 'images', url)
-            
-            await updateDoc(docRef, {
-                profilePic: url
-                
-            });*/
       },
     )
   }, [file])
-
   return { progress, url, error }
 }
 

@@ -6,7 +6,7 @@ import Modal from '../watchpagecomp/Modal'
 import UploadForm from '../watchpagecomp/UploadForm'
 import MyGalleryFilter from './MyGalleryFilter'
 import { useAuth } from '../../contexts/AuthContext'
-import LikedImages from './LikedImages'
+import LikedSnaps from './LikedSnaps'
 import { Link } from 'react-router-dom'
 import useLoadGallery from './useLoadGallery'
 
@@ -76,7 +76,7 @@ const WatchPage = () => {
         />
       )}
       {!loading && likedGallery && (
-        <LikedImages userID={user.userID} imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
+        <LikedSnaps userID={user.userID} imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
       )}
       {selectedImg && (
         <Modal

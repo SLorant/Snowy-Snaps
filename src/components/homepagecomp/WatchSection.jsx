@@ -1,13 +1,9 @@
 import LargeButton from './LargeButton'
-import { motion } from 'framer-motion'
 import ShowCaseImages from './ShowCaseImages'
-import { useState, useRef } from 'react'
-import Lottie from 'lottie-react'
-import huskypedia from './huskypedia.json'
-import useIntersection from '../hooks/useIntersection'
+import { useState } from 'react'
+import LearnSection from './LearnSection'
 
 const WatchSection = () => {
-  const lottieRef = useRef()
   const [move, setMove] = useState(false)
 
   return (
@@ -27,33 +23,9 @@ const WatchSection = () => {
         <div className="mt-4 mb-96 flex items-center justify-center drop-shadow-lg sm:mt-4  sm:mb-28 md:mt-8 md:mb-4  xl:hidden ">
           <LargeButton title="Show me more" link="/watch" />
         </div>
-
-        {/*  <div className="col-span-2 mb-8 mt-7 flex items-center justify-center">
-              <LargeButton title="Show me more" link="/watch" />
-            </div> */}
       </div>
-
-      <div className="z-40 mt-6 flex hidden w-full flex-col items-center bg-white md:flex xl:mt-0 xl:w-full xl:bg-cream">
-        <h1 className="mt-12 font-header text-4xl  text-blue xl:text-4xl 2xl:mt-14">Learn about huskies</h1>
-        <div className="relative mt-12 h-[550px] w-[550px] md:h-[620px] md:w-[620px] xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]">
-          <div className="relative   h-full w-40 rounded-md bg-sand md:w-full ">
-            <img
-              className="absolute top-0 left-0 z-0  rounded-md  2xl:w-full"
-              src="/src/assets/illustrations/huskylearn.png"
-              alt=""
-            />
-            <div className="">
-              <Lottie lottieRef={lottieRef} animationData={huskypedia} />
-            </div>
-          </div>
-          <div className="imagecontainer absolute top-0 left-0 z-40 h-full w-full rounded-md bg-transparent"></div>
-          <div className="z-40 hidden drop-shadow-lg xl:absolute xl:bottom-5 xl:left-32 xl:block 2xl:bottom-9 2xl:left-40">
-            <LargeButton title={'Go to Huskypedia'} link="/learn" />
-          </div>
-        </div>
-        <div className="z-40 mt-8 mb-12  drop-shadow-lg xl:absolute xl:bottom-9 xl:left-40 xl:hidden">
-          <LargeButton title={'Go to Huskypedia'} link="/learn" />
-        </div>
+      <div className="hidden xl:block">
+        <LearnSection />
       </div>
     </div>
   )

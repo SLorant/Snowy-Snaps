@@ -4,17 +4,15 @@ import AvatarEditor from 'react-avatar-editor'
 import ReactSlider from 'react-slider'
 import { motion } from 'framer-motion'
 import Emoji from '../watchpagecomp/Emoji'
-import ChooseButton from './ChooseButton'
+import AspectRatioChooser from './AspectRatioChooser'
 import useWindowSize from '../hooks/useWindowSize'
 import { useMediaQuery } from 'react-responsive'
 
 const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUploadedEmotions, editor, isGallery }) => {
   const windowSize = useWindowSize()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
-
   let [width, setWidth] = useState(isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500))
   let [height, setHeight] = useState(isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500))
-  const [selected, setSelected] = useState('1:1')
   const emotions = [
     { label: 'happy' },
     { label: 'silly' },
@@ -24,43 +22,6 @@ const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUpload
     { label: 'mischievous' },
     { label: 'stubborn' },
     { label: 'sad' },
-  ]
-  const ratioButtons = [
-    {
-      width: 225,
-      height: 400,
-      buttonwidth: 'w-9',
-      buttonheight: 'h-16',
-      ratio: '9:16',
-    },
-    {
-      width: 300,
-      height: 400,
-      buttonwidth: 'w-11',
-      buttonheight: 'h-14',
-      ratio: '3:4',
-    },
-    {
-      width: 400,
-      height: 225,
-      buttonwidth: 'w-16',
-      buttonheight: 'h-9',
-      ratio: '16:9',
-    },
-    {
-      width: 400,
-      height: 300,
-      buttonwidth: 'w-14',
-      buttonheight: 'h-11',
-      ratio: '4:3',
-    },
-    {
-      width: 400,
-      height: 400,
-      buttonwidth: 'w-12',
-      buttonheight: 'h-12',
-      ratio: '1:1',
-    },
   ]
 
   const handleOnClickEmoji = (label) => {
@@ -88,47 +49,44 @@ const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUpload
   const setEditorRef = (ed) => {
     editor = ed
   }
-  async function handleSave(e) {
+
+  function dataURItoBlob(dataURI) {
+    var mime = dataURI.split(',')[0].split(':')[1].split(';')[0]
+    var binary = atob(dataURI.split(',')[1])
+    var array = []
+    for (var i = 0; i < binary.length; i++) {
+      array.push(binary.charCodeAt(i))
+    }
+    return new Blob([new Uint8Array(array)], { type: mime })
+  }
+
+  async function handleSave() {
     document.body.style.overflow = 'auto'
     if (setEditorRef) {
       const canvasScaled = editor.getImageScaledToCanvas()
       const croppedImg = canvasScaled.toDataURL()
-      //const url = canvasScaled.createObjectURL();
-      //let url = URL.createObjectURL(croppedImg);
-      function dataURItoBlob(dataURI) {
-        var mime = dataURI.split(',')[0].split(':')[1].split(';')[0]
-        var binary = atob(dataURI.split(',')[1])
-        var array = []
-        for (var i = 0; i < binary.length; i++) {
-          array.push(binary.charCodeAt(i))
-        }
-        return new Blob([new Uint8Array(array)], { type: mime })
-      }
       var objecturl = URL.createObjectURL(dataURItoBlob(croppedImg))
       let blob = await fetch(objecturl).then((r) => r.blob())
-
-      /* isGallery ? setFile(file) :  */
+      var file = new File([blob], 'my_image.png', {
+        type: 'image/png',
+        lastModified: new Date().getTime(),
+      })
+      setFile(file)
       setPicture({
         ...picture,
         img: null,
         cropperOpen: false,
         croppedImg: croppedImg,
       })
-      var file = new File([blob], 'my_image.png', {
-        type: 'image/png',
-        lastModified: new Date().getTime(),
-      })
-      setFile(file)
     }
   }
 
   return (
     <div className="fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center overflow-auto bg-white">
       <div
-        className=" flex 
-             h-full w-full flex-col items-center justify-center   bg-white lg:flex-row lg:items-center lg:justify-center lg:gap-40 2xl:gap-64">
+        className="flex h-full w-full flex-col items-center justify-center bg-white
+          lg:flex-row lg:items-center lg:justify-center lg:gap-40 2xl:gap-64">
         <div className="mt-20  flex w-80  items-center justify-center md:mt-20 lg:my-8  lg:ml-10 lg:mt-0  lg:mr-0 lg:mt-24">
-          {/* 2xl:w-2/3 xl:w-3/4 lg:w-5/6 md:w-4/5 w-[90%] lg:h-4/5 md:h-5/6 h-[92%] */}
           <AvatarEditor
             className=" z-50  rounded-lg lg:ml-8"
             ref={setEditorRef}
@@ -144,7 +102,7 @@ const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUpload
           />
         </div>
         <div className="mt-4 flex  flex-col items-center   justify-center md:mr-8">
-          <div className="mt-2 flex w-56 flex-col items-center justify-center  lg:mb-4  lg:mt-2 xl:w-80 ">
+          <div className="mt-2 flex w-64 flex-col items-center justify-center md:w-56  lg:mb-4  lg:mt-2 xl:w-80 ">
             <p className="mt-2 text-center  font-header text-2xl text-blue lg:text-3xl  ">Zoom in or out</p>
             <Slider
               className=" mt-1 md:mt-2"
@@ -161,24 +119,7 @@ const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUpload
             <div className="flex h-full flex-col  items-center justify-center">
               <div className="flex  flex-col gap-1 ">
                 <p className="mt-2  text-center font-header  text-2xl text-blue lg:text-3xl">Pick an aspect ratio</p>
-                <div
-                  className="flex place-items-center   items-center justify-center gap-2 
-                 md:mt-4 md:gap-4 lg:mt-4 lg:flex lg:flex-row">
-                  {ratioButtons.map(({ width, height, ratio, buttonheight, buttonwidth }) => (
-                    <ChooseButton
-                      key={ratio}
-                      width={width}
-                      height={height}
-                      ratio={ratio}
-                      setWidth={setWidth}
-                      setHeight={setHeight}
-                      selected={selected}
-                      setSelected={setSelected}
-                      buttonwidth={buttonwidth}
-                      buttonheight={buttonheight}
-                    />
-                  ))}
-                </div>
+                <AspectRatioChooser setHeight={setHeight} setWidth={setWidth} />
               </div>
               <div
                 className="flex flex-col  items-center justify-center

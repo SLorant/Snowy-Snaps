@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 
-const LearnPage = () => {
+const HuskyPedia = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const [showTableOfContents, setShowTableOfContents] = useState(isMobile ? false : true)
 
@@ -25,7 +25,6 @@ const LearnPage = () => {
     { text: 'Clicker', link: '#clicker', main: false },
     { text: 'Sources', link: '#sources', main: true },
   ]
-
   const itemVariants = {
     open: {
       opacity: 1,
@@ -42,7 +41,6 @@ const LearnPage = () => {
         initial={'closed'}
         animate={showTableOfContents ? 'open' : 'closed'}>
         <h1 className=" mb-6 mt-14 font-header text-5xl  text-blue ">Huskypedia</h1>
-
         <motion.div
           className={`${
             showTableOfContents ? 'z-50' : 'visible z-30'
@@ -62,18 +60,11 @@ const LearnPage = () => {
               boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)',
             },
           }}>
-          {/* /* shadow-[0px_0px_10px_5px_rgba(0,0,0,0.3)] */
-          /* initial={{ opacity: 0 }}
-          animate={{ translateX: 40, opacity: 1, transition: { duration: 2 } }} */
-          /* variants=
-          {variants}
-        animate={showTableOfContents ? 'rotate' : 'stop'} */}
           <motion.ul
             className="flex h-full w-full flex-col justify-center gap-2   bg-cream font-header text-2xl text-blue lg:rounded-l-md xl:bg-cream "
             variants={{
               open: {
                 clipPath: 'inset(0% 0% 0% 0% round 10px)',
-
                 transition: {
                   type: 'spring',
                   bounce: 0,
@@ -84,7 +75,6 @@ const LearnPage = () => {
               },
               closed: {
                 clipPath: 'inset(90% 50% 10% 50% round 10px)',
-
                 transition: {
                   type: 'spring',
                   bounce: 0,
@@ -105,10 +95,8 @@ const LearnPage = () => {
                   onClick={() => {
                     setShowTableOfContents(false)
                   }}>
-                  {/*   <TableOfContent link={link.link} text={link.text} main={link.main} /> */}
                   <motion.li className={`${link.main ? 'ml-4 lg:ml-8' : 'ml-8 text-lg lg:ml-12'} flex  w-full`}>
                     <Link className=" w-full " to={link.link}>
-                      {' '}
                       {link.text}
                     </Link>
                   </motion.li>
@@ -159,4 +147,4 @@ const LearnPage = () => {
   )
 }
 
-export default LearnPage
+export default HuskyPedia

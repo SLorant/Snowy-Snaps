@@ -137,7 +137,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
       <div className="mt-2 flex flex-col  items-center justify-center">
         {file && (
           <div className="">
-            <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div>
+            {/*  <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div> */}
             <ProgressBar
               setUploaded={setUploaded}
               file={file}

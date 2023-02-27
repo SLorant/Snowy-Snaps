@@ -9,7 +9,6 @@ const useFirestore = (imageCollection, userID, uploaded, setUploaded, uploadDate
   let isGif = false
   useEffect(() => {
     imgType === 'gif' ? (isGif = true) : (isGif = false)
-    console.log(uploaded)
     if (userID)
       q = query(
         collection(projectFirestore, imageCollection),
@@ -71,15 +70,11 @@ const useFirestore = (imageCollection, userID, uploaded, setUploaded, uploadDate
 
       querySnapshot.forEach((doc) => {
         if (!documents.find((d) => d.id === doc.id)) {
-          console.log(doc.data().user)
           documents.push({ ...doc.data(), id: doc.id })
         }
       })
-      console.log(documents[0].user)
-
       setDocs(documents)
       setUploaded(false)
-      //console.log(documents)
       return () => querySnapshot()
     }
     GalleryQuery()

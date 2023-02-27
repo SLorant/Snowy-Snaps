@@ -8,29 +8,19 @@ const Bio = ({ loadedBio, canEdit }) => {
   const bioRef = useRef()
   const loadedLength = 150 - loadedBio.length
   const [charactersRemaining, setCharactersRemaining] = useState(loadedLength)
-  const [error, setError] = useState('')
   const { currentUser } = useAuth()
   let userid
   if (currentUser) userid = currentUser.uid
-
-  const notInitialRender = useRef(false)
   const [showUpdate, setShowUpdate] = useState(false)
   const [showChar, setShowChar] = useState(false)
   const [updated, setUpdated] = useState(false)
   const [bio, setBio] = useState('')
-
-  /* useEffect(() => {
-    bioRef.current.addEventListener('input', () => {
-      setCharactersRemaining(150 - bioRef.current.value.length)
-    })
-  }, []) */
 
   useEffect(() => {
     bioRef.current.addEventListener('input', () => {
       setCharactersRemaining(150 - bioRef.current.value.length)
     })
   }, [])
-
   const handleOnChange = () => {
     setShowChar(true)
   }
@@ -41,22 +31,16 @@ const Bio = ({ loadedBio, canEdit }) => {
   const handleCancel = () => {
     setShowUpdate(false)
     setShowChar(false)
-    updated
-      ? (document.getElementById('area').value = bio)
-      : (document.getElementById('area').value = loadedBio)
+    updated ? (document.getElementById('area').value = bio) : (document.getElementById('area').value = loadedBio)
   }
-
   async function handleSubmit(e) {
     e.preventDefault()
-    //bio = bioRef.current.value
     setBio(bioRef.current.value)
     try {
-      setError('')
       setShowChar(false)
       setShowUpdate(false)
       setUpdated(true)
       updateBio(userid, bioRef.current.value)
-      //bioRef.current.value = ''
     } catch (error) {
       console.log(error)
     }
@@ -65,11 +49,9 @@ const Bio = ({ loadedBio, canEdit }) => {
   return (
     <div className="w-full">
       <div className="form-group mt-2 flex h-52   w-80 flex-col  items-end md:mb-4  ">
-        {/* <input */}
         <div className="max-h-3/4 h-4/5 w-full rounded-lg   bg-cream  ">
           <label className="ml-2 font-header text-2xl text-peach">Bio</label>
           <textarea
-            /*      onClick={handleOnClick} */
             type="text"
             ref={bioRef}
             onChange={handleOnChange}
@@ -80,32 +62,23 @@ const Bio = ({ loadedBio, canEdit }) => {
             id="area"
             className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body  text-darkblue outline-none"></textarea>
         </div>
-        {showChar && canEdit && (
-          <span className="ml-1  font-body text-sm text-darkblue">{charactersRemaining}</span>
-        )}
+        {showChar && canEdit && <span className="ml-1  font-body text-sm text-darkblue">{charactersRemaining}</span>}
 
         {showUpdate && canEdit && (
           <div className="items-between mt-1 mb-4 flex w-full justify-between">
             <motion.button
               onClick={handleCancel}
-              className="text-md mt-0 flex h-8
-        w-24  items-center justify-center rounded-md bg-sand font-headersc text-blue hover:bg-blue  hover:text-peach
-               md:h-8 md:w-28 lg:w-32  xl:w-20  "
+              className="text-md mt-0 flex h-8 w-24 items-center justify-center rounded-md bg-sand font-headersc
+                  text-blue hover:bg-blue  hover:text-peach md:h-8 md:w-28 lg:w-32  xl:w-20  "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               Cancel
             </motion.button>
             <motion.button
               onClick={handleSubmit}
-              className="text-md mt-0 flex h-8
-         w-24  items-center justify-center rounded-md bg-sand font-headersc  text-blue hover:bg-blue  hover:text-peach
-                md:h-8 md:w-28 lg:w-32  xl:w-20  "
+              className="text-md mt-0 flex h-8 w-24 items-center justify-center rounded-md bg-sand font-headersc
+                  text-blue hover:bg-blue  hover:text-peach md:h-8 md:w-28 lg:w-32  xl:w-20  "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-              <input
-                className="cursor-pointer  "
-                /* disabled={loading} */
-                type="submit"
-                value="Update"
-              />
+              <input className="cursor-pointer  " type="submit" value="Update" />
             </motion.button>
           </div>
         )}

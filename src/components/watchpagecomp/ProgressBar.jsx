@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 const ProgressBar = ({
   file,
   setFile,
-  setLoading,
   uploadType,
   isFirst,
 
