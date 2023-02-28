@@ -1,7 +1,6 @@
-import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import updateBio from './updateBio'
+import UpdateBio from './UpdateBio'
 import { motion } from 'framer-motion'
 
 const Bio = ({ loadedBio, canEdit }) => {
@@ -40,7 +39,7 @@ const Bio = ({ loadedBio, canEdit }) => {
       setShowChar(false)
       setShowUpdate(false)
       setUpdated(true)
-      updateBio(userid, bioRef.current.value)
+      UpdateBio(userid, bioRef.current.value)
     } catch (error) {
       console.log(error)
     }

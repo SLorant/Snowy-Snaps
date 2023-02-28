@@ -9,18 +9,9 @@ const Settings = () => {
   const { currentUser, resetPassword, logout } = useAuth()
   const [message, setMessage] = useState('We sent you an email with a link where you can reset your password.')
   const [error, setError] = useState('')
-  const [showElement, setShowElement] = useState(true)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    setTimeout(function () {
-      setShowElement(false)
-    }, 10000)
-  }, [])
-
   async function handleLogout() {
     setError('')
-
     try {
       await logout()
       navigate('/login')
@@ -28,8 +19,7 @@ const Settings = () => {
       setError('Failed to log out')
     }
   }
-
-  async function handleResetPassword(e) {
+  async function handleResetPassword() {
     try {
       setError('')
       await resetPassword(currentUser.email)
@@ -48,7 +38,7 @@ const Settings = () => {
         <button
           className="float-left my-2 w-full text-start font-header  text-blue transition duration-200 ease-in-out  group-hover:text-peach  md:my-1  "
           onClick={() => navigate('/upload-profile')}>
-          <p className="ml-6 text-lg md:ml-2">Change profile image</p>
+          <p className="ml-6 text-lg md:ml-2">Change avatar</p>
         </button>
       </div>
       <div className="group w-full cursor-pointer border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach hover:bg-blue md:rounded-md">
@@ -58,9 +48,6 @@ const Settings = () => {
           <p className="ml-6 text-lg md:ml-2">Change password</p>
         </button>
       </div>
-      {/* {showElement && message && (
-        <div className="mt-2 mb-4 w-60 font-body text-lg  text-darkblue">{message}</div>
-      )} */}
       <div className="group w-full cursor-pointer transition  duration-200 ease-in-out  hover:bg-blue md:rounded-md">
         <button
           onClick={handleLogout}

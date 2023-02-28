@@ -1,44 +1,14 @@
 import React from 'react'
-import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
-import { doc, getDoc, getDocs, query, collection, where } from 'firebase/firestore'
-import { useState, useEffect } from 'react'
-import useFirestore from '../hooks/useFirestore'
-import { projectFirestore, projectStorage } from '../../../firebase/config'
-import { ref, getDownloadURL } from 'firebase/storage'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import ShowcaseImg from './ShowcaseImg'
-import useLoadProfile from './useLoadProfile'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import LoadProfile from './LoadProfile'
 import Bio from './Bio'
 import Settings from './Settings'
+import MySnapsPreview from './MySnapsPreview'
 
 const Profile = () => {
-  const { currentUser, logout } = useAuth()
-  //const { users } = useFirestore('users');
-  //db.collection('books').doc('fK3ddutEpD2qQqRMXNW5').get()
-  const [username, setUserName] = useState('')
-  const [profilename, setProfileName] = useState('')
-  const [galleryText, setGalleryText] = useState('')
-  const [error, setError] = useState('')
   const [showSettings, setShowSettings] = useState(false)
-  const [loadedBio, setLoadedBio] = useState('')
-  const [canEdit, setCanEdit] = useState(true)
-
-  const likedImages = [{ id: 'myimg6' }, { id: 'myimg7' }, { id: 'myimg8' }, { id: 'myimg9' }, { id: 'myimg10' }]
-
-  const navigate = useNavigate()
-
-  let imgData
-  const [userId, setUserId] = useState('')
-
-  /* const pathname = useLocation().pathname
-
-  const user= pathname.substring(1) */
-
-  let bio
-  let url
-  const [loading, setLoading] = useState(true)
-
   const [user, setUser] = useState({
     userName: '',
     userID: '',
@@ -47,26 +17,10 @@ const Profile = () => {
     loadedBio: '',
     canEdit: false,
   })
-  useLoadProfile(setUser)
-  /* useEffect(() => {
-    getImage()
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  }, [user.userID])
+  LoadProfile(setUser)
 
-  async function getImage() {
-    console.log(user.userID)
-    try {
-      
-    } catch (error) {
-      console.log('no image: ' + error)
-    }
-  } */
-
-  // if (currentUser.email === docs.map(doc) )
   return (
-    /* !loading && */ <div className="z-50 h-full w-full md:h-full  ">
+    <div className="z-50 h-full w-full md:h-full  ">
       <div className="z-20 flex h-full w-full items-center  justify-center bg-cream">
         <div
           className=" z-20  flex h-full w-full flex-col items-center justify-center 
@@ -81,8 +35,6 @@ const Profile = () => {
                   {user.canEdit && (
                     <motion.button
                       className="invisible absolute md:visible"
-                      /*  whileFocus={{ rotate: 90 }} */
-
                       animate={showSettings ? { rotate: 90 } : { rotate: 0 }}
                       onClick={() => {
                         setShowSettings(!showSettings)
@@ -127,15 +79,11 @@ const Profile = () => {
                   {user.galleryText}
                 </p>
                 <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
-                  <Link
-                    to={`/${user.userName}/gallery`}
-                    /* state={{ userId: userId, userName: user, imgData: imgData }} */
-                  >
-                    <ShowcaseImg userID={user.userID} />
+                  <Link to={`/${user.userName}/gallery`}>
+                    <MySnapsPreview userID={user.userID} />
                   </Link>
                 </div>
               </div>
-              {/*  <Settings /> */}
             </motion.div>
           </div>
           {user.canEdit && (

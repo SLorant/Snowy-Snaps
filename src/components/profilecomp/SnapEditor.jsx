@@ -1,14 +1,13 @@
 import Slider from '@mui/material/Slider'
 import { useState, useRef, React } from 'react'
 import AvatarEditor from 'react-avatar-editor'
-import ReactSlider from 'react-slider'
 import { motion } from 'framer-motion'
 import Emoji from '../watchpagecomp/Emoji'
 import AspectRatioChooser from './AspectRatioChooser'
 import useWindowSize from '../hooks/useWindowSize'
 import { useMediaQuery } from 'react-responsive'
 
-const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUploadedEmotions, editor, isGallery }) => {
+const SnapEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUploadedEmotions, editor, isGallery }) => {
   const windowSize = useWindowSize()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   let [width, setWidth] = useState(isMobile ? 400 * (windowSize.width / 1000) : 400 * (windowSize.width / 1500))
@@ -163,4 +162,4 @@ const ImageEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUpload
   )
 }
 
-export default ImageEditor
+export default SnapEditor

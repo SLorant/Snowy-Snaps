@@ -1,67 +1,31 @@
 import { projectStorage } from '../../../firebase/config'
-import { useAuth } from '../../contexts/AuthContext'
-import { motion } from 'framer-motion'
 
-const ShowcaseImg = ({ userID }) => {
-  const { currentUser, logout } = useAuth()
-  const myImages = [
-    { id: 'myimg1' },
-    { id: 'myimg2' },
-    { id: 'myimg3' },
-    { id: 'myimg4' },
-    { id: 'myimg5' },
-  ]
-  var storageRef
-
-  if (currentUser === userID) {
-    storageRef = projectStorage.ref(currentUser.uid + '/uploadedpics')
-    storageRef
-      .listAll()
-      .then(function (result) {
-        let i = 1
-        let img = ''
-        result.items.forEach(function (imageRef) {
-          img = document.getElementById('myimg' + i)
-          displayImage(imageRef, img)
-          i++
-          //console.log(img)
-          // And finally display them
-        })
+const MySnapsPreview = ({ userID }) => {
+  async function listImages(userID) {
+    try {
+      const storageRef = projectStorage.ref(`${userID}/uploadedpics`)
+      const result = await storageRef.listAll()
+      let i = 1
+      result.items.forEach((imageRef) => {
+        const img = document.getElementById(`myimg${i}`)
+        displayImage(imageRef, img)
+        i++
       })
-      .catch(function (error) {
-        "Can't load images"
-      })
-  } else {
-    console.log(userID)
-    storageRef = projectStorage.ref(userID + '/uploadedpics')
-    storageRef
-      .listAll()
-      .then(function (result) {
-        let i = 1
-        let img = ''
-        result.items.forEach(function (imageRef) {
-          img = document.getElementById('myimg' + i)
-          displayImage(imageRef, img)
-          i++
-          //console.log(img)
-          // And finally display them
-        })
-      })
-      .catch(function (error) {
-        "Can't load images"
-      })
+    } catch (error) {
+      console.log(`Can't load images`)
+    }
   }
 
-  function displayImage(imageRef, img) {
-    imageRef
-      .getDownloadURL()
-      .then(function (url) {
-        img.setAttribute('src', url)
-      })
-      .catch(function (error) {
-        // Handle any errors
-      })
+  async function displayImage(imageRef, img) {
+    try {
+      const url = await imageRef.getDownloadURL()
+      img.setAttribute('src', url)
+    } catch (error) {
+      // Handle any errors
+    }
   }
+  listImages(userID)
+
   return (
     <div className="group relative top-0 left-0 flex cursor-pointer">
       <img
@@ -100,4 +64,4 @@ const ShowcaseImg = ({ userID }) => {
   )
 }
 
-export default ShowcaseImg
+export default MySnapsPreview

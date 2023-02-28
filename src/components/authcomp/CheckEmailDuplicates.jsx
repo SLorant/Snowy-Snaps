@@ -1,18 +1,18 @@
 import { projectFirestore } from '../../../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
 
-const checkEmail = async (email) => {
+const CheckEmailDuplicates = async (email) => {
   const collectionRef = collection(projectFirestore, 'users')
-  let isEqual = false
-  async function isEmailEqual() {
+  let isDuplicate = false
+  async function doesEmailExist() {
     const querySnapshot = await getDocs(collectionRef)
     querySnapshot.forEach((doc) => {
       const data = doc.data()
-      if (email === data.email) isEqual = true
+      if (email === data.email) isDuplicate = true
     })
   }
-  await isEmailEqual()
-  return isEqual
+  await doesEmailExist()
+  return isDuplicate
 }
 
-export default checkEmail
+export default CheckEmailDuplicates

@@ -1,15 +1,8 @@
-import React from 'react'
-import { projectStorage } from '../../../firebase/config'
-import { useAuth } from '../../contexts/AuthContext'
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useNavigate, Link } from 'react-router-dom'
 import useFirestore from '../hooks/useFirestore'
 
-const MyImages = ({ setSelectedImg, setImgData, userID, uploaded, setUploaded }) => {
-  // Get all the images from Storage
-
-  const { docs } = useFirestore('images', userID, uploaded, setUploaded)
+const UploadedSnaps = ({ setSelectedImg, setImgData, userID, isUploaded, setIsUploaded }) => {
+  const { docs } = useFirestore('images', userID, isUploaded, setIsUploaded)
 
   return (
     <div className=" h-full">
@@ -49,4 +42,4 @@ const MyImages = ({ setSelectedImg, setImgData, userID, uploaded, setUploaded })
   )
 }
 
-export default MyImages
+export default UploadedSnaps

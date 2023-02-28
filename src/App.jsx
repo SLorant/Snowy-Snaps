@@ -3,17 +3,15 @@ import WatchPage from './components/WatchPage'
 import HomePage from './components/homepagecomp/HomePage'
 import HuskyPedia from './components/huskypediacomp/HuskyPedia'
 import PlayPage from './components/PlayPage'
-import SignInPage from './components/SignUpPage'
+import SignInPage from './components/authcomp/SignUpPage'
+import LoginPage from './components/authcomp/LoginPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import { AuthProvider } from './contexts/AuthContext'
-import LoginPage from './components/LoginPage'
 import PrivateRoute from './components/PrivateRoute'
-import ForgotPassword from './components/signincomponents/ForgotPassword'
 import Profile from './components/profilecomp/Profile'
-import UpdateProfile from './components/profilecomp/UpdateProfile'
-import MyGallery from './components/profilecomp/MyGallery'
-import UploadProfilePic from './components/profilecomp/UploadProfilePic'
+import MySnaps from './components/profilecomp/MySnaps'
+import ChangeUserAvatar from './components/profilecomp/ChangeUserAvatar'
 import { useAuth } from './contexts/AuthContext'
 import WithAuth from './WithAuth'
 
@@ -24,9 +22,7 @@ function App() {
   }
   Auth() */
   const ProtectedProfile = WithAuth(Profile)
-  const ProtectedGallery = WithAuth(MyGallery)
-  const ProtectedUploadProfile = WithAuth(UploadProfilePic)
-  const ProtectedUpdateProfile = WithAuth(UpdateProfile)
+  const ProtectedChangeUserAvatar = WithAuth(ChangeUserAvatar)
 
   /*useEffect(() => {
     const getHuskies = async() => {
@@ -53,16 +49,12 @@ function App() {
             <Route path="learn" element={<HuskyPedia />} />
             <Route path="watch" element={<WatchPage />} />
             <Route path="login" element={<LoginPage />} />
-            <Route path="/:userId" element={<Profile />} /* component={Profile} */ />
+            <Route path="/:userId" element={<Profile />} />
             <Route path="profile" element={<ProtectedProfile />} />
-            <Route path="update-profile" element={<ProtectedUpdateProfile />} />
-            <Route path="gallery" element={<ProtectedGallery />} />
-            <Route path="/:userId/gallery" element={<MyGallery />} />
-            {/* <Route path="/:userId/gallery" element={<ProtectedGallery />} /> */}
-            <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="/:userId/gallery" element={<MySnaps />} />
           </Route>
           <Route path="signup" element={<SignInPage />} />
-          <Route path="upload-profile" element={<ProtectedUploadProfile />} />
+          <Route path="upload-profile" element={<ProtectedChangeUserAvatar />} />
           {/* <Route path="imgcrop" element={<ImgCrop/>} /> */}
         </Routes>
       </AuthProvider>

@@ -3,13 +3,13 @@ import ProgressBar from '../watchpagecomp/ProgressBar'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { projectStorage } from '../../../firebase/config'
 import { motion } from 'framer-motion'
-import ImageEditor from '../profilecomp/ImageEditor'
+import SnapEditor from '../profilecomp/SnapEditor'
 import { FileUploader } from 'react-drag-drop-files'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
 
-const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
+const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
   const { currentUser } = useAuth()
   const navigate = useNavigate()
   const [error, setError] = useState(null)
@@ -72,7 +72,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
   return (
     <div
       className={`${
-        gallery ? '' : ' relative mb-4 w-0 items-start justify-start  md:w-1/4  lg:ml-4  xl:ml-0'
+        isMySnaps ? '' : ' relative mb-4 w-0 items-start justify-start  md:w-1/4  lg:ml-4  xl:ml-0'
       } flex flex-col`}>
       {showGifUp && (
         <GifUploader
@@ -85,7 +85,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
       )}
       <div
         className={`${
-          gallery ? 'lg:flex' : ' ml-8 mt-4 md:flex'
+          isMySnaps ? 'lg:flex' : ' ml-8 mt-4 md:flex'
         } hidden w-full flex-col items-center justify-start  lg:mt-8 xl:mt-4`}>
         <h2 className="  mb-2 text-center font-header text-xl text-blue md:w-32 lg:w-80 xl:text-3xl ">
           Post your own husky!
@@ -139,7 +139,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
           <div className="">
             {/*  <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div> */}
             <ProgressBar
-              setUploaded={setUploaded}
+              setIsUploaded={setIsUploaded}
               file={file}
               uploadedEmotions={uploadedEmotions}
               setFile={setFile}
@@ -150,7 +150,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
         )}
 
         {picture.cropperOpen && (
-          <ImageEditor
+          <SnapEditor
             picture={picture}
             setPicture={setPicture}
             editor={editor}
@@ -164,7 +164,7 @@ const UploadForm = ({ gallery, file, setFile, setUploaded }) => {
 
       <button
         className={`${
-          gallery ? 'lg:hidden' : 'md:hidden'
+          isMySnaps ? 'lg:hidden' : 'md:hidden'
         } fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:h-24 md:w-24`}>
         <div className="flex items-center justify-center">
           <label

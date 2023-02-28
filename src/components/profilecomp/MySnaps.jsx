@@ -1,29 +1,25 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import MyImages from './MyImages'
+import UploadedSnaps from './UploadedSnaps'
 import Modal from '../watchpagecomp/Modal'
 import UploadForm from '../watchpagecomp/UploadForm'
 import MyGalleryFilter from './MyGalleryFilter'
-import { useAuth } from '../../contexts/AuthContext'
 import LikedSnaps from './LikedSnaps'
 import { Link } from 'react-router-dom'
-import useLoadGallery from './useLoadGallery'
+import LoadGallery from './LoadGallery'
 
-const WatchPage = () => {
+const MySnaps = () => {
   const [selectedImg, setSelectedImg] = useState(null)
-  const [likedGallery, setLikedGallery] = useState(false)
-  const [uploaded, setUploaded] = useState(false)
-  const [userID, setUserID] = useState('')
+  const [likedImages, setLikedImages] = useState(false)
+  const [isUploaded, setIsUploaded] = useState(false)
   const [myImages, setMyImages] = useState(true)
-  const [userName, setUserName] = useState('')
   const [user, setUser] = useState({
     userName: '',
     userID: '',
     galleryText: '',
     canUpload: false,
   })
-  const [galleryText, setGalleryText] = useState('')
   const [canUpload, setCanUpload] = useState(false)
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -34,16 +30,15 @@ const WatchPage = () => {
     emotion3: '',
     createdAt: '',
   })
-  const gallery = true
+  const isMySnaps = true
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 1000)
   }, [])
+  LoadGallery(setUser, setCanUpload)
 
-  useLoadGallery(setUser, setCanUpload)
-  console.log(canUpload)
   return (
     <div>
       <div className="mt-32 flex flex-col items-center justify-center">
@@ -53,9 +48,9 @@ const WatchPage = () => {
           }  font-header text-blue `}>{`${user.galleryText}`}</h1>
         <div className="mt-2 flex w-full items-center justify-center md:gap-4 lg:w-4/5 lg:gap-10  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div className={`${canUpload ? 'visible' : 'invisible'} mt-1  lg:w-60`}>
-            <UploadForm setUploaded={setUploaded} gallery={gallery} file={file} setFile={setFile} />
+            <UploadForm isMySnaps={isMySnaps} file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
           </div>
-          <MyGalleryFilter setMyImages={setMyImages} likedGallery={likedGallery} setLikedGallery={setLikedGallery} />
+          <MyGalleryFilter setMyImages={setMyImages} likedImages={likedImages} setLikedImages={setLikedImages} />
           <Link to={`/${user.userName}`} className="mt-6  hidden w-20    md:block lg:w-60 lg:text-xl">
             <motion.button
               className=" cursor-pointer rounded-md bg-cream  p-2 font-header text-blue   hover:bg-blue hover:text-peach  xl:px-4"
@@ -66,22 +61,21 @@ const WatchPage = () => {
           </Link>
         </div>
       </div>
-      {!loading && !likedGallery && (
-        <MyImages
+      {!loading && !likedImages && (
+        <UploadedSnaps
           userID={user.userID}
-          uploaded={uploaded}
-          setUploaded={setUploaded}
+          isUploaded={isUploaded}
+          setIsUploaded={setIsUploaded}
           setImgData={setImgData}
           setSelectedImg={setSelectedImg}
         />
       )}
-      {!loading && likedGallery && (
+      {!loading && likedImages && (
         <LikedSnaps userID={user.userID} imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
       )}
       {selectedImg && (
         <Modal
-          uploaded={uploaded}
-          setUploaded={setUploaded}
+          setIsUploaded={setIsUploaded}
           userID={user.userID}
           userName={user.userName}
           myImages={myImages}
@@ -95,4 +89,4 @@ const WatchPage = () => {
   )
 }
 
-export default WatchPage
+export default MySnaps

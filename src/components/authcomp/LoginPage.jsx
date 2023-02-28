@@ -1,9 +1,7 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
-import Login from './signincomponents/Login'
+import LoginForm from './LoginForm'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import ChooseButtons from './signincomponents/ChooseButtons'
 
 const SignInPage = () => {
   return (
@@ -13,7 +11,7 @@ const SignInPage = () => {
           <div className="mt-10 mb-4 rounded-md py-2 font-header text-5xl text-peach">Login</div>
         </div>
 
-        <Login />
+        <LoginForm />
 
         <div className="mt-8 mb-4 flex items-center justify-center ">
           <p className="mr-2 font-header text-lg   text-blue ">First time here?</p>

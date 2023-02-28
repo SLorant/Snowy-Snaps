@@ -6,17 +6,7 @@ import LikedButton from './LikedButton'
 import IsLiked from './isLiked'
 import { Link } from 'react-router-dom'
 import DeleteSnap from './DeleteSnap'
-const Modal = ({
-  uploaded,
-  setUploaded,
-  userID,
-  userName,
-  myImages,
-  selectedImg,
-  setSelectedImg,
-  imgData,
-  setImgData,
-}) => {
+const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
   const [isLiked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(0)
   const [error, setError] = useState(null)
@@ -74,9 +64,8 @@ const Modal = ({
       emotion: '',
       createdAt: '',
     })
-    console.log(uploaded)
     setTimeout(function () {
-      setUploaded(true)
+      setIsUploaded(true)
     }, 600)
   }
 

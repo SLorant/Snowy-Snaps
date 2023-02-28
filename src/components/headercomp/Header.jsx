@@ -173,7 +173,13 @@ const Header = () => {
           <MobileHeaderUserInfo showMenu={showMenu} setShowMenu={setShowMenu} username={username} />
         ) : (
           <div className="right-2  z-50 mr-2 hidden h-full  items-center md:block xl:mr-12">
-            <HeaderLink title="Sign In" location="/login" currentLocation={currentLocation} />
+            <HeaderLink
+              title="Sign In"
+              location="/login"
+              currentLocation={currentLocation}
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+            />
           </div>
         )}
       </motion.nav>

@@ -1,11 +1,11 @@
 import { useAuth } from '../../contexts/AuthContext'
 import { doc, getDoc, getDocs, query, collection, where } from 'firebase/firestore'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { projectFirestore, projectStorage } from '../../../firebase/config'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { useLocation } from 'react-router-dom'
 
-const useLoadProfile = (setUser) => {
+const LoadProfile = (setUser) => {
   const { currentUser, logout } = useAuth()
   const pathname = useLocation().pathname
   let user = pathname.substring(1)
@@ -28,25 +28,34 @@ const useLoadProfile = (setUser) => {
           loadedBio: data.bio && data.bio,
           canEdit: true,
         })
-
         return currentUser.uid
       } else {
         const q = query(collection(projectFirestore, 'users'), where('username', '==', user))
         const querySnapshot = await getDocs(q)
         let id
         querySnapshot.forEach((doc) => {
-          console.log(doc.id)
           id = doc.id
           bio = doc.data().bio
         })
-        setUser({
-          userName: `${user}`,
-          userID: id,
-          galleryText: `${user}'s Snaps`,
-          profileName: `${user}'s profile`,
-          loadedBio: bio && bio,
-          canEdit: false,
-        })
+        if (id === undefined) {
+          setUser({
+            userName: '',
+            userID: '',
+            galleryText: '',
+            profileName: 'This user does not exist',
+            loadedBio: '',
+            canEdit: false,
+          })
+        } else {
+          setUser({
+            userName: `${user}`,
+            userID: id,
+            galleryText: `${user}'s Snaps`,
+            profileName: `${user}'s profile`,
+            loadedBio: bio && bio,
+            canEdit: false,
+          })
+        }
 
         return id
       }
@@ -65,10 +74,6 @@ const useLoadProfile = (setUser) => {
       img.setAttribute('src', url)
     })()
   }, [])
-  /*  useEffect(() => {
-   
-    loadProfilePic()
-  }, [userId]) */
 }
 
-export default useLoadProfile
+export default LoadProfile

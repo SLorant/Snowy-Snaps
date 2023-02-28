@@ -5,7 +5,7 @@ import { projectStorage } from '../../../firebase/config'
 import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
-import ImageEditor from './ImageEditor'
+import SnapEditor from './SnapEditor'
 import Avatars from './Avatars'
 
 const AvatarChooser = ({ type }) => {
@@ -44,7 +44,7 @@ const AvatarChooser = ({ type }) => {
     })
   }
   const handleUploadButtonClick = async () => {
-    navigate('/')
+    navigate('/profile')
   }
 
   return (
@@ -105,7 +105,7 @@ const AvatarChooser = ({ type }) => {
         </div>
       </div>
       {picture.cropperOpen && (
-        <ImageEditor setFile={setFile} picture={picture} setPicture={setPicture} editor={editor} />
+        <SnapEditor setFile={setFile} picture={picture} setPicture={setPicture} editor={editor} />
       )}
       <div className="items-around flex  w-full justify-between">
         <div className="ml-8 mt-2 h-4  w-1/2 ">

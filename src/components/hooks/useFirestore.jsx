@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { projectFirestore } from '../../../firebase/config'
 import { collection, query, where, getDocs, orderBy, limit } from 'firebase/firestore'
 
-const useFirestore = (imageCollection, userID, uploaded, setUploaded, uploadDate, emotionArray, imgType) => {
+const useFirestore = (imageCollection, userID, isUploaded, setIsUploaded, uploadDate, emotionArray, imgType) => {
   const [docs, setDocs] = useState([])
   let q, q2, q3
   let multipleEmotions = false
@@ -40,7 +40,6 @@ const useFirestore = (imageCollection, userID, uploaded, setUploaded, uploadDate
         orderBy('createdAt', uploadDate),
       )
       multipleEmotions = true
-      //console.log(q)
     } else {
       q = query(
         collection(projectFirestore, 'images'),
@@ -74,11 +73,11 @@ const useFirestore = (imageCollection, userID, uploaded, setUploaded, uploadDate
         }
       })
       setDocs(documents)
-      setUploaded(false)
+      setIsUploaded(false)
       return () => querySnapshot()
     }
     GalleryQuery()
-  }, [imageCollection, uploadDate, emotionArray, imgType, uploaded])
+  }, [imageCollection, uploadDate, emotionArray, imgType, isUploaded])
 
   return { docs }
 }

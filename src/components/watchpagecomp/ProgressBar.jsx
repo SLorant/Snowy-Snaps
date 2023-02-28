@@ -13,7 +13,7 @@ const ProgressBar = ({
   uploadedEmotions,
 
   gif,
-  setUploaded,
+  setIsUploaded,
 }) => {
   const navigate = useNavigate()
   const { url, progress } = useStorage(file, uploadType, uploadedEmotions, gif)
@@ -23,7 +23,7 @@ const ProgressBar = ({
       console.log(isFirst)
       uploadType === 'gallery' &&
         setTimeout(function () {
-          setUploaded(true)
+          setIsUploaded(true)
         }, 600)
 
       isFirst && navigate('/upload-profile')
