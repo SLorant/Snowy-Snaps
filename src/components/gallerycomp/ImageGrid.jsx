@@ -1,23 +1,13 @@
 import React from 'react'
 import useFirestore from '../hooks/useFirestore'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-//import { useForceUpdate } from './useForceUpdate'
 
-const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, uploaded, setUploaded, setImgData, imgData }) => {
-  /*   let { docs } = '' */
+const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, uploaded, setUploaded, setImgData }) => {
   const { docs } = useFirestore('images', undefined, uploaded, setUploaded, order, emotionArray, imgType)
-  /* if (uploaded) {
-    ;({ docs } = useFirestore('images', undefined, order, emotionArray, imgType))
-  } else {
-    ;({ docs } = useFirestore('images', undefined, order, emotionArray, imgType))
-  } */
 
   return (
     <div className="  ">
       <div className="mx-2 mt-6 flex items-center justify-center md:mx-10 lg:mx-24 xl:mx-32 2xl:mx-40">
-        {/*  flex flex-wrap */}
-        {/*  grid grid-cols-5  */}
         <div className=" mx-auto mx-4 mt-4 columns-2 gap-3 space-y-3 md:columns-3 lg:columns-4 xl:columns-5">
           {docs &&
             docs.map((doc) => (

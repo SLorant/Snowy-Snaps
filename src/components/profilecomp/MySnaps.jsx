@@ -2,12 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import UploadedSnaps from './UploadedSnaps'
-import Modal from '../watchpagecomp/Modal'
-import UploadForm from '../watchpagecomp/UploadForm'
-import MyGalleryFilter from './MyGalleryFilter'
+import Modal from '../gallerycomp/Modal'
+import UploadForm from '../gallerycomp/UploadForm'
+import MySnapsFilter from './MySnapsFilter'
 import LikedSnaps from './LikedSnaps'
 import { Link } from 'react-router-dom'
-import LoadGallery from './LoadGallery'
+import LoadMySnaps from './LoadMySnaps'
 
 const MySnaps = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -31,13 +31,23 @@ const MySnaps = () => {
     createdAt: '',
   })
   const isMySnaps = true
+  const emotions = [
+    [{ label: 'happy' }, { src: '/src/assets/emojis/happy.png' }],
+    [{ label: 'silly' }, { src: '/src/assets/emojis/silly.png' }],
+    [{ label: 'relaxed' }, { src: '/src/assets/emojis/relaxed.png' }],
+    [{ label: 'excited' }, { src: '/src/assets/emojis/excited.png' }],
+    [{ label: 'confused' }, { src: '/src/assets/emojis/confused.png' }],
+    [{ label: 'mischievous' }, { src: '/src/assets/emojis/mischievous.png' }],
+    [{ label: 'stubborn' }, { src: '/src/assets/emojis/stubborn.png' }],
+    [{ label: 'sad' }, { src: '/src/assets/emojis/sad.png' }],
+  ]
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 1000)
   }, [])
-  LoadGallery(setUser, setCanUpload)
+  LoadMySnaps(setUser, setCanUpload)
 
   return (
     <div>
@@ -50,7 +60,7 @@ const MySnaps = () => {
           <div className={`${canUpload ? 'visible' : 'invisible'} mt-1  lg:w-60`}>
             <UploadForm isMySnaps={isMySnaps} file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
           </div>
-          <MyGalleryFilter setMyImages={setMyImages} likedImages={likedImages} setLikedImages={setLikedImages} />
+          <MySnapsFilter setMyImages={setMyImages} likedImages={likedImages} setLikedImages={setLikedImages} />
           <Link to={`/${user.userName}`} className="mt-6  hidden w-20    md:block lg:w-60 lg:text-xl">
             <motion.button
               className=" cursor-pointer rounded-md bg-cream  p-2 font-header text-blue   hover:bg-blue hover:text-peach  xl:px-4"
@@ -75,6 +85,7 @@ const MySnaps = () => {
       )}
       {selectedImg && (
         <Modal
+          emotions={emotions}
           setIsUploaded={setIsUploaded}
           userID={user.userID}
           userName={user.userName}

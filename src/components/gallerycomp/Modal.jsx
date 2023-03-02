@@ -3,15 +3,19 @@ import { motion } from 'framer-motion'
 import { DateTime } from 'luxon'
 import { useAuth } from '../../contexts/AuthContext'
 import LikedButton from './LikedButton'
-import IsLiked from './isLiked'
+import IsLiked from './utilities/isLiked'
 import { Link } from 'react-router-dom'
-import DeleteSnap from './DeleteSnap'
-const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
-  const [isLiked, setIsLiked] = useState(false)
+import DeleteSnap from './utilities/DeleteSnap'
+
+const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
+  const [likedByUser, setLikedByUser] = useState(false)
   const [likes, setLikes] = useState(0)
   const [error, setError] = useState(null)
   const { currentUser } = useAuth()
   const [canDelete, setCanDelete] = useState(false)
+  const date = new Date(imgData.createdAt.seconds * 1000)
+  const newdate = date.toLocaleString(DateTime.DATE_MED)
+  const finaldate = newdate.substring(0, 12)
   let userid
 
   if (currentUser) {
@@ -21,23 +25,9 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
     }, [])
   }
 
-  const date = new Date(imgData.createdAt.seconds * 1000)
-  const newdate = date.toLocaleString(DateTime.DATE_MED)
-  const finaldate = newdate.substring(0, 12)
-  const emotions = [
-    [{ label: 'happy' }, { src: '/src/assets/emojis/happy.png' }],
-    [{ label: 'silly' }, { src: '/src/assets/emojis/silly.png' }],
-    [{ label: 'relaxed' }, { src: '/src/assets/emojis/relaxed.png' }],
-    [{ label: 'excited' }, { src: '/src/assets/emojis/excited.png' }],
-    [{ label: 'confused' }, { src: '/src/assets/emojis/confused.png' }],
-    [{ label: 'mischievous' }, { src: '/src/assets/emojis/mischievous.png' }],
-    [{ label: 'stubborn' }, { src: '/src/assets/emojis/stubborn.png' }],
-    [{ label: 'sad' }, { src: '/src/assets/emojis/sad.png' }],
-  ]
+  currentUser && IsLiked(imgData.createdAt, userid, setLikedByUser, setLikes)
 
-  currentUser && IsLiked(imgData.createdAt, userid, setIsLiked, setLikes)
-
-  const handleClick = (e) => {
+  const handleClickOutside = (e) => {
     if (e.target.classList.contains('backdrop')) {
       setSelectedImg(null)
       setImgData({
@@ -69,7 +59,7 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
     }, 600)
   }
 
-  function getEmotionImg(emotion) {
+  function getEmotionEmoji(emotion) {
     for (let i = 0; i < emotions.length; i++) {
       if (emotions[i][0].label === emotion) {
         return emotions[i][1].src
@@ -79,7 +69,7 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
   }
   const handleLike = () => {
     if (currentUser) {
-      isLiked ? '' : setIsLiked(true)
+      likedByUser ? '' : setLikedByUser(true)
     } else {
       setError('Please log in')
     }
@@ -93,7 +83,7 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
   return (
     <motion.div
       className="backdrop fixed top-0 left-0 z-50 flex h-full w-full flex-col items-center justify-center bg-black/80 lg:flex-row"
-      onClick={handleClick}
+      onClick={handleClickOutside}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}>
       <motion.div
@@ -124,8 +114,7 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
         <div className="flex h-full w-full flex-col  items-center justify-center">
           <motion.img
             src={selectedImg}
-            className="mx-2 block rounded-lg border-4
-          border-white md:h-full md:rounded-t-lg lg:rounded-lg xl:h-full xl:w-full "
+            className="mx-2 block rounded-lg border-4 border-white md:h-full md:rounded-t-lg lg:rounded-lg xl:h-full xl:w-full "
             alt="modalpic"
           />
         </div>
@@ -133,12 +122,12 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
           className={`${
             myImages ? 'lg:h-64' : 'lg:h-64'
           } flex h-8 items-start justify-center gap-8 rounded-b-lg   md:mt-6
-          md:h-24  md:w-96 md:items-center md:rounded-lg  md:bg-cream   lg:mt-0  lg:ml-6  lg:w-40 lg:flex-col lg:gap-0 lg:bg-cream`}
+              md:h-24  md:w-96 md:items-center md:rounded-lg  md:bg-cream   lg:mt-0  lg:ml-6  lg:w-40 lg:flex-col lg:gap-0 lg:bg-cream`}
           initial={{ y: '-100vh' }}
           animate={{ y: 0 }}>
           <div
             className="mt-2 flex h-2 w-full items-center justify-center gap-8 md:ml-4 md:mt-0  md:h-10 md:w-1/3
-            md:flex-col md:gap-0 lg:mb-4 lg:ml-0 lg:mt-4   lg:w-full">
+               md:flex-col md:gap-0 lg:mb-4 lg:ml-0 lg:mt-4   lg:w-full">
             <div
               className={`${
                 imgData.user.length > 15
@@ -148,13 +137,12 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
                   : 'text-2xl'
               } ml-2 flex text-center font-header  text-blue lg:mb-2`}>
               By&nbsp;
-              <Link to={`/${imgData.user}`} /* state={{ imgData: imgData }} */>
+              <Link to={`/${imgData.user}`}>
                 <motion.p className=" underline" whileHover={{ scale: 1.1 }}>
                   {imgData.user}
                 </motion.p>
               </Link>
             </div>
-
             <p className="mr-2 text-center font-header text-base text-blue lg:mb-4  ">{finaldate}</p>
           </div>
           <div
@@ -162,16 +150,16 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
              rounded-lg bg-cream md:static  md:mt-0 md:w-2/3 md:flex-row lg:w-40 lg:flex-col lg:gap-0">
             <div className=" flex  gap-2  lg:mb-2 ">
               {imgData.emotion && (
-                <img className="h-11 w-10" src={getEmotionImg(imgData.emotion)} alt={imgData.emotion} />
+                <img className="h-11 w-10" src={getEmotionEmoji(imgData.emotion)} alt={imgData.emotion} />
               )}
               {imgData.emotion2 && (
-                <img className="h-11 w-10" src={getEmotionImg(imgData.emotion2)} alt={imgData.emotion2} />
+                <img className="h-11 w-10" src={getEmotionEmoji(imgData.emotion2)} alt={imgData.emotion2} />
               )}
               {imgData.emotion3 && (
-                <img className="h-11 w-10" src={getEmotionImg(imgData.emotion3)} alt={imgData.emotion3} />
+                <img className="h-11 w-10" src={getEmotionEmoji(imgData.emotion3)} alt={imgData.emotion3} />
               )}
             </div>
-            {!isLiked && (
+            {!likedByUser && (
               <div className="flex flex-col items-center justify-center">
                 <motion.button
                   className="mb-2 flex  items-center justify-center rounded-b-lg md:bg-transparent"
@@ -203,12 +191,11 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
                 )}
               </div>
             )}
-            {isLiked && <LikedButton imgdata={imgData.createdAt} setIsLiked={setIsLiked} />}
+            {likedByUser && <LikedButton imgdata={imgData.createdAt} setLikedByUser={setLikedByUser} />}
 
             {myImages && canDelete && (
               <motion.button
-                className=" absolute -bottom-20  flex w-40 items-center justify-center rounded-md bg-cream p-2
-              "
+                className=" absolute -bottom-20  flex w-40 items-center justify-center rounded-md bg-cream p-2"
                 onClick={handleDelete}
                 whileHover={{
                   transition: {
@@ -217,7 +204,6 @@ const Modal = ({ setIsUploaded, userID, userName, myImages, selectedImg, setSele
                   scale: 1.1,
                 }}>
                 <p className="mr-2 font-header text-lg text-blue">Delete snap</p>
-
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-file-trash"

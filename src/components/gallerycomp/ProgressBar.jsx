@@ -4,30 +4,17 @@ import useStorage from '../hooks/useStorage'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
-const ProgressBar = ({
-  file,
-  setFile,
-  uploadType,
-  isFirst,
-
-  uploadedEmotions,
-
-  gif,
-  setIsUploaded,
-}) => {
+const ProgressBar = ({ file, setFile, uploadType, isFirst, uploadedEmotions, gif, setIsUploaded }) => {
   const navigate = useNavigate()
   const { url, progress } = useStorage(file, uploadType, uploadedEmotions, gif)
   useEffect(() => {
     if (url) {
       setFile(null)
-      console.log(isFirst)
       uploadType === 'gallery' &&
         setTimeout(function () {
           setIsUploaded(true)
         }, 600)
-
       isFirst && navigate('/upload-profile')
-      //setLoading(false)
     }
   }, [url, setFile])
 

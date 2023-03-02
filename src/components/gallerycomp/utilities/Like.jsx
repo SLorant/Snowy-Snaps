@@ -1,9 +1,9 @@
-import { projectFirestore } from '../../../firebase/config'
+import { projectFirestore } from '../../../../firebase/config'
 import { collection, query, where, getDocs, getDoc, doc, updateDoc } from 'firebase/firestore'
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import { useEffect } from 'react'
 
-const useLike = (created, setLikes) => {
+const Like = (created, setLikes) => {
   const { currentUser } = useAuth()
   const collectionRef = collection(projectFirestore, 'images')
   const docRef = doc(projectFirestore, 'users', currentUser.uid)
@@ -56,4 +56,4 @@ const useLike = (created, setLikes) => {
   }, [created])
 }
 
-export default useLike
+export default Like

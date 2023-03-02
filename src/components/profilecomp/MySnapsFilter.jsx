@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const MyGalleryFilter = ({ setMyImages, likedImages, setLikedImages }) => {
+const MySnapsFilter = ({ setMyImages, likedImages, setLikedImages }) => {
   const handleOnClickShowUploaded = () => {
     setLikedImages(false)
     setMyImages(true)
@@ -33,4 +33,4 @@ const MyGalleryFilter = ({ setMyImages, likedImages, setLikedImages }) => {
   )
 }
 
-export default MyGalleryFilter
+export default MySnapsFilter

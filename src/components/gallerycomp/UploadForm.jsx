@@ -1,26 +1,21 @@
 import { useState, useEffect, React } from 'react'
-import ProgressBar from '../watchpagecomp/ProgressBar'
-import { ref, getDownloadURL } from 'firebase/storage'
-import { projectStorage } from '../../../firebase/config'
+import ProgressBar from '../gallerycomp/ProgressBar'
 import { motion } from 'framer-motion'
 import SnapEditor from '../profilecomp/SnapEditor'
-import { FileUploader } from 'react-drag-drop-files'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
 
 const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
   const { currentUser } = useAuth()
-  const navigate = useNavigate()
   const [error, setError] = useState(null)
   const types = ['image/png', 'image/jpeg']
   const isGallery = true
   const uploadType = 'gallery'
   var editor = ''
-
   const [uploadedEmotions, setUploadedEmotions] = useState([])
   const [gif, setGif] = useState(false)
-  const [showGifUp, setShowGifUp] = useState(false)
+  const [showGifUploader, setShowGifUploader] = useState(false)
   const [picture, setPicture] = useState({
     cropperOpen: false,
     img: null,
@@ -28,7 +23,6 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
     croppedImg: 'src/assets/profile.png',
   })
   let selected
-  const [showError, setShowError] = useState(true)
   const [loginError, setLoginError] = useState(false)
   const [pic, setPic] = useState(null)
   useEffect(() => {
@@ -41,13 +35,8 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
     //console.log("first url:" + picture.img)
     if (currentUser) {
       selected = e.target.files[0]
-      /* if (selected && selected.type === 'image/gif') {
-        
-      } */
       let url = URL.createObjectURL(e.target.files[0])
-      console.log(url)
       setPic(url)
-      console.log(selected)
 
       if (selected && types.includes(selected.type)) {
         document.body.style.overflow = 'hidden'
@@ -60,7 +49,7 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
         setError('')
       } else if (selected.type === 'image/gif') {
         setGif(true)
-        setShowGifUp(true)
+        setShowGifUploader(true)
       } else {
         setError('Please select an image file (png, jpg, gif)')
       }
@@ -71,12 +60,11 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
   }
   return (
     <div
-      className={`${
-        isMySnaps ? '' : ' relative mb-4 w-0 items-start justify-start  md:w-1/4  lg:ml-4  xl:ml-0'
-      } flex flex-col`}>
-      {showGifUp && (
+      className={`${isMySnaps ? '' : ' relative mb-4 w-0 items-start justify-start  md:w-1/4  lg:ml-4  xl:ml-0'}
+         flex flex-col`}>
+      {showGifUploader && (
         <GifUploader
-          setShowGifUp={setShowGifUp}
+          setShowGifUploader={setShowGifUploader}
           setFile={setFile}
           url={pic}
           uploadedEmotions={uploadedEmotions}
@@ -93,7 +81,7 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
         <div className=" flex items-center justify-center">
           <motion.button
             className="uploadbutton flex h-16 w-40 items-center  justify-center rounded-md  bg-cream font-headersc  text-blue
-    hover:bg-blue hover:text-peach lg:h-14  lg:w-52 "
+               hover:bg-blue hover:text-peach lg:h-14  lg:w-52 "
             whileHover={{
               transition: {
                 duration: 0.2,
@@ -133,11 +121,9 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
           </div>
         )}
       </div>
-
       <div className="mt-2 flex flex-col  items-center justify-center">
         {file && (
           <div className="">
-            {/*  <div className="ml-20 mb-1 font-header text-blue"> {file.name}</div> */}
             <ProgressBar
               setIsUploaded={setIsUploaded}
               file={file}
@@ -148,7 +134,6 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
             />
           </div>
         )}
-
         {picture.cropperOpen && (
           <SnapEditor
             picture={picture}
@@ -161,18 +146,17 @@ const UploadForm = ({ isMySnaps, file, setFile, setIsUploaded }) => {
           />
         )}
       </div>
-
       <button
-        className={`${
-          isMySnaps ? 'lg:hidden' : 'md:hidden'
-        } fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:h-24 md:w-24`}>
+        className={`${isMySnaps ? 'lg:hidden' : 'md:hidden'}
+           fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:h-24 md:w-24`}>
         <div className="flex items-center justify-center">
           <label
             htmlFor="files"
-            className="uploadbutton flex h-20 w-20 cursor-pointer items-center justify-center rounded-full text-center text-lg duration-200 hover:bg-blue md:h-24 md:w-24">
+            className="uploadbutton flex h-20 w-20 cursor-pointer items-center justify-center rounded-full
+             text-center text-lg duration-200 hover:bg-blue md:h-24 md:w-24">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon  icon-tabler icon-tabler-file-upload z-10  w-14 md:w-20 lg:w-auto"
+              className="icon icon-tabler icon-tabler-file-upload z-10  w-14 md:w-20 lg:w-auto"
               width="64"
               height="64"
               viewBox="0 0 24 24"

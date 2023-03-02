@@ -1,5 +1,5 @@
 import { useState, useRef, React } from 'react'
-import ProgressBar from '../watchpagecomp/ProgressBar'
+import ProgressBar from '../gallerycomp/ProgressBar'
 import { ref, getDownloadURL } from 'firebase/storage'
 import { projectStorage } from '../../../firebase/config'
 import { useAuth } from '../../contexts/AuthContext'

@@ -1,5 +1,6 @@
 node_modules
 .env.local
-firebase
 unusedCode.txt
-magyarszovegek.txt
+.vscode
+.prettierrc.json
+postcss.config.cjs

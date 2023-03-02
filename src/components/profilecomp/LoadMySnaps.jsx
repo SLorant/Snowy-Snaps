@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { projectFirestore, projectStorage } from '../../../firebase/config'
 import { useLocation } from 'react-router-dom'
 
-const LoadGallery = (setUser, setCanUpload) => {
+const LoadMySnaps = (setUser, setCanUpload) => {
   const { currentUser } = useAuth()
   const pathname = useLocation().pathname
   const user = pathname.substring(1, pathname.lastIndexOf('/'))
@@ -54,4 +54,4 @@ const LoadGallery = (setUser, setCanUpload) => {
   }, [])
 }
 
-export default LoadGallery
+export default LoadMySnaps

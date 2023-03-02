@@ -1,19 +1,19 @@
 import React from 'react'
-import useLike from '../hooks/useLike'
+import Like from './utilities/Like'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Dislike from './Dislike'
+import Dislike from './utilities/Dislike'
 import { useAuth } from '../../contexts/AuthContext'
 
-const LikedButton = ({ imgdata, setIsLiked }) => {
+const LikedButton = ({ imgdata, setLikedByUser }) => {
   const [likes, setLikes] = useState('')
   const { currentUser } = useAuth()
   const userid = currentUser.uid
 
-  useLike(imgdata, setLikes)
+  Like(imgdata, setLikes)
 
   const handleDisLike = () => {
-    Dislike(imgdata, setIsLiked, userid)
+    Dislike(imgdata, setLikedByUser, userid)
   }
 
   return (
