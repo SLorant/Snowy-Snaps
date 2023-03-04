@@ -62,14 +62,14 @@ const GifUploader = ({ setShowGifUploader, setFile, url, uploadedEmotions, setUp
         <div className="my-4 flex gap-6">
           <motion.button
             onClick={handleCancel}
-            className="mt-0 flex h-10 w-24 items-center justify-center rounded-md bg-sand font-headersc
+            className="mt-0 flex h-10 w-24 items-center justify-center rounded-md bg-sand font-header
              text-lg text-blue hover:bg-blue  hover:text-peach md:h-10 md:w-28 lg:w-32  xl:w-24  "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             Cancel
           </motion.button>
           <motion.button
             onClick={handleSave}
-            className="mt-0 flex h-10 w-24 items-center justify-center rounded-md bg-sand font-headersc
+            className="mt-0 flex h-10 w-24 items-center justify-center rounded-md bg-sand font-header
              text-lg text-blue hover:bg-blue  hover:text-peach md:h-10 md:w-28 lg:w-32  xl:w-24 "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             Upload

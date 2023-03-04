@@ -4,3 +4,4 @@ unusedCode.txt
 .vscode
 .prettierrc.json
 postcss.config.cjs
+src/assets/deletethis

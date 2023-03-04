@@ -22,7 +22,8 @@ const ShowCaseImages = ({ move, setMove }) => {
 
   return (
     <motion.div
-      className="clip-img group z-20 mt-6 h-[550px] w-[300px] rounded-md bg-sand  sm:mt-12 sm:h-[620px]  sm:w-[620px]  xl:mb-48 xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]  "
+      className="clip-img group z-20 mt-6 h-[550px] w-[300px] rounded-md bg-sand  sm:mt-8 sm:h-[550px] sm:w-[550px] 
+      md:h-[620px]  md:w-[620px]  xl:mb-48 xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]  "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, delay: 1 }}>
       <div className="group relative top-0 left-0 z-20 flex h-full w-full rounded-md    ">
@@ -32,7 +33,7 @@ const ShowCaseImages = ({ move, setMove }) => {
           ref={ref}
           onClick={handleImageClick}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
-          <div className="absolute bottom-5 left-36 z-50 hidden cursor-pointer drop-shadow-lg xl:block 2xl:bottom-9 2xl:left-44">
+          <div className="absolute bottom-5 left-36 z-50 hidden cursor-pointer drop-shadow-lg xl:bottom-7 xl:block 2xl:bottom-9 2xl:left-44">
             <LargeButton title="Show me more" link="/watch" />
           </div>
         </div>

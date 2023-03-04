@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom'
 const LargeButton = ({ title, link }) => {
   const navigate = useNavigate()
   return (
-    <div className="z-50 flex  w-auto items-center  justify-center ">
-      <motion.div className="     " whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
+    <div className="z-50 flex h-10  w-auto items-center  justify-center ">
+      <motion.div whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
         <button
-          className="rounded-md bg-cream py-2 px-4 text-center font-header text-2xl text-blue hover:bg-blue hover:text-peach sm:py-3 sm:px-6  sm:text-3xl  xl:hover:bg-cream  xl:hover:text-blue 2xl:text-3xl "
+          className="rounded-md bg-cream py-2 px-4 text-center font-header text-2xl 
+          text-blue hover:bg-blue hover:text-peach sm:py-3 sm:px-6  sm:text-3xl  xl:hover:bg-cream  xl:hover:text-blue 2xl:text-3xl "
           onClick={() => {
             navigate(link)
           }}>

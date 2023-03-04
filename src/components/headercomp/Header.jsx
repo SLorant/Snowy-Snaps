@@ -8,6 +8,7 @@ import data from '../../assets/animations/data.json'
 import { motion } from 'framer-motion'
 import LoadHeaderUser from './LoadHeaderUser'
 import MobileHeaderUserInfo from './MobileHeaderUserInfo'
+import LogoutIcon from '../../assets/icons/LogoutIcon'
 
 const Header = () => {
   const { currentUser } = useAuth()
@@ -59,7 +60,7 @@ const Header = () => {
   LoadHeaderUser(setUserName)
 
   return (
-    <header className={`${showMenu ? 'h-full w-full bg-cream' : ''} fixed top-0 z-50 flex  w-full `}>
+    <header className={`${showMenu && 'h-full w-full bg-cream'} fixed top-0 z-50 flex  w-full `}>
       <motion.nav
         className={`
           ${showMenu ? 'h-full flex-col bg-sand' : 'h-16'}
@@ -69,9 +70,9 @@ const Header = () => {
         <Link
           to="/"
           className={`${showMenu ? 'right-6' : 'left-2 hidden md:block '} 
-            absolute top-4 mb-1  w-40 font-headersc  text-lg font-bold
+            absolute top-4 mb-1  w-40 font-header  text-lg font-bold
             text-blue  lg:left-6 lg:top-3 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
-          <img src="/src/assets/logo.png" alt="logo" />
+          <img src="/src/assets/icons/logo.png" alt="logo" />
         </Link>
         <div className="">
           <button className="absolute top-1 left-2 w-12 md:hidden" onClick={handleClickMenu}>
@@ -80,7 +81,7 @@ const Header = () => {
           {!currentUser && (
             <Link
               to="login"
-              className={`${showMenu ? 'hidden' : ''} absolute top-2 right-4 flex items-center p-2
+              className={`${showMenu && 'hidden'} absolute top-2 right-4 flex items-center p-2
              px-2  text-center font-header text-2xl text-blue  sm:hidden`}>
               Sign in
             </Link>
@@ -152,21 +153,7 @@ const Header = () => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
           </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-logout"
-            width="60"
-            height="60"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-            <path d="M7 12h14l-3 -3m0 6l3 -3" />
-          </svg>
+          <LogoutIcon />
         </div>
 
         {currentUser ? (

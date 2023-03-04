@@ -61,7 +61,7 @@ const AspectRatioChooser = ({ setHeight, setWidth }) => {
         <motion.button
           key={ratio}
           className={`${selected === ratio ? 'bg-blue text-peach' : 'bg-sand text-blue'}
-           ${buttonheight} ${buttonwidth} rounded-md font-headersc `}
+           ${buttonheight} ${buttonwidth} rounded-md font-header `}
           onClick={() => handleOnClickRatio(width, height, ratio)}
           whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
           {ratio}

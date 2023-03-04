@@ -7,10 +7,8 @@ module.exports = {
       padding: '2rem',
     },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-      headersc: ['SimsBoldSC', 'sans-serif'],
-      header: ['SimsBold', 'sans-serif'],
+      serif: ['serif'],
+      header: ['"Fredoka"', 'sans-serif'],
       body: ['Lato', 'sans-serif'],
     },
     maxWidth: {
@@ -56,5 +54,4 @@ module.exports = {
       cream: '#F8F0E2',
     },
   },
-  plugins: [require('tailwindcss-textshadow'), require('tailwind-gradient-mask-image')],
 }

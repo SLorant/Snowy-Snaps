@@ -7,7 +7,7 @@ const ChangeUserAvatar = () => {
         <div className="z-30 flex h-full w-full flex-col rounded-xl bg-white md:mt-20 md:mb-24 md:h-3/4  md:w-4/5 md:justify-around xl:w-2/3  2xl:h-4/5 ">
           <div className="flex flex-col  items-center  justify-center ">
             <div className="mt-8 flex   w-full items-center justify-center">
-              <p className="font-header  text-4xl text-peach ">Profile picture</p>
+              <h1 className="font-header  text-4xl text-peach ">Profile picture</h1>
             </div>
             <AvatarChooser />
           </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import UploadedSnaps from './UploadedSnaps'
 import Modal from '../gallerycomp/Modal'
-import UploadForm from '../gallerycomp/UploadForm'
+import UploadSnap from '../gallerycomp/UploadSnap'
 import MySnapsFilter from './MySnapsFilter'
 import LikedSnaps from './LikedSnaps'
 import { Link } from 'react-router-dom'
@@ -58,7 +58,7 @@ const MySnaps = () => {
           }  font-header text-blue `}>{`${user.galleryText}`}</h1>
         <div className="mt-2 flex w-full items-center justify-center md:gap-4 lg:w-4/5 lg:gap-10  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div className={`${canUpload ? 'visible' : 'invisible'} mt-1  lg:w-60`}>
-            <UploadForm isMySnaps={isMySnaps} file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
+            <UploadSnap isMySnaps={isMySnaps} file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
           </div>
           <MySnapsFilter setMyImages={setMyImages} likedImages={likedImages} setLikedImages={setLikedImages} />
           <Link to={`/${user.userName}`} className="mt-6  hidden w-20    md:block lg:w-60 lg:text-xl">

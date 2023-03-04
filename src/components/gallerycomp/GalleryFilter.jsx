@@ -40,11 +40,11 @@ const GalleryFilter = ({ emotions, setOrder, emotionArray, setEmotionArray, setI
           className={`${mobileFilterOpened ? 'border-b-2' : ''}
             flex w-full items-center justify-center border-peach md:hidden`}>
           <button
-            className="my-1 flex w-full justify-center  font-headersc text-xl text-blue "
+            className="my-1 flex w-full justify-center  font-header text-xl text-blue "
             onClick={() => handleOnClickFilter()}>
             Filter and Sort
             <motion.img
-              src="src\assets\downarrow.png"
+              src="src\assets\icons\downarrow.png"
               className="ml-4 w-6"
               alt=""
               animate={{ rotate: mobileFilterOpened ? 180 : 0 }}

@@ -59,7 +59,7 @@ const Bio = ({ loadedBio, canEdit }) => {
             maxLength={150}
             disabled={canEdit ? false : true}
             id="area"
-            className="mx-2  h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body  text-darkblue outline-none"></textarea>
+            className="mx-2 h-2/3 w-[95%] resize-none rounded-md border-none bg-cream font-body   text-darkblue outline-none"></textarea>
         </div>
         {showChar && canEdit && <span className="ml-1  font-body text-sm text-darkblue">{charactersRemaining}</span>}
 
@@ -67,14 +67,14 @@ const Bio = ({ loadedBio, canEdit }) => {
           <div className="items-between mt-1 mb-4 flex w-full justify-between">
             <motion.button
               onClick={handleCancel}
-              className="text-md mt-0 flex h-8 w-24 items-center justify-center rounded-md bg-sand font-headersc
+              className="text-md mt-0 flex h-8 w-24 items-center justify-center rounded-md bg-sand font-header
                   text-blue hover:bg-blue  hover:text-peach md:h-8 md:w-28 lg:w-32  xl:w-20  "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               Cancel
             </motion.button>
             <motion.button
               onClick={handleSubmit}
-              className="text-md mt-0 flex h-8 w-24 items-center justify-center rounded-md bg-sand font-headersc
+              className="text-md mt-0 flex h-8 w-24 items-center justify-center rounded-md bg-sand font-header
                   text-blue hover:bg-blue  hover:text-peach md:h-8 md:w-28 lg:w-32  xl:w-20  "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               <input className="cursor-pointer  " type="submit" value="Update" />

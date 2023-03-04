@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import ImageGrid from './ImageGrid'
 import Modal from './Modal'
 import GalleryFilter from './GalleryFilter'
-import UploadForm from './UploadForm'
+import UploadSnap from './UploadSnap'
 
 const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -44,7 +44,7 @@ const Gallery = () => {
           setImgType={setImgType}
           file={file}
         />
-        <UploadForm setUploaded={setUploaded} file={file} setFile={setFile} />
+        <UploadSnap setUploaded={setUploaded} file={file} setFile={setFile} />
       </div>
       <ImageGrid
         imgData={imgData}

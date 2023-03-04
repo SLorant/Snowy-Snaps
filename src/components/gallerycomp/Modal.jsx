@@ -6,6 +6,9 @@ import LikedButton from './LikedButton'
 import IsLiked from './utilities/isLiked'
 import { Link } from 'react-router-dom'
 import DeleteSnap from './utilities/DeleteSnap'
+import TrashIcon from '../../assets/icons/TrashIcon'
+import HeartIcon from '../../assets/icons/HeartIcon'
+import XIcon from '../../assets/icons/XIcon'
 
 const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
   const [likedByUser, setLikedByUser] = useState(false)
@@ -95,21 +98,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
           className="absolute -top-16 right-4 cursor-pointer md:-top-2 md:-right-20 lg:-top-3 lg:-right-3"
           onClick={handleExit}
           whileHover={{ scale: 1.2 }}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-x"
-            width="60"
-            height="60"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="#ffffff"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
+          <XIcon />
         </motion.div>
         <div className="flex h-full w-full flex-col  items-center justify-center">
           <motion.img
@@ -169,20 +158,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 1.2 }}>
                   <p className="absolute font-header text-xl text-blue ">{likes}</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-heart"
-                    width="80"
-                    height="80"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1"
-                    stroke="#2D4550"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                  </svg>
+                  <HeartIcon fill="none" />
                 </motion.button>
                 {error && (
                   <div className="static top-8 -right-32  font-header text-xl text-peach underline md:absolute lg:static">
@@ -204,24 +180,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                   scale: 1.1,
                 }}>
                 <p className="mr-2 font-header text-lg text-blue">Delete snap</p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-file-trash"
-                  width="30"
-                  height="30"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="#2c3e50"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <line x1="4" y1="7" x2="20" y2="7" />
-                  <line x1="10" y1="11" x2="10" y2="17" />
-                  <line x1="14" y1="11" x2="14" y2="17" />
-                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                </svg>
+                <TrashIcon />
               </motion.button>
             )}
           </div>

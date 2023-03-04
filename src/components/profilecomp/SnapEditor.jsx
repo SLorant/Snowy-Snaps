@@ -142,15 +142,15 @@ const SnapEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUploade
 
           <div className="my-2 mt-4  mb-4  flex  gap-8  lg:mr-0 lg:mt-10 lg:flex-row">
             <motion.button
-              className="flex h-10 w-24 items-center justify-center  rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
-                md:h-12 md:w-28 lg:w-32  xl:w-40 "
+              className="flex h-10 w-24 items-center justify-center  rounded-md bg-sand font-header text-xl text-blue hover:bg-blue hover:text-peach  md:h-12
+                md:w-28 lg:w-32 lg:text-2xl  xl:w-40 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
               onClick={() => handleCancel()}>
               Cancel
             </motion.button>
             <motion.button
-              className="flex h-10 w-24 items-center justify-center rounded-md bg-sand font-headersc text-xl text-blue hover:bg-blue  hover:text-peach
-                md:h-12 md:w-28 lg:w-32  xl:w-40 "
+              className="flex h-10 w-24 items-center justify-center rounded-md bg-sand font-header text-xl text-blue hover:bg-blue hover:text-peach  md:h-12
+                md:w-28 lg:w-32 lg:text-2xl  xl:w-40 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
               onClick={() => handleSave()}>
               Select

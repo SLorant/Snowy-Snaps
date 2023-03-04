@@ -4,6 +4,7 @@ import Content from './Content'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
+import TableOfContentsIcon from '../../assets/icons/TableOfContentsIcon'
 
 const HuskyPedia = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
@@ -85,7 +86,7 @@ const HuskyPedia = () => {
             style={{ pointerEvents: showTableOfContents ? 'auto' : 'none' }}>
             <div className=" mb-28  flex flex-col  justify-center gap-2 ">
               <div className=" flex w-full items-center justify-center">
-                <h2 className=" mt-0 mb-4 font-headersc text-2xl text-blue lg:mb-6 lg:text-3xl">Table of contents</h2>
+                <h2 className=" mt-0 mb-4 font-header text-2xl text-blue lg:mb-6 lg:text-3xl">Table of contents</h2>
               </div>
               {links.map((link) => (
                 <motion.div
@@ -122,25 +123,7 @@ const HuskyPedia = () => {
             showTableOfContents ? 'z-50 bg-blue' : 'z-30 bg-sand'
           } uploadbutton fixed right-6 bottom-6   rounded-2xl  p-2
             hover:bg-blue   lg:bottom-6 lg:right-28 `}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon-tabler-file-upload icon icon-tabler icon-tabler-eye-table"
-            width="64"
-            height="64"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke={`${showTableOfContents ? '#de9873' : '#2c3e50'}`}
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 3h16" />
-            <path d="M5 3v17a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-17" />
-            <path d="M14 7h-4" />
-            <path d="M10 15h4" />
-            <path d="M10 18h4" />
-            <path d="M12 11v-4" />
-          </svg>
+          <TableOfContentsIcon stroke={`${showTableOfContents ? '#de9873' : '#2c3e50'}`} />
         </motion.button>
       </motion.div>
     </div>

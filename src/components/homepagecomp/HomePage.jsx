@@ -10,7 +10,7 @@ const HomePage = () => {
               Welcome to<p className="hidden sm:inline">&nbsp;Snowy Snaps!</p>
             </h1>
 
-            <img className=" mr-4 w-5/6 sm:hidden" src="src/assets/logo.png" alt="logo" />
+            <img className=" mr-4 w-5/6 sm:hidden" src="src/assets/icons/logo.png" alt="logo" />
           </div>
           <div className="mt-4 w-7/12 lg:w-1/2">
             <div className="ml-6 w-4/5 md:ml-10 lg:ml-2 lg:w-3/4 xl:w-2/3 2xl:ml-4 2xl:w-1/2">
@@ -24,12 +24,12 @@ const HomePage = () => {
         </div>
 
         <img
-          src="src/assets/landinghusky.png"
+          src="src/assets/illustrations/landinghusky.png"
           alt="huskylove"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 sm:block"
         />
         <img
-          src="src/assets/landinghuskymobile.png"
+          src="src/assets/illustrations/landinghuskymobile.png"
           alt="huskylove"
           className="relative  top-10 z-10 block  w-full object-cover  sm:hidden"
         />

@@ -32,19 +32,18 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
       <Link
         to={location}
         className={`${pathname === location ? ' border-darkblue' : 'border-transparent'}
-    ${location === '/profile' ? 'font-header' : 'font-header md:font-headersc'}
-    ${
-      currentLocation === '/'
-        ? 'hover:border-peach hover:bg-cream'
-        : currentLocation === '/watch'
-        ? 'hover:border-peach hover:bg-cream'
-        : currentLocation === '/my-gallery'
-        ? 'hover:border-peach hover:bg-cream'
-        : 'hover:border-peach hover:bg-white'
-    }
-    ${showMenu ? 'my-2 ml-4 h-14 border-none text-3xl tracking-wide' : 'h-full'}
-     headerlink z-50 block flex items-center border-b-2 p-2 px-2 text-center  text-blue  transition  duration-500
-              md:text-2xl lg:px-4    xl:px-6   xl:text-3xl`}>
+          ${
+            currentLocation === '/'
+              ? 'hover:border-peach hover:bg-cream'
+              : currentLocation === '/watch'
+              ? 'hover:border-peach hover:bg-cream'
+              : currentLocation === '/my-gallery'
+              ? 'hover:border-peach hover:bg-cream'
+              : 'hover:border-peach hover:bg-white'
+          }
+          ${showMenu ? 'my-2 ml-4 h-14 border-none text-3xl tracking-wide' : 'h-full'}
+            headerlink z-50 block flex items-center border-b-2 p-2 px-2 text-center  font-header  text-blue  transition
+            duration-500   md:text-2xl lg:px-4    xl:px-6   xl:text-3xl`}>
         {title}
       </Link>
     </motion.button>

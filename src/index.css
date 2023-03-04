@@ -11,15 +11,6 @@ body {
   font-size: 16px;
 }
 
-@font-face {
-  font-family: 'SimsBoldSC';
-  src: url('/TheSimsSansBoldSC.otf');
-}
-@font-face {
-  font-family: 'SimsBold';
-  src: url('/TheSimsSansBold.otf');
-}
-
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -36,9 +27,8 @@ body {
   background: #888;
 }
 
-.uploadbutton:hover .icon-tabler-file-upload {
+.uploadbutton:hover .icon-upload {
   stroke: #de9873;
-  transition-duration: 0.3s;
 }
 
 input:-webkit-autofill,

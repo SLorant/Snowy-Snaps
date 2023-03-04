@@ -32,7 +32,7 @@ const MySnapsPreview = ({ userID }) => {
         className="relative top-1 left-10 z-10 h-44 w-44 -rotate-3 rounded-md
          object-cover object-center drop-shadow-lg transition duration-500 ease-in-out group-hover:translate-y-4 group-hover:-translate-x-32
          group-hover:-rotate-12 md:h-60 md:w-60  "
-        src="src\assets\placeholder.png"
+        src="src\assets\illustrations\placeholder.png"
         alt="pic"
         id="myimg4"
       />
@@ -41,14 +41,14 @@ const MySnapsPreview = ({ userID }) => {
           transition duration-500
           ease-in-out group-hover:-translate-x-10
         group-hover:-rotate-6 md:h-60 md:w-60"
-        src="src\assets\placeholder.png"
+        src="src\assets\illustrations\placeholder.png"
         alt="pic"
         id="myimg3"
       />
       <img
         className="absolute  left-8 top-7 z-30  h-44 w-44 -rotate-2 rounded-md object-cover object-center drop-shadow-lg transition duration-500
         ease-in-out group-hover:-translate-y-4 group-hover:translate-x-4 group-hover:rotate-3 md:h-60 md:w-60"
-        src="src\assets\placeholder.png"
+        src="src\assets\illustrations\placeholder.png"
         alt="pic"
         id="myimg2"
       />
@@ -56,7 +56,7 @@ const MySnapsPreview = ({ userID }) => {
         className="absolute left-14 top-6 z-40  h-44 w-44 rotate-1 rounded-md object-cover object-center drop-shadow-lg transition duration-500
          ease-in-out group-hover:translate-y-2 group-hover:translate-x-16
         group-hover:rotate-12 md:h-60 md:w-60"
-        src="src\assets\placeholder.png"
+        src="src\assets\illustrations\placeholder.png"
         alt="pic"
         id="myimg1"
       />

@@ -1,4 +1,6 @@
 import React from 'react'
+import BulbIcon from '../../assets/icons/BulbIcon'
+import NotesIcon from '../../assets/icons/NotesIcon'
 
 const Content = () => {
   return (
@@ -52,22 +54,7 @@ const Content = () => {
         reiterating the ground rules in a clear and consistent manner rather than by intimidating or beating.
         <div className="mb-4" />
         <div className="mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-2  w-full   grow sm:w-1/2  "
-            width="60"
-            height="60"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
-            <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
-            <line x1="9.7" y1="17" x2="14.3" y2="17" />
-          </svg>
+          <BulbIcon className="float-left mx-2 mb-2  w-full   grow sm:w-1/2" />
           <p className="my-3 mr-4 shrink leading-tight">
             One of the easiest methods to establish your authority is to make your dog wait to eat. The Husky will
             consider you to be the guardian of all valuable possessions, including food, treats, toys, and other canine
@@ -92,23 +79,7 @@ const Content = () => {
         per day, then beginning at three months of age, two meals per day. Treats shouldn't be more than 10% of their
         total daily calorie intake as this can throw their diet out of balance. <div className="mb-4" />
         <div className="mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-notes float-left mx-2  w-2/3  grow  sm:w-1/3"
-            width="60"
-            height="60"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <rect x="5" y="3" width="14" height="18" rx="2" />
-            <line x1="9" y1="7" x2="15" y2="7" />
-            <line x1="9" y1="11" x2="15" y2="11" />
-            <line x1="9" y1="15" x2="13" y2="15" />
-          </svg>
+          <NotesIcon className="float-left mx-2  w-2/3  grow  sm:w-1/3" />
           <p className="my-3 mr-4 shrink leading-tight">
             To help your dog establish a routine, try feeding them at the same time each day. At any age, never let your
             husky "free feed."
@@ -139,22 +110,7 @@ const Content = () => {
           other issues.
           <div className="mb-4" />
           <div className="mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-2  w-full   grow sm:w-1/2 "
-              width="60"
-              height="60"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#2c3e50"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
-              <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
-              <line x1="9.7" y1="17" x2="14.3" y2="17" />
-            </svg>
+            <BulbIcon className="float-left mx-2 mb-2  w-full   grow sm:w-1/2" />
             <p className="my-3 mr-4 shrink leading-tight">
               They are too long if you can hear them clicking on the floor. Cutting them too short can result in
               bleeding, which may make your dog uncooperative the next time the nail clippers are pulled out.
@@ -180,23 +136,7 @@ const Content = () => {
           for them to flee, you'll need to make preparations for this in your home.
           <div className="mb-4" />
           <div className="mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-1  w-full grow  sm:w-1/3"
-              width="60"
-              height="60"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#2c3e50"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <rect x="5" y="3" width="14" height="18" rx="2" />
-              <line x1="9" y1="7" x2="15" y2="7" />
-              <line x1="9" y1="11" x2="15" y2="11" />
-              <line x1="9" y1="15" x2="13" y2="15" />
-            </svg>
+            <NotesIcon className="float-left mx-2 mb-1  w-full grow  sm:w-1/3" />
             <p className="my-3 mr-4 shrink leading-tight">
               Even if they have been introduced to each other when they were young, huskies have such a high prey drive
               that we don't advise keeping them with smaller pets.
@@ -219,23 +159,7 @@ const Content = () => {
           minutes before removing any leftover food.
           <div className="mb-4" />
           <div className="mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-1  w-2/3 grow  sm:w-1/3"
-              width="60"
-              height="60"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#2c3e50"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <rect x="5" y="3" width="14" height="18" rx="2" />
-              <line x1="9" y1="7" x2="15" y2="7" />
-              <line x1="9" y1="11" x2="15" y2="11" />
-              <line x1="9" y1="15" x2="13" y2="15" />
-            </svg>
+            <NotesIcon className="float-left mx-2 mb-1  w-2/3 grow  sm:w-1/3" />
             <p className="my-3 mr-4 shrink leading-tight">
               Try to stay away from any overly processed foods. This includes dog treats, which can be seriously
               detrimental to a puppy's health.
@@ -266,22 +190,7 @@ const Content = () => {
         walks. Your Husky needs to exercise for at least two hours every day.
         <div className="mb-4" />
         <div className="mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-1 w-full grow   sm:w-1/2"
-            width="60"
-            height="60"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
-            <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
-            <line x1="9.7" y1="17" x2="14.3" y2="17" />
-          </svg>
+          <BulbIcon className="float-left mx-2 mb-1 w-full grow   sm:w-1/2" />
           <p className="my-3 mr-4 shrink leading-tight">
             To prevent them from getting bored, it's a good idea to space this out throughout the day and to change up
             your walking routes. The ideal scenario would also involve off-lead exercise in a safe environment.
@@ -312,22 +221,7 @@ const Content = () => {
           as frequently as you can and on a regular basis to reduce the possibility of interior accidents.
           <div className="mb-4" id="crate" />
           <div className=" mb-4 flex items-center rounded-md  bg-sand text-left md:mx-8 ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-bulb float-left mx-2 mb-1  w-full   grow sm:w-1/2  "
-              width="60"
-              height="60"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#2c3e50"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
-              <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
-              <line x1="9.7" y1="17" x2="14.3" y2="17" />
-            </svg>
+            <BulbIcon className="float-left mx-2 mb-1  w-full   grow sm:w-1/2" />
             <p className="my-3 mr-4 shrink leading-tight">
               When your dog relieves itself outside, reward it with a tiny treat and give it a pat on the head. This
               will encourage the habit and help the puppy understand where it should do its business.
