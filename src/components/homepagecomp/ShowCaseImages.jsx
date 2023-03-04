@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef, useEffect } from 'react'
 import useIntersection from '../hooks/useIntersection'
 import { motion } from 'framer-motion'
-import LargeButton from './LargeButton'
+import ShowCaseButton from './ShowCaseButton'
 
 const ShowCaseImages = ({ move, setMove }) => {
   const ref = useRef()
@@ -34,7 +34,7 @@ const ShowCaseImages = ({ move, setMove }) => {
           onClick={handleImageClick}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
           <div className="absolute bottom-5 left-36 z-50 hidden cursor-pointer drop-shadow-lg xl:bottom-7 xl:block 2xl:bottom-9 2xl:left-44">
-            <LargeButton title="Show me more" link="/watch" />
+            <ShowCaseButton title="Show me more" link="/watch" />
           </div>
         </div>
 

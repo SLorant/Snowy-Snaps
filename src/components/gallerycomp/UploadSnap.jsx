@@ -1,5 +1,5 @@
 import { useState, useEffect, React } from 'react'
-import ProgressBar from './ProgressBar'
+import ProgressBar from '../ProgressBar'
 import { motion } from 'framer-motion'
 import SnapEditor from '../profilecomp/SnapEditor'
 import { useNavigate, Link } from 'react-router-dom'

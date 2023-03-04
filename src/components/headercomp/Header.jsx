@@ -18,6 +18,7 @@ const Header = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const [showMenu, setShowMenu] = useState(false)
   const [headerBg, setHeaderBg] = useState('bg-white')
+  const isFirstRender = useRef(true)
 
   const handleClickMenu = () => {
     setShowMenu(!showMenu)
@@ -44,7 +45,7 @@ const Header = () => {
   })
 
   const playLottie = useCallback(() => {
-    if (lottieRef.current) {
+    if (lottieRef.current && !isFirstRender.current) {
       if (showMenu) {
         lottieRef.current.playSegments([0, 30], false)
       } else {
@@ -54,6 +55,10 @@ const Header = () => {
   }, [lottieRef, showMenu])
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false // set flag to false after initial render
+      return
+    }
     playLottie()
   }, [playLottie])
 

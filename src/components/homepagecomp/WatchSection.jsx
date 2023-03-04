@@ -1,4 +1,4 @@
-import LargeButton from './LargeButton'
+import ShowCaseButton from './ShowCaseButton'
 import ShowCaseImages from './ShowCaseImages'
 import { useState } from 'react'
 import LearnSection from './LearnSection'
@@ -21,7 +21,7 @@ const WatchSection = () => {
           <ShowCaseImages move={move} setMove={setMove} />
         </div>
         <div className="mt-4 mb-96 flex items-center justify-center drop-shadow-lg sm:mt-4  sm:mb-28 md:mt-8 md:mb-12  xl:hidden ">
-          <LargeButton title="Show me more" link="/watch" />
+          <ShowCaseButton title="Show me more" link="/watch" />
         </div>
       </div>
       <div className="hidden xl:block">

@@ -1,6 +1,5 @@
-import React from 'react'
 import { useEffect } from 'react'
-import useStorage from '../hooks/useStorage'
+import useStorage from './hooks/useStorage'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 

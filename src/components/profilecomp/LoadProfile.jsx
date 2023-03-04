@@ -6,7 +6,8 @@ import { ref, getDownloadURL } from 'firebase/storage'
 import { useLocation } from 'react-router-dom'
 
 const LoadProfile = (setUser) => {
-  const { currentUser, logout } = useAuth()
+  const { currentUser } = useAuth()
+  // Get the username from the url
   const pathname = useLocation().pathname
   let user = pathname.substring(1)
   let bio
@@ -19,6 +20,8 @@ const LoadProfile = (setUser) => {
         const profDocSnap = await getDoc(profDocRef)
         data = profDocSnap.data()
       }
+      // If the current user is viewing their own profile or the user is 'profile'
+      // (indicating the current user's own profile), set the user state accordingly
       if (currentUser && (data.username === user || user === 'profile')) {
         setUser({
           userName: `${data.username}`,
@@ -30,6 +33,7 @@ const LoadProfile = (setUser) => {
         })
         return currentUser.uid
       } else {
+        // Otherwise, query the Firestore collection for the requested user's data
         const q = query(collection(projectFirestore, 'users'), where('username', '==', user))
         const querySnapshot = await getDocs(q)
         let id
@@ -37,6 +41,7 @@ const LoadProfile = (setUser) => {
           id = doc.id
           bio = doc.data().bio
         })
+        // If the requested user does not exist, fill the state with empty strings
         if (id === undefined) {
           setUser({
             userName: '',
@@ -66,10 +71,9 @@ const LoadProfile = (setUser) => {
 
   useEffect(() => {
     ;(async () => {
-      let user2 = await loadProfile()
-      console.log(user2)
-      const url = await getDownloadURL(ref(projectStorage, `${user2}/profilepics/image`))
-
+      let userProfile = await loadProfile()
+      // Get the profile picture form Firebase Storage and set the user's profile in the DOM
+      const url = await getDownloadURL(ref(projectStorage, `${userProfile}/profilepics/image`))
       const img = document.getElementById('profileimg')
       img.setAttribute('src', url)
     })()

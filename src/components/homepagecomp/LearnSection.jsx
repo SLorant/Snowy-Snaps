@@ -1,4 +1,4 @@
-import LargeButton from './LargeButton'
+import ShowCaseButton from './ShowCaseButton'
 import Lottie from 'lottie-react'
 import huskypedia from '../../assets/animations/huskypedia.json'
 import { useRef } from 'react'
@@ -23,11 +23,11 @@ const LearnSection = () => {
         </div>
         <div className="imagecontainer absolute top-0 left-0 z-40 h-full w-full rounded-md bg-transparent"></div>
         <div className="z-40 hidden  xl:absolute xl:bottom-7 xl:left-32 xl:block 2xl:bottom-9 2xl:left-40">
-          <LargeButton title={'Go to Huskypedia'} link="/learn" />
+          <ShowCaseButton title={'Go to Huskypedia'} link="/learn" />
         </div>
       </div>
       <div className="z-40 mt-8 mb-12 drop-shadow-lg xl:absolute xl:bottom-9 xl:left-40 xl:hidden">
-        <LargeButton title={'Go to Huskypedia'} link="/learn" />
+        <ShowCaseButton title={'Go to Huskypedia'} link="/learn" />
       </div>
     </div>
   )

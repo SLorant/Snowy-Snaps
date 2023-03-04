@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
 import { createUserDocument, auth } from '../../../firebase/config'
-import ProgressBar from '../gallerycomp/ProgressBar'
+import ProgressBar from '../ProgressBar'
 import CheckUsernameDuplicates from './CheckUsernameDuplicates'
 import CheckEmailDuplicates from './CheckEmailDuplicates'
 

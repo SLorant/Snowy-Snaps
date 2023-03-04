@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-const LargeButton = ({ title, link }) => {
+const ShowCaseButton = ({ title, link }) => {
   const navigate = useNavigate()
   return (
     <div className="z-50 flex h-10  w-auto items-center  justify-center ">
@@ -19,8 +18,8 @@ const LargeButton = ({ title, link }) => {
     </div>
   )
 }
-LargeButton.defaultProps = {
+ShowCaseButton.defaultProps = {
   title: 'Husky',
 }
 
-export default LargeButton
+export default ShowCaseButton

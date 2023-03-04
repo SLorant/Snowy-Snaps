@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 
 const LoadMySnaps = (setUser, setCanUpload) => {
   const { currentUser } = useAuth()
+  // Get the username from the url
   const pathname = useLocation().pathname
   const user = pathname.substring(1, pathname.lastIndexOf('/'))
 
@@ -13,6 +14,7 @@ const LoadMySnaps = (setUser, setCanUpload) => {
     try {
       let data
       if (currentUser) {
+        //get user data from firestore
         const profDocRef = doc(projectFirestore, 'users', currentUser.uid)
         const profDocSnap = await getDoc(profDocRef)
         data = profDocSnap.data()
@@ -29,6 +31,7 @@ const LoadMySnaps = (setUser, setCanUpload) => {
           })
         }
       } else {
+        // if the user is not the signed in user, find it in the firestore database
         const q = query(collection(projectFirestore, 'users'), where('username', '==', user))
         const querySnapshot = await getDocs(q)
         let id
