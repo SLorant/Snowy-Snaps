@@ -50,7 +50,7 @@ const AvatarChooser = ({ type }) => {
         <div
           className={`${type === 'update' ? 'mt-8' : ''}
            mt-2 flex  w-full flex-col items-center  justify-center gap-2 `}>
-          <p className=" mb-2  text-center font-header text-2xl text-blue">Choose from these avatars</p>
+          <p className=" mb-2 text-center  font-header text-2xl text-blue dark:text-peach">Choose from these avatars</p>
           <Avatars setFile={setFile} selected={selected} setSelected={setSelected} />
 
           <div className="mt-2 flex flex-col items-center justify-center gap-0">

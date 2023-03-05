@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -31,27 +30,35 @@ const Settings = () => {
 
   return (
     <motion.div
-      className="flex w-full flex-col items-start justify-center bg-cream md:absolute md:top-[270px] md:right-32 md:w-52 md:rounded-lg lg:right-36    "
+      className="flex w-full flex-col items-start justify-center bg-cream dark:bg-blue md:absolute
+       md:top-[270px] md:right-32 md:w-52 md:rounded-lg lg:right-36    "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.3 } }}>
-      <div className="group w-full cursor-pointer border-b-2 border-sand transition  duration-200 ease-in-out  hover:border-peach hover:bg-blue md:rounded-md">
+      <div
+        className="group w-full cursor-pointer border-b-2 border-sand transition duration-200  ease-in-out hover:border-peach
+        hover:bg-blue dark:border-darkblue md:rounded-md">
         <button
-          className="float-left my-2 w-full text-start font-header  text-blue transition duration-200 ease-in-out  group-hover:text-peach  md:my-1  "
+          className="float-left my-2 w-full text-start font-header text-blue transition duration-200 ease-in-out group-hover:text-peach
+            dark:text-cream  md:my-1  "
           onClick={() => navigate('/upload-profile')}>
           <p className="ml-6 text-lg md:ml-2">Change avatar</p>
         </button>
       </div>
-      <div className="group w-full cursor-pointer border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach hover:bg-blue md:rounded-md">
+      <div
+        className="group w-full cursor-pointer border-b-2 border-sand transition duration-200 ease-in-out hover:border-peach
+       hover:bg-blue dark:border-darkblue md:rounded-md">
         <button
           onClick={handleResetPassword}
-          className=" my-2 w-full text-start font-header text-blue  transition duration-200 ease-in-out  group-hover:text-peach md:my-1">
+          className=" my-2 w-full text-start font-header text-blue transition  duration-200 ease-in-out group-hover:text-peach
+            dark:text-cream md:my-1">
           <p className="ml-6 text-lg md:ml-2">Change password</p>
         </button>
       </div>
       <div className="group w-full cursor-pointer transition  duration-200 ease-in-out  hover:bg-blue md:rounded-md">
         <button
           onClick={handleLogout}
-          className=" my-2 w-full text-start font-header  text-blue transition duration-200  ease-in-out group-hover:text-peach  md:my-1">
+          className=" my-2 w-full text-start font-header text-blue transition duration-200 ease-in-out
+            group-hover:text-peach dark:text-cream  md:my-1">
           <p className="ml-6 text-lg md:ml-2">Log out</p>
         </button>
       </div>

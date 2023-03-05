@@ -42,7 +42,7 @@ html {
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Graphik, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
 }
 
@@ -742,6 +742,11 @@ video {
   float: left;
 }
 
+.mx-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -780,11 +785,6 @@ video {
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
-}
-
-.mx-20 {
-  margin-left: 5rem;
-  margin-right: 5rem;
 }
 
 .mx-6 {
@@ -878,6 +878,10 @@ video {
   margin-left: 2rem;
 }
 
+.mr-0 {
+  margin-right: 0px;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -962,6 +966,10 @@ video {
   display: none;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -1002,6 +1010,14 @@ video {
   height: 100%;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
+.h-60 {
+  height: 15rem;
+}
+
 .h-\[490px\] {
   height: 490px;
 }
@@ -1012,10 +1028,6 @@ video {
 
 .h-8 {
   height: 2rem;
-}
-
-.h-2 {
-  height: 0.5rem;
 }
 
 .h-20 {
@@ -1138,6 +1150,10 @@ video {
   width: 3.5rem;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .w-12 {
   width: 3rem;
 }
@@ -1150,10 +1166,6 @@ video {
   width: 90%;
 }
 
-.w-3\/4 {
-  width: 75%;
-}
-
 .w-7\/12 {
   width: 58.333333%;
 }
@@ -1164,10 +1176,6 @@ video {
 
 .w-4\/5 {
   width: 80%;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .w-\[300px\] {
@@ -1442,6 +1450,10 @@ video {
   overflow: auto;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .rounded-sm {
   border-radius: 0.125rem;
 }
@@ -1456,10 +1468,6 @@ video {
 
 .rounded-lg {
   border-radius: 0.5rem;
-}
-
-.rounded-full {
-  border-radius: 9999px;
 }
 
 .rounded-2xl {
@@ -1520,6 +1528,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 69 80 / var(--tw-bg-opacity));
+}
+
 .bg-cream {
   --tw-bg-opacity: 1;
   background-color: rgb(248 240 226 / var(--tw-bg-opacity));
@@ -1528,11 +1541,6 @@ video {
 .bg-sand {
   --tw-bg-opacity: 1;
   background-color: rgb(217 211 192 / var(--tw-bg-opacity));
-}
-
-.bg-blue {
-  --tw-bg-opacity: 1;
-  background-color: rgb(45 69 80 / var(--tw-bg-opacity));
 }
 
 .bg-black\/70 {
@@ -1605,19 +1613,11 @@ video {
 }
 
 .font-header {
-  font-family: SimsBold, sans-serif;
+  font-family: "Fredoka", sans-serif;
 }
 
 .font-body {
   font-family: Lato, sans-serif;
-}
-
-.font-headersc {
-  font-family: "Tilt Warp", sans-serif;
-}
-
-.font-boldy {
-  font-family: "Tilt Warp";
 }
 
 .text-lg {
@@ -1817,18 +1817,6 @@ body {
   font-size: 16px;
 }
 
-@font-face {
-  font-family: 'SimsBoldSC';
-
-  src: url('/TheSimsSansBoldSC.otf');
-}
-
-@font-face {
-  font-family: 'SimsBold';
-
-  src: url('/TheSimsSansBold.otf');
-}
-
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -1847,7 +1835,15 @@ body {
   background: #888;
 }
 
-.uploadbutton:hover .icon-upload {
+.icon-upload {
+  filter: brightness(0) invert(1);
+}
+
+.dark .icon-upload {
+  stroke: #fff;
+}
+
+.dark .uploadbutton:hover .icon-upload {
   stroke: #de9873;
 }
 
@@ -1984,6 +1980,48 @@ input:-webkit-autofill {
 }
 
 .group:hover .group-hover\:text-peach {
+  --tw-text-opacity: 1;
+  color: rgb(222 152 115 / var(--tw-text-opacity));
+}
+
+.dark .dark\:block {
+  display: block;
+}
+
+.dark .dark\:hidden {
+  display: none;
+}
+
+.dark .dark\:bg-darkblue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 35 44 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 69 80 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:text-peach {
+  --tw-text-opacity: 1;
+  color: rgb(222 152 115 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-cream {
+  --tw-text-opacity: 1;
+  color: rgb(248 240 226 / var(--tw-text-opacity));
+}
+
+.dark .dark\:opacity-40 {
+  opacity: 0.4;
+}
+
+.dark .dark\:hover\:bg-blue:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 69 80 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:hover\:text-peach:hover {
   --tw-text-opacity: 1;
   color: rgb(222 152 115 / var(--tw-text-opacity));
 }
@@ -2197,14 +2235,14 @@ input:-webkit-autofill {
     text-align: center;
   }
 
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .sm\:text-2xl {
@@ -2604,10 +2642,6 @@ input:-webkit-autofill {
 
   .md\:bg-transparent {
     background-color: transparent;
-  }
-
-  .md\:font-header {
-    font-family: SimsBold, sans-serif;
   }
 
   .md\:text-xl {
@@ -3031,12 +3065,16 @@ input:-webkit-autofill {
     margin-top: 1rem;
   }
 
-  .xl\:ml-80 {
-    margin-left: 20rem;
+  .xl\:ml-96 {
+    margin-left: 24rem;
   }
 
   .xl\:mr-12 {
     margin-right: 3rem;
+  }
+
+  .xl\:mr-24 {
+    margin-right: 6rem;
   }
 
   .xl\:mr-16 {
@@ -3260,6 +3298,11 @@ input:-webkit-autofill {
     --tw-text-opacity: 1;
     color: rgb(45 69 80 / var(--tw-text-opacity));
   }
+
+  .dark .dark\:xl\:bg-blue {
+    --tw-bg-opacity: 1;
+    background-color: rgb(45 69 80 / var(--tw-bg-opacity));
+  }
 }
 
 @media (min-width: 1536px) {
@@ -3286,6 +3329,11 @@ input:-webkit-autofill {
   .\32xl\:mx-40 {
     margin-left: 10rem;
     margin-right: 10rem;
+  }
+
+  .\32xl\:mx-36 {
+    margin-left: 9rem;
+    margin-right: 9rem;
   }
 
   .\32xl\:mx-60 {
@@ -3415,13 +3463,13 @@ input:-webkit-autofill {
     line-height: 1;
   }
 
-  .\32xl\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
   .\32xl\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .\32xl\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }

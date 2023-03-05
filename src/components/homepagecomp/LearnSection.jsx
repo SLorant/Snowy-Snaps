@@ -6,8 +6,10 @@ import { useRef } from 'react'
 const LearnSection = () => {
   const lottieRef = useRef()
   return (
-    <div className="z-40  flex w-full flex-col items-center bg-white  xl:mt-0 xl:w-full xl:bg-cream">
-      <h2 className="mt-12 font-header text-3xl  text-blue sm:text-4xl 2xl:mt-14">Learn about huskies</h2>
+    <div className="z-40  flex w-full flex-col items-center bg-white  xl:mt-0 xl:w-full xl:bg-cream dark:xl:bg-blue">
+      <h2 className="mt-12 font-header text-3xl text-blue dark:text-peach sm:text-4xl 2xl:mt-14">
+        Learn about huskies
+      </h2>
       <div
         className="relative mt-6 h-[300px] w-[300px] sm:mt-8 sm:h-[550px] sm:w-[550px] 
       md:mt-12 md:h-[620px] md:w-[620px] xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]">

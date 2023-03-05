@@ -1,9 +1,7 @@
 react helmet for SEO
 Cookies
 motion design for mobile header, logo remake with new font?
-rename components, variables, make Like and hooks clear
 mobile menu animation bit buggy around first render
-make useful comments
 delete unused downloaded modules
 Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (127.0.0.1) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab.
     -> Add the domain to to be authorized when it is ready for hosting

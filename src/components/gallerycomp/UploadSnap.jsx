@@ -75,13 +75,13 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
         className={`${
           isMySnaps ? 'lg:flex' : ' ml-8 mt-4 md:flex'
         } hidden w-full flex-col items-center justify-start  lg:mt-8 xl:mt-4`}>
-        <h2 className="  mb-2 text-center font-header text-xl text-blue md:w-32 lg:w-80 xl:text-3xl ">
+        <h2 className="  mb-2 text-center font-header text-xl text-blue dark:text-cream md:w-32 lg:w-80 xl:text-3xl ">
           Post your own husky!
         </h2>
         <div className=" flex items-center justify-center">
           <motion.button
-            className="uploadbutton flex h-16 w-40 items-center  justify-center rounded-md  bg-cream font-header  text-blue
-               hover:bg-blue hover:text-peach lg:h-14  lg:w-52 "
+            className="uploadbutton flex h-16 w-40 items-center justify-center rounded-md
+              bg-cream font-header  text-blue hover:bg-blue hover:text-peach dark:bg-blue dark:text-cream dark:hover:text-peach lg:h-14  lg:w-52 "
             whileHover={{
               transition: {
                 duration: 0.2,
@@ -97,7 +97,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
             <input className="hidden" id="files" type="file" onChange={handleFileChange} />
           </motion.button>
         </div>
-        <p className="mt-1 font-header text-base text-blue opacity-40">PNG, JPG, GIF</p>
+        <p className="mt-1 font-header text-base text-blue opacity-40 dark:text-cream">PNG, JPG, GIF</p>
         {error && (
           <div className="mt-2 font-body text-lg text-darkblue underline">
             {loginError && <Link to="/login"> {error}</Link>}

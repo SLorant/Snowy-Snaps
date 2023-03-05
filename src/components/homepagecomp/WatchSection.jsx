@@ -8,11 +8,11 @@ const WatchSection = () => {
 
   return (
     <div
-      className=" relative z-30 flex w-full flex-col items-center justify-center justify-items-center bg-cream shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]
-     xl:grid xl:grid-cols-2  xl:items-start  xl:justify-start  ">
+      className=" relative z-30 flex w-full flex-col items-center justify-center justify-items-center bg-cream
+       shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)] dark:bg-blue  xl:grid xl:grid-cols-2  xl:items-start  xl:justify-start  ">
       <div className="flex h-[1100px] w-full flex-col items-center sm:h-auto  sm:h-auto xl:h-[1000px]  2xl:justify-center">
         <div className=" flex items-center  justify-center 2xl:mt-2 ">
-          <h2 className=" mt-6  font-header text-3xl text-blue  sm:mt-8 sm:text-4xl xl:mt-12 xl:text-4xl  2xl:mt-0 ">
+          <h2 className=" mt-6  font-header text-3xl text-blue dark:text-peach  sm:mt-8 sm:text-4xl xl:mt-12 xl:text-4xl  2xl:mt-0 ">
             Watch photos & gifs
           </h2>
         </div>

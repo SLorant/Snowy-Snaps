@@ -4,13 +4,13 @@ function HeartIcon(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-heart"
+      className={props.className}
       width="80"
       height="80"
       viewBox="0 0 24 24"
       strokeWidth="1"
       stroke="#2D4550"
-      fill={props.fill}
+      fill="none"
       strokeLinecap="round"
       strokeLinejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />

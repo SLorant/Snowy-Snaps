@@ -27,6 +27,42 @@ body {
   background: #888;
 }
 
+.dark .icon-trash {
+  stroke: #f8f0e2;
+}
+.dark .icon-settings {
+  stroke: #f8f0e2;
+}
+.dark .icon-heart {
+  stroke: #de9873;
+}
+.dark .icon-heart-clicked {
+  stroke: #de9873;
+  fill: #de9873;
+}
+.icon-heart-clicked {
+  stroke: #2d4550;
+  fill: #2d4550;
+}
+.dark .icon-toc {
+  stroke: #f8f0e2;
+}
+.dark .icon-toc-clicked {
+  stroke: #2d4550;
+}
+.dark .huskypediaicon {
+  stroke: #de9873;
+}
+.tocbutton:hover .icon-toc-clicked {
+  stroke: #de9873;
+}
+.tocbutton:hover .icon-toc {
+  stroke: #de9873;
+}
+
+.dark .icon-upload {
+  stroke: #f8f0e2;
+}
 .uploadbutton:hover .icon-upload {
   stroke: #de9873;
 }

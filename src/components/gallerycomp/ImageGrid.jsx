@@ -7,7 +7,7 @@ const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, uploaded, set
 
   return (
     <div className="  ">
-      <div className="mx-2 mt-6 flex items-center justify-center md:mx-10 lg:mx-24 xl:mx-32 2xl:mx-40">
+      <div className="mx-2 mt-6 flex items-center justify-center md:mx-10 lg:mx-24 xl:mx-32 2xl:mx-36">
         <div className=" mx-auto mx-4 mt-4 columns-2 gap-3 space-y-3 md:columns-3 lg:columns-4 xl:columns-5">
           {docs &&
             docs.map((doc) => (

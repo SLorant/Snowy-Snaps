@@ -91,7 +91,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
       animate={{ opacity: 1 }}>
       <motion.div
         className="md:max-w-5/6 mb-28 flex min-w-[15%] flex-col items-center justify-center rounded-md bg-white
-        md:mb-4   md:mb-0 md:bg-transparent  lg:mb-10 lg:h-1/2  lg:flex-row  xl:h-[60%]"
+        dark:bg-blue md:mb-4  md:mb-0 md:bg-transparent dark:md:bg-transparent  lg:mb-10 lg:h-1/2  lg:flex-row  xl:h-[60%]"
         initial={{ y: '-100vh' }}
         animate={{ y: 0 }}>
         <motion.div
@@ -103,7 +103,8 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
         <div className="flex h-full w-full flex-col  items-center justify-center">
           <motion.img
             src={selectedImg}
-            className="mx-2 block rounded-lg border-4 border-white md:h-full md:rounded-t-lg lg:rounded-lg xl:h-full xl:w-full "
+            className="mx-2 block rounded-lg border-4 border-white dark:border-blue md:h-full
+            md:rounded-t-lg dark:md:border-white lg:rounded-lg xl:h-full xl:w-full "
             alt="modalpic"
           />
         </div>
@@ -111,7 +112,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
           className={`${
             myImages ? 'lg:h-64' : 'lg:h-64'
           } flex h-8 items-start justify-center gap-8 rounded-b-lg   md:mt-6
-              md:h-24  md:w-96 md:items-center md:rounded-lg  md:bg-cream   lg:mt-0  lg:ml-6  lg:w-40 lg:flex-col lg:gap-0 lg:bg-cream`}
+              md:h-24  md:w-96 md:items-center md:rounded-lg  md:bg-cream dark:md:bg-blue lg:mt-0 lg:ml-6 lg:w-40 lg:flex-col lg:gap-0`}
           initial={{ y: '-100vh' }}
           animate={{ y: 0 }}>
           <div
@@ -124,7 +125,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                   : imgData.user.length > 9
                   ? 'text-lg md:text-base'
                   : 'text-2xl'
-              } ml-2 flex text-center font-header  text-blue lg:mb-2`}>
+              } ml-2 flex text-center font-header text-blue dark:text-cream lg:mb-2`}>
               By&nbsp;
               <Link to={`/${imgData.user}`}>
                 <motion.p className=" underline" whileHover={{ scale: 1.1 }}>
@@ -132,11 +133,11 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                 </motion.p>
               </Link>
             </div>
-            <p className="mr-2 text-center font-header text-base text-blue lg:mb-4  ">{finaldate}</p>
+            <p className="mr-2 text-center font-header text-base text-blue dark:text-cream lg:mb-4  ">{finaldate}</p>
           </div>
           <div
             className="absolute top-12 mt-4 flex w-72 items-center justify-center  gap-6
-             rounded-lg bg-cream md:static  md:mt-0 md:w-2/3 md:flex-row lg:w-40 lg:flex-col lg:gap-0">
+             rounded-lg bg-cream dark:bg-blue md:static  md:mt-0 md:w-2/3 md:flex-row lg:w-40 lg:flex-col lg:gap-0">
             <div className=" flex  gap-2  lg:mb-2 ">
               {imgData.emotion && (
                 <img className="h-11 w-10" src={getEmotionEmoji(imgData.emotion)} alt={imgData.emotion} />
@@ -157,8 +158,8 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                   animate={{ scale: 1 }}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 1.2 }}>
-                  <p className="absolute font-header text-xl text-blue ">{likes}</p>
-                  <HeartIcon fill="none" />
+                  <p className="absolute font-header text-xl text-blue dark:text-peach ">{likes}</p>
+                  <HeartIcon className="icon-heart" fill="none" />
                 </motion.button>
                 {error && (
                   <div className="static top-8 -right-32  font-header text-xl text-peach underline md:absolute lg:static">
@@ -171,7 +172,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
 
             {myImages && canDelete && (
               <motion.button
-                className=" absolute -bottom-20  flex w-40 items-center justify-center rounded-md bg-cream p-2"
+                className=" absolute -bottom-20 flex  w-40 items-center justify-center rounded-md bg-cream p-2 dark:bg-blue"
                 onClick={handleDelete}
                 whileHover={{
                   transition: {
@@ -179,7 +180,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                   },
                   scale: 1.1,
                 }}>
-                <p className="mr-2 font-header text-lg text-blue">Delete snap</p>
+                <p className="mr-2 font-header text-lg text-blue dark:text-cream">Delete snap</p>
                 <TrashIcon />
               </motion.button>
             )}

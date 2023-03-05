@@ -5,6 +5,7 @@ import { getDoc, doc, updateDoc } from 'firebase/firestore'
 import uuid from 'react-uuid'
 
 const useStorage = (file, uploadType, uploadedEmotions, gif) => {
+  //This component is responsible for uploading the users' snaps, and profile avatars to the Firebase Storage
   const [progress, setProgress] = useState(0)
   const [error, setError] = useState(null)
   const [url, setUrl] = useState(null)
@@ -12,13 +13,13 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
   let storageRef
 
   useEffect(() => {
-    //references
+    // create references to the Firebase storage and Firestore collections
     uploadType === 'profile'
       ? (storageRef = projectStorage.ref(`${currentUser.uid}/profilepics/image`))
       : (storageRef = projectStorage.ref(`${currentUser.uid}/uploadedpics/${uuid()}`))
     const docRef = doc(projectFirestore, 'users', currentUser.uid)
     const collectionRef = projectFirestore.collection('images')
-
+    // upload the file to the Firebase storage and handle upload progress, errors, and completion
     storageRef.put(file).on(
       'state_changed',
       (snap) => {
@@ -29,6 +30,7 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
         setError(err)
       },
       async () => {
+        // get the download URL for the uploaded file, define all of the image attributes
         const url = await storageRef.getDownloadURL()
         const createdAt = timestamp()
         let emotion = ''
@@ -37,9 +39,9 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
         let user = ''
         let email = ''
         let userid = ''
+        // get user data from Firestore document and handle emotions
         const docSnap = await getDoc(docRef).then((docSnap) => {
           if (docSnap.exists()) {
-            //console.log('Document data:', docSnap.data())
             const data = docSnap.data()
             user = data.username
             email = data.email
@@ -54,6 +56,7 @@ const useStorage = (file, uploadType, uploadedEmotions, gif) => {
             // doc.data() will be undefined in this case
             //console.log("No such document!");
           }
+          // if this is not a profile avatar, add uploaded image data to Firestore collection
           if (uploadType === 'gallery') {
             async function addtoFireStore() {
               const newImgAdded = await collectionRef.add({

@@ -36,12 +36,12 @@ const HuskyPedia = () => {
   }
 
   return (
-    <div className=" h-full w-full bg-cream">
+    <div className=" h-full w-full bg-cream ">
       <motion.div
-        className=" mt-14  flex w-full flex-col items-center justify-center  bg-cream xl:mt-16 "
+        className=" mt-14  flex w-full flex-col items-center justify-center bg-cream dark:bg-blue xl:mt-16 "
         initial={'closed'}
         animate={showTableOfContents ? 'open' : 'closed'}>
-        <h1 className=" mb-6 mt-14 font-header text-5xl  text-blue ">Huskypedia</h1>
+        <h1 className=" mb-6 mt-14 font-header text-5xl text-blue  dark:text-peach ">Huskypedia</h1>
         <motion.div
           className={`${
             showTableOfContents ? 'z-50' : 'visible z-30'
@@ -62,7 +62,8 @@ const HuskyPedia = () => {
             },
           }}>
           <motion.ul
-            className="flex h-full w-full flex-col justify-center gap-2   bg-cream font-header text-2xl text-blue lg:rounded-l-md xl:bg-cream "
+            className="flex h-full w-full flex-col justify-center gap-2 bg-cream font-header text-2xl
+             text-blue dark:bg-darkblue lg:rounded-l-md"
             variants={{
               open: {
                 clipPath: 'inset(0% 0% 0% 0% round 10px)',
@@ -86,13 +87,16 @@ const HuskyPedia = () => {
             style={{ pointerEvents: showTableOfContents ? 'auto' : 'none' }}>
             <div className=" mb-28  flex flex-col  justify-center gap-2 ">
               <div className=" flex w-full items-center justify-center">
-                <h2 className=" mt-0 mb-4 font-header text-2xl text-blue lg:mb-6 lg:text-3xl">Table of contents</h2>
+                <h2 className=" mt-0 mb-4 font-header text-2xl text-blue dark:text-cream lg:mb-6 lg:text-3xl">
+                  Table of contents
+                </h2>
               </div>
               {links.map((link) => (
                 <motion.div
                   key={link.link}
                   variants={itemVariants}
-                  className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue hover:text-peach xl:border-sand"
+                  className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue 
+                  hover:text-peach dark:border-blue dark:text-cream dark:hover:border-peach xl:border-sand"
                   onClick={() => {
                     setShowTableOfContents(false)
                   }}>
@@ -107,7 +111,8 @@ const HuskyPedia = () => {
           </motion.ul>
         </motion.div>
         <div
-          className=" mt-4 flex h-full flex-col items-center justify-start rounded-md bg-white md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-5/12"
+          className=" mt-4 flex h-full flex-col items-center justify-start rounded-md bg-white
+           dark:bg-darkblue md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-5/12"
           onClick={() => {
             setShowTableOfContents(false)
           }}>
@@ -120,10 +125,15 @@ const HuskyPedia = () => {
             setShowTableOfContents(!showTableOfContents)
           }}
           className={`${
-            showTableOfContents ? 'z-50 bg-blue' : 'z-30 bg-sand'
-          } uploadbutton fixed right-6 bottom-6   rounded-2xl  p-2
-            hover:bg-blue   lg:bottom-6 lg:right-28 `}>
-          <TableOfContentsIcon stroke={`${showTableOfContents ? '#de9873' : '#2c3e50'}`} />
+            showTableOfContents
+              ? 'z-50 bg-blue dark:bg-sand dark:hover:bg-blue'
+              : 'z-30 bg-sand dark:bg-darkblue dark:hover:bg-darkblue'
+          } tocbutton fixed right-6 bottom-6   rounded-2xl  p-2
+            hover:bg-blue    lg:bottom-6 lg:right-28 `}>
+          <TableOfContentsIcon
+            className={`${showTableOfContents ? 'icon-toc-clicked' : 'icon-toc'}`}
+            stroke={`${showTableOfContents ? '#de9873' : '#2c3e50'}`}
+          />
         </motion.button>
       </motion.div>
     </div>

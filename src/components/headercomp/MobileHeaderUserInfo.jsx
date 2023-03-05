@@ -2,6 +2,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import HeaderLink from './HeaderLink'
 import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import DarkModeToggle from './DarkModeToggle'
 
 const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
   const { currentUser } = useAuth()
@@ -16,14 +17,15 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           ? 'absolute top-32 left-0 flex w-full items-center justify-center'
           : 'flex h-full w-full items-start justify-center md:w-auto'
       }`}>
-      <div className="flex w-3/4 flex-col items-end">
+      <DarkModeToggle />
+      <div className="flex  flex-col items-end ">
         <motion.div
           className={`${
             showMenu
               ? ' flex h-8 w-full   justify-end '
-              : 'mr-12 flex hidden h-full w-full justify-end md:block xl:mr-16'
+              : 'mr-12 flex hidden h-full w-full justify-end md:block xl:mr-24'
           }  ${username.length > 10 ? 'text-xl' : ' text-2xl'} md:h-14 md:w-auto    xl:mr-16 xl:h-[72px]`}>
-          <div className=" hidden md:block">
+          <div className="hidden md:block">
             <HeaderLink
               title={username}
               location="/profile"

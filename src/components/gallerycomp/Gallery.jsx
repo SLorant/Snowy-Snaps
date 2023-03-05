@@ -31,11 +31,12 @@ const Gallery = () => {
   })
 
   return (
-    <div className=" ">
+    <div className="h-full w-full dark:bg-darkblue">
+      <div className=" h-1 w-full dark:bg-darkblue"></div>
       <div className="mt-20 flex h-10 w-full items-center  justify-center md:mt-28 md:h-20">
-        <h1 className=" font-header  text-4xl  text-blue xl:text-5xl">Huskies' Gallery</h1>
+        <h1 className=" font-header text-4xl  text-blue  dark:text-peach xl:text-5xl">Huskies' Gallery</h1>
       </div>
-      <div className="mx-7 mb-2 mt-4 flex  md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-40 ">
+      <div className="mx-7 mb-2 mt-6 flex  md:mx-16 lg:mx-24 xl:mx-32 2xl:mx-40 ">
         <GalleryFilter
           emotions={emotions}
           setOrder={setOrder}
@@ -56,6 +57,7 @@ const Gallery = () => {
         emotionArray={emotionArray}
         imgType={imgType}
       />
+      <div className=" h-60 w-full dark:bg-darkblue"></div>
       {selectedImg && (
         <Modal
           emotions={emotions}

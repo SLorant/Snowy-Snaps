@@ -9,11 +9,13 @@ import { motion } from 'framer-motion'
 import LoadHeaderUser from './LoadHeaderUser'
 import MobileHeaderUserInfo from './MobileHeaderUserInfo'
 import LogoutIcon from '../../assets/icons/LogoutIcon'
+import DarkModeToggle from './DarkModeToggle'
 
 const Header = () => {
   const { currentUser } = useAuth()
   const [username, setUserName] = useState('')
   const currentLocation = useLocation().pathname
+  const mySnaps = currentLocation.substring(currentLocation.lastIndexOf('/') + 1)
   const lottieRef = useRef()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const [showMenu, setShowMenu] = useState(false)
@@ -26,20 +28,24 @@ const Header = () => {
   const setBg = () => {
     switch (currentLocation) {
       case '/':
-        setHeaderBg('bg-sand')
+        setHeaderBg('bg-sand dark:bg-darkblue')
         break
       case '/watch':
-        setHeaderBg('bg-white')
+        setHeaderBg('bg-white dark:bg-darkblue')
         break
       case '/my-gallery':
-        setHeaderBg('bg-white')
+        setHeaderBg('bg-white dark:bg-darkblue')
+        break
+      case '/learn':
+        setHeaderBg('bg-cream dark:bg-blue')
         break
       default:
-        setHeaderBg('bg-cream')
+        setHeaderBg('bg-cream dark:bg-blue')
     }
   }
   useEffect(() => {
     setBg()
+    if (mySnaps === 'gallery') setHeaderBg('bg-white dark:bg-darkblue')
     if (showMenu) setHeaderBg('bg-sand')
     if (!isMobile) setShowMenu(false)
   })
@@ -75,9 +81,9 @@ const Header = () => {
         <Link
           to="/"
           className={`${showMenu ? 'right-6' : 'left-2 hidden md:block '} 
-            absolute top-4 mb-1  w-40 font-header  text-lg font-bold
-            text-blue  lg:left-6 lg:top-3 lg:w-52 lg:text-2xl xl:left-8 xl:left-6 xl:top-4 xl:w-64 xl:text-4xl`}>
-          <img src="/src/assets/icons/logo.png" alt="logo" />
+            absolute top-4 mb-1  w-40  lg:left-6 lg:top-3 lg:w-52  xl:left-8 xl:left-6 xl:top-4 xl:w-64 `}>
+          <img className="block dark:hidden" src="/src/assets/icons/logo.png" alt="logo" />
+          <img className="hidden dark:block" src="/src/assets/icons/logocream.png" alt="logo" />
         </Link>
         <div className="">
           <button className="absolute top-1 left-2 w-12 md:hidden" onClick={handleClickMenu}>
@@ -116,7 +122,7 @@ const Header = () => {
               ? 'absolute top-52 h-2/3 w-full flex-col items-start justify-start  '
               : 'hidden h-full  items-center justify-center '
           } 
-              mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-80 `}>
+              mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-96 `}>
           <HeaderLink title="Home" location="/" showMenu={showMenu} setShowMenu={setShowMenu} />
           <HeaderLink title="Gallery" location="/watch" showMenu={showMenu} setShowMenu={setShowMenu} />
           <HeaderLink title="Huskypedia" location="/learn" showMenu={showMenu} setShowMenu={setShowMenu} />
@@ -160,7 +166,7 @@ const Header = () => {
           </svg>
           <LogoutIcon />
         </div>
-
+        {/* <DarkModeToggle /> */}
         {currentUser ? (
           <MobileHeaderUserInfo showMenu={showMenu} setShowMenu={setShowMenu} username={username} />
         ) : (

@@ -26,8 +26,8 @@ const LikedButton = ({ imgdata, setLikedByUser }) => {
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 1.2 }}>
-        <p className="absolute font-header text-lg text-white ">{likes}</p>
-        <HeartIcon fill="#2D4550" />
+        <p className="absolute font-header text-xl text-white dark:text-blue ">{likes}</p>
+        <HeartIcon className="icon-heart-clicked" fill="#2D4550" />
       </motion.button>
     </div>
   )
