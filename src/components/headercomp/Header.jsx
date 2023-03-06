@@ -121,8 +121,8 @@ const Header = () => {
             showMenu
               ? 'absolute top-52 h-2/3 w-full flex-col items-start justify-start  '
               : 'hidden h-full  items-center justify-center '
-          } 
-              mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60 xl:ml-96 `}>
+          }  ${currentUser ? 'xl:ml-96' : 'xl:ml-72'}
+              mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60  `}>
           <HeaderLink title="Home" location="/" showMenu={showMenu} setShowMenu={setShowMenu} />
           <HeaderLink title="Gallery" location="/watch" showMenu={showMenu} setShowMenu={setShowMenu} />
           <HeaderLink title="Huskypedia" location="/learn" showMenu={showMenu} setShowMenu={setShowMenu} />

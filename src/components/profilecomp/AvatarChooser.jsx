@@ -50,18 +50,21 @@ const AvatarChooser = ({ type }) => {
         <div
           className={`${type === 'update' ? 'mt-8' : ''}
            mt-2 flex  w-full flex-col items-center  justify-center gap-2 `}>
-          <p className=" mb-2 text-center  font-header text-2xl text-blue dark:text-peach">Choose from these avatars</p>
+          <p className=" mb-2 text-center font-header text-2xl text-blue dark:text-cream dark:text-peach">
+            Choose from these avatars
+          </p>
           <Avatars setFile={setFile} selected={selected} setSelected={setSelected} />
 
           <div className="mt-2 flex flex-col items-center justify-center gap-0">
-            <p className=" mb-2 text-center font-header text-2xl text-blue">Or upload your own image</p>
+            <p className=" mb-2 text-center font-header text-2xl text-blue dark:text-cream">Or upload your own image</p>
             <motion.button
-              className="uploadbutton flex h-14 w-40 items-center  justify-center  rounded-md bg-cream  font-header
-                  text-blue hover:bg-blue hover:text-peach  md:h-14 "
+              className="uploadbutton flex h-14 w-40 items-center justify-center rounded-md  bg-cream font-header  text-blue
+              hover:bg-blue  hover:text-peach dark:bg-blue dark:text-cream dark:hover:text-peach  md:h-14 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
               <label
                 htmlFor="files"
-                className=" flex w-32 cursor-pointer items-center justify-center gap-1  text-center text-xl">
+                className="-bottom-10 flex w-32 cursor-pointer items-center justify-center gap-1 text-center text-xl
+                 ">
                 Upload
                 <UploadIcon width="48" height="48" className="icon-upload z-50 lg:w-auto" />
               </label>
@@ -75,12 +78,14 @@ const AvatarChooser = ({ type }) => {
             src={picture.croppedImg}
             className="mt-10  w-72 rounded-full  md:mt-6 md:w-72 xl:mt-0 xl:w-80 2xl:w-[425px]  "
           />
-          <p className="mt-2 text-center font-header text-2xl text-blue md:text-2xl">Your chosen profile</p>
+          <p className="mt-2 text-center font-header text-2xl text-blue dark:text-cream md:text-2xl">
+            Your chosen profile
+          </p>
           <motion.button
-            className="my-4 flex h-12 w-32 items-center  justify-center rounded-md bg-sand
-             font-header text-xl text-blue hover:bg-blue hover:text-peach md:mt-4 md:mb-0  lg:w-32 xl:w-32 "
+            className="my-4 flex h-12 w-32 items-center justify-center  rounded-md bg-sand font-header
+             text-xl text-blue hover:bg-blue hover:text-peach dark:bg-blue md:mt-4 md:mb-0  lg:w-32 xl:w-32 "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-            <Link className="flex h-full w-full items-center justify-center" to="/profile">
+            <Link className="flex h-full w-full items-center justify-center dark:text-peach" to="/profile">
               I'm done
             </Link>
           </motion.button>

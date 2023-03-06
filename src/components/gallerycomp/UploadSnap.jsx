@@ -132,7 +132,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
       </div>
       <button
         className={`${isMySnaps ? 'lg:hidden' : 'md:hidden'}
-           fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand md:h-24 md:w-24`}>
+           fixed right-3 bottom-3 h-20 w-20 rounded-full bg-sand dark:bg-blue md:h-24 md:w-24`}>
         <div className="flex items-center justify-center">
           <label
             htmlFor="files"

@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom'
 
 const SignInPage = () => {
   return (
-    <div className="flex h-screen flex-col items-center justify-center bg-white md:bg-cream ">
-      <div className="mb-2 flex h-[480px] w-full flex-col items-center  justify-center rounded-xl  bg-white bg-white  md:w-1/2 lg:w-1/3 2xl:w-1/4">
+    <div className="flex h-screen flex-col items-center justify-center bg-white dark:bg-darkblue md:bg-cream ">
+      <div
+        className="mb-2 flex h-[480px] w-full flex-col items-center  justify-center rounded-xl
+      bg-white bg-white dark:bg-blue  md:w-1/2 lg:w-1/3 2xl:w-1/4">
         <div className="z-0">
           <div className="mt-10 mb-4 rounded-md py-2 font-header text-5xl text-peach">Login</div>
         </div>
@@ -14,7 +16,7 @@ const SignInPage = () => {
         <LoginForm />
 
         <div className="mt-8 mb-4 flex items-center justify-center ">
-          <p className="mr-2 font-header text-lg   text-blue ">First time here?</p>
+          <p className="mr-2 font-header text-lg text-blue dark:text-cream ">First time here?</p>
           <Link className="" to="/signup">
             <motion.p
               className="  cursor-pointer  font-header text-lg text-peach "
@@ -25,7 +27,7 @@ const SignInPage = () => {
         </div>
 
         <div className="mb-8  flex ">
-          <p className="mr-1 font-header text-sm   text-blue ">If you forgot your password,</p>
+          <p className="mr-1 font-header text-sm text-blue dark:text-cream ">If you forgot your password,</p>
           <Link className="" to="/forgot-password">
             <motion.p
               className=" cursor-pointer  font-header text-sm text-peach"

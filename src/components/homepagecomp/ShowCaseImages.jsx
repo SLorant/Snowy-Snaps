@@ -26,7 +26,7 @@ const ShowCaseImages = ({ move, setMove }) => {
       md:h-[620px]  md:w-[620px]  xl:mb-48 xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]  "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, delay: 1 }}>
-      <div className="group relative top-0 left-0 z-20 flex h-full w-full rounded-md    ">
+      <div className="group relative top-0 left-0 z-20 flex h-full w-full rounded-md dark:opacity-80    ">
         <div
           onMouseOver={() => setMove(true)}
           onMouseOut={() => setMove(false)}
