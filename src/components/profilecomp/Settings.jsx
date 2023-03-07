@@ -13,7 +13,7 @@ const Settings = () => {
     setError('')
     try {
       await logout()
-      navigate('/login')
+      navigate('/')
     } catch {
       setError('Failed to log out')
     }

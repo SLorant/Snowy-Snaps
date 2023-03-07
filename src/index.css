@@ -26,7 +26,9 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
-
+.dark .icon-logout {
+  stroke: #de9873;
+}
 .dark .icon-trash {
   stroke: #f8f0e2;
 }

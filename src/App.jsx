@@ -10,6 +10,7 @@ import Profile from './components/profilecomp/Profile'
 import MySnaps from './components/profilecomp/MySnaps'
 import ChangeUserAvatar from './components/profilecomp/ChangeUserAvatar'
 import WithAuth from './components/WithAuth'
+import ForgotPassword from './components/authcomp/ForgotPassword'
 
 function App() {
   const ProtectedProfile = WithAuth(Profile)
@@ -24,6 +25,7 @@ function App() {
             <Route path="learn" element={<HuskyPedia />} />
             <Route path="watch" element={<Gallery />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
             <Route path="/:userId" element={<Profile />} />
             <Route path="profile" element={<ProtectedProfile />} />
             <Route path="/:userId/gallery" element={<MySnaps />} />

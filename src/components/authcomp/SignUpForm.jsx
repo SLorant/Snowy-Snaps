@@ -68,7 +68,7 @@ const SignUpForm = () => {
     <div>
       <div className="flex w-full flex-col items-center  justify-center  ">
         {error && (
-          <div className="mb-6 flex h-4 w-80 items-center justify-center text-center  font-header text-lg text-blue">
+          <div className="mb-6 flex h-4 w-80 items-center justify-center text-center font-header  text-lg text-blue dark:text-peach">
             {error}
           </div>
         )}
@@ -76,13 +76,17 @@ const SignUpForm = () => {
         <form onSubmit={handleSubmit} className="w-68 flex flex-col items-center justify-center">
           <div className="form-group flex w-60  flex-col  ">
             <div className="flex items-center justify-between">
-              <label className="font-header text-lg text-blue  ">Email</label>
+              <label className="font-header text-lg text-blue dark:text-cream">Email</label>
               <div className=" group relative h-5 w-5">
-                <img className=" h-5 w-5 cursor-pointer" src="./src/assets/icons/question.png" alt="questionmark" />
+                <img
+                  className=" h-5 w-5 cursor-pointer dark:bg-white"
+                  src="./src/assets/icons/question.png"
+                  alt="questionmark"
+                />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-10 
-                h-16 w-52 rounded-md bg-blue group-hover:visible md:left-7 md:-top-3  ">
-                  <p className="mt-2 ml-2 font-body  text-white">
+                h-16 w-52 rounded-md bg-blue group-hover:visible dark:bg-sand  md:left-7 md:-top-3  ">
+                  <p className="mt-2 ml-2 font-body text-white  dark:text-darkblue">
                     Email format required. <br /> user.name@example.com
                   </p>
                 </div>
@@ -92,50 +96,61 @@ const SignUpForm = () => {
               type="email"
               ref={emailRef}
               required
-              className="h-9 rounded-sm bg-cream font-body text-lg  text-darkblue"
+              className="h-9 rounded-sm bg-cream pl-1 font-body text-lg text-darkblue dark:bg-darkblue  dark:text-cream"
             />
           </div>
 
           <div className="form-group my-6 flex w-60 flex-col">
             <div className="flex items-center justify-between">
-              <label className="font-header text-lg text-blue">Password</label>
+              <label className="font-header text-lg text-blue dark:text-cream">Password</label>
               <div className=" group relative h-5 w-5">
-                <img className=" h-5 w-5 cursor-pointer" src="./src/assets/icons/question.png" alt="questionmark" />
+                <img
+                  className="h-5 w-5 cursor-pointer dark:bg-white"
+                  src="./src/assets/icons/question.png"
+                  alt="questionmark"
+                />
                 <div
                   className="group-hover:bg-slate-700 invisible absolute  right-7 -top-5 
-                    h-10 w-44 rounded-md bg-blue ease-in group-hover:visible  md:left-7 md:-top-3   ">
-                  <p className="mt-2 ml-2 font-body  text-white">At least 6 characters.</p>
+                   h-10 w-44 rounded-md bg-blue ease-in group-hover:visible dark:bg-sand  md:left-7 md:-top-3   ">
+                  <p className="mt-2 ml-2 font-body text-white dark:text-darkblue">At least 6 characters.</p>
                 </div>
               </div>
             </div>
-            <input type="password" ref={passwordRef} required className="h-9 rounded-sm  bg-cream text-darkblue" />
+            <input
+              type="password"
+              ref={passwordRef}
+              required
+              className="h-9 rounded-sm bg-cream pl-1 text-darkblue  dark:bg-darkblue dark:text-cream"
+            />
           </div>
 
           <div className=" form-group mb-4 flex w-60 flex-col">
-            <label className="font-header text-lg  text-blue ">Confirm password</label>
+            <label className="font-header text-lg text-blue  dark:text-cream ">Confirm password</label>
             <input
               type="password"
               ref={passwordConfirmRef}
               required
-              className="h-9 rounded-sm bg-cream  text-darkblue"
+              className="h-9 rounded-sm bg-cream pl-1 text-darkblue dark:bg-darkblue dark:text-cream"
             />
           </div>
           <div className=" form-group mb-4 flex w-60 flex-col">
-            <label className="font-header text-lg text-blue ">Username</label>
+            <label className="font-header text-lg text-blue dark:text-cream ">Username</label>
             <input
               type="text"
               ref={userNameRef}
               maxLength={20}
               required
-              className="h-9 rounded-sm bg-cream font-body text-lg text-darkblue"
+              className="h-9 rounded-sm bg-cream pl-1 font-body text-lg text-darkblue dark:bg-darkblue dark:text-cream"
             />
-            <span className="font-body text-sm text-darkblue">Maximum {charactersRemaining} characters remaining</span>
+            <span className="font-body text-sm text-darkblue dark:text-cream">
+              Maximum {charactersRemaining} characters remaining
+            </span>
           </div>
 
           <motion.button
             className="mt-4 flex h-12 
                 w-28 items-center justify-center rounded-md bg-sand font-header text-xl text-blue  hover:bg-blue
-                hover:text-peach md:h-12 lg:w-32  xl:w-32  "
+                hover:text-peach dark:bg-darkblue dark:text-cream  dark:hover:text-peach md:h-12 lg:w-32 xl:w-32"
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
             <input className="cursor-pointer  " disabled={loading} type="submit" value="Sign up" />
           </motion.button>

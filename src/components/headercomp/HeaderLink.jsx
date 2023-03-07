@@ -12,6 +12,19 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
     setShowMenu(false)
     navigate(url)
   }
+  const getLinkClassName = () => {
+    let className = 'hover:border-peach'
+    if (currentLocation === '/' || currentLocation === '/watch' || mySnaps === 'gallery') {
+      className += ' hover:bg-cream dark:hover:bg-blue'
+    } else if (currentLocation === '/learn') {
+      className += ' hover:bg-white dark:hover:bg-darkblue'
+    } else if (currentLocation === '/login' || currentLocation === '/forgotpassword') {
+      className += ' hover:bg-white dark:hover:bg-blue'
+    } else {
+      className += ' hover:bg-white dark:hover:bg-darkblue'
+    }
+    return className
+  }
 
   const itemVariants = {
     open: {
@@ -29,23 +42,11 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
         handleClickButton(location)
       }}
       className="mx-4 my-4 flex h-14 w-[90%]  items-center justify-between 
-    rounded-md bg-cream md:m-auto  md:h-14 md:w-auto md:rounded-none md:bg-transparent xl:h-[72px]">
+    rounded-md bg-cream dark:bg-blue md:m-auto  md:h-14 md:w-auto md:rounded-none md:bg-transparent xl:h-[72px]">
       <Link
         to={location}
         className={`${pathname === location ? 'border-darkblue dark:border-peach' : 'border-transparent'}
-       
-          ${
-            currentLocation === '/'
-              ? 'hover:border-peach hover:bg-cream dark:hover:bg-blue '
-              : currentLocation === '/watch'
-              ? 'hover:border-peach hover:bg-cream dark:hover:bg-blue '
-              : currentLocation === '/learn'
-              ? 'hover:border-peach hover:bg-white dark:hover:bg-darkblue'
-              : mySnaps === 'gallery'
-              ? 'hover:border-peach hover:bg-white dark:hover:bg-blue'
-              : 'hover:border-peach hover:bg-white dark:hover:bg-darkblue'
-          }
-        
+           ${getLinkClassName()}
           ${showMenu ? 'my-2 ml-4 h-14 border-none text-3xl tracking-wide' : 'h-full'}
             headerlink z-50 block flex items-center border-b-2 p-2 px-2 text-center  font-header text-blue  transition  duration-500
             dark:text-cream   md:text-2xl lg:px-4    xl:px-6   xl:text-3xl`}>

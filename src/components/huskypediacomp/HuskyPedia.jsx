@@ -63,7 +63,7 @@ const HuskyPedia = () => {
           }}>
           <motion.ul
             className="flex h-full w-full flex-col justify-center gap-2 bg-cream font-header text-2xl
-             text-blue dark:bg-darkblue lg:rounded-l-md"
+             text-blue dark:bg-blue dark:md:bg-darkblue lg:rounded-l-md"
             variants={{
               open: {
                 clipPath: 'inset(0% 0% 0% 0% round 10px)',
@@ -96,7 +96,7 @@ const HuskyPedia = () => {
                   key={link.link}
                   variants={itemVariants}
                   className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue 
-                  hover:text-peach dark:border-blue dark:text-cream dark:hover:border-peach xl:border-sand"
+                  hover:text-peach dark:border-darkblue dark:text-cream dark:hover:border-peach dark:md:border-blue xl:border-sand"
                   onClick={() => {
                     setShowTableOfContents(false)
                   }}>
@@ -127,7 +127,7 @@ const HuskyPedia = () => {
           className={`${
             showTableOfContents
               ? 'z-50 bg-blue dark:bg-sand dark:hover:bg-blue'
-              : 'z-30 bg-sand dark:bg-darkblue dark:hover:bg-darkblue'
+              : 'z-30 bg-sand dark:bg-blue dark:hover:bg-darkblue dark:md:bg-darkblue'
           } tocbutton fixed right-6 bottom-6   rounded-2xl  p-2
             hover:bg-blue    lg:bottom-6 lg:right-28 `}>
           <TableOfContentsIcon

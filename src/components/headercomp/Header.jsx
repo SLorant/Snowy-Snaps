@@ -12,7 +12,7 @@ import LogoutIcon from '../../assets/icons/LogoutIcon'
 import DarkModeToggle from './DarkModeToggle'
 
 const Header = () => {
-  const { currentUser } = useAuth()
+  const { currentUser, logout } = useAuth()
   const [username, setUserName] = useState('')
   const currentLocation = useLocation().pathname
   const mySnaps = currentLocation.substring(currentLocation.lastIndexOf('/') + 1)
@@ -33,20 +33,23 @@ const Header = () => {
       case '/watch':
         setHeaderBg('bg-white dark:bg-darkblue')
         break
-      case '/my-gallery':
-        setHeaderBg('bg-white dark:bg-darkblue')
-        break
       case '/learn':
         setHeaderBg('bg-cream dark:bg-blue')
         break
+      case '/login':
+        setHeaderBg('bg-cream dark:bg-blue dark:md:bg-darkblue')
+        break
+      case '/forgotpassword':
+        setHeaderBg('bg-cream dark:bg-blue dark:md:bg-darkblue')
+        break
       default:
-        setHeaderBg('bg-cream dark:bg-blue')
+        setHeaderBg('bg-cream dark:bg-darkblue dark:md:bg-blue')
     }
   }
   useEffect(() => {
     setBg()
     if (mySnaps === 'gallery') setHeaderBg('bg-white dark:bg-darkblue')
-    if (showMenu) setHeaderBg('bg-sand')
+    if (showMenu) setHeaderBg('bg-sand dark:bg-darkblue')
     if (!isMobile) setShowMenu(false)
   })
 
@@ -68,19 +71,29 @@ const Header = () => {
     playLottie()
   }, [playLottie])
 
+  async function handleLogout() {
+    try {
+      await logout()
+      setShowMenu(false)
+      navigate('/')
+    } catch (error) {
+      //console.log(error)
+    }
+  }
+
   LoadHeaderUser(setUserName)
 
   return (
-    <header className={`${showMenu && 'h-full w-full bg-cream'} fixed top-0 z-50 flex  w-full `}>
+    <header className={`${showMenu && 'h-full w-full bg-cream dark:bg-blue'} fixed top-0 z-50 flex  w-full `}>
       <motion.nav
         className={`
-          ${showMenu ? 'h-full flex-col bg-sand' : 'h-16'}
+          ${showMenu ? 'h-full flex-col bg-sand dark:bg-darkblue' : 'h-16'}
           ${headerBg} sticky flex  w-full items-center justify-center    md:h-14 md:justify-between  xl:h-[72px]   `}
         initial={isMobile ? 'closed' : 'none'}
         animate={isMobile ? (showMenu ? 'open' : 'closed') : 'none'}>
         <Link
           to="/"
-          className={`${showMenu ? 'right-6' : 'left-2 hidden md:block '} 
+          className={`${showMenu ? 'right-4' : 'left-2 hidden md:block '} 
             absolute top-4 mb-1  w-40  lg:left-6 lg:top-3 lg:w-52  xl:left-8 xl:left-6 xl:top-4 xl:w-64 `}>
           <img className="block dark:hidden" src="/src/assets/icons/logo.png" alt="logo" />
           <img className="hidden dark:block" src="/src/assets/icons/logocream.png" alt="logo" />
@@ -93,7 +106,7 @@ const Header = () => {
             <Link
               to="login"
               className={`${showMenu && 'hidden'} absolute top-2 right-4 flex items-center p-2
-             px-2  text-center font-header text-2xl text-blue  sm:hidden`}>
+             px-2  text-center font-header text-2xl text-blue dark:text-cream  sm:hidden`}>
               Sign in
             </Link>
           )}
@@ -150,27 +163,20 @@ const Header = () => {
           className={`${
             showMenu ? 'absolute bottom-6' : 'hidden'
           } mx-4 flex w-[91%] items-end justify-between md:hidden`}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-moon"
-            width="60"
-            height="60"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-          </svg>
-          <LogoutIcon />
+          <DarkModeToggle />
+          <div className={`${!currentUser && 'hidden'} cursor-pointer`} onClick={handleLogout}>
+            <LogoutIcon />
+          </div>
         </div>
         {/* <DarkModeToggle /> */}
         {currentUser ? (
           <MobileHeaderUserInfo showMenu={showMenu} setShowMenu={setShowMenu} username={username} />
         ) : (
-          <div className="right-2  z-50 mr-2 hidden h-full  items-center md:block xl:mr-12">
+          <div className="right-2 z-50 mr-2 flex hidden h-full  md:block xl:mr-12">
+            <div className="absolute right-52 hidden md:block">
+              <DarkModeToggle />
+            </div>
+
             <HeaderLink
               title="Sign In"
               location="/login"

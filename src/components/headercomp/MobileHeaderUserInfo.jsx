@@ -14,10 +14,12 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
     <div
       className={`${
         showMenu
-          ? 'absolute top-32 left-0 flex w-full items-center justify-center'
+          ? 'absolute top-32 left-8 flex w-full items-center justify-center'
           : 'flex h-full w-full items-start justify-center md:w-auto'
       }`}>
-      <DarkModeToggle />
+      <div className="hidden md:block">
+        <DarkModeToggle />
+      </div>
       <div className="flex  flex-col items-end ">
         <motion.div
           className={`${
@@ -37,14 +39,14 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           <Link
             onClick={handleOnLinkClick}
             to="/profile"
-            className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-blue  md:hidden`}>
+            className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-blue dark:text-cream  md:hidden`}>
             {username}
           </Link>
         </motion.div>
         <Link
           onClick={handleOnLinkClick}
           to="/profile"
-          className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-sm  text-blue`}>
+          className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-sm text-blue  dark:text-cream`}>
           {currentUser.email}
         </Link>
       </div>
