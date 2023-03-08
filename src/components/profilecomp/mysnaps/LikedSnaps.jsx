@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import useShowLiked from '../hooks/useShowLiked'
+import useShowLiked from '../../hooks/useShowLiked'
 
 const LikedSnaps = ({ userID, setSelectedImg, setImgData }) => {
   const { docs } = useShowLiked(userID)

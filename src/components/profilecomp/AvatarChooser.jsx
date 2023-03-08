@@ -5,7 +5,7 @@ import { projectStorage } from '../../../firebase/config'
 import { useAuth } from '../../contexts/AuthContext'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import SnapEditor from './SnapEditor'
+import SnapEditor from '../snapeditorcomp/SnapEditor'
 import Avatars from './Avatars'
 import UploadIcon from '../../assets/icons/UploadIcon'
 

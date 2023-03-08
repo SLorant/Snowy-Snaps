@@ -41,8 +41,9 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
       onClick={() => {
         handleClickButton(location)
       }}
-      className="mx-4 my-4 flex h-14 w-[90%]  items-center justify-between 
-    rounded-md bg-cream dark:bg-blue md:m-auto  md:h-14 md:w-auto md:rounded-none md:bg-transparent xl:h-[72px]">
+      className={`${showMenu ? 'dark:bg-blue' : ' '} mx-4 my-4 flex h-14 w-[90%]  items-center justify-between 
+    rounded-md bg-cream  md:m-auto md:h-14  md:w-auto md:rounded-none
+     md:bg-transparent  xl:h-[72px]`}>
       <Link
         to={location}
         className={`${pathname === location ? 'border-darkblue dark:border-peach' : 'border-transparent'}

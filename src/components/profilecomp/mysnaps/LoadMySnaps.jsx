@@ -1,7 +1,7 @@
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 import { doc, getDoc, getDocs, query, collection, where } from 'firebase/firestore'
 import { useEffect } from 'react'
-import { projectFirestore, projectStorage } from '../../../firebase/config'
+import { projectFirestore, projectStorage } from '../../../../firebase/config'
 import { useLocation } from 'react-router-dom'
 
 const LoadMySnaps = (setUser, setCanUpload) => {

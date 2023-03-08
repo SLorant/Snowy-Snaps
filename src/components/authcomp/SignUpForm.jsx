@@ -79,7 +79,7 @@ const SignUpForm = () => {
               <label className="font-header text-lg text-blue dark:text-cream">Email</label>
               <div className=" group relative h-5 w-5">
                 <img
-                  className=" h-5 w-5 cursor-pointer dark:bg-white"
+                  className="hidden h-5 w-5 cursor-pointer dark:bg-white md:block"
                   src="./src/assets/icons/question.png"
                   alt="questionmark"
                 />
@@ -100,12 +100,12 @@ const SignUpForm = () => {
             />
           </div>
 
-          <div className="form-group my-6 flex w-60 flex-col">
+          <div className="form-group mt-6 mb-4 flex w-60 flex-col md:my-6">
             <div className="flex items-center justify-between">
               <label className="font-header text-lg text-blue dark:text-cream">Password</label>
               <div className=" group relative h-5 w-5">
                 <img
-                  className="h-5 w-5 cursor-pointer dark:bg-white"
+                  className="hidden h-5 w-5 cursor-pointer dark:bg-white md:block"
                   src="./src/assets/icons/question.png"
                   alt="questionmark"
                 />
@@ -122,6 +122,7 @@ const SignUpForm = () => {
               required
               className="h-9 rounded-sm bg-cream pl-1 text-darkblue  dark:bg-darkblue dark:text-cream"
             />
+            <span className="font-body text-sm text-darkblue dark:text-cream md:hidden">At least 6 characters</span>
           </div>
 
           <div className=" form-group mb-4 flex w-60 flex-col">

@@ -1,7 +1,7 @@
 import { useState, useEffect, React } from 'react'
 import ProgressBar from '../ProgressBar'
 import { motion } from 'framer-motion'
-import SnapEditor from '../profilecomp/SnapEditor'
+import SnapEditor from '../snapeditorcomp/SnapEditor'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
@@ -99,7 +99,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
         </div>
         <p className="mt-1 font-header text-base text-blue opacity-40 dark:text-cream">PNG, JPG, GIF</p>
         {error && (
-          <div className="mt-2 font-body text-lg text-darkblue underline">
+          <div className="mt-2 font-body text-lg text-darkblue underline dark:text-peach">
             {loginError && <Link to="/login"> {error}</Link>}
             {!loginError && <p> {error}</p>}
           </div>

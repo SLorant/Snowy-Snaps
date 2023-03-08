@@ -1,4 +1,4 @@
-import { projectStorage } from '../../../firebase/config'
+import { projectStorage } from '../../../../firebase/config'
 
 const MySnapsPreview = ({ userID }) => {
   async function listImages(userID) {

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import LoadProfile from './LoadProfile'
 import Bio from './Bio'
 import Settings from './Settings'
-import MySnapsPreview from './MySnapsPreview'
+import MySnapsPreview from './mysnaps/MySnapsPreview'
 import SettingsIcon from '../../assets/icons/SettingsIcon'
 
 const Profile = () => {

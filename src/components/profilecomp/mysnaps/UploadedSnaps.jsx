@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import useFirestore from '../hooks/useFirestore'
+import useFirestore from '../../hooks/useFirestore'
 
 const UploadedSnaps = ({ setSelectedImg, setImgData, userID, isUploaded, setIsUploaded }) => {
   const { docs } = useFirestore('images', userID, isUploaded, setIsUploaded)
