@@ -46,7 +46,7 @@ const Profile = () => {
                   <img
                     className="relative w-64 rounded-full  md:mt-0"
                     id="profileimg"
-                    src="src\assets\avatars\profile.png"
+                    src="\src\assets\avatars\profile.png"
                     alt="userpic"
                   />
                   {showSettings && user.canEdit && <Settings />}
@@ -71,7 +71,7 @@ const Profile = () => {
                   {user.galleryText}
                 </p>
                 <div className="mr-12  mb-8 flex  w-full  items-center justify-center md:mr-8  ">
-                  <Link to={`/${user.userName}/gallery`}>
+                  <Link to={`/profile/${user.userName}/gallery`}>
                     <MySnapsPreview userID={user.userID} />
                   </Link>
                 </div>

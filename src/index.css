@@ -10,7 +10,14 @@ body {
   min-height: 100%;
   font-size: 16px;
 }
-
+li {
+  margin-left: 20px;
+  margin-top: 8px;
+}
+/* .termcat::before {
+  font-size: 40px;
+  content: 'randomtext';
+} */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -26,6 +33,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
+
 .dark .icon-logout {
   stroke: #de9873;
 }

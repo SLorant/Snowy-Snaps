@@ -8,8 +8,7 @@ const LoadMySnaps = (setUser, setCanUpload) => {
   const { currentUser } = useAuth()
   // Get the username from the url
   const pathname = useLocation().pathname
-  const user = pathname.substring(1, pathname.lastIndexOf('/'))
-
+  const user = pathname.split('/')[2]
   async function loadContentGallery() {
     try {
       let data

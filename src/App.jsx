@@ -11,6 +11,9 @@ import MySnaps from './components/profilecomp/mysnaps/MySnaps'
 import ChangeUserAvatar from './components/profilecomp/ChangeUserAvatar'
 import WithAuth from './components/WithAuth'
 import ForgotPassword from './components/authcomp/ForgotPassword'
+import TermsConditions from './legaldocuments/TermsConditions'
+import PrivacyPolicy from './legaldocuments/PrivacyPolicy'
+import CookiePolicy from './legaldocuments/CookiePolicy'
 
 function App() {
   const ProtectedProfile = WithAuth(Profile)
@@ -26,9 +29,12 @@ function App() {
             <Route path="watch" element={<Gallery />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />
-            <Route path="/:userId" element={<Profile />} />
-            <Route path="profile" element={<ProtectedProfile />} />
-            <Route path="/:userId/gallery" element={<MySnaps />} />
+            <Route path="/profile/:userId" element={<Profile />} />
+            <Route path="/profile/me" element={<ProtectedProfile />} />
+            <Route path="/profile/:userId/gallery" element={<MySnaps />} />
+            <Route path="termsconditions" element={<TermsConditions />} />
+            <Route path="privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="cookiepolicy" element={<CookiePolicy />} />
           </Route>
           <Route path="signup" element={<SignInPage />} />
           <Route path="upload-profile" element={<ProtectedChangeUserAvatar />} />

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import useIntersection from '../hooks/useIntersection'
-import AddHusky from './FooterSection'
+import FooterSection from './FooterSection'
 import ShareSection from './ShareSection'
 import WatchSection from './WatchSection'
 import LearnSection from './LearnSection'
@@ -23,7 +23,7 @@ const Sections = () => {
             place to start. So join the pack and share your love of huskies with us!
           </div>
         </div>
-        <div ref={ref} className={` w-full ${inViewport ? 'sticky top-14 md:static xl:sticky' : 'z-10 '} mt-24`}>
+        <div ref={ref} className={` w-full ${inViewport ? 'sticky top-14 md:static ' : 'z-10 '} mt-24`}>
           <WatchSection />
         </div>
         <div className="z-40 mt-0 block h-full w-full bg-white xl:hidden">
@@ -32,7 +32,7 @@ const Sections = () => {
         <div className="z-30 w-full">
           <ShareSection />
         </div>
-        <AddHusky />
+        <FooterSection />
       </div>
     </div>
   )

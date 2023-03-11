@@ -8,7 +8,8 @@ import UploadSnap from './UploadSnap'
 const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null)
   const [order, setOrder] = useState('desc')
-  const [uploaded, setUploaded] = useState(false)
+  const [isUploaded, setIsUploaded] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [imgType, setImgType] = useState('')
   const [emotionArray, setEmotionArray] = useState([])
   const emotions = [
@@ -29,7 +30,11 @@ const Gallery = () => {
     emotion3: '',
     createdAt: '',
   })
-
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }, [])
   return (
     <div className="h-full w-full dark:bg-darkblue">
       <div className=" h-1 w-full dark:bg-darkblue"></div>
@@ -45,18 +50,20 @@ const Gallery = () => {
           setImgType={setImgType}
           file={file}
         />
-        <UploadSnap setUploaded={setUploaded} file={file} setFile={setFile} />
+        <UploadSnap file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
       </div>
-      <ImageGrid
-        imgData={imgData}
-        uploaded={uploaded}
-        setUploaded={setUploaded}
-        setImgData={setImgData}
-        setSelectedImg={setSelectedImg}
-        order={order}
-        emotionArray={emotionArray}
-        imgType={imgType}
-      />
+      {!loading && (
+        <ImageGrid
+          imgData={imgData}
+          isUploaded={isUploaded}
+          setIsUploaded={setIsUploaded}
+          setImgData={setImgData}
+          setSelectedImg={setSelectedImg}
+          order={order}
+          emotionArray={emotionArray}
+          imgType={imgType}
+        />
+      )}
       <div className=" h-60 w-full dark:bg-darkblue"></div>
       {selectedImg && (
         <Modal

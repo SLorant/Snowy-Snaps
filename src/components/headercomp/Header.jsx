@@ -42,6 +42,11 @@ const Header = () => {
       case '/forgotpassword':
         setHeaderBg('bg-cream dark:bg-blue dark:md:bg-darkblue')
         break
+      case '/privacypolicy':
+      case '/termsconditions':
+      case '/cookiepolicy':
+        setHeaderBg('bg-white dark:bg-blue dark:md:bg-darkblue')
+        break
       default:
         setHeaderBg('bg-cream dark:bg-darkblue dark:md:bg-blue')
     }
@@ -142,7 +147,7 @@ const Header = () => {
           {currentUser ? (
             <div className="w-full md:hidden">
               <div className="w-full md:hidden">
-                <HeaderLink title="Profile" location="/profile" showMenu={showMenu} setShowMenu={setShowMenu} />
+                <HeaderLink title="Profile" location="/profile/me" showMenu={showMenu} setShowMenu={setShowMenu} />
               </div>
               <div className="w-full md:hidden">
                 <HeaderLink

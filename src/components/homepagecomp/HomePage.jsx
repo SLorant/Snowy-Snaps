@@ -40,7 +40,7 @@ const HomePage = () => {
         />
       </div>
 
-      <div className="z-50  mt-20 h-[1000px]   w-full sm:mt-[970px]">
+      <div className="z-50  mt-20 h-[1000px]   w-full sm:mt-[970px] ">
         <Sections />
       </div>
     </div>

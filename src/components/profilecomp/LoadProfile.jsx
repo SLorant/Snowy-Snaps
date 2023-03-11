@@ -9,7 +9,7 @@ const LoadProfile = (setUser) => {
   const { currentUser } = useAuth()
   // Get the username from the url
   const pathname = useLocation().pathname
-  let user = pathname.substring(1)
+  let user = pathname.split('/')[2]
   let bio
 
   async function loadProfile() {
@@ -22,7 +22,7 @@ const LoadProfile = (setUser) => {
       }
       // If the current user is viewing their own profile or the user is 'profile'
       // (indicating the current user's own profile), set the user state accordingly
-      if (currentUser && (data.username === user || user === 'profile')) {
+      if (currentUser && (data.username === user || user === 'me')) {
         setUser({
           userName: `${data.username}`,
           userID: `${currentUser.uid}`,

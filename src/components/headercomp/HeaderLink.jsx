@@ -20,6 +20,12 @@ const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
       className += ' hover:bg-white dark:hover:bg-darkblue'
     } else if (currentLocation === '/login' || currentLocation === '/forgotpassword') {
       className += ' hover:bg-white dark:hover:bg-blue'
+    } else if (
+      currentLocation === '/privacypolicy' ||
+      currentLocation === '/cookiepolicy' ||
+      currentLocation === '/termsconditions'
+    ) {
+      className += ' hover:bg-cream dark:hover:bg-blue'
     } else {
       className += ' hover:bg-white dark:hover:bg-darkblue'
     }

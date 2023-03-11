@@ -55,14 +55,14 @@ const MySnaps = () => {
       <div className="mt-32 flex flex-col items-center justify-center">
         <h1
           className={`${
-            user.galleryText.length > 15 ? ' text-2xl' : 'text-5xl'
+            user.galleryText.length > 15 ? ' text-4xl' : 'text-5xl'
           }  font-header text-blue dark:text-peach `}>{`${user.galleryText}`}</h1>
         <div className="mt-2 flex w-full items-center justify-center md:gap-4 lg:w-4/5 lg:gap-10  xl:w-3/4 xl:gap-20 2xl:gap-40 ">
           <div className={`${canUpload ? 'visible' : 'invisible'} mt-1  lg:w-60`}>
             <UploadSnap isMySnaps={isMySnaps} file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
           </div>
           <MySnapsFilter setMyImages={setMyImages} likedImages={likedImages} setLikedImages={setLikedImages} />
-          <Link to={`/${user.userName}`} className="mt-6 hidden    md:block  lg:text-xl">
+          <Link to={`/profile/${user.userName}`} className="mt-6 hidden    md:block  lg:text-xl">
             <motion.button
               className=" w-20 cursor-pointer rounded-md bg-cream p-2 font-header text-blue
               hover:bg-blue hover:text-peach dark:bg-blue dark:text-cream dark:hover:text-peach xl:w-48  xl:px-4"

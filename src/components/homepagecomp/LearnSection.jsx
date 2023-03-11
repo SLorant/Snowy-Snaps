@@ -6,7 +6,9 @@ import { useRef } from 'react'
 const LearnSection = () => {
   const lottieRef = useRef()
   return (
-    <div className="z-40  flex w-full flex-col items-center bg-white dark:bg-darkblue xl:mt-0 xl:w-full xl:bg-cream dark:xl:bg-blue">
+    <div
+      className="z-40 flex w-full flex-col items-center bg-white shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]
+       dark:bg-darkblue md:shadow-none xl:mt-0 xl:w-full xl:bg-cream dark:xl:bg-blue">
       <h2 className="mt-12 font-header text-3xl text-blue dark:text-peach sm:text-4xl 2xl:mt-14">
         Learn about huskies
       </h2>

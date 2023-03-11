@@ -2,8 +2,8 @@ import React from 'react'
 import useFirestore from '../hooks/useFirestore'
 import { motion } from 'framer-motion'
 
-const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, uploaded, setUploaded, setImgData }) => {
-  const { docs } = useFirestore('images', undefined, uploaded, setUploaded, order, emotionArray, imgType)
+const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, isUploaded, setIsUploaded, setImgData }) => {
+  const { docs } = useFirestore('images', undefined, isUploaded, setIsUploaded, order, emotionArray, imgType)
 
   return (
     <div className="  ">

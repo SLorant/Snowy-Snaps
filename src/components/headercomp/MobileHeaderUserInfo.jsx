@@ -30,7 +30,7 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           <div className="hidden md:block">
             <HeaderLink
               title={username}
-              location="/profile"
+              location="/profile/me"
               currentLocation={currentLocation}
               showMenu={showMenu}
               setShowMenu={setShowMenu}
@@ -38,19 +38,19 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           </div>
           <Link
             onClick={handleOnLinkClick}
-            to="/profile"
+            to="/profile/me"
             className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-blue dark:text-cream  md:hidden`}>
             {username}
           </Link>
         </motion.div>
         <Link
           onClick={handleOnLinkClick}
-          to="/profile"
+          to="/profile/me"
           className={`${showMenu ? '' : 'hidden'} mr-2 font-header text-sm text-blue  dark:text-cream`}>
           {currentUser.email}
         </Link>
       </div>
-      <Link onClick={handleOnLinkClick} to="/profile" className="">
+      <Link onClick={handleOnLinkClick} to="/profile/me" className="">
         <img
           id="myimg"
           className={`${

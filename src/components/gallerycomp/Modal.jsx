@@ -9,6 +9,7 @@ import DeleteSnap from './utilities/DeleteSnap'
 import TrashIcon from '../../assets/icons/TrashIcon'
 import HeartIcon from '../../assets/icons/HeartIcon'
 import XIcon from '../../assets/icons/XIcon'
+import ShowLikes from './utilities/ShowLikes'
 
 const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {
   const [likedByUser, setLikedByUser] = useState(false)
@@ -29,6 +30,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
   }
 
   currentUser && IsLiked(imgData.createdAt, userid, setLikedByUser, setLikes)
+  !currentUser && ShowLikes(imgData.createdAt, setLikes)
 
   const handleClickOutside = (e) => {
     if (e.target.classList.contains('backdrop')) {
@@ -127,7 +129,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
                   : 'text-2xl'
               } ml-2 flex text-center font-header text-blue dark:text-cream lg:mb-2`}>
               By&nbsp;
-              <Link to={`/${imgData.user}`}>
+              <Link to={`/profile/${imgData.user}`}>
                 <motion.p className=" underline" whileHover={{ scale: 1.1 }}>
                   {imgData.user}
                 </motion.p>

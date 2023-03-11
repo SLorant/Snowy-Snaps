@@ -85,7 +85,7 @@ const AvatarChooser = ({ type }) => {
             className="my-4 flex h-12 w-32 items-center justify-center  rounded-md bg-sand font-header
              text-xl text-blue hover:bg-blue hover:text-peach dark:bg-blue md:mt-4 md:mb-0  lg:w-32 xl:w-32 "
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-            <Link className="flex h-full w-full items-center justify-center dark:text-peach" to="/profile">
+            <Link className="flex h-full w-full items-center justify-center dark:text-peach" to="/profile/me">
               I'm done
             </Link>
           </motion.button>
