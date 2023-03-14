@@ -3,15 +3,15 @@ import React from 'react'
 const CookiePolicy = () => {
   return (
     <div className=" flex h-full w-full flex-col items-center justify-center dark:bg-darkblue">
-      <div className="mt-32 flex w-1/2 flex-col items-center justify-center">
-        <h1 className="mb-8 font-header text-5xl text-blue dark:text-peach">Cookie Policy</h1>
-        <div className="mb-4 w-4/5 font-body text-lg dark:text-cream">
+      <h1 className="mb-8 mt-32 font-header text-5xl text-blue dark:text-peach">Cookie Policy</h1>
+      <div className="flex w-4/5 flex-col items-center justify-center md:w-3/4 lg:w-2/3 xl:w-1/2">
+        <div className="mb-4 w-4/5 font-body dark:text-cream md:text-lg">
           This is the Cookie Policy for Snowy Snaps, accessible from www.snowysnaps.firebaseapp.com
         </div>
       </div>
 
-      <ol className="mx-60 w-1/2  font-body dark:text-cream">
-        <li className="font-body text-lg">
+      <ol className="mx-60 w-4/5 font-body dark:text-cream md:w-3/4 md:text-lg lg:w-2/3 xl:w-1/2">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 1. What Are Cookies?</h2>
           <li>
             As is common practice with almost all professional websites, this site uses cookies, which are tiny files
@@ -21,7 +21,7 @@ const CookiePolicy = () => {
             site's functionality.
           </li>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 2. How We Use Cookies</h2>
           <li>
             We use cookies for a variety of reasons detailed below. Unfortunately, in most cases, there are no industry
@@ -30,7 +30,7 @@ const CookiePolicy = () => {
             not, in case they are used to provide a service that you use.
           </li>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 3. Disabling Cookies</h2>
           <li>
             You can prevent the setting of cookies by adjusting the settings on your browser (see your browser's Help
@@ -39,7 +39,7 @@ const CookiePolicy = () => {
             and features of the site. Therefore, it is recommended that you do not disable cookies.
           </li>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 4. The Cookies We Set</h2>
           <ul>
             <li>
@@ -70,7 +70,7 @@ const CookiePolicy = () => {
             </li>
           </ul>
         </li>
-        <li className="mb-10 font-body text-lg">
+        <li className="mb-10 font-body ">
           <h2 className="text-2xl font-bold"> 5. More Information</h2>
           <li>If you are still looking for more information, you can contact us by email at sutuslorant@gmail.com.</li>
         </li>

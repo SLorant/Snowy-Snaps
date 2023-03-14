@@ -107,7 +107,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
       </div>
       <div className="mt-2 flex flex-col  items-center justify-center">
         {file && (
-          <div className="">
+          <div className="hidden md:block">
             <ProgressBar
               setIsUploaded={setIsUploaded}
               file={file}

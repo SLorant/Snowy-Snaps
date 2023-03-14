@@ -3,16 +3,16 @@ import React from 'react'
 const TermsConditions = () => {
   return (
     <div className=" flex h-full w-full flex-col items-center justify-center dark:bg-darkblue">
-      <div className="mt-32 flex w-1/2 flex-col items-center justify-center">
-        <h1 className="mb-8 font-header text-5xl text-blue dark:text-peach">Terms and Conditions</h1>
-        <div className="mb-4 w-4/5 font-body text-lg dark:text-cream">
+      <h1 className="mb-8 mt-32 font-header text-4xl text-blue dark:text-peach md:text-5xl">Terms and Conditions</h1>
+      <div className=" flex w-4/5 flex-col items-center justify-center md:w-3/4 lg:w-2/3 xl:w-1/2">
+        <div className="mb-4 w-4/5 font-body dark:text-cream md:text-lg">
           These terms and conditions ("Terms") govern your access to and use of Snowy Snaps' website, mobile
           application, and related services (collectively, the "Service"). By accessing or using the Service, you agree
           to be bound by these Terms.{' '}
         </div>
       </div>
-      <ol className="mx-60 w-1/2  font-body dark:text-cream">
-        <li className="font-body text-lg">
+      <ol className="mx-60 w-4/5 font-body dark:text-cream md:w-3/4 md:text-lg lg:w-2/3 xl:w-1/2">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold">1. User Accounts</h2>
 
           <ol className="">
@@ -30,7 +30,7 @@ const TermsConditions = () => {
             </li>
           </ol>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold">2. Use of the Service</h2>
           <ol>
             <li> 2.1 You may use the Service only for lawful purposes and in accordance with these Terms.</li>
@@ -54,7 +54,7 @@ const TermsConditions = () => {
           </ol>
         </li>
 
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 3. Intellectual Property</h2>
           <ol className="termcat">
             <li>
@@ -72,7 +72,7 @@ const TermsConditions = () => {
             </li>
           </ol>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 4. Disclaimer of Warranties </h2>
           <ol>
             <li>
@@ -90,7 +90,7 @@ const TermsConditions = () => {
             </li>
           </ol>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 5. Limitation of Liability </h2>
           <ol>
             <li>
@@ -98,11 +98,14 @@ const TermsConditions = () => {
               incidental, consequential, or punitive damages arising out of your access to or use of the Service or any
               content or materials on the Service.
             </li>
-            <li> 5.2If you are dissatisfied with the Service, your sole remedy is to discontinue using the Service.</li>
+            <li>
+              {' '}
+              5.2 If you are dissatisfied with the Service, your sole remedy is to discontinue using the Service.
+            </li>
           </ol>
         </li>
 
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 6. Indemnification </h2>
           <ul>
             <li>
@@ -122,7 +125,7 @@ const TermsConditions = () => {
             </li>
           </ul>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold">8. Governing Law and Dispute Resolution</h2>
           <ul>
             <li>
@@ -139,7 +142,7 @@ const TermsConditions = () => {
             </li>
           </ul>
         </li>
-        <li className="font-body text-lg">
+        <li className="font-body ">
           <h2 className="text-2xl font-bold"> 9. Changes to these Terms</h2>
           <ul>
             <li>
@@ -152,7 +155,7 @@ const TermsConditions = () => {
             </li>
           </ul>
         </li>
-        <li className="mb-10 font-body text-lg">
+        <li className="mb-10 font-body ">
           <h2 className="text-2xl font-bold"> 10. Miscellaneous </h2>
           <ul>
             <li>

@@ -1,11 +1,13 @@
 react helmet for SEO
-Cookies
 change website url in policies to real one when hosting
+create placeholder "me" user when hosting
 firebase rules
 motion design for mobile header, dark mode icon, logo remake with new font?
 signup questionmark in dark mode, huskies gallery mobile arrow in dark, homepage bg in dark mode
 mobile menu animation bit buggy around first render
 delete unused downloaded modules
+
+footer
 
 Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (127.0.0.1) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab.
     -> Add the domain to to be authorized when it is ready for hosting
@@ -18,18 +20,3 @@ responsiveness, mobile page
 dark mode
 Home page rework
 
-
-
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8V448KCX7"></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-
-      gtag('config', 'G-M8V448KCX7')
-    </script>

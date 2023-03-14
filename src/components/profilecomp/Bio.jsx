@@ -5,7 +5,9 @@ import { motion } from 'framer-motion'
 
 const Bio = ({ loadedBio, canEdit }) => {
   const bioRef = useRef()
-  const loadedLength = 150 - loadedBio.length
+  let loadedLength
+  if (loadedBio !== undefined) loadedLength = 150 - loadedBio.length
+
   const [charactersRemaining, setCharactersRemaining] = useState(loadedLength)
   const { currentUser } = useAuth()
   let userid
@@ -30,7 +32,9 @@ const Bio = ({ loadedBio, canEdit }) => {
   const handleCancel = () => {
     setShowUpdate(false)
     setShowChar(false)
-    updated ? (document.getElementById('area').value = bio) : (document.getElementById('area').value = loadedBio)
+    if (loadedBio !== undefined) {
+      updated ? (document.getElementById('area').value = bio) : (document.getElementById('area').value = loadedBio)
+    }
   }
   async function handleSubmit(e) {
     e.preventDefault()
@@ -55,7 +59,7 @@ const Bio = ({ loadedBio, canEdit }) => {
             ref={bioRef}
             onChange={handleOnChange}
             onClick={handleOnClick}
-            defaultValue={loadedBio}
+            defaultValue={loadedBio ? loadedBio : ''}
             maxLength={150}
             disabled={canEdit ? false : true}
             id="area"

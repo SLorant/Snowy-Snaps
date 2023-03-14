@@ -87,7 +87,7 @@ const HuskyPedia = () => {
             style={{ pointerEvents: showTableOfContents ? 'auto' : 'none' }}>
             <div className=" mb-28  flex flex-col  justify-center gap-2 ">
               <div className=" flex w-full items-center justify-center">
-                <h2 className=" mt-0 mb-4 font-header text-2xl text-blue dark:text-cream lg:mb-6 lg:text-3xl">
+                <h2 className=" mt-0 mb-4 font-header text-2xl text-blue dark:text-cream lg:mt-6 lg:mb-2 lg:text-3xl">
                   Table of contents
                 </h2>
               </div>
@@ -95,12 +95,12 @@ const HuskyPedia = () => {
                 <motion.div
                   key={link.link}
                   variants={itemVariants}
-                  className="w-full cursor-pointer border-b-2 border-sand hover:border-peach hover:bg-blue 
+                  className="w-full cursor-pointer border-b-2 border-sand  hover:border-peach hover:bg-blue 
                   hover:text-peach dark:border-darkblue dark:text-cream dark:hover:border-peach dark:md:border-blue xl:border-sand"
                   onClick={() => {
                     setShowTableOfContents(false)
                   }}>
-                  <motion.li className={`${link.main ? 'ml-4 lg:ml-8' : 'ml-8 text-lg lg:ml-12'} flex  w-full`}>
+                  <motion.li className={`${link.main ? 'ml-4 lg:ml-8' : ' ml-8 text-xl lg:ml-12'} flex  w-full`}>
                     <Link className=" w-full " to={link.link}>
                       {link.text}
                     </Link>
