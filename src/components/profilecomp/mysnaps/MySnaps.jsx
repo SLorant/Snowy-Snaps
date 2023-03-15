@@ -8,6 +8,7 @@ import MySnapsFilter from './MySnapsFilter'
 import LikedSnaps from './LikedSnaps'
 import { Link } from 'react-router-dom'
 import LoadMySnaps from './LoadMySnaps'
+import { Helmet } from 'react-helmet-async'
 
 const MySnaps = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -51,6 +52,12 @@ const MySnaps = () => {
 
   return (
     <div className="h-full w-full dark:bg-darkblue">
+      <Helmet>
+        <title>Snaps</title>
+        <meta property="og:title" content="Snowy Snaps - Your Snaps" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="View your and others' snaps." />
+      </Helmet>
       <div className=" h-1 w-full dark:bg-darkblue"></div>
       <div className="mt-32 flex flex-col items-center justify-center">
         <h1

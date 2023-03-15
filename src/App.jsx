@@ -14,6 +14,7 @@ import ForgotPassword from './components/authcomp/ForgotPassword'
 import TermsConditions from './legaldocuments/TermsConditions'
 import PrivacyPolicy from './legaldocuments/PrivacyPolicy'
 import CookiePolicy from './legaldocuments/CookiePolicy'
+import { HelmetProvider } from 'react-helmet-async'
 
 function App() {
   const ProtectedProfile = WithAuth(Profile)
@@ -21,25 +22,27 @@ function App() {
 
   return (
     <div>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="learn" element={<HuskyPedia />} />
-            <Route path="watch" element={<Gallery />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="forgotpassword" element={<ForgotPassword />} />
-            <Route path="/profile/:userId" element={<Profile />} />
-            <Route path="/profile/me" element={<ProtectedProfile />} />
-            <Route path="/profile/:userId/gallery" element={<MySnaps />} />
-            <Route path="termsconditions" element={<TermsConditions />} />
-            <Route path="privacypolicy" element={<PrivacyPolicy />} />
-            <Route path="cookiepolicy" element={<CookiePolicy />} />
-          </Route>
-          <Route path="signup" element={<SignInPage />} />
-          <Route path="upload-profile" element={<ProtectedChangeUserAvatar />} />
-        </Routes>
-      </AuthProvider>
+      <HelmetProvider>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="learn" element={<HuskyPedia />} />
+              <Route path="watch" element={<Gallery />} />
+              <Route path="login" element={<LoginPage />} />
+              <Route path="forgotpassword" element={<ForgotPassword />} />
+              <Route path="/profile/:userId" element={<Profile />} />
+              <Route path="/profile/me" element={<ProtectedProfile />} />
+              <Route path="/profile/:userId/gallery" element={<MySnaps />} />
+              <Route path="termsconditions" element={<TermsConditions />} />
+              <Route path="privacypolicy" element={<PrivacyPolicy />} />
+              <Route path="cookiepolicy" element={<CookiePolicy />} />
+            </Route>
+            <Route path="signup" element={<SignInPage />} />
+            <Route path="upload-profile" element={<ProtectedChangeUserAvatar />} />
+          </Routes>
+        </AuthProvider>
+      </HelmetProvider>
     </div>
   )
 }

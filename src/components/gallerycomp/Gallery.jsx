@@ -4,6 +4,7 @@ import ImageGrid from './ImageGrid'
 import Modal from './Modal'
 import GalleryFilter from './GalleryFilter'
 import UploadSnap from './UploadSnap'
+import { Helmet } from 'react-helmet-async'
 
 const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -37,6 +38,12 @@ const Gallery = () => {
   }, [])
   return (
     <div className="h-full w-full dark:bg-darkblue">
+      <Helmet>
+        <title>Huskies' Gallery</title>
+        <meta property="og:title" content="Snowy Snaps - Huskies' Gallery" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Like snaps, customize your images before uploading, and much more!" />
+      </Helmet>
       <div className=" h-1 w-full dark:bg-darkblue"></div>
       <div className="mt-20 flex h-10 w-full items-center  justify-center md:mt-28 md:h-20">
         <h1 className=" font-header text-4xl  text-blue  dark:text-peach xl:text-5xl">Huskies' Gallery</h1>

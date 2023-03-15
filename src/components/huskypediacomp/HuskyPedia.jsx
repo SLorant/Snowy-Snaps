@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
 import TableOfContentsIcon from '../../assets/icons/TableOfContentsIcon'
+import { Helmet } from 'react-helmet-async'
 
 const HuskyPedia = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
@@ -37,6 +38,12 @@ const HuskyPedia = () => {
 
   return (
     <div className=" h-full w-full bg-cream ">
+      <Helmet>
+        <title>Huskypedia</title>
+        <meta property="og:title" content="Snowy Snaps - Huskypedia" />
+        <meta property="og:type" content="article" />
+        <meta name="description" content="Learn how to care for a husky, and how to train a husky." />
+      </Helmet>
       <motion.div
         className=" mt-14  flex w-full flex-col items-center justify-center bg-cream dark:bg-blue xl:mt-16 "
         initial={'closed'}

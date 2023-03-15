@@ -10,7 +10,7 @@ const Content = () => {
        leading-tight text-blue dark:text-cream md:mx-20 md:text-lg md:leading-normal">
       <p className="italic">
         {' '}
-        Welcome to HuskyPedia! Please note that while I have done my best to provide accurate and up-to-date
+        Welcome to Huskypedia! Please note that while I have done my best to provide accurate and up-to-date
         information, I am not an expert in the field. This is a hobby project and should be used for informational
         purposes only. If you are considering getting a husky or are a current owner, I strongly recommend consulting a
         professional trainer or veterinarian for personalized advice. Additionally, please take the time to check out

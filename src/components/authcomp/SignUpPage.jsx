@@ -2,10 +2,17 @@ import React from 'react'
 import SignUpForm from './SignUpForm'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 const SignInPage = () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-white dark:bg-blue md:bg-cream dark:md:bg-darkblue ">
+      <Helmet>
+        <title>Sign up</title>
+        <meta property="og:title" content="Snowy Snaps - Register" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Register a new account." />
+      </Helmet>
       <div className="flex w-full flex-col items-center  justify-center rounded-xl bg-white dark:bg-blue  md:w-1/2 lg:w-1/3 2xl:w-1/4">
         <div className="z-0">
           <div className="mt-8 mb-6 rounded-md py-2 font-header text-5xl text-peach">Signup</div>

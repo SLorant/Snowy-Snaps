@@ -7,6 +7,7 @@ import Bio from './Bio'
 import Settings from './Settings'
 import MySnapsPreview from './mysnaps/MySnapsPreview'
 import SettingsIcon from '../../assets/icons/SettingsIcon'
+import { Helmet } from 'react-helmet-async'
 
 const Profile = () => {
   const [showSettings, setShowSettings] = useState(false)
@@ -21,7 +22,13 @@ const Profile = () => {
   LoadProfile(setUser)
 
   return (
-    <div className="z-50 h-full w-full md:h-full  ">
+    <div className="z-50 h-full w-full   ">
+      <Helmet>
+        <title>Profile</title>
+        <meta property="og:title" content="Snowy Snaps - User Profile" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Upload an avatar, write your bio, and much more!" />
+      </Helmet>
       <div className="z-20 flex h-full w-full items-center  justify-center bg-cream dark:bg-blue">
         <div
           className=" z-20  flex h-full w-full flex-col items-center justify-center 

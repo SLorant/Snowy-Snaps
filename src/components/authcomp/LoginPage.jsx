@@ -2,10 +2,17 @@ import React from 'react'
 import LoginForm from './LoginForm'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 const SignInPage = () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-white dark:bg-blue md:bg-cream dark:md:bg-darkblue ">
+      <Helmet>
+        <title>Sign in</title>
+        <meta property="og:title" content="Snowy Snaps - Login" />
+        <meta property="og:type" content="website" />
+        <meta name="description" content="Log in to your account." />
+      </Helmet>
       <div
         className="mb-2 flex h-[480px] w-full flex-col items-center  justify-center rounded-xl
       bg-white bg-white dark:bg-blue  md:w-1/2 lg:w-1/3 2xl:w-1/4">

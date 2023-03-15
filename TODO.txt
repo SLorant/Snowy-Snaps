@@ -2,15 +2,10 @@ react helmet for SEO
 change website url in policies to real one when hosting
 create placeholder "me" user when hosting
 firebase rules
+optimize images and website with lighthouse
 motion design for mobile header, dark mode icon, logo remake with new font?
-signup questionmark in dark mode, huskies gallery mobile arrow in dark, homepage bg in dark mode
+signup questionmark in dark mode, huskies gallery mobile arrow in dark
 mobile menu animation bit buggy around first render
-delete unused downloaded modules
-
-footer
-
-Info: The current domain is not authorized for OAuth operations. This will prevent signInWithPopup, signInWithRedirect, linkWithPopup and linkWithRedirect from working. Add your domain (127.0.0.1) to the OAuth redirect domains list in the Firebase console -> Authentication -> Settings -> Authorized domains tab.
-    -> Add the domain to to be authorized when it is ready for hosting
 
 Not urgent:
 grid view in gallery in mobile mode, or maybe masonry library?
