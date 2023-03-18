@@ -36,11 +36,7 @@ const SignInPage = () => {
         <div className="mb-8  flex ">
           <p className="mr-1 font-header text-sm text-blue dark:text-cream ">If you forgot your password,</p>
           <Link className="" to="/forgotpassword">
-            <motion.p
-              className=" cursor-pointer  font-header text-sm text-peach"
-              whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-              click here
-            </motion.p>
+            <motion.p className=" cursor-pointer  font-header text-sm text-peach">click here</motion.p>
           </Link>
         </div>
       </div>

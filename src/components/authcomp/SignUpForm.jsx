@@ -79,8 +79,13 @@ const SignUpForm = () => {
               <label className="font-header text-lg text-blue dark:text-cream">Email</label>
               <div className=" group relative h-5 w-5">
                 <img
-                  className="hidden h-5 w-5 cursor-pointer dark:bg-white md:block"
+                  className="hidden h-5 w-5 cursor-pointer dark:hidden md:block"
                   src="./src/assets/icons/question.png"
+                  alt="questionmark"
+                />
+                <img
+                  className="hidden h-5 w-5 cursor-pointer dark:md:block"
+                  src="./src/assets/icons/questiondark.png"
                   alt="questionmark"
                 />
                 <div
@@ -105,8 +110,13 @@ const SignUpForm = () => {
               <label className="font-header text-lg text-blue dark:text-cream">Password</label>
               <div className=" group relative h-5 w-5">
                 <img
-                  className="hidden h-5 w-5 cursor-pointer dark:bg-white md:block"
+                  className="hidden h-5 w-5 cursor-pointer dark:hidden md:block"
                   src="./src/assets/icons/question.png"
+                  alt="questionmark"
+                />
+                <img
+                  className="hidden h-5 w-5 cursor-pointer dark:md:block"
+                  src="./src/assets/icons/questiondark.png"
                   alt="questionmark"
                 />
                 <div

@@ -34,7 +34,7 @@ const ShowCaseImages = ({ move, setMove }) => {
           onClick={handleImageClick}
           className="imagecontainer absolute top-0 left-0 z-50 h-full w-full   rounded-md bg-transparent">
           <div
-            className="absolute bottom-5 left-36 z-50 hidden cursor-pointer drop-shadow-lg dark:opacity-100
+            className="absolute bottom-5 left-14 z-50 cursor-pointer drop-shadow-lg dark:opacity-100 sm:hidden
            xl:bottom-7 xl:block 2xl:bottom-9 2xl:left-44">
             <ShowCaseButton title="Show me more" link="/watch" />
           </div>

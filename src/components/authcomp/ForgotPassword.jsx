@@ -55,11 +55,7 @@ const ForgotPassword = () => {
             </motion.button>
 
             <Link className="mt-4 mb-10" to="/login">
-              <motion.p
-                className=" cursor-pointer font-header text-lg text-peach"
-                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}>
-                Back
-              </motion.p>
+              <motion.p className=" cursor-pointer font-header text-lg text-peach">Back</motion.p>
             </Link>
           </div>
         </div>

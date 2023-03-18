@@ -37,10 +37,10 @@ const Header = () => {
         setHeaderBg('bg-cream dark:bg-blue')
         break
       case '/login':
-        setHeaderBg('bg-cream dark:bg-blue dark:md:bg-darkblue')
+        setHeaderBg('bg-white md:bg-cream dark:bg-blue dark:md:bg-darkblue')
         break
       case '/forgotpassword':
-        setHeaderBg('bg-cream dark:bg-blue dark:md:bg-darkblue')
+        setHeaderBg('bg-white md:bg-cream dark:bg-blue dark:md:bg-darkblue')
         break
       case '/privacypolicy':
       case '/termsconditions':
@@ -48,7 +48,7 @@ const Header = () => {
         setHeaderBg('bg-white dark:bg-blue dark:md:bg-darkblue')
         break
       default:
-        setHeaderBg('bg-cream dark:bg-darkblue dark:md:bg-blue')
+        setHeaderBg('bg-white md:bg-cream dark:bg-darkblue dark:md:bg-blue')
     }
   }
   useEffect(() => {
@@ -152,7 +152,7 @@ const Header = () => {
               <div className="w-full md:hidden">
                 <HeaderLink
                   title="My Snaps"
-                  location={`/${username}/gallery`}
+                  location={`/profile/${username}/gallery`}
                   showMenu={showMenu}
                   setShowMenu={setShowMenu}
                 />

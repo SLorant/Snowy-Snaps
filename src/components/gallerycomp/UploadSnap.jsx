@@ -6,11 +6,13 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
 import UploadIcon from '../../assets/icons/UploadIcon'
+import { useMediaQuery } from 'react-responsive'
 
 const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
   const { currentUser } = useAuth()
   const [error, setError] = useState(null)
   const types = ['image/png', 'image/jpeg']
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const isGallery = true
   const uploadType = 'gallery'
   var editor = ''
@@ -56,6 +58,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
     } else {
       setLoginError(true)
       setError('Please log in first')
+      isMobile && alert('Please log in first')
     }
   }
   return (
@@ -86,7 +89,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
               transition: {
                 duration: 0.2,
               },
-              scale: 1.1,
+              scale: 1.05,
             }}>
             <label
               htmlFor="files"
