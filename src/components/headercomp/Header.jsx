@@ -22,9 +22,6 @@ const Header = () => {
   const [headerBg, setHeaderBg] = useState('bg-white')
   const isFirstRender = useRef(true)
 
-  const handleClickMenu = () => {
-    setShowMenu(!showMenu)
-  }
   const setBg = () => {
     switch (currentLocation) {
       case '/':
@@ -58,23 +55,39 @@ const Header = () => {
     if (!isMobile) setShowMenu(false)
   })
 
-  const playLottie = useCallback(() => {
-    if (lottieRef.current && !isFirstRender.current) {
+  /* const playLottie = useCallback(() => {
+    if (lottieRef.current) {
       if (showMenu) {
-        lottieRef.current.playSegments([0, 30], false)
+        lottieRef.current.playSegments([0, 30])
       } else {
-        lottieRef.current.playSegments([30, 0], false)
+        lottieRef.current.playSegments([30, 0])
       }
     }
-  }, [lottieRef, showMenu])
+    console.log(showMenu)
+  }, [showMenu]) */
 
-  useEffect(() => {
+  const playLottie = useCallback(() => {
+    console.log(showMenu)
+    console.log(lottieRef.current.getDuration())
+    if (showMenu) {
+      lottieRef.current.setDirection(-1)
+      lottieRef.current.play()
+    } else {
+      lottieRef.current.play()
+    }
+  }, [showMenu])
+
+  /* useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false // set flag to false after initial render
       return
     }
+  }, [playLottie]) */
+
+  const handleClickMenu = () => {
     playLottie()
-  }, [playLottie])
+    setShowMenu(!showMenu)
+  }
 
   async function handleLogout() {
     try {

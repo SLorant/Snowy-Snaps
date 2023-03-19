@@ -25,9 +25,9 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           className={`${
             showMenu
               ? ' flex h-8 w-full   justify-end '
-              : 'mr-12 flex hidden h-full w-full justify-end md:block xl:mr-24'
-          }  ${username.length > 10 ? 'text-xl' : ' text-2xl'} md:h-14 md:w-auto    xl:mr-16 xl:h-[72px]`}>
-          <div className="hidden md:block">
+              : 'mr-16 flex hidden h-full w-full justify-end md:block xl:mr-24'
+          }  ${username.length > 10 ? 'text-xl' : ' text-2xl'} md:h-14 md:w-auto    xl:mr-24 xl:h-[72px]`}>
+          <div className="hidden md:block ">
             <HeaderLink
               title={username}
               location="/profile/me"
@@ -55,7 +55,7 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           id="myimg"
           className={`${
             showMenu ? ' h-14 w-14' : ' absolute right-2 top-2  h-12 w-12'
-          } rounded-full shadow-md md:top-[2px] md:h-12 md:h-11 md:w-12 md:w-11 lg:right-3 xl:right-5 xl:top-2 xl:h-14 xl:w-14`}
+          } rounded-full shadow-md md:top-[2px] md:top-2 md:h-12 md:h-11 md:w-12 md:w-11 lg:right-3 xl:right-5 xl:top-2 xl:h-14 xl:w-14`}
           src="/src/assets/avatars/profile.png"
           alt="userpic"
         />
