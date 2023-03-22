@@ -20,7 +20,9 @@ const Header = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const [showMenu, setShowMenu] = useState(false)
   const [headerBg, setHeaderBg] = useState('bg-white')
-  const isFirstRender = useRef(true)
+  const firstRender = useRef(true)
+
+  const [direction, setDirection] = useState(1)
 
   const setBg = () => {
     switch (currentLocation) {
@@ -66,7 +68,7 @@ const Header = () => {
     console.log(showMenu)
   }, [showMenu]) */
 
-  const playLottie = useCallback(() => {
+  /* const playLottie = useCallback(() => {
     console.log(showMenu)
     console.log(lottieRef.current.getDuration())
     if (showMenu) {
@@ -75,7 +77,19 @@ const Header = () => {
     } else {
       lottieRef.current.play()
     }
-  }, [showMenu])
+  }, [showMenu]) */
+
+  const playLottie = () => {
+    if (direction === 1) {
+      lottieRef.current.setDirection(direction)
+      lottieRef.current.play()
+      setDirection(-1)
+    } else {
+      lottieRef.current.setDirection(direction)
+      lottieRef.current.play()
+      setDirection(1)
+    }
+  }
 
   /* useEffect(() => {
     if (isFirstRender.current) {
@@ -85,8 +99,8 @@ const Header = () => {
   }, [playLottie]) */
 
   const handleClickMenu = () => {
-    playLottie()
     setShowMenu(!showMenu)
+    playLottie()
   }
 
   async function handleLogout() {
