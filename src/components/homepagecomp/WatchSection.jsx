@@ -12,7 +12,7 @@ const WatchSection = () => {
        shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)] dark:bg-blue  xl:grid xl:grid-cols-2  xl:items-start  xl:justify-start  ">
       <div className="flex h-[1100px] w-full flex-col items-center sm:h-auto  sm:h-auto xl:h-[850px] 2xl:h-[900px]  2xl:justify-center">
         <div className=" flex items-center  justify-center 2xl:mt-2 ">
-          <h2 className=" mt-6  font-header text-3xl text-blue dark:text-peach  sm:mt-8 sm:text-4xl xl:mt-12 xl:text-4xl  2xl:mt-0 ">
+          <h2 className=" mt-6  font-header text-3xl text-blue dark:text-peach  sm:mt-8 sm:text-4xl xl:mt-12 2xl:mt-0  2xl:text-5xl ">
             Watch photos & gifs
           </h2>
         </div>

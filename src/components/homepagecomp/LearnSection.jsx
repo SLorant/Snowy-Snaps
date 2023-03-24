@@ -8,17 +8,22 @@ const LearnSection = () => {
   return (
     <div
       className="z-40 flex w-full flex-col items-center bg-white shadow-[0px_3px_10px_2px_rgba(0,0,0,0.3)]
-       dark:bg-darkblue md:shadow-none xl:mt-0 xl:w-full xl:bg-cream dark:xl:bg-blue">
-      <h2 className="mt-12 font-header text-3xl text-blue dark:text-peach sm:text-4xl 2xl:mt-14">
+        dark:bg-darkblue md:shadow-none xl:mt-0 xl:w-full xl:bg-cream dark:xl:bg-blue">
+      <h2 className="mt-12 font-header text-3xl text-blue dark:text-peach sm:text-4xl 2xl:mt-14 2xl:text-5xl">
         Learn about huskies
       </h2>
       <div
-        className="relative mt-6 h-[300px] w-[300px] sm:mt-8 sm:h-[550px] sm:w-[550px] 
+        className="relative mt-6 h-[300px] w-[300px]  sm:mt-8 sm:h-[550px] sm:w-[550px] 
       md:mt-12 md:h-[620px] md:w-[620px] xl:h-[550px] xl:w-[550px] 2xl:h-[620px] 2xl:w-[620px]">
         <div className="relative   h-full  w-full rounded-md bg-blue ">
           <img
-            className="absolute top-0 left-0 z-0   rounded-md  2xl:w-full"
+            className="absolute top-0 left-0 z-0 rounded-md  dark:hidden  2xl:w-full"
             src="/src/assets/illustrations/huskylearn.png"
+            alt=""
+          />
+          <img
+            className="absolute top-0 left-0 z-0  hidden rounded-md dark:block  2xl:w-full"
+            src="/src/assets/illustrations/huskylearndark.png"
             alt=""
           />
           <div className="">
