@@ -20,7 +20,7 @@ const WatchSection = () => {
         <div className=" flex w-full items-center justify-center">
           <ShowCaseImages move={move} setMove={setMove} />
         </div>
-        <div className="mt-4 mb-96 flex hidden items-center justify-center drop-shadow-lg sm:mt-4 sm:mb-28  sm:block md:mt-8 md:mb-12  xl:hidden ">
+        <div className="mt-4 mb-96 flex hidden items-center justify-center  drop-shadow-lg sm:mt-4 sm:mb-28  sm:block md:mt-8 md:mb-12  xl:hidden ">
           <ShowCaseButton title="Show me more" link="/watch" />
         </div>
       </div>

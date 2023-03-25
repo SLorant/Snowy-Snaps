@@ -200,12 +200,11 @@ const Header = () => {
             <LogoutIcon />
           </div>
         </div>
-        {/* <DarkModeToggle /> */}
         {currentUser ? (
           <MobileHeaderUserInfo showMenu={showMenu} setShowMenu={setShowMenu} username={username} />
         ) : (
-          <div className="right-2 z-50 mr-2 flex hidden h-full  md:block xl:mr-12">
-            <div className="absolute right-52 hidden md:block">
+          <div className="right-2 z-50 mr-2 flex hidden h-full  md:block xl:mr-10">
+            <div className="absolute right-24 hidden md:block lg:right-28 xl:right-44 2xl:right-48">
               <DarkModeToggle />
             </div>
 

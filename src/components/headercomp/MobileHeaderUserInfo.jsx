@@ -14,7 +14,7 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
     <div
       className={`${
         showMenu
-          ? 'absolute top-32 left-8 flex w-full items-center justify-center'
+          ? 'absolute top-32 left-16 flex w-full items-center justify-center'
           : 'flex h-full w-full items-start justify-center md:w-auto'
       }`}>
       <div className="hidden md:block">

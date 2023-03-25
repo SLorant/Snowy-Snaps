@@ -45,13 +45,13 @@ const GalleryFilter = ({ emotions, setOrder, emotionArray, setEmotionArray, setI
             Filter and Sort
             <motion.img
               src="src\assets\icons\downarrow.png"
-              className="ml-4 w-6 dark:hidden"
+              className="ml-4 w-7 dark:hidden"
               alt=""
               animate={{ rotate: mobileFilterOpened ? 180 : 0 }}
             />
             <motion.img
               src="src\assets\icons\downarrowdark.png"
-              className="ml-4 hidden w-6 dark:block"
+              className="ml-4 hidden w-7 dark:block"
               alt=""
               animate={{ rotate: mobileFilterOpened ? 180 : 0 }}
             />
