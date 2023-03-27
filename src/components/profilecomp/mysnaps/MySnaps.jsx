@@ -33,14 +33,14 @@ const MySnaps = () => {
   })
   const isMySnaps = true
   const emotions = [
-    [{ label: 'happy' }, { src: '/src/assets/emojis/happy.png' }],
-    [{ label: 'silly' }, { src: '/src/assets/emojis/silly.png' }],
-    [{ label: 'relaxed' }, { src: '/src/assets/emojis/relaxed.png' }],
-    [{ label: 'excited' }, { src: '/src/assets/emojis/excited.png' }],
-    [{ label: 'confused' }, { src: '/src/assets/emojis/confused.png' }],
-    [{ label: 'mischievous' }, { src: '/src/assets/emojis/mischievous.png' }],
-    [{ label: 'stubborn' }, { src: '/src/assets/emojis/stubborn.png' }],
-    [{ label: 'sad' }, { src: '/src/assets/emojis/sad.png' }],
+    [{ label: 'happy' }, { src: '/assets/emojis/happy.png' }],
+    [{ label: 'silly' }, { src: '/assets/emojis/silly.png' }],
+    [{ label: 'relaxed' }, { src: '/assets/emojis/relaxed.png' }],
+    [{ label: 'excited' }, { src: '/assets/emojis/excited.png' }],
+    [{ label: 'confused' }, { src: '/assets/emojis/confused.png' }],
+    [{ label: 'mischievous' }, { src: '/assets/emojis/mischievous.png' }],
+    [{ label: 'stubborn' }, { src: '/assets/emojis/stubborn.png' }],
+    [{ label: 'sad' }, { src: '/assets/emojis/sad.png' }],
   ]
 
   useEffect(() => {

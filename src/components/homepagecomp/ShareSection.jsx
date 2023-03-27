@@ -9,13 +9,13 @@ const ShareSection = () => {
           <img
             className="absolute top-6 -right-8 z-20 h-28 w-24 rotate-6 p-3 transition duration-300 ease-in-out
              hover:rotate-6 md:right-0 md:top-7 md:z-0 md:-rotate-6 lg:-right-28"
-            src="src/assets/emojis/relaxed.png"
+            src="/assets/emojis/relaxed.png"
             alt=""
           />
           <img
             className="absolute left-16 top-[300px] z-40 h-20 w-[68px] -rotate-12 transition duration-300
              ease-in-out hover:rotate-12 md:left-auto md:right-28 md:top-[190px] md:h-24 md:w-20 lg:right-0"
-            src="src/assets/emojis/mischievous.png"
+            src="/assets/emojis/mischievous.png"
             alt=""
           />
           <div
@@ -26,7 +26,7 @@ const ShareSection = () => {
           <img
             className="absolute -right-0 bottom-96 h-20 w-[68px] rotate-12 transition duration-300 ease-in-out
              hover:-rotate-12 md:bottom-32 lg:bottom-60 lg:-right-40 lg:-right-40"
-            src="src/assets/emojis/excited.png"
+            src="/assets/emojis/excited.png"
             alt=""
           />
           <div
@@ -40,19 +40,19 @@ const ShareSection = () => {
             className="h-15 absolute bottom-96 right-28 z-40 w-14 -rotate-12 transition duration-300
              ease-in-out hover:rotate-12 sm:hidden md:bottom-32 md:left-96
              md:block  lg:bottom-64 lg:left-44"
-            src="src/assets/emojis/stubborn.png"
+            src="/assets/emojis/stubborn.png"
             alt=""
           />
           <img
             className="absolute bottom-[120px] right-0 w-[350px] dark:hidden sm:right-40  md:right-0
               md:bottom-20 md:ml-28 md:mt-5  md:w-auto lg:static xl:mt-3"
-            src="src/assets/illustrations/landingshare.png"
+            src="/assets/illustrations/landingshare.png"
             alt="sharehusky"
           />
           <img
             className="absolute bottom-[120px] right-0 hidden w-[350px] dark:block sm:right-40  md:right-0
                md:bottom-20 md:ml-28 md:mt-5 md:w-auto lg:static xl:mt-3"
-            src="src/assets/illustrations/landingsharedark.png"
+            src="/assets/illustrations/landingsharedark.png"
             alt="sharehusky"
           />
           <div

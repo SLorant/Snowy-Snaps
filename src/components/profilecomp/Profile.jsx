@@ -6,7 +6,7 @@ import LoadProfile from './LoadProfile'
 import Bio from './Bio'
 import Settings from './Settings'
 import MySnapsPreview from './mysnaps/MySnapsPreview'
-import SettingsIcon from '../../assets/icons/SettingsIcon'
+import SettingsIcon from '../../icons/SettingsIcon'
 import { Helmet } from 'react-helmet-async'
 
 const Profile = () => {

@@ -4,11 +4,11 @@ import { useMediaQuery } from 'react-responsive'
 import HeaderLink from './HeaderLink'
 import { useLocation, Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
-import data from '../../assets/animations/data.json'
+import data from '../../animations/data.json'
 import { motion } from 'framer-motion'
 import LoadHeaderUser from './LoadHeaderUser'
 import MobileHeaderUserInfo from './MobileHeaderUserInfo'
-import LogoutIcon from '../../assets/icons/LogoutIcon'
+import LogoutIcon from '../../icons/LogoutIcon'
 import DarkModeToggle from './DarkModeToggle'
 
 const Header = () => {
@@ -127,8 +127,8 @@ const Header = () => {
           to="/"
           className={`${showMenu ? 'right-4' : 'left-2 hidden md:block '} 
             absolute top-4 mb-1  w-40  lg:left-6 lg:top-3 lg:w-52  xl:left-8 xl:left-6 xl:top-4 xl:w-64 `}>
-          <img className="block dark:hidden" src="/src/assets/icons/logo.png" alt="logo" />
-          <img className="hidden dark:block" src="/src/assets/icons/logocream.png" alt="logo" />
+          <img className="block dark:hidden" src="/assets/icons/logo.png" alt="logo" />
+          <img className="hidden dark:block" src="/assets/icons/logocream.png" alt="logo" />
         </Link>
         <div className="">
           <button className="absolute top-1 left-2 w-12 md:hidden" onClick={handleClickMenu}>

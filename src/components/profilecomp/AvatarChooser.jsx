@@ -7,19 +7,19 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SnapEditor from '../snapeditorcomp/SnapEditor'
 import Avatars from './Avatars'
-import UploadIcon from '../../assets/icons/UploadIcon'
+import UploadIcon from '../../icons/UploadIcon'
 
 const AvatarChooser = ({ type }) => {
   const { currentUser } = useAuth()
   const [file, setFile] = useState(null)
-  const [selected, setSelected] = useState('src/assets/avatars/normalavatar.png')
+  const [selected, setSelected] = useState('/assets/avatars/normalavatar.png')
   const uploadType = 'profile'
   var editor = ''
   const [picture, setPicture] = useState({
     cropperOpen: false,
     img: null,
     zoom: 2,
-    croppedImg: 'src/assets/avatars/normalavatar.png',
+    croppedImg: '/assets/avatars/normalavatar.png',
   })
   if (currentUser) {
     async function SetProfile() {

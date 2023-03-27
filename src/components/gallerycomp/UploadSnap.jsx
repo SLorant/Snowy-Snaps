@@ -5,7 +5,7 @@ import SnapEditor from '../snapeditorcomp/SnapEditor'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import GifUploader from './GifUploader'
-import UploadIcon from '../../assets/icons/UploadIcon'
+import UploadIcon from '../../icons/UploadIcon'
 import { useMediaQuery } from 'react-responsive'
 
 const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
@@ -23,7 +23,7 @@ const UploadSnap = ({ isMySnaps, file, setFile, setIsUploaded }) => {
     cropperOpen: false,
     img: null,
     zoom: 2,
-    croppedImg: '/src/assets/avatars/profile.png',
+    croppedImg: '/assets/avatars/profile.png',
   })
   let selected
   const [loginError, setLoginError] = useState(false)

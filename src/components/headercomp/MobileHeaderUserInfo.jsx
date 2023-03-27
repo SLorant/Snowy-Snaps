@@ -56,7 +56,7 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           className={`${
             showMenu ? ' h-14 w-14' : ' absolute right-2 top-2  h-12 w-12'
           } rounded-full shadow-md md:top-[2px] md:top-2 md:h-12 md:h-11 md:w-12 md:w-11 lg:right-3 xl:right-5 xl:top-2 xl:h-14 xl:w-14`}
-          src="/src/assets/avatars/profile.png"
+          src="/assets/avatars/profile.png"
           alt="userpic"
         />
       </Link>

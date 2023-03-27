@@ -4,6 +4,9 @@ unusedCode.txt
 .vscode
 .prettierrc.json
 postcss.config.cjs
-src/assets/deletethis
 todo.txt
 firebaseSDK.txt
+firebase.json
+.firebaserc
+dist
+.firebase

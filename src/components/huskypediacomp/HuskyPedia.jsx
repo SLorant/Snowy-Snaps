@@ -4,7 +4,7 @@ import Content from './Content'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useMediaQuery } from 'react-responsive'
-import TableOfContentsIcon from '../../assets/icons/TableOfContentsIcon'
+import TableOfContentsIcon from '../../icons/TableOfContentsIcon'
 import { Helmet } from 'react-helmet-async'
 
 const HuskyPedia = () => {

@@ -6,9 +6,9 @@ import LikedButton from './LikedButton'
 import IsLiked from './utilities/isLiked'
 import { Link } from 'react-router-dom'
 import DeleteSnap from './utilities/DeleteSnap'
-import TrashIcon from '../../assets/icons/TrashIcon'
-import HeartIcon from '../../assets/icons/HeartIcon'
-import XIcon from '../../assets/icons/XIcon'
+import TrashIcon from '../../icons/TrashIcon'
+import HeartIcon from '../../icons/HeartIcon'
+import XIcon from '../../icons/XIcon'
 import ShowLikes from './utilities/ShowLikes'
 
 const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSelectedImg, imgData, setImgData }) => {

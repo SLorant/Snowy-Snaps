@@ -1,6 +1,6 @@
 import React from 'react'
-import BulbIcon from '../../assets/icons/BulbIcon'
-import NotesIcon from '../../assets/icons/NotesIcon'
+import BulbIcon from '../../icons/BulbIcon'
+import NotesIcon from '../../icons/NotesIcon'
 
 const Content = () => {
   return (
@@ -17,7 +17,7 @@ const Content = () => {
         the sources, as they contain more detailed and reliable information on the topic. Thanks for visiting!
       </p>
       <h2 className=" mt-4 text-center font-header text-3xl text-blue dark:text-cream md:text-4xl">Characteristics</h2>
-      <img className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskyjump.png" alt="spec" />
+      <img className="mt-4 w-full rounded-md" src="/assets/illustrations/huskyjump.png" alt="spec" />
       <div className=" mt-6 text-justify">
         {' '}
         The Siberian Husky is a large dog breed, with an average height of 51-60 cm. They typically weigh between 16-27
@@ -40,7 +40,7 @@ const Content = () => {
         checkups every 6 to 12 months.
       </div>
       <h2 className=" mt-6 text-center font-header text-3xl text-blue dark:text-cream md:text-4xl">Personality</h2>
-      <img className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskygirl.png" alt="spec" />
+      <img className="mt-4 w-full rounded-md" src="/assets/illustrations/huskygirl.png" alt="spec" />
       <div className="mt-6 text-justify">
         Siberian Huskies are energetic, clever canines that are constantly moving about. One of the quickest sled dog
         breeds, they are renowned for their endurance and ability to run for extended periods of time.
@@ -73,7 +73,7 @@ const Content = () => {
       <h2 className=" mt-4 text-center font-header text-3xl text-blue dark:text-cream md:text-4xl">
         How to care for a husky
       </h2>
-      <img id="feed" className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskyeating.png" alt="spec" />
+      <img id="feed" className="mt-4 w-full rounded-md" src="/assets/illustrations/huskyeating.png" alt="spec" />
       <h3 className=" mt-6 font-header text-2xl text-blue dark:text-cream md:text-3xl">Feeding</h3>
       <div className="mt-4 text-justify">
         Feed a high-quality diet devoid of artificial additives. Due to their size, your Husky might consume more than
@@ -123,7 +123,7 @@ const Content = () => {
           prevent infections, clean your dog's ears when you check them with a cotton ball dampened mild, pH-balanced
           ear cleaner. Simply clean the outer ear; avoid inserting anything into the ear canal.
         </div>
-        <img id="env" className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskyfence.png" alt="spec" />
+        <img id="env" className="mt-4 w-full rounded-md" src="/assets/illustrations/huskyfence.png" alt="spec" />
         <h3 className=" mt-6 font-header text-2xl text-blue dark:text-cream md:text-3xl">Environment and children</h3>
         <div className="mt-4 text-justify">
           When adopting a dog, we must give them a secure setting where they can play and unwind. A medium-sized dog
@@ -154,7 +154,7 @@ const Content = () => {
           avoid any biting or tugging of ears or tails from either party. Teach your youngster to never try to steal a
           dog's food or approach a dog while he or she is eating. There should never be a dog left alone with a child.
         </div>
-        <img id="puppy" className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskyboy.png" alt="spec" />
+        <img id="puppy" className="mt-4 w-full rounded-md" src="/assets/illustrations/huskyboy.png" alt="spec" />
         <h3 className=" mt-6 font-header text-2xl text-blue dark:text-cream md:text-3xl">Puppies</h3>
         <div className="mt-4 text-justify">
           We need to be extra cautious when raising Siberian Husky puppies, especially during the weaning process. Do
@@ -204,7 +204,7 @@ const Content = () => {
         of heat exhaustion and try to avoid exercising while it's hot outside.
       </div>
       <h2 className=" mt-4 text-center font-header text-3xl text-blue dark:text-cream md:text-4xl">Training a husky</h2>
-      <img className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskyreading.png" alt="spec" />
+      <img className="mt-4 w-full rounded-md" src="/assets/illustrations/huskyreading.png" alt="spec" />
       <div className="mt-4 text-justify">
         Despite their high intelligence, huskies have autonomous minds and require constant, reward-based teaching
         throughout their whole lives. Avoid yelling at or punishing your dog because doing so will seriously undermine
@@ -243,7 +243,7 @@ const Content = () => {
           <div className="mb-4" />
           If you want to properly crate train your dog, never use the crate as a form of punishment.
         </div>
-        <img id="leash" className="mt-4 w-full rounded-md" src="src/assets/illustrations/huskyleash.png" alt="spec" />
+        <img id="leash" className="mt-4 w-full rounded-md" src="/assets/illustrations/huskyleash.png" alt="spec" />
         <h3 className=" mt-6 font-header text-2xl text-blue dark:text-cream md:text-3xl">Leash</h3>
         <div className="mt-4 text-justify">
           You must train your husky to be cooperative when walking on a leash due to their desire to run off.{' '}

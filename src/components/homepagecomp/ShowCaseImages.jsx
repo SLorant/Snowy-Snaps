@@ -41,7 +41,7 @@ const ShowCaseImages = ({ move, setMove }) => {
         </div>
 
         <img
-          src="src/assets/showcaseimages/huskytop.jpg"
+          src="/assets/showcaseimages/huskytop.jpg"
           alt="huskypic"
           className={`${
             move ? '-translate-x-10 translate-y-36 -rotate-3' : 'rotate-[18deg]'
@@ -50,7 +50,7 @@ const ShowCaseImages = ({ move, setMove }) => {
        sm:h-[22rem]    sm:w-60  sm:duration-500 xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
         />
         <img
-          src="src/assets/showcaseimages/huskybottomright.jpg"
+          src="/assets/showcaseimages/huskybottomright.jpg"
           alt="huskypic"
           className={`${
             move ? 'z-0 translate-y-10 translate-x-20 rotate-6' : 'z-0 -rotate-12 sm:-rotate-2'
@@ -60,7 +60,7 @@ const ShowCaseImages = ({ move, setMove }) => {
         />
 
         <img
-          src="src/assets/showcaseimages/huskymiddle.jpg"
+          src="/assets/showcaseimages/huskymiddle.jpg"
           alt="huskygif"
           className={`${
             move
@@ -71,7 +71,7 @@ const ShowCaseImages = ({ move, setMove }) => {
       sm:top-52 sm:z-0 sm:h-60 sm:w-[21rem]  sm:duration-500  xl:h-56  2xl:h-60  2xl:w-[22rem]`}
         />
         <img
-          src="src/assets/showcaseimages/huskybottomleft.jpg"
+          src="/assets/showcaseimages/huskybottomleft.jpg"
           alt="huskygif"
           className={`${
             move
@@ -82,7 +82,7 @@ const ShowCaseImages = ({ move, setMove }) => {
       sm:h-[22rem] sm:w-60   sm:duration-500   xl:h-[21rem]  2xl:h-[22rem]`}
         />
         <img
-          src="src/assets/showcaseimages/huskytopright.jpg"
+          src="/assets/showcaseimages/huskytopright.jpg"
           alt="huskygif"
           className={`${
             move
@@ -93,7 +93,7 @@ const ShowCaseImages = ({ move, setMove }) => {
       sm:w-60  sm:duration-500   xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
         />
         <img
-          src="src/assets/showcaseimages/huskytopleft.jpg"
+          src="/assets/showcaseimages/huskytopleft.jpg"
           alt="huskygif"
           className={`${
             move ? 'translate-y-10 -translate-x-32  -rotate-12' : 'rotate-[9deg]'

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Lottie from 'lottie-react'
-import dark from '../../assets/animations/dark.json'
+import dark from '../../animations/dark.json'
 
 const DarkModeToggle = () => {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false)

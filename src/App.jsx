@@ -1,4 +1,3 @@
-import Gallery from './components/gallerycomp/Gallery'
 import HomePage from './components/homepagecomp/HomePage'
 import HuskyPedia from './components/huskypediacomp/HuskyPedia'
 import SignInPage from './components/authcomp/SignUpPage'
@@ -15,6 +14,9 @@ import TermsConditions from './legaldocuments/TermsConditions'
 import PrivacyPolicy from './legaldocuments/PrivacyPolicy'
 import CookiePolicy from './legaldocuments/CookiePolicy'
 import { HelmetProvider } from 'react-helmet-async'
+import { lazy, Suspense } from 'react'
+const Gallery = lazy(() => import('./components/gallerycomp/Gallery'))
+/* import Gallery from './components/gallerycomp/Gallery' */
 
 function App() {
   const ProtectedProfile = WithAuth(Profile)
@@ -28,7 +30,14 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path="learn" element={<HuskyPedia />} />
-              <Route path="watch" element={<Gallery />} />
+              <Route
+                path="watch"
+                element={
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Gallery />
+                  </Suspense>
+                }
+              />
               <Route path="login" element={<LoginPage />} />
               <Route path="forgotpassword" element={<ForgotPassword />} />
               <Route path="/profile/:userId" element={<Profile />} />

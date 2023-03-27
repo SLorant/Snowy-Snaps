@@ -44,15 +44,15 @@ const GalleryFilter = ({ emotions, setOrder, emotionArray, setEmotionArray, setI
             onClick={() => handleOnClickFilter()}>
             Filter and Sort
             <motion.img
-              src="src\assets\icons\downarrow.png"
+              src="/assets/icons/downarrow.png"
               className="ml-4 w-7 dark:hidden"
-              alt=""
+              alt="downarrow"
               animate={{ rotate: mobileFilterOpened ? 180 : 0 }}
             />
             <motion.img
-              src="src\assets\icons\downarrowdark.png"
+              src="/assets/icons/downarrowdark.png"
               className="ml-4 hidden w-7 dark:block"
-              alt=""
+              alt="downarrow"
               animate={{ rotate: mobileFilterOpened ? 180 : 0 }}
             />
           </button>

@@ -1,10 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import ImageGrid from './ImageGrid'
-import Modal from './Modal'
+/* import ImageGrid from './ImageGrid'
+import Modal from './Modal' */
 import GalleryFilter from './GalleryFilter'
 import UploadSnap from './UploadSnap'
 import { Helmet } from 'react-helmet-async'
+import { lazy, Suspense } from 'react'
+const Modal = lazy(() => import('./Modal'))
+const ImageGrid = lazy(() => import('./ImageGrid'))
 
 const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -14,14 +17,14 @@ const Gallery = () => {
   const [imgType, setImgType] = useState('')
   const [emotionArray, setEmotionArray] = useState([])
   const emotions = [
-    [{ label: 'happy' }, { src: '/src/assets/emojis/happy.png' }],
-    [{ label: 'silly' }, { src: '/src/assets/emojis/silly.png' }],
-    [{ label: 'relaxed' }, { src: '/src/assets/emojis/relaxed.png' }],
-    [{ label: 'excited' }, { src: '/src/assets/emojis/excited.png' }],
-    [{ label: 'confused' }, { src: '/src/assets/emojis/confused.png' }],
-    [{ label: 'mischievous' }, { src: '/src/assets/emojis/mischievous.png' }],
-    [{ label: 'stubborn' }, { src: '/src/assets/emojis/stubborn.png' }],
-    [{ label: 'sad' }, { src: '/src/assets/emojis/sad.png' }],
+    [{ label: 'happy' }, { src: '/assets/emojis/happy.png' }],
+    [{ label: 'silly' }, { src: '/assets/emojis/silly.png' }],
+    [{ label: 'relaxed' }, { src: '/assets/emojis/relaxed.png' }],
+    [{ label: 'excited' }, { src: '/assets/emojis/excited.png' }],
+    [{ label: 'confused' }, { src: '/assets/emojis/confused.png' }],
+    [{ label: 'mischievous' }, { src: '/assets/emojis/mischievous.png' }],
+    [{ label: 'stubborn' }, { src: '/assets/emojis/stubborn.png' }],
+    [{ label: 'sad' }, { src: '/assets/emojis/sad.png' }],
   ]
   const [file, setFile] = useState(null)
   const [imgData, setImgData] = useState({
@@ -60,26 +63,30 @@ const Gallery = () => {
         <UploadSnap file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
       </div>
       {!loading && (
-        <ImageGrid
-          imgData={imgData}
-          isUploaded={isUploaded}
-          setIsUploaded={setIsUploaded}
-          setImgData={setImgData}
-          setSelectedImg={setSelectedImg}
-          order={order}
-          emotionArray={emotionArray}
-          imgType={imgType}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ImageGrid
+            imgData={imgData}
+            isUploaded={isUploaded}
+            setIsUploaded={setIsUploaded}
+            setImgData={setImgData}
+            setSelectedImg={setSelectedImg}
+            order={order}
+            emotionArray={emotionArray}
+            imgType={imgType}
+          />
+        </Suspense>
       )}
       <div className=" h-60 w-full dark:bg-darkblue"></div>
       {selectedImg && (
-        <Modal
-          emotions={emotions}
-          imgData={imgData}
-          setImgData={setImgData}
-          selectedImg={selectedImg}
-          setSelectedImg={setSelectedImg}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Modal
+            emotions={emotions}
+            imgData={imgData}
+            setImgData={setImgData}
+            selectedImg={selectedImg}
+            setSelectedImg={setSelectedImg}
+          />
+        </Suspense>
       )}
     </div>
   )

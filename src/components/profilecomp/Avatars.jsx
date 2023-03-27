@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 const Avatars = ({ setFile, setSelected, selected }) => {
   const avatars = [
-    { normal: '/src/assets/avatars/normalavatar.png' },
-    { silly: '/src/assets/avatars/sillyavatar.png' },
-    { puppy: '/src/assets/avatars/puppyavatar.png' },
-    { sung: '/src/assets/avatars/sunglassesavatar.png' },
+    { normal: '/assets/avatars/normalavatar.png' },
+    { silly: '/assets/avatars/sillyavatar.png' },
+    { puppy: '/assets/avatars/puppyavatar.png' },
+    { sung: '/assets/avatars/sunglassesavatar.png' },
   ]
   const [{ normal: normalPath }] = avatars
   const [{ silly: sillyPath }] = avatars

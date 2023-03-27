@@ -51,7 +51,7 @@ const SignUpForm = () => {
       setLoading(true)
       const { user } = await signup(emailRef.current.value, passwordRef.current.value)
       await createUserDocument(user, { username })
-      const response = await fetch('src/assets/avatars/normalavatar.png')
+      const response = await fetch('assets/avatars/normalavatar.png')
       const file = await response.arrayBuffer()
       var newFile = new File([file], 'my_image.png', {
         type: 'image/png',
@@ -80,12 +80,12 @@ const SignUpForm = () => {
               <div className=" group relative h-5 w-5">
                 <img
                   className="hidden h-5 w-5 cursor-pointer dark:hidden md:block"
-                  src="./src/assets/icons/question.png"
+                  src="./assets/icons/question.png"
                   alt="questionmark"
                 />
                 <img
                   className="hidden h-5 w-5 cursor-pointer dark:md:block"
-                  src="./src/assets/icons/questiondark.png"
+                  src="./assets/icons/questiondark.png"
                   alt="questionmark"
                 />
                 <div
@@ -111,12 +111,12 @@ const SignUpForm = () => {
               <div className=" group relative h-5 w-5">
                 <img
                   className="hidden h-5 w-5 cursor-pointer dark:hidden md:block"
-                  src="./src/assets/icons/question.png"
+                  src="./assets/icons/question.png"
                   alt="questionmark"
                 />
                 <img
                   className="hidden h-5 w-5 cursor-pointer dark:md:block"
-                  src="./src/assets/icons/questiondark.png"
+                  src="./assets/icons/questiondark.png"
                   alt="questionmark"
                 />
                 <div

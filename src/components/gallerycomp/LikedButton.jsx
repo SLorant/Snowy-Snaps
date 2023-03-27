@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Dislike from './utilities/Dislike'
 import { useAuth } from '../../contexts/AuthContext'
-import HeartIcon from '../../assets/icons/HeartIcon'
+import HeartIcon from '../../icons/HeartIcon'
 
 const LikedButton = ({ imgdata, setLikedByUser }) => {
   const [likes, setLikes] = useState('')

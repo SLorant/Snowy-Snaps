@@ -6,6 +6,7 @@ const HomePage = () => {
     <div className="h-full w-full bg-sand dark:bg-blue">
       <Helmet>
         <title>Snowy Snaps</title>
+        <link rel="icon" type="image/svg+xml" href="/assets/emojis/silly.png" />
         <meta property="og:title" content="Snowy Snaps - The Husky Website" />
         <meta property="og:type" content="website" />
         <meta
@@ -24,7 +25,7 @@ const HomePage = () => {
               Welcome to<p className="hidden sm:inline">&nbsp;Snowy Snaps!</p>
             </h1>
 
-            <img className=" mr-4 w-5/6 sm:hidden" src="src/assets/icons/logo.png" alt="logo" />
+            <img className=" mr-4 w-5/6 sm:hidden" src="/assets/icons/logo.png" alt="logo" />
           </div>
           <div className="mt-4 w-7/12 lg:w-1/2">
             <div className="ml-6 w-4/5 md:ml-10 lg:ml-2 lg:w-3/4 xl:w-2/3 2xl:ml-4 2xl:w-1/2">
@@ -38,22 +39,22 @@ const HomePage = () => {
         </div>
 
         <img
-          src="src/assets/illustrations/landinghusky.png"
+          src="/assets/illustrations/landinghusky.png"
           alt="huskylove"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 dark:hidden sm:block"
         />
         <img
-          src="src/assets/illustrations/landinghuskydark.jpg"
+          src="/assets/illustrations/landinghuskydark.jpg"
           alt="huskylove"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 dark:hidden dark:sm:block"
         />
         <img
-          src="src/assets/illustrations/landinghuskymobile.png"
+          src="/assets/illustrations/landinghuskymobile.png"
           alt="huskylove"
           className="relative top-10 z-10 block w-full  object-cover dark:hidden  sm:hidden"
         />
         <img
-          src="src/assets/illustrations/landinghuskydarkmobile.jpg"
+          src="/assets/illustrations/landinghuskydarkmobile.jpg"
           alt="huskylove"
           className="relative  top-10 z-10 hidden w-full  object-cover dark:block  dark:sm:hidden"
         />
