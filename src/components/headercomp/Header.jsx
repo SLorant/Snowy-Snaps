@@ -4,7 +4,8 @@ import { useMediaQuery } from 'react-responsive'
 import HeaderLink from './HeaderLink'
 import { useLocation, Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
-import data from '../../animations/data.json'
+import menu from '../../animations/menu.json'
+import menudark from '../../animations/menudark.json'
 import { motion } from 'framer-motion'
 import LoadHeaderUser from './LoadHeaderUser'
 import MobileHeaderUserInfo from './MobileHeaderUserInfo'
@@ -20,10 +21,8 @@ const Header = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const [showMenu, setShowMenu] = useState(false)
   const [headerBg, setHeaderBg] = useState('bg-white')
-  const firstRender = useRef(true)
-
   const [direction, setDirection] = useState(1)
-
+  const [animationData, setAnimationData] = useState(menu)
   const setBg = () => {
     switch (currentLocation) {
       case '/':
@@ -55,29 +54,11 @@ const Header = () => {
     if (mySnaps === 'gallery') setHeaderBg('bg-white dark:bg-darkblue')
     if (showMenu) setHeaderBg('bg-sand dark:bg-darkblue')
     if (!isMobile) setShowMenu(false)
+    const isDarkMode = localStorage.getItem('isDarkModeEnabled') === 'true'
+    console.log(isDarkMode)
+    isDarkMode ? setAnimationData(menudark) : setAnimationData(menu)
+    console.log(lottieRef.current.getDuration(true))
   })
-
-  /* const playLottie = useCallback(() => {
-    if (lottieRef.current) {
-      if (showMenu) {
-        lottieRef.current.playSegments([0, 30])
-      } else {
-        lottieRef.current.playSegments([30, 0])
-      }
-    }
-    console.log(showMenu)
-  }, [showMenu]) */
-
-  /* const playLottie = useCallback(() => {
-    console.log(showMenu)
-    console.log(lottieRef.current.getDuration())
-    if (showMenu) {
-      lottieRef.current.setDirection(-1)
-      lottieRef.current.play()
-    } else {
-      lottieRef.current.play()
-    }
-  }, [showMenu]) */
 
   const playLottie = () => {
     if (direction === 1) {
@@ -90,13 +71,6 @@ const Header = () => {
       setDirection(1)
     }
   }
-
-  /* useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false // set flag to false after initial render
-      return
-    }
-  }, [playLottie]) */
 
   const handleClickMenu = () => {
     setShowMenu(!showMenu)
@@ -131,9 +105,10 @@ const Header = () => {
           <img className="hidden dark:block" src="/assets/icons/logocream.png" alt="logo" />
         </Link>
         <div className="">
-          <button className="absolute top-1 left-2 w-12 md:hidden" onClick={handleClickMenu}>
-            <Lottie autoplay={false} loop={false} lottieRef={lottieRef} animationData={data} />
+          <button className="absolute top-2 left-3 w-11 md:hidden" onClick={handleClickMenu}>
+            <Lottie autoplay={false} loop={false} lottieRef={lottieRef} animationData={animationData} />
           </button>
+
           {!currentUser && (
             <Link
               to="login"
@@ -195,7 +170,7 @@ const Header = () => {
           className={`${
             showMenu ? 'absolute bottom-6' : 'hidden'
           } mx-4 flex w-[91%] items-end justify-between md:hidden`}>
-          <DarkModeToggle />
+          <DarkModeToggle setAnimationData={setAnimationData} menuLottie={lottieRef.current} />
           <div className={`${!currentUser && 'hidden'} cursor-pointer`} onClick={handleLogout}>
             <LogoutIcon />
           </div>

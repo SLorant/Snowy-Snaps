@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Lottie from 'lottie-react'
 import dark from '../../animations/dark.json'
+import menu from '../../animations/menu.json'
+import menudark from '../../animations/menudark.json'
 
-const DarkModeToggle = () => {
+const DarkModeToggle = ({ setAnimationData, menuLottie }) => {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false)
   const lottieRef = useRef(true)
   const firstRender = useRef(true)
@@ -26,6 +28,9 @@ const DarkModeToggle = () => {
     setIsDarkModeEnabled(newIsDarkModeEnabled)
     document.body.classList.toggle('dark', newIsDarkModeEnabled)
     localStorage.setItem('isDarkModeEnabled', newIsDarkModeEnabled.toString())
+    newIsDarkModeEnabled ? setAnimationData(menudark) : setAnimationData(menu)
+    console.log(menuLottie)
+    menuLottie.goToAndStop(30, true)
     playLottie()
   }
 

@@ -47,7 +47,7 @@ const ShowCaseImages = ({ move, setMove }) => {
             move ? '-translate-x-10 translate-y-36 -rotate-3' : 'rotate-[18deg]'
           } xl:max-h-80 2xl:max-h-80 relative left-40 -top-52 z-20 hidden w-56
        rounded-md object-cover drop-shadow-lg transition  duration-700 ease-in-out  sm:block
-       sm:h-[22rem]    sm:w-60  sm:duration-500 xl:h-[21rem]  2xl:h-[22rem]  2xl:w-60`}
+       sm:h-[22rem]    sm:w-60  sm:duration-500 xl:h-[21rem]  2xl:h-[22rem]  `}
         />
         <img
           src="/assets/showcaseimages/huskybottomright.jpg"

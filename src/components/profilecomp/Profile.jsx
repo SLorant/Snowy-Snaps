@@ -53,7 +53,7 @@ const Profile = () => {
                   <img
                     className="relative w-64 rounded-full  md:mt-0"
                     id="profileimg"
-                    src="\src\assets\avatars\profile.png"
+                    src="/assets/avatars/profile.png"
                     alt="userpic"
                   />
                   {showSettings && user.canEdit && <Settings />}
