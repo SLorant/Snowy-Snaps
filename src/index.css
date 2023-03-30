@@ -5,6 +5,7 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 body {
   min-height: 100%;
@@ -14,10 +15,7 @@ li {
   margin-left: 20px;
   margin-top: 8px;
 }
-/* .termcat::before {
-  font-size: 40px;
-  content: 'randomtext';
-} */
+
 ::-webkit-scrollbar {
   width: 12px;
 }

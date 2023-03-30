@@ -66,7 +66,8 @@ const PrivacyPolicy = () => {
         <li className="mb-10 font-body ">
           <h2 className="text-2xl font-bold">8. Contact Us</h2>
           <li>
-            If you have any questions or concerns about this Privacy Policy, please contact us at sutuslorant@gmail.com.
+            If you have any questions or concerns about this Privacy Policy, please contact us at
+            contact.snowysnaps@gmail.com.
           </li>
         </li>
       </ol>

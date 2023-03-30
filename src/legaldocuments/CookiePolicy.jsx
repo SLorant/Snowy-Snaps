@@ -6,7 +6,7 @@ const CookiePolicy = () => {
       <h1 className="mb-8 mt-32 font-header text-5xl text-blue dark:text-peach">Cookie Policy</h1>
       <div className="flex w-4/5 flex-col items-center justify-center md:w-3/4 lg:w-2/3 xl:w-1/2">
         <div className="mb-4 w-4/5 font-body dark:text-cream md:text-lg">
-          This is the Cookie Policy for Snowy Snaps, accessible from www.snowysnaps.firebaseapp.com
+          This is the Cookie Policy for Snowy Snaps, accessible from snowy-snaps.web.app
         </div>
       </div>
 
@@ -72,7 +72,9 @@ const CookiePolicy = () => {
         </li>
         <li className="mb-10 font-body ">
           <h2 className="text-2xl font-bold"> 5. More Information</h2>
-          <li>If you are still looking for more information, you can contact us by email at sutuslorant@gmail.com.</li>
+          <li>
+            If you are still looking for more information, you can contact us by email at contact.snowysnaps@gmail.com.
+          </li>
         </li>
       </ol>
     </div>

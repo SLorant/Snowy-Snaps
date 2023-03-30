@@ -31,7 +31,6 @@ const LoadProfile = (setUser) => {
           loadedBio: data.bio && data.bio,
           canEdit: true,
         })
-        console.log(user)
         return currentUser.uid
       } else {
         // Otherwise, query the Firestore collection for the requested user's data
@@ -75,7 +74,6 @@ const LoadProfile = (setUser) => {
       let userProfile = await loadProfile()
       // Get the profile picture form Firebase Storage and set the user's profile in the DOM
       const url = await getDownloadURL(ref(projectStorage, `${userProfile}/profilepics/image`))
-      console.log(url)
       const img = document.getElementById('profileimg')
       img.setAttribute('src', url)
     })()

@@ -4,7 +4,7 @@ import dark from '../../animations/dark.json'
 import menu from '../../animations/menu.json'
 import menudark from '../../animations/menudark.json'
 
-const DarkModeToggle = ({ setAnimationData, menuLottie }) => {
+const DarkModeToggle = ({ setAnimationData }) => {
   const [isDarkModeEnabled, setIsDarkModeEnabled] = useState(false)
   const lottieRef = useRef(true)
   const firstRender = useRef(true)
@@ -28,9 +28,8 @@ const DarkModeToggle = ({ setAnimationData, menuLottie }) => {
     setIsDarkModeEnabled(newIsDarkModeEnabled)
     document.body.classList.toggle('dark', newIsDarkModeEnabled)
     localStorage.setItem('isDarkModeEnabled', newIsDarkModeEnabled.toString())
-    newIsDarkModeEnabled ? setAnimationData(menudark) : setAnimationData(menu)
-    console.log(menuLottie)
-    menuLottie.goToAndStop(30, true)
+    if (setAnimationData !== undefined) newIsDarkModeEnabled ? setAnimationData(menudark) : setAnimationData(menu)
+
     playLottie()
   }
 

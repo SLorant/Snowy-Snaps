@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useMediaQuery } from 'react-responsive'
+console.log(useMediaQuery)
 import HeaderLink from './HeaderLink'
 import { useLocation, Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
@@ -16,13 +17,15 @@ const Header = () => {
   const { currentUser, logout } = useAuth()
   const [username, setUserName] = useState('')
   const currentLocation = useLocation().pathname
-  const mySnaps = currentLocation.substring(currentLocation.lastIndexOf('/') + 1)
+  const currentUrl = currentLocation.substring(currentLocation.lastIndexOf('/') + 1)
   const lottieRef = useRef()
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
   const [showMenu, setShowMenu] = useState(false)
   const [headerBg, setHeaderBg] = useState('bg-white')
   const [direction, setDirection] = useState(1)
   const [animationData, setAnimationData] = useState(menu)
+  const [isFirstRender, setIsFirstRender] = useState(true)
+  const isDarkMode = localStorage.getItem('isDarkModeEnabled') === 'true'
   const setBg = () => {
     switch (currentLocation) {
       case '/':
@@ -50,14 +53,26 @@ const Header = () => {
     }
   }
   useEffect(() => {
+    isDarkMode ? setAnimationData(menudark) : setAnimationData(menu)
+    if (lottieRef.current) {
+      if (isFirstRender) {
+        lottieRef.current.goToAndStop(0, true)
+        setIsFirstRender(false)
+      } else lottieRef.current.goToAndStop(45, true)
+    }
+  }, [isDarkMode])
+
+  useEffect(() => {
+    lottieRef.current.setDirection(-1)
+    lottieRef.current.play()
+    setDirection(1)
+  }, [currentUrl])
+
+  useEffect(() => {
     setBg()
-    if (mySnaps === 'gallery') setHeaderBg('bg-white dark:bg-darkblue')
+    if (currentUrl === 'gallery') setHeaderBg('bg-white dark:bg-darkblue')
     if (showMenu) setHeaderBg('bg-sand dark:bg-darkblue')
     if (!isMobile) setShowMenu(false)
-    const isDarkMode = localStorage.getItem('isDarkModeEnabled') === 'true'
-    console.log(isDarkMode)
-    isDarkMode ? setAnimationData(menudark) : setAnimationData(menu)
-    console.log(lottieRef.current.getDuration(true))
   })
 
   const playLottie = () => {
@@ -170,7 +185,7 @@ const Header = () => {
           className={`${
             showMenu ? 'absolute bottom-6' : 'hidden'
           } mx-4 flex w-[91%] items-end justify-between md:hidden`}>
-          <DarkModeToggle setAnimationData={setAnimationData} menuLottie={lottieRef.current} />
+          <DarkModeToggle setAnimationData={setAnimationData} />
           <div className={`${!currentUser && 'hidden'} cursor-pointer`} onClick={handleLogout}>
             <LogoutIcon />
           </div>
@@ -180,7 +195,7 @@ const Header = () => {
         ) : (
           <div className="right-2 z-50 mr-2 flex hidden h-full  md:block xl:mr-10">
             <div className="absolute right-24 hidden md:block lg:right-28 xl:right-44 2xl:right-48">
-              <DarkModeToggle />
+              <DarkModeToggle setAnimationData={setAnimationData} />
             </div>
 
             <HeaderLink
