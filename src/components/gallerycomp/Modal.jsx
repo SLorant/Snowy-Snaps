@@ -92,7 +92,7 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}>
       <motion.div
-        className="md:max-w-5/6 mb-28 flex min-w-[15%] flex-col items-center justify-center rounded-md bg-white
+        className="md:max-w-5/6 mb-28 mt-20 flex max-h-[70%] min-w-[15%] flex-col items-center justify-center rounded-md bg-white
         dark:bg-blue md:mb-4  md:mb-0 md:bg-transparent dark:md:bg-transparent  lg:mb-10 lg:h-1/2  lg:flex-row  xl:h-[60%]"
         initial={{ y: '-100vh' }}
         animate={{ y: 0 }}>
@@ -102,10 +102,10 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
           whileHover={{ scale: 1.2 }}>
           <XIcon />
         </motion.div>
-        <div className="flex h-full w-full flex-col  items-center justify-center">
+        <div className="flex h-[95%] w-full flex-col items-center  justify-center ">
           <motion.img
             src={selectedImg}
-            className="mx-2 block rounded-lg border-4 border-white dark:border-blue md:h-full
+            className="mx-2 block h-full rounded-lg border-4 border-white dark:border-blue md:h-full
             md:rounded-t-lg dark:md:border-white lg:rounded-lg xl:h-full xl:w-full "
             alt="modalpic"
           />
@@ -138,8 +138,8 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
             <p className="mr-2 text-center font-header text-base text-blue dark:text-cream lg:mb-4  ">{finaldate}</p>
           </div>
           <div
-            className="absolute top-12 mt-4 flex w-72 items-center justify-center  gap-6
-             rounded-lg bg-cream dark:bg-blue md:static  md:mt-0 md:w-2/3 md:flex-row lg:w-40 lg:flex-col lg:gap-0">
+            className="absolute top-12 mt-4 flex h-20 w-72 items-center justify-center gap-6  rounded-lg
+             bg-cream dark:bg-blue md:static md:mt-0  md:h-auto md:w-2/3 md:flex-row lg:w-40 lg:flex-col lg:gap-0">
             <div className=" flex  gap-2  lg:mb-2 ">
               {imgData.emotion && (
                 <img className="h-11 w-10" src={getEmotionEmoji(imgData.emotion)} alt={imgData.emotion} />

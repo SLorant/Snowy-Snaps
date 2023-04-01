@@ -2,13 +2,15 @@ import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-const HeaderLink = ({ setShowMenu, showMenu, title, location }) => {
+const HeaderLink = ({ setDirection, lottieRef, setShowMenu, showMenu, title, location }) => {
   const { pathname } = useLocation()
   const currentLocation = useLocation().pathname
   const mySnaps = currentLocation.substring(currentLocation.lastIndexOf('/') + 1)
   const navigate = useNavigate()
-
   const handleClickButton = (url) => {
+    lottieRef.current.setDirection(-1)
+    lottieRef.current.play()
+    setDirection(1)
     setShowMenu(false)
     navigate(url)
   }

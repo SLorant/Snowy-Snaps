@@ -62,11 +62,16 @@ const Header = () => {
     }
   }, [isDarkMode])
 
-  useEffect(() => {
+  /*   useEffect(() => {
     lottieRef.current.setDirection(-1)
     lottieRef.current.play()
     setDirection(1)
-  }, [currentUrl])
+  }, [currentUrl]) */
+  const handleExitMenu = () => {
+    lottieRef.current.setDirection(-1)
+    lottieRef.current.play()
+    setDirection(1)
+  }
 
   useEffect(() => {
     setBg()
@@ -108,7 +113,7 @@ const Header = () => {
     <header className={`${showMenu && 'h-full w-full bg-cream dark:bg-blue'} fixed top-0 z-50 flex  w-full `}>
       <motion.nav
         className={`
-          ${showMenu ? 'h-full flex-col bg-sand dark:bg-darkblue' : 'h-16'}
+          ${showMenu ? 'h-full flex-col  bg-sand dark:bg-darkblue' : 'h-16'}
           ${headerBg} sticky flex  w-full items-center justify-center    md:h-14 md:justify-between  xl:h-[72px]   `}
         initial={isMobile ? 'closed' : 'none'}
         animate={isMobile ? (showMenu ? 'open' : 'closed') : 'none'}>
@@ -158,16 +163,46 @@ const Header = () => {
               : 'hidden h-full  items-center justify-center '
           }  ${currentUser ? 'xl:ml-96' : 'xl:ml-72'}
               mx-4  md:mx-0 md:ml-40   md:flex md:flex-row lg:ml-60  `}>
-          <HeaderLink title="Home" location="/" showMenu={showMenu} setShowMenu={setShowMenu} />
-          <HeaderLink title="Gallery" location="/watch" showMenu={showMenu} setShowMenu={setShowMenu} />
-          <HeaderLink title="Huskypedia" location="/learn" showMenu={showMenu} setShowMenu={setShowMenu} />
+          <HeaderLink
+            setDirection={setDirection}
+            lottieRef={lottieRef}
+            title="Home"
+            location="/"
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          <HeaderLink
+            setDirection={setDirection}
+            lottieRef={lottieRef}
+            title="Gallery"
+            location="/watch"
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          <HeaderLink
+            setDirection={setDirection}
+            lottieRef={lottieRef}
+            title="Huskypedia"
+            location="/learn"
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
           {currentUser ? (
             <div className="w-full md:hidden">
               <div className="w-full md:hidden">
-                <HeaderLink title="Profile" location="/profile/me" showMenu={showMenu} setShowMenu={setShowMenu} />
+                <HeaderLink
+                  setDirection={setDirection}
+                  lottieRef={lottieRef}
+                  title="Profile"
+                  location="/profile/me"
+                  showMenu={showMenu}
+                  setShowMenu={setShowMenu}
+                />
               </div>
               <div className="w-full md:hidden">
                 <HeaderLink
+                  setDirection={setDirection}
+                  lottieRef={lottieRef}
                   title="My Snaps"
                   location={`/profile/${username}/gallery`}
                   showMenu={showMenu}
@@ -177,7 +212,14 @@ const Header = () => {
             </div>
           ) : (
             <div className="w-full md:hidden">
-              <HeaderLink title="Register" location={`signup`} showMenu={showMenu} setShowMenu={setShowMenu} />
+              <HeaderLink
+                setDirection={setDirection}
+                lottieRef={lottieRef}
+                title="Register"
+                location={`signup`}
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+              />
             </div>
           )}
         </motion.div>
@@ -191,7 +233,13 @@ const Header = () => {
           </div>
         </div>
         {currentUser ? (
-          <MobileHeaderUserInfo showMenu={showMenu} setShowMenu={setShowMenu} username={username} />
+          <MobileHeaderUserInfo
+            setDirection={setDirection}
+            lottieRef={lottieRef}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+            username={username}
+          />
         ) : (
           <div className="right-2 z-50 mr-2 flex hidden h-full  md:block xl:mr-10">
             <div className="absolute right-24 hidden md:block lg:right-28 xl:right-44 2xl:right-48">
@@ -199,6 +247,8 @@ const Header = () => {
             </div>
 
             <HeaderLink
+              setDirection={setDirection}
+              lottieRef={lottieRef}
               title="Sign In"
               location="/login"
               currentLocation={currentLocation}

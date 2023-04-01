@@ -4,11 +4,14 @@ import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import DarkModeToggle from './DarkModeToggle'
 
-const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
+const MobileHeaderUserInfo = ({ setDirection, lottieRef, showMenu, setShowMenu, username }) => {
   const { currentUser } = useAuth()
   const currentLocation = useLocation().pathname
   const handleOnLinkClick = () => {
     setShowMenu(false)
+    lottieRef.current.setDirection(-1)
+    lottieRef.current.play()
+    setDirection(1)
   }
   return (
     <div
@@ -29,6 +32,8 @@ const MobileHeaderUserInfo = ({ showMenu, setShowMenu, username }) => {
           }  ${username.length > 10 ? 'text-xl' : ' text-2xl'} md:h-14 md:w-auto    xl:mr-24 xl:h-[72px]`}>
           <div className="hidden md:block ">
             <HeaderLink
+              setDirection={setDirection}
+              lottieRef={lottieRef}
               title={username}
               location="/profile/me"
               currentLocation={currentLocation}
