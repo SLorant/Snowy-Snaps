@@ -73,7 +73,7 @@ const Profile = () => {
               <div className="mb-8 flex  flex-col items-center justify-center">
                 <p
                   className={`${
-                    user.profileName.length > 20 ? ' text-2xl' : 'text-4xl'
+                    user.profileName.length > 17 ? ' text-2xl' : 'text-4xl'
                   } mb-6 font-header text-peach dark:text-cream `}>
                   {user.galleryText}
                 </p>

@@ -137,7 +137,7 @@ const SnapEditor = ({ picture, setPicture, setFile, uploadedEmotions, setUploade
                 md:w-28 lg:w-32 lg:text-2xl  xl:w-40 "
               whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
               onClick={() => handleSave()}>
-              Select
+              Upload
             </motion.button>
           </div>
         </div>
