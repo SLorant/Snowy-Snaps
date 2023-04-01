@@ -39,12 +39,12 @@ npm install
 3. Create a Firebase project and add your Firebase configuration details to a .env file in the root directory of the project. Your .env file should look like this:
 
 ```js
-REACT_APP_API_KEY=<your-api-key>
-REACT_APP_AUTH_DOMAIN=<your-auth-domain>
-REACT_APP_PROJECT_ID=<your-project-id>
-REACT_APP_STORAGE_BUCKET=<your-storage-bucket>
-REACT_APP_MESSAGING_SENDER_ID=<your-messaging-sender-id>
-REACT_APP_APP_ID=<your-app-id>
+VITE_AUTH_DOMAIN=<your-auth-domain>
+VITE_API_KEY=<your-api-key>
+VITE_PROJECT_ID=<your-project-id>
+VITE_STORAGE_BUCKET=<your-storage-bucket>
+VITE_MESSAGING_SENDER_ID=<your-messaging-sender-id>
+VITE_APP_ID=<your-app-id>
 ```
 
 4. Run the app in development mode
