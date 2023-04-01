@@ -57,6 +57,7 @@ npm start
 
 - The illustrations were made with the combined superpowers of Midjourney and my girlfriend :)
 - For the Huskypedia page I used several sources, I mentioned them in the page itself
+- For the real images, I used Pexels (pexels.com)
 - Also, there are some necessary legal documents, which were made by mostly ChatGPT
 
 ## License
