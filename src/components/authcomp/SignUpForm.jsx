@@ -32,7 +32,8 @@ const SignUpForm = () => {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    const userNameTaken = await CheckUsernameDuplicates(userNameRef.current.value)
+    const username = userNameRef.current.value
+    const userNameTaken = await CheckUsernameDuplicates(username)
     const emailTaken = await CheckEmailDuplicates(emailRef.current.value)
     if (emailTaken) {
       return setError('User with this email already exists')
@@ -40,11 +41,13 @@ const SignUpForm = () => {
     if (userNameTaken) {
       return setError('Username already taken')
     }
+    if (username.includes(' ')) {
+      return setError("Username can't contain spaces")
+    }
     if (passwordRef.current.value.length < 6) {
       return setError('Password have to be at least 6 characters long')
     }
     if (passwordRef.current.value !== passwordConfirmRef.current.value) return setError("Passwords don't match")
-    const username = userNameRef.current.value
 
     try {
       setError('')
