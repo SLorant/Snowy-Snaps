@@ -40,7 +40,7 @@ const Gallery = () => {
     }, 1000)
   }, [])
   return (
-    <div className="h-full w-full dark:bg-darkblue">
+    <div className="h-full min-h-screen w-full dark:bg-darkblue">
       <Helmet>
         <title>Huskies' Gallery</title>
         <meta property="og:title" content="Snowy Snaps - Huskies' Gallery" />

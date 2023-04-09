@@ -51,7 +51,7 @@ const MySnaps = () => {
   LoadMySnaps(setUser, setCanUpload)
 
   return (
-    <div className="h-full w-full dark:bg-darkblue">
+    <div className="h-full min-h-screen w-full dark:bg-darkblue">
       <Helmet>
         <title>Snaps</title>
         <meta property="og:title" content="Snowy Snaps - Your Snaps" />
