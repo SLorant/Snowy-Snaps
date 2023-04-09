@@ -18,12 +18,12 @@ const LearnSection = () => {
         <div className="relative   h-full  w-full rounded-md bg-blue ">
           <img
             className="absolute top-0 left-0 z-0 rounded-md  dark:hidden  2xl:w-full"
-            src="/assets/illustrations/huskylearn.png"
+            src="/assets/illustrations/huskylearn.webp"
             alt=""
           />
           <img
             className="absolute top-0 left-0 z-0  hidden rounded-md dark:block  2xl:w-full"
-            src="/assets/illustrations/huskylearndark.png"
+            src="/assets/illustrations/huskylearndark.webp"
             alt=""
           />
           <div className="">

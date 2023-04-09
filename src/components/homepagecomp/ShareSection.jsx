@@ -46,13 +46,13 @@ const ShareSection = () => {
           <img
             className="absolute bottom-[120px] right-0 w-[350px] dark:hidden sm:right-40  md:right-0
               md:bottom-20 md:ml-28 md:mt-5  md:w-auto lg:static xl:mt-3"
-            src="/assets/illustrations/landingshare.png"
+            src="/assets/illustrations/landingshare.webp"
             alt="sharehusky"
           />
           <img
             className="absolute bottom-[120px] right-0 hidden w-[350px] dark:block sm:right-40  md:right-0
                md:bottom-20 md:ml-28 md:mt-5 md:w-auto lg:static xl:mt-3"
-            src="/assets/illustrations/landingsharedark.png"
+            src="/assets/illustrations/landingsharedark.webp"
             alt="sharehusky"
           />
           <div

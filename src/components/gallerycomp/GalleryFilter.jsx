@@ -84,12 +84,12 @@ const GalleryFilter = ({ emotions, setOrder, emotionArray, setEmotionArray, setI
           </h2>
           <div className="my-2 grid grid-cols-4 gap-4    md:gap-2 md:gap-x-4 2xl:mb-3 2xl:mt-4 2xl:flex 2xl:gap-4">
             {emotions.map(([emotion, source]) => (
-              <div
+              <button
                 className="flex w-10 items-center justify-center 2xl:w-11"
                 key={source.src}
                 onClick={() => handleOnClickEmotion(emotion.label)}>
                 <Emoji emotionArray={emotionArray} source={emotion.label} />
-              </div>
+              </button>
             ))}
           </div>
         </div>

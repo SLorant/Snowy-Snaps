@@ -77,9 +77,9 @@ const HuskyPedia = () => {
                 transition: {
                   type: 'spring',
                   bounce: 0,
-                  duration: 0.7,
-                  delayChildren: 0.3,
-                  staggerChildren: 0.05,
+                  duration: 0.5,
+                  delayChildren: 0.2,
+                  staggerChildren: 0.04,
                 },
               },
               closed: {
@@ -105,7 +105,7 @@ const HuskyPedia = () => {
                   className="w-full cursor-pointer border-b-2 border-sand  hover:border-peach hover:bg-blue 
                   hover:text-peach dark:border-darkblue dark:text-cream dark:hover:border-peach dark:md:border-blue xl:border-sand"
                   onClick={() => {
-                    setShowTableOfContents(false)
+                    setShowTableOfContents(isMobile ? false : showTableOfContents ? true : false)
                   }}>
                   <motion.li className={`${link.main ? 'ml-4 lg:ml-8' : ' ml-8 text-xl lg:ml-12'} flex  w-full`}>
                     <Link className=" w-full " to={link.link}>
@@ -121,7 +121,7 @@ const HuskyPedia = () => {
           className=" mt-4 flex h-full flex-col items-center justify-start rounded-md bg-white
            dark:bg-darkblue md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-5/12"
           onClick={() => {
-            setShowTableOfContents(false)
+            setShowTableOfContents(isMobile ? false : showTableOfContents ? true : false)
           }}>
           <Content />
         </div>

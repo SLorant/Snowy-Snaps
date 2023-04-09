@@ -62,11 +62,6 @@ const Header = () => {
     }
   }, [isDarkMode])
 
-  /*   useEffect(() => {
-    lottieRef.current.setDirection(-1)
-    lottieRef.current.play()
-    setDirection(1)
-  }, [currentUrl]) */
   const handleExitMenu = () => {
     lottieRef.current.setDirection(-1)
     lottieRef.current.play()
@@ -81,6 +76,7 @@ const Header = () => {
   })
 
   const playLottie = () => {
+    lottieRef.current.setSpeed(1.25)
     if (direction === 1) {
       lottieRef.current.setDirection(direction)
       lottieRef.current.play()
@@ -228,9 +224,9 @@ const Header = () => {
             showMenu ? 'absolute bottom-6' : 'hidden'
           } mx-4 flex w-[91%] items-end justify-between md:hidden`}>
           <DarkModeToggle setAnimationData={setAnimationData} />
-          <div className={`${!currentUser && 'hidden'} cursor-pointer`} onClick={handleLogout}>
+          <button className={`${!currentUser && 'hidden'} cursor-pointer`} onClick={handleLogout}>
             <LogoutIcon />
-          </div>
+          </button>
         </div>
         {currentUser ? (
           <MobileHeaderUserInfo

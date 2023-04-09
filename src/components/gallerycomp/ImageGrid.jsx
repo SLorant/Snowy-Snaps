@@ -33,7 +33,7 @@ const ImageGrid = ({ setSelectedImg, order, emotionArray, imgType, isUploaded, s
                   alt="huskypic"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 1 }}
+                  transition={{ delay: 0.5 }}
                 />
               </motion.div>
             ))}

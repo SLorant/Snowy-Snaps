@@ -51,12 +51,12 @@ const GifUploader = ({ setShowGifUploader, setFile, url, uploadedEmotions, setUp
         <img className=" my-4 h-44 rounded-md" src={gifUrl} alt="" />
         <div className=" my-2 grid grid-cols-4 gap-2 md:my-2 xl:gap-3 ">
           {emotions.map((emotion) => (
-            <div
+            <button
               className="flex w-11 items-center justify-center"
               key={emotion.label}
               onClick={() => handleOnClickEmoji(emotion.label)}>
               <Emoji emotionArray={uploadedEmotions} source={emotion.label} />
-            </div>
+            </button>
           ))}
         </div>
         <div className="my-4 flex gap-6">

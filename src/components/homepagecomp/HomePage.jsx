@@ -21,9 +21,12 @@ const HomePage = () => {
       <div className=" sticky top-0 right-0 z-0 flex w-full flex-col items-center justify-center ">
         <div className="absolute bottom-6 right-2 z-40 flex w-full flex-col items-end justify-end   sm:top-10 sm:bottom-auto sm:right-auto ">
           <div className="mt-20   flex w-7/12 flex-col items-end  sm:items-start sm:justify-start lg:w-1/2">
-            <h1 className=" w-full text-right  font-header text-3xl text-blue dark:text-cream sm:w-auto sm:text-center md:ml-4 md:text-4xl lg:ml-0 xl:text-5xl 2xl:text-6xl">
-              Welcome to<p className="hidden sm:inline">&nbsp;Snowy Snaps!</p>
-            </h1>
+            <div
+              className="flex w-full flex-wrap text-right  font-header text-3xl text-blue dark:text-cream sm:w-auto
+             sm:text-center md:ml-4 md:text-4xl lg:ml-0 xl:text-5xl 2xl:text-6xl">
+              <h1 className="flex-shrink-0">Welcome to</h1>
+              <h1 className="hidden flex-shrink-0 sm:inline">&nbsp;Snowy Snaps!</h1>
+            </div>
 
             <img className=" mr-4 w-5/6 sm:hidden" src="/assets/icons/logo.png" alt="logo" />
           </div>
@@ -39,22 +42,22 @@ const HomePage = () => {
         </div>
 
         <img
-          src="/assets/illustrations/landinghusky.png"
+          src="/assets/illustrations/landinghusky.webp"
           alt="huskylove"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 dark:hidden sm:block"
         />
         <img
-          src="/assets/illustrations/landinghuskydark.jpg"
+          src="/assets/illustrations/landinghuskydark.webp"
           alt="huskylove"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 dark:hidden dark:sm:block"
         />
         <img
-          src="/assets/illustrations/landinghuskymobile.png"
+          src="/assets/illustrations/landinghuskymobile.webp"
           alt="huskylove"
           className="relative top-10 z-10 block w-full  object-cover dark:hidden  sm:hidden"
         />
         <img
-          src="/assets/illustrations/landinghuskydarkmobile.jpg"
+          src="/assets/illustrations/landinghuskydarkmobile.webp"
           alt="huskylove"
           className="relative  top-10 z-10 hidden w-full  object-cover dark:block  dark:sm:hidden"
         />

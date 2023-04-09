@@ -96,12 +96,12 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
         dark:bg-blue md:mb-4  md:mb-0 md:bg-transparent dark:md:bg-transparent  lg:mb-10 lg:h-1/2  lg:flex-row  xl:h-[60%]"
         initial={{ y: '-100vh' }}
         animate={{ y: 0 }}>
-        <motion.div
+        <motion.button
           className="absolute -top-16 right-4 cursor-pointer md:-top-2 md:-right-20 lg:-top-3 lg:-right-3"
           onClick={handleExit}
           whileHover={{ scale: 1.2 }}>
           <XIcon />
-        </motion.div>
+        </motion.button>
         <div className="flex h-[95%] w-full flex-col items-center  justify-center ">
           <motion.img
             src={selectedImg}
