@@ -17,9 +17,9 @@ const Modal = ({ emotions, setIsUploaded, userID, myImages, selectedImg, setSele
   const [error, setError] = useState(null)
   const { currentUser } = useAuth()
   const [canDelete, setCanDelete] = useState(false)
-  const date = new Date(imgData.createdAt.seconds * 1000)
-  const newdate = date.toLocaleString(DateTime.DATE_MED)
-  const finaldate = newdate.substring(0, 12)
+  const date = DateTime.fromSeconds(imgData.createdAt.seconds)
+  const newDate = date.setLocale('en')
+  const finaldate = newDate.toLocaleString(DateTime.DATE_MED)
   let userid
 
   if (currentUser) {
