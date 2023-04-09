@@ -6,7 +6,7 @@ const HomePage = () => {
     <div className="h-full w-full bg-sand dark:bg-blue">
       <Helmet>
         <title>Snowy Snaps</title>
-        <link rel="icon" type="image/svg+xml" href="/assets/emojis/silly.png" />
+        <link rel="icon" type="image/png" href="/assets/favicon.png" />
         <meta property="og:title" content="Snowy Snaps - The Husky Website" />
         <meta property="og:type" content="website" />
         <meta
@@ -44,11 +44,13 @@ const HomePage = () => {
         <img
           src="/assets/illustrations/landinghusky.webp"
           alt="huskylove"
+          loading="lazy"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 dark:hidden sm:block"
         />
         <img
           src="/assets/illustrations/landinghuskydark.webp"
           alt="huskylove"
+          loading="lazy"
           className="absolute -top-10 z-30 hidden h-[1000px] w-full object-cover opacity-100 dark:hidden dark:sm:block"
         />
         <img
