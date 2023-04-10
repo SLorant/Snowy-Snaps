@@ -9,6 +9,7 @@ import LikedSnaps from './LikedSnaps'
 import { Link } from 'react-router-dom'
 import LoadMySnaps from './LoadMySnaps'
 import { Helmet } from 'react-helmet-async'
+import LoadingSpinner from '../../LoadingSpinner'
 
 const MySnaps = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -43,11 +44,6 @@ const MySnaps = () => {
     [{ label: 'sad' }, { src: '/assets/emojis/sad.png' }],
   ]
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  }, [])
   LoadMySnaps(setUser, setCanUpload)
 
   return (
@@ -80,17 +76,25 @@ const MySnaps = () => {
           </Link>
         </div>
       </div>
-      {!loading && !likedImages && (
+      {loading && <LoadingSpinner />}
+      {!likedImages && (
         <UploadedSnaps
           userID={user.userID}
           isUploaded={isUploaded}
           setIsUploaded={setIsUploaded}
           setImgData={setImgData}
           setSelectedImg={setSelectedImg}
+          onLoaded={() => setLoading(false)}
         />
       )}
-      {!loading && likedImages && (
-        <LikedSnaps userID={user.userID} imgData={imgData} setImgData={setImgData} setSelectedImg={setSelectedImg} />
+      {likedImages && (
+        <LikedSnaps 
+          userID={user.userID} 
+          imgData={imgData} 
+          setImgData={setImgData} 
+          setSelectedImg={setSelectedImg} 
+          onLoaded={() => setLoading(false)} 
+        />
       )}
       <div className=" h-60 w-full dark:bg-darkblue"></div>
       {selectedImg && (
