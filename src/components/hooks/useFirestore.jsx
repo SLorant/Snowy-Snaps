@@ -17,11 +17,11 @@ const useFirestore = (imageCollection, userID, isUploaded, setIsUploaded, upload
         orderBy('createdAt', 'desc'),
       )
     // If there are no emotions and no image type specified, query for all images sorted by upload date
-    else if (!emotionArray.length && imgType === '') {
+    else if (!emotionArray?.length && imgType === '') {
       q = query(collection(projectFirestore, imageCollection), orderBy('createdAt', uploadDate))
     }
     // If there are no emotions specified but an image type is specified, query for images that match the image type
-    else if (!emotionArray.length) {
+    else if (!emotionArray?.length) {
       q = query(
         collection(projectFirestore, imageCollection),
         where('gif', '==', isGif),
@@ -29,7 +29,7 @@ const useFirestore = (imageCollection, userID, isUploaded, setIsUploaded, upload
       )
     }
     // If there are emotions specified but no image type specified, query for images that match any of the emotions
-    else if (emotionArray.length && imgType === '') {
+    else if (emotionArray?.length && imgType === '') {
       q = query(
         collection(projectFirestore, imageCollection),
         where('emotion', 'in', emotionArray),

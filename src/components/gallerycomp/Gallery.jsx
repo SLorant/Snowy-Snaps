@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async'
 import { lazy, Suspense } from 'react'
 const Modal = lazy(() => import('./Modal'))
 const ImageGrid = lazy(() => import('./ImageGrid'))
+import LoadingSpinner from '../LoadingSpinner'
 
 const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -34,11 +35,6 @@ const Gallery = () => {
     emotion3: '',
     createdAt: '',
   })
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  }, [])
   return (
     <div className="h-full min-h-screen w-full dark:bg-darkblue">
       <Helmet>
@@ -62,8 +58,8 @@ const Gallery = () => {
         />
         <UploadSnap file={file} setFile={setFile} setIsUploaded={setIsUploaded} />
       </div>
-      {!loading && (
-        <Suspense fallback={<div>Loading...</div>}>
+        {loading && <LoadingSpinner />}
+        <Suspense fallback={<LoadingSpinner />} >
           <ImageGrid
             imgData={imgData}
             isUploaded={isUploaded}
@@ -73,12 +69,12 @@ const Gallery = () => {
             order={order}
             emotionArray={emotionArray}
             imgType={imgType}
+            onLoaded={() => setLoading(false)}
           />
         </Suspense>
-      )}
       <div className=" h-60 w-full dark:bg-darkblue"></div>
       {selectedImg && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingSpinner />}>
           <Modal
             emotions={emotions}
             imgData={imgData}

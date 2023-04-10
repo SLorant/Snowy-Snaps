@@ -1,8 +1,39 @@
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import useShowLiked from '../../hooks/useShowLiked'
 
-const LikedSnaps = ({ userID, setSelectedImg, setImgData }) => {
+const LikedSnaps = ({ userID, setSelectedImg, setImgData, onLoaded }) => {
   const { docs } = useShowLiked(userID)
+
+  // Loading logic: event listener for each image, when all images are loaded, call onLoaded() to set loading to false
+  useEffect(() => {
+    if (docs && docs.length > 0 && onLoaded) {
+      const images = document.querySelectorAll('.motion-image')
+      let loadedCount = 0
+
+      const handleImageLoaded = () => {
+        loadedCount++
+
+        if (loadedCount === images.length) {
+          onLoaded()
+        }
+      }
+
+      images.forEach((image) => {
+        if (image.complete) {
+          handleImageLoaded()
+        } else {
+          image.addEventListener('load', handleImageLoaded)
+        }
+      })
+
+      return () => {
+        images.forEach((image) => {
+          image.removeEventListener('load', handleImageLoaded)
+        })
+      }
+    }
+  }, [docs, onLoaded])
 
   return (
     <div className=" h-full">
@@ -27,7 +58,7 @@ const LikedSnaps = ({ userID, setSelectedImg, setImgData }) => {
                 }}>
                 <motion.img
                   src={doc.url}
-                  className="h-full w-full rounded-lg object-cover opacity-80 hover:opacity-100"
+                  className="motion-image h-full w-full rounded-lg object-cover opacity-80 hover:opacity-100"
                   loading="lazy"
                   alt="huskypic"
                   initial={{ opacity: 0 }}
