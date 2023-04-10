@@ -10,12 +10,13 @@ const useFirestore = (imageCollection, userID, isUploaded, setIsUploaded, upload
   useEffect(() => {
     imgType === 'gif' ? (isGif = true) : (isGif = false)
     // In MySnaps, only the userID is provided, no other filters are needed
-    if (userID)
+    if (userID) {
       q = query(
         collection(projectFirestore, imageCollection),
         where('userid', '==', userID),
         orderBy('createdAt', 'desc'),
       )
+    }
     // If there are no emotions and no image type specified, query for all images sorted by upload date
     else if (!emotionArray?.length && imgType === '') {
       q = query(collection(projectFirestore, imageCollection), orderBy('createdAt', uploadDate))

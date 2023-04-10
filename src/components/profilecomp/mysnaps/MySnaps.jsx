@@ -25,6 +25,7 @@ const MySnaps = () => {
   const [canUpload, setCanUpload] = useState(false)
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [userDataLoading, setUserDataLoading] = useState(true)
   const [imgData, setImgData] = useState({
     user: '',
     emotion: '',
@@ -44,8 +45,13 @@ const MySnaps = () => {
     [{ label: 'sad' }, { src: '/assets/emojis/sad.png' }],
   ]
 
-  LoadMySnaps(setUser, setCanUpload)
+  useEffect(() => {
+    setTimeout(() => {
+      setUserDataLoading(false)
+    }, 1000)
+  }, [])
 
+  LoadMySnaps(setUser, setCanUpload)
   return (
     <div className="h-full min-h-screen w-full dark:bg-darkblue">
       <Helmet>
@@ -77,7 +83,7 @@ const MySnaps = () => {
         </div>
       </div>
       {loading && <LoadingSpinner />}
-      {!likedImages && (
+      {!userDataLoading && !likedImages && (
         <UploadedSnaps
           userID={user.userID}
           isUploaded={isUploaded}
@@ -88,12 +94,12 @@ const MySnaps = () => {
         />
       )}
       {likedImages && (
-        <LikedSnaps 
-          userID={user.userID} 
-          imgData={imgData} 
-          setImgData={setImgData} 
-          setSelectedImg={setSelectedImg} 
-          onLoaded={() => setLoading(false)} 
+        <LikedSnaps
+          userID={user.userID}
+          imgData={imgData}
+          setImgData={setImgData}
+          setSelectedImg={setSelectedImg}
+          onLoaded={() => setLoading(false)}
         />
       )}
       <div className=" h-60 w-full dark:bg-darkblue"></div>

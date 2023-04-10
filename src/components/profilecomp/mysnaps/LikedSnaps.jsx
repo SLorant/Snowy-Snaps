@@ -63,7 +63,6 @@ const LikedSnaps = ({ userID, setSelectedImg, setImgData, onLoaded }) => {
                   alt="huskypic"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
                 />
               </motion.div>
             ))}
